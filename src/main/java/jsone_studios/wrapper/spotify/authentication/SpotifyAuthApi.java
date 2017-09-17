@@ -7,14 +7,15 @@ import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import java.util.Base64;
+import java.util.List;
 
-public class AuthenticationApi
+public class SpotifyAuthApi
 {
     public static final String SPOTIFY_ACCOUNTS_ENDPOINT = "https://accounts.spotify.com";
 
     private final AuthSpotifyService authService;
 
-    public AuthenticationApi()
+    public SpotifyAuthApi()
     {
         this.authService = createAuthService();
     }
@@ -28,8 +29,18 @@ public class AuthenticationApi
         return retrofit.create(AuthSpotifyService.class);
     }
 
-    public HttpUrl getAuthorizeUrl(String clientId, String responseType, String redirectUri, String state, String scope)
+    public HttpUrl getAuthorizeUrl(String clientId, String responseType, String redirectUri, String state, List<Scope> scopes)
     {
+        String scope;
+        if (scopes == null || scopes.size() == 0)
+        {
+            scope = "";
+        }
+        else
+        {
+            scope = scopes.stream().map(Scope::getScope).reduce((scope1, scope2) -> scope1 + " " + scope2).get();
+        }
+
         return new HttpUrl.Builder()
             .scheme("https")
             .host("accounts.spotify.com")

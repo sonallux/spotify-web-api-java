@@ -2,6 +2,8 @@ package jsone_studios.wrapper.spotify.services;
 
 import jsone_studios.wrapper.spotify.models.ArtistsCursorPager;
 import jsone_studios.wrapper.spotify.models.Result;
+import jsone_studios.wrapper.spotify.util.SpotifyUri;
+import jsone_studios.wrapper.spotify.util.SpotifyUriException;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -16,7 +18,7 @@ public interface FollowSpotifyService
      * @return An empty result
      * @see <a href="https://developer.spotify.com/web-api/follow-artists-users/">Follow Artists or Users</a>
      */
-    @PUT("/me/following?type=user")
+    @PUT("me/following?type=user")
     Call<Result> followUsers(@Query("ids") String ids);
 
     /**
@@ -26,7 +28,7 @@ public interface FollowSpotifyService
      * @return An empty result
      * @see <a href="https://developer.spotify.com/web-api/follow-artists-users/">Follow Artists or Users</a>
      */
-    @PUT("/me/following?type=artist")
+    @PUT("me/following?type=artist")
     Call<Result> followArtists(@Query("ids") String ids);
 
     /**
@@ -36,7 +38,7 @@ public interface FollowSpotifyService
      * @return An empty result
      * @see <a href="https://developer.spotify.com/web-api/unfollow-artists-users/">Unfollow Artists or Users</a>
      */
-    @DELETE("/me/following?type=user")
+    @DELETE("me/following?type=user")
     Call<Result> unfollowUsers(@Query("ids") String ids);
 
     /**
@@ -46,7 +48,7 @@ public interface FollowSpotifyService
      * @return An empty result
      * @see <a href="https://developer.spotify.com/web-api/unfollow-artists-users/">Unfollow Artists or Users</a>
      */
-    @DELETE("/me/following?type=artist")
+    @DELETE("me/following?type=artist")
     Call<Result> unfollowArtists(@Query("ids") String ids);
 
     /**
@@ -56,7 +58,7 @@ public interface FollowSpotifyService
      * @return An array with boolean values indicating whether the users are followed
      * @see <a href="https://developer.spotify.com/web-api/check-current-user-follows/">Check if Current User Follows Artists or Users</a>
      */
-    @GET("/me/following/contains?type=user")
+    @GET("me/following/contains?type=user")
     Call<Boolean[]> isFollowingUsers(@Query("ids") String ids);
 
     /**
@@ -66,7 +68,7 @@ public interface FollowSpotifyService
      * @return An array with boolean values indicating whether the artists are followed
      * @see <a href="https://developer.spotify.com/web-api/check-current-user-follows/">Check if Current User Follows Artists or Users</a>
      */
-    @GET("/me/following/contains?type=artist")
+    @GET("me/following/contains?type=artist")
     Call<Boolean[]> isFollowingArtists(@Query("ids") String ids);
 
     /**
@@ -78,8 +80,14 @@ public interface FollowSpotifyService
      * @return An array with boolean values indicating whether the playlist is followed by the users
      * @see <a href="https://developer.spotify.com/web-api/check-user-following-playlist/">Check if Users Follow a Playlist</a>
      */
-    @GET("/users/{user_id}/playlists/{playlist_id}/followers/contains")
+    @GET("users/{user_id}/playlists/{playlist_id}/followers/contains")
     Call<Boolean[]> areFollowingPlaylist(@Path("user_id") String userId, @Path("playlist_id") String playlistId, @Query("ids") String ids);
+
+    default Call<Boolean[]> areFollowingPlaylist(String playlistUri, String ids) throws SpotifyUriException
+    {
+        SpotifyUri spotifyUri = SpotifyUri.parseUri(playlistUri);
+        return areFollowingPlaylist(spotifyUri.getUserId(), spotifyUri.getPlaylistId(), ids);
+    }
 
     /**
      * Get the current user's followed artists.
@@ -87,7 +95,7 @@ public interface FollowSpotifyService
      * @return Object containing a list of artists that user follows wrapped in a cursor object.
      * @see <a href="https://developer.spotify.com/web-api/get-followed-artists/">Get User's Followed Artists</a>
      */
-    @GET("/me/following?type=artist")
+    @GET("me/following?type=artist")
     Call<ArtistsCursorPager> getFollowedArtists();
 
     /**
@@ -98,6 +106,6 @@ public interface FollowSpotifyService
      * @return Object containing a list of artists that user follows wrapped in a cursor object.
      * @see <a href="https://developer.spotify.com/web-api/get-followed-artists/">Get User's Followed Artists</a>
      */
-    @GET("/me/following?type=artist")
+    @GET("me/following?type=artist")
     Call<ArtistsCursorPager> getFollowedArtists(@QueryMap Map<String, Object> options);
 }

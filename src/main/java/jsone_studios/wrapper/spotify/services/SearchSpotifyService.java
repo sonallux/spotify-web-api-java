@@ -20,7 +20,7 @@ public interface SearchSpotifyService
      * @return A paginated list of results
      * @see <a href="https://developer.spotify.com/web-api/search-item/">Search for an Item</a>
      */
-    @GET("/search?type=track")
+    @GET("search?type=track")
     Call<TracksPager> searchTracks(@Query("q") String q);
 
     /**
@@ -32,7 +32,7 @@ public interface SearchSpotifyService
      * @return A paginated list of results
      * @see <a href="https://developer.spotify.com/web-api/search-item/">Search for an Item</a>
      */
-    @GET("/search?type=track")
+    @GET("search?type=track")
     Call<TracksPager> searchTracks(@Query("q") String q, @QueryMap Map<String, Object> options);
 
     /**
@@ -42,7 +42,7 @@ public interface SearchSpotifyService
      * @return A paginated list of results
      * @see <a href="https://developer.spotify.com/web-api/search-item/">Search for an Item</a>
      */
-    @GET("/search?type=artist")
+    @GET("search?type=artist")
     Call<ArtistsPager> searchArtists(@Query("q") String q);
 
     /**
@@ -54,7 +54,7 @@ public interface SearchSpotifyService
      * @return A paginated list of results
      * @see <a href="https://developer.spotify.com/web-api/search-item/">Search for an Item</a>
      */
-    @GET("/search?type=artist")
+    @GET("search?type=artist")
     Call<ArtistsPager> searchArtists(@Query("q") String q, @QueryMap Map<String, Object> options);
 
     /**
@@ -64,7 +64,7 @@ public interface SearchSpotifyService
      * @return A paginated list of results
      * @see <a href="https://developer.spotify.com/web-api/search-item/">Search for an Item</a>
      */
-    @GET("/search?type=album")
+    @GET("search?type=album")
     Call<AlbumsPager> searchAlbums(@Query("q") String q);
 
     /**
@@ -76,7 +76,7 @@ public interface SearchSpotifyService
      * @return A paginated list of results
      * @see <a href="https://developer.spotify.com/web-api/search-item/">Search for an Item</a>
      */
-    @GET("/search?type=album")
+    @GET("search?type=album")
     Call<AlbumsPager> searchAlbums(@Query("q") String q, @QueryMap Map<String, Object> options);
 
     /**
@@ -86,7 +86,7 @@ public interface SearchSpotifyService
      * @return A paginated list of results
      * @see <a href="https://developer.spotify.com/web-api/search-item/">Search for an Item</a>
      */
-    @GET("/search?type=playlist")
+    @GET("search?type=playlist")
     Call<PlaylistsPager> searchPlaylists(@Query("q") String q);
 
     /**
@@ -98,7 +98,7 @@ public interface SearchSpotifyService
      * @return A paginated list of results
      * @see <a href="https://developer.spotify.com/web-api/search-item/">Search for an Item</a>
      */
-    @GET("/search?type=playlist")
+    @GET("search?type=playlist")
     Call<PlaylistsPager> searchPlaylists(@Query("q") String q, @QueryMap Map<String, Object> options);
 
 }

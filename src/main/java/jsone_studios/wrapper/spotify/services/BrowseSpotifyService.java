@@ -16,7 +16,7 @@ public interface BrowseSpotifyService
      * @return A FeaturedPlaylists object with the featured playlists
      * @see <a href="https://developer.spotify.com/web-api/get-list-featured-playlists/">Get a List of Featured Playlists</a>
      */
-    @GET("/browse/featured-playlists")
+    @GET("browse/featured-playlists")
     Call<FeaturedPlaylists> getFeaturedPlaylists();
 
     /**
@@ -27,7 +27,7 @@ public interface BrowseSpotifyService
      * @return n FeaturedPlaylists object with the featured playlists
      * @see <a href="https://developer.spotify.com/web-api/get-list-featured-playlists/">Get a List of Featured Playlists</a>
      */
-    @GET("/browse/featured-playlists")
+    @GET("browse/featured-playlists")
     Call<FeaturedPlaylists> getFeaturedPlaylists(@QueryMap Map<String, Object> options);
 
     /**
@@ -36,7 +36,7 @@ public interface BrowseSpotifyService
      * @return A NewReleases object with the new album releases
      * @see <a href="https://developer.spotify.com/web-api/get-list-new-releases/">Get a List of New Releases</a>
      */
-    @GET("/browse/new-releases")
+    @GET("browse/new-releases")
     Call<NewReleases> getNewReleases();
 
     /**
@@ -47,7 +47,7 @@ public interface BrowseSpotifyService
      * @return A NewReleases object with the new album releases
      * @see <a href="https://developer.spotify.com/web-api/get-list-new-releases/">Get a List of New Releases</a>
      */
-    @GET("/browse/new-releases")
+    @GET("browse/new-releases")
     Call<NewReleases> getNewReleases(@QueryMap Map<String, Object> options);
 
     /**
@@ -58,7 +58,7 @@ public interface BrowseSpotifyService
      * @return A paging object containing categories.
      * @see <a href="https://developer.spotify.com/web-api/get-list-categories/">Get a List of Categories</a>
      */
-    @GET("/browse/categories")
+    @GET("browse/categories")
     Call<CategoriesPager> getCategories(@QueryMap Map<String, Object> options);
 
     /**
@@ -69,7 +69,7 @@ public interface BrowseSpotifyService
      * @return A Spotify category.
      * @see <a href="https://developer.spotify.com/web-api/get-category/">Get a Spotify Category</a>
      */
-    @GET("/browse/categories/{category_id}")
+    @GET("browse/categories/{category_id}")
     Call<Category> getCategory(@Path("category_id") String categoryId, @QueryMap Map<String, Object> options);
 
     /**
@@ -80,7 +80,7 @@ public interface BrowseSpotifyService
      * @return Playlists for a Spotify Category.
      * @see <a href="https://developer.spotify.com/web-api/get-categorys-playlists/">Get playlists for a Spotify Category</a>
      */
-    @GET("/browse/categories/{category_id}/playlists")
+    @GET("browse/categories/{category_id}/playlists")
     Call<PlaylistsPager> getPlaylistsForCategory(@Path("category_id") String categoryId, @QueryMap Map<String, Object> options);
 
     /**
@@ -90,7 +90,7 @@ public interface BrowseSpotifyService
      *                <a href="https://developer.spotify.com/web-api/get-recommendations/">endpoint documentation</a>
      * @return Recommendations response object
      */
-    @GET("/recommendations")
+    @GET("recommendations")
     Call<Recommendations> getRecommendations(@QueryMap Map<String, Object> options);
 
     /**
@@ -98,7 +98,7 @@ public interface BrowseSpotifyService
      *
      * @return An object whose key is "genres" and whose value is an array of available genres.
      */
-    @GET("/recommendations/available-genre-seeds")
+    @GET("recommendations/available-genre-seeds")
     Call<SeedsGenres> getSeedsGenres();
     
 }

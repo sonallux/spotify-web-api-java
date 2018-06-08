@@ -21,7 +21,7 @@ public interface TracksSpotifyService
      * @return Requested track information
      * @see <a href="https://developer.spotify.com/web-api/get-track/">Get a Track</a>
      */
-    @GET("/tracks/{id}")
+    @GET("tracks/{id}")
     Call<Track> getTrack(@Path("id") String trackId);
 
     /**
@@ -33,7 +33,7 @@ public interface TracksSpotifyService
      * @return Requested track information
      * @see <a href="https://developer.spotify.com/web-api/get-track/">Get a Track</a>
      */
-    @GET("/tracks/{id}")
+    @GET("tracks/{id}")
     Call<Track> getTrack(@Path("id") String trackId, @QueryMap Map<String, Object> options);
 
     /**
@@ -43,7 +43,7 @@ public interface TracksSpotifyService
      * @return An object whose key is "tracks" and whose value is an array of track objects.
      * @see <a href="https://developer.spotify.com/web-api/get-several-tracks/">Get Several Tracks</a>
      */
-    @GET("/tracks")
+    @GET("tracks")
     Call<Tracks> getTracks(@Query("ids") String trackIds);
 
     /**
@@ -55,7 +55,7 @@ public interface TracksSpotifyService
      * @return An object whose key is "tracks" and whose value is an array of track objects.
      * @see <a href="https://developer.spotify.com/web-api/get-several-tracks/">Get Several Tracks</a>
      */
-    @GET("/tracks")
+    @GET("tracks")
     Call<Tracks> getTracks(@Query("ids") String trackIds, @QueryMap Map<String, Object> options);
 
     /**
@@ -64,7 +64,7 @@ public interface TracksSpotifyService
      * @param ids A comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs
      * @return An object whose key is "audio_features" and whose value is an array of audio features objects.
      */
-    @GET("/audio-features")
+    @GET("audio-features")
     Call<AudioFeaturesTracks> getTracksAudioFeatures(@Query("ids") String ids);
 
     /**
@@ -73,6 +73,6 @@ public interface TracksSpotifyService
      * @param id The Spotify ID for the track.
      * @return Audio features object
      */
-    @GET("/audio-features/{id}")
+    @GET("audio-features/{id}")
     Call<AudioFeaturesTrack> getTrackAudioFeatures(@Path("id") String id);
 }

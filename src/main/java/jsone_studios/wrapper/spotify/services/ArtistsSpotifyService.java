@@ -18,7 +18,7 @@ public interface ArtistsSpotifyService
      * @return Requested artist information
      * @see <a href="https://developer.spotify.com/web-api/get-artist/">Get an Artist</a>
      */
-    @GET("/artists/{id}")
+    @GET("artists/{id}")
     Call<Artist> getArtist(@Path("id") String artistId);
 
     /**
@@ -28,7 +28,7 @@ public interface ArtistsSpotifyService
      * @return An object whose key is "artists" and whose value is an array of artist objects.
      * @see <a href="https://developer.spotify.com/web-api/get-several-artists/">Get Several Artists</a>
      */
-    @GET("/artists")
+    @GET("artists")
     Call<Artists> getArtists(@Query("ids") String artistIds);
 
     /**
@@ -38,7 +38,7 @@ public interface ArtistsSpotifyService
      * @return An array of simplified album objects wrapped in a paging object.
      * @see <a href="https://developer.spotify.com/web-api/get-artists-albums/">Get an Artist's Albums</a>
      */
-    @GET("/artists/{id}/albums")
+    @GET("artists/{id}/albums")
     Call<Pager<Album>> getArtistAlbums(@Path("id") String artistId);
 
     /**
@@ -50,7 +50,7 @@ public interface ArtistsSpotifyService
      * @return An array of simplified album objects wrapped in a paging object.
      * @see <a href="https://developer.spotify.com/web-api/get-artists-albums/">Get an Artist's Albums</a>
      */
-    @GET("/artists/{id}/albums")
+    @GET("artists/{id}/albums")
     Call<Pager<Album>> getArtistAlbums(@Path("id") String artistId, @QueryMap Map<String, Object> options);
 
     /**
@@ -61,7 +61,7 @@ public interface ArtistsSpotifyService
      * @return An object whose key is "tracks" and whose value is an array of track objects.
      * @see <a href="https://developer.spotify.com/web-api/get-artists-top-tracks/">Get an Artist’s Top Tracks</a>
      */
-    @GET("/artists/{id}/top-tracks")
+    @GET("artists/{id}/top-tracks")
     Call<Tracks> getArtistTopTrack(@Path("id") String artistId, @Query("country") String country);
 
     /**
@@ -71,7 +71,7 @@ public interface ArtistsSpotifyService
      * @return An object whose key is "artists" and whose value is an array of artist objects.
      * @see <a href="https://developer.spotify.com/web-api/get-related-artists/">Get an Artist’s Related Artists</a>
      */
-    @GET("/artists/{id}/related-artists")
+    @GET("artists/{id}/related-artists")
     Call<Artists> getRelatedArtists(@Path("id") String artistId);
 
 }

@@ -14,7 +14,7 @@ public interface LibrarySpotifyService
      * @return A paginated list of saved tracks
      * @see <a href="https://developer.spotify.com/web-api/get-users-saved-tracks/">Get a User’s Saved Tracks</a>
      */
-    @GET("/me/tracks")
+    @GET("me/tracks")
     Call<Pager<SavedTrack>> getMySavedTracks();
 
     /**
@@ -25,7 +25,7 @@ public interface LibrarySpotifyService
      * @return A paginated list of saved tracks
      * @see <a href="https://developer.spotify.com/web-api/get-users-saved-tracks/">Get a User’s Saved Tracks</a>
      */
-    @GET("/me/tracks")
+    @GET("me/tracks")
     Call<Pager<SavedTrack>> getMySavedTracks(@QueryMap Map<String, Object> options);
 
     /**
@@ -35,7 +35,7 @@ public interface LibrarySpotifyService
      * @return An array with boolean values that indicate whether the tracks are in the current Spotify user’s “Your Music” library.
      * @see <a href="https://developer.spotify.com/web-api/check-users-saved-tracks/">Check User’s Saved Tracks</a>
      */
-    @GET("/me/tracks/contains")
+    @GET("me/tracks/contains")
     Call<Boolean[]> containsMySavedTracks(@Query("ids") String ids);
 
     /**
@@ -45,7 +45,7 @@ public interface LibrarySpotifyService
      * @return An empty result
      * @see <a href="https://developer.spotify.com/web-api/save-tracks-user/">Save Tracks for User</a>
      */
-    @PUT("/me/tracks")
+    @PUT("me/tracks")
     Call<Result> addToMySavedTracks(@Query("ids") String ids);
 
     /**
@@ -55,7 +55,7 @@ public interface LibrarySpotifyService
      * @return An empty result
      * @see <a href="https://developer.spotify.com/web-api/remove-tracks-user/">Remove User’s Saved Tracks</a>
      */
-    @DELETE("/me/tracks")
+    @DELETE("me/tracks")
     Call<Result> removeFromMySavedTracks(@Query("ids") String ids);
 
     /**
@@ -64,7 +64,7 @@ public interface LibrarySpotifyService
      * @return A paginated list of saved albums
      * @see <a href="https://developer.spotify.com/web-api/get-users-saved-albums/">Get a User’s Saved Albums</a>
      */
-    @GET("/me/albums")
+    @GET("me/albums")
     Call<Pager<SavedAlbum>> getMySavedAlbums();
 
     /**
@@ -75,7 +75,7 @@ public interface LibrarySpotifyService
      * @return A paginated list of saved albums
      * @see <a href="https://developer.spotify.com/web-api/get-users-saved-albums/">Get a User’s Saved Albums</a>
      */
-    @GET("/me/albums")
+    @GET("me/albums")
     Call<Pager<SavedAlbum>> getMySavedAlbums(@QueryMap Map<String, Object> options);
 
     /**
@@ -85,7 +85,7 @@ public interface LibrarySpotifyService
      * @return An array with boolean values that indicate whether the albums are in the current Spotify user’s “Your Music” library.
      * @see <a href="https://developer.spotify.com/web-api/check-users-saved-albums/">Check User’s Saved Albums</a>
      */
-    @GET("/me/albums/contains")
+    @GET("me/albums/contains")
     Call<Boolean[]> containsMySavedAlbums(@Query("ids") String ids);
 
     /**
@@ -95,7 +95,7 @@ public interface LibrarySpotifyService
      * @return An empty result
      * @see <a href="https://developer.spotify.com/web-api/save-albums-user/">Save Albums for User</a>
      */
-    @PUT("/me/albums")
+    @PUT("me/albums")
     Call<Result> addToMySavedAlbums(@Query("ids") String ids);
 
     /**
@@ -105,7 +105,7 @@ public interface LibrarySpotifyService
      * @return An empty result
      * @see <a href="https://developer.spotify.com/web-api/remove-albums-user/">Remove User’s Saved Albums</a>
      */
-    @DELETE("/me/albums")
+    @DELETE("me/albums")
     Call<Result> removeFromMySavedAlbums(@Query("ids") String ids);
 
     /**
@@ -114,7 +114,7 @@ public interface LibrarySpotifyService
      * @return The objects whose response body contains an artists or tracks object.
      * The object in turn contains a paging object of Artists or Tracks
      */
-    @GET("/me/top/artists")
+    @GET("me/top/artists")
     Call<Pager<Artist>> getTopArtists();
 
     /**
@@ -125,7 +125,7 @@ public interface LibrarySpotifyService
      * @return The objects whose response body contains an artists or tracks object.
      * The object in turn contains a paging object of Artists or Tracks
      */
-    @GET("/me/top/artists")
+    @GET("me/top/artists")
     Call<Pager<Artist>> getTopArtists(@QueryMap Map<String, Object> options);
 
     /**
@@ -134,7 +134,7 @@ public interface LibrarySpotifyService
      * @return The objects whose response body contains an artists or tracks object.
      * The object in turn contains a paging object of Artists or Tracks
      */
-    @GET("/me/top/tracks")
+    @GET("me/top/tracks")
     Call<Pager<Track>> getTopTracks();
 
     /**
@@ -145,7 +145,7 @@ public interface LibrarySpotifyService
      * @return The objects whose response body contains an artists or tracks object.
      * The object in turn contains a paging object of Artists or Tracks
      */
-    @GET("/me/top/tracks")
+    @GET("me/top/tracks")
     Call<Pager<Track>> getTopTracks(@QueryMap Map<String, Object> options);
 
     //TODO: add new recently played

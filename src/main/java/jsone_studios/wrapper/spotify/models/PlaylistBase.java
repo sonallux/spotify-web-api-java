@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public abstract class PlaylistBase
 {
-    public Boolean collaborative;
+    public boolean collaborative;
     public Map<String, String> external_urls;
     public String href;
     public String id;
@@ -19,7 +19,7 @@ public abstract class PlaylistBase
     public String name;
     public UserPublic owner;
     @JsonProperty("public")
-    public Boolean is_public;
+    public boolean is_public;
     public String snapshot_id;
     public String type;
     public String uri;

@@ -5,7 +5,7 @@ public enum Scope
     PLAYLIST_READ_PRIVATE("playlist-read-private"),
     PLAYLIST_READ_COLLABORATIVE("playlist-read-collaborative"),
     PLAYLIST_MODIFY_PUBLIC("playlist-modify-public"),
-    PLAYLIST_MODIFY_PRIVATE("playlist-modify-public"),
+    PLAYLIST_MODIFY_PRIVATE("playlist-modify-private"),
     STREAMING("streaming"),
     UGC_IMAGE_UPLOAD("ugc-image-upload"),
     USER_FOLLOW_MODIFY("user-follow-modify"),

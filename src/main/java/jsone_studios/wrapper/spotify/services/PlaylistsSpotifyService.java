@@ -139,17 +139,16 @@ public interface PlaylistsSpotifyService
      * @param userId          The owner of the playlist
      * @param playlistId      The playlist's ID
      * @param queryParameters Query parameters
-     * @param body            The body parameters
      * @return A snapshot ID (the version of the playlist)
      * @see <a href="https://developer.spotify.com/web-api/add-tracks-to-playlist/">Add Tracks to a Playlist</a>
      */
     @POST("users/{user_id}/playlists/{playlist_id}/tracks")
-    Call<SnapshotId> addTracksToPlaylist(@Path("user_id") String userId, @Path("playlist_id") String playlistId, @QueryMap Map<String, Object> queryParameters, @Body Map<String, Object> body);
+    Call<SnapshotId> addTracksToPlaylist(@Path("user_id") String userId, @Path("playlist_id") String playlistId, @QueryMap Map<String, Object> queryParameters);
 
-    default Call<SnapshotId> addTracksToPlaylist(String playlistUri, Map<String, Object> queryParameters, Map<String, Object> body) throws SpotifyUriException
+    default Call<SnapshotId> addTracksToPlaylist(String playlistUri, Map<String, Object> queryParameters) throws SpotifyUriException
     {
         SpotifyUri spotifyUri = SpotifyUri.parseUri(playlistUri);
-        return addTracksToPlaylist(spotifyUri.getUserId(), spotifyUri.getPlaylistId(), queryParameters, body);
+        return addTracksToPlaylist(spotifyUri.getUserId(), spotifyUri.getPlaylistId(), queryParameters);
     }
 
     /**
@@ -199,11 +198,11 @@ public interface PlaylistsSpotifyService
      * @see <a href="https://developer.spotify.com/web-api/replace-playlists-tracks/">Replace a Playlist’s Tracks</a>
      */
     @PUT("users/{user_id}/playlists/{playlist_id}/tracks")
-    Call<Result> replaceTracksInPlaylist(@Path("user_id") String userId, @Path("playlist_id") String playlistId, @Query("uris") String trackUris, @Body Object body);
+    Call<Result> replaceTracksInPlaylist(@Path("user_id") String userId, @Path("playlist_id") String playlistId, @Query("uris") String trackUris);
 
-    default Call<Result> replaceTracksInPlaylist(String playlistUri, String trackUris, Object body) throws SpotifyUriException {
+    default Call<Result> replaceTracksInPlaylist(String playlistUri, String trackUris) throws SpotifyUriException {
         SpotifyUri spotifyUri = SpotifyUri.parseUri(playlistUri);
-        return replaceTracksInPlaylist(spotifyUri.getUserId(), spotifyUri.getPlaylistId(), trackUris, body);
+        return replaceTracksInPlaylist(spotifyUri.getUserId(), spotifyUri.getPlaylistId(), trackUris);
     }
 
     /**

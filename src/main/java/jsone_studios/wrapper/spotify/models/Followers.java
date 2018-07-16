@@ -6,7 +6,7 @@ package jsone_studios.wrapper.spotify.models;
 public class Followers
 {
     public String href;
-    public Integer total;
+    public int total;
 
     public Followers()
     {

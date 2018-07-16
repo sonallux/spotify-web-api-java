@@ -9,7 +9,7 @@ public class Track extends TrackSimple
 {
     public AlbumSimple album;
     public Map<String, String> external_ids;
-    public Integer popularity;
+    public int popularity;
 
     public Track()
     {

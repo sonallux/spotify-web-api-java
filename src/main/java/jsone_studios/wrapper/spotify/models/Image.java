@@ -5,8 +5,8 @@ package jsone_studios.wrapper.spotify.models;
  */
 public class Image
 {
-    public Integer width;
-    public Integer height;
+    public int width;
+    public int height;
     public String url;
 
     public Image()

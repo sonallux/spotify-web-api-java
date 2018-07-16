@@ -8,7 +8,7 @@ public class PlaylistTrack
     public String added_at;
     public UserPublic added_by;
     public Track track;
-    public Boolean is_local;
+    public boolean is_local;
 
     public PlaylistTrack()
     {

@@ -10,7 +10,7 @@ public class Artist extends ArtistSimple
     public Followers followers;
     public List<String> genres;
     public List<Image> images;
-    public Integer popularity;
+    public int popularity;
 
     public Artist()
     {

@@ -37,14 +37,14 @@
 
     <distributionManagement>
         <repository>
-            <id>jsone-studios</id>
+            <id>jsone-studios-nexus</id>
             <name>Public releases</name>
-            <url>https://maven.jsone-studios.de/public-release</url>
+            <url>https://nexus.jsone-studios.de/repository/maven-public-release</url>
         </repository>
         <snapshotRepository>
-            <id>jsone-studios</id>
+            <id>jsone-studios-nexus</id>
             <name>Public snapshots</name>
-            <url>https://maven.jsone-studios.de/public-snapshot</url>
+            <url>https://nexus.jsone-studios.de/repository/maven-public-snapshot</url>
         </snapshotRepository>
     </distributionManagement>
 

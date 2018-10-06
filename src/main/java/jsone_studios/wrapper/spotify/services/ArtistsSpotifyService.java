@@ -22,16 +22,6 @@ public interface ArtistsSpotifyService
     Call<Artist> getArtist(@Path("id") String artistId);
 
     /**
-     * Get Spotify catalog information for several artists based on their Spotify IDs.
-     *
-     * @param artistIds A comma-separated list of the Spotify IDs for the artists
-     * @return An object whose key is "artists" and whose value is an array of artist objects.
-     * @see <a href="https://developer.spotify.com/web-api/get-several-artists/">Get Several Artists</a>
-     */
-    @GET("artists")
-    Call<Artists> getArtists(@Query("ids") String artistIds);
-
-    /**
      * Get Spotify catalog information about an artist’s albums.
      *
      * @param artistId The Spotify ID for the artist.
@@ -74,4 +64,13 @@ public interface ArtistsSpotifyService
     @GET("artists/{id}/related-artists")
     Call<Artists> getRelatedArtists(@Path("id") String artistId);
 
+    /**
+     * Get Spotify catalog information for several artists based on their Spotify IDs.
+     *
+     * @param artistIds A comma-separated list of the Spotify IDs for the artists
+     * @return An object whose key is "artists" and whose value is an array of artist objects.
+     * @see <a href="https://developer.spotify.com/web-api/get-several-artists/">Get Several Artists</a>
+     */
+    @GET("artists")
+    Call<Artists> getArtists(@Query("ids") String artistIds);
 }

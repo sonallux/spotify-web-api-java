@@ -11,6 +11,39 @@ import java.util.Map;
 public interface BrowseSpotifyService
 {
     /**
+     * Retrieve a Spotify category.
+     *
+     * @param categoryId The category's ID.
+     * @param options    Optional parameters.
+     * @return A Spotify category.
+     * @see <a href="https://developer.spotify.com/web-api/get-category/">Get a Spotify Category</a>
+     */
+    @GET("browse/categories/{category_id}")
+    Call<Category> getCategory(@Path("category_id") String categoryId, @QueryMap Map<String, Object> options);
+
+    /**
+     * Retrieve playlists for a Spotify Category.
+     *
+     * @param categoryId The category's ID.
+     * @param options    Optional parameters.
+     * @return Playlists for a Spotify Category.
+     * @see <a href="https://developer.spotify.com/web-api/get-categorys-playlists/">Get playlists for a Spotify Category</a>
+     */
+    @GET("browse/categories/{category_id}/playlists")
+    Call<PlaylistsPager> getPlaylistsForCategory(@Path("category_id") String categoryId, @QueryMap Map<String, Object> options);
+
+    /**
+     * Retrieve Spotify categories. Categories used to tag items in
+     * Spotify (on, for example, the Spotify player’s “Browse” tab).
+     *
+     * @param options Optional parameters.
+     * @return A paging object containing categories.
+     * @see <a href="https://developer.spotify.com/web-api/get-list-categories/">Get a List of Categories</a>
+     */
+    @GET("browse/categories")
+    Call<CategoriesPager> getCategories(@QueryMap Map<String, Object> options);
+
+    /**
      * Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s “Browse” tab).
      *
      * @return A FeaturedPlaylists object with the featured playlists
@@ -49,39 +82,6 @@ public interface BrowseSpotifyService
      */
     @GET("browse/new-releases")
     Call<NewReleases> getNewReleases(@QueryMap Map<String, Object> options);
-
-    /**
-     * Retrieve Spotify categories. Categories used to tag items in
-     * Spotify (on, for example, the Spotify player’s “Browse” tab).
-     *
-     * @param options Optional parameters.
-     * @return A paging object containing categories.
-     * @see <a href="https://developer.spotify.com/web-api/get-list-categories/">Get a List of Categories</a>
-     */
-    @GET("browse/categories")
-    Call<CategoriesPager> getCategories(@QueryMap Map<String, Object> options);
-
-    /**
-     * Retrieve a Spotify category.
-     *
-     * @param categoryId The category's ID.
-     * @param options    Optional parameters.
-     * @return A Spotify category.
-     * @see <a href="https://developer.spotify.com/web-api/get-category/">Get a Spotify Category</a>
-     */
-    @GET("browse/categories/{category_id}")
-    Call<Category> getCategory(@Path("category_id") String categoryId, @QueryMap Map<String, Object> options);
-
-    /**
-     * Retrieve playlists for a Spotify Category.
-     *
-     * @param categoryId The category's ID.
-     * @param options    Optional parameters.
-     * @return Playlists for a Spotify Category.
-     * @see <a href="https://developer.spotify.com/web-api/get-categorys-playlists/">Get playlists for a Spotify Category</a>
-     */
-    @GET("browse/categories/{category_id}/playlists")
-    Call<PlaylistsPager> getPlaylistsForCategory(@Path("category_id") String categoryId, @QueryMap Map<String, Object> options);
 
     /**
      * Create a playlist-style listening experience based on seed artists, tracks and genres.

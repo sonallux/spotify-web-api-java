@@ -17,9 +17,11 @@ public class SpotifyApi
     private final BrowseSpotifyService browseService;
     private final FollowSpotifyService followService;
     private final LibrarySpotifyService libraryService;
+    private final PersonalizationSpotifyService personalizationService;
     private final PlaylistsSpotifyService playlistsService;
     private final SearchSpotifyService searchService;
     private final TracksSpotifyService tracksService;
+    private final UsersProfileSpotifyService usersProfileService;
 
     private OkHttpClient okHttpClient;
     private ObjectMapper objectMapper;
@@ -37,25 +39,36 @@ public class SpotifyApi
         this.browseService = retrofit.create(BrowseSpotifyService.class);
         this.followService = retrofit.create(FollowSpotifyService.class);
         this.libraryService = retrofit.create(LibrarySpotifyService.class);
+        this.personalizationService = retrofit.create(PersonalizationSpotifyService.class);
         this.playlistsService = retrofit.create(PlaylistsSpotifyService.class);
         this.searchService = retrofit.create(SearchSpotifyService.class);
         this.tracksService = retrofit.create(TracksSpotifyService.class);
+        this.usersProfileService = retrofit.create(UsersProfileSpotifyService.class);
     }
 
-    private OkHttpClient createOkHttpClient() {
-        return new OkHttpClient.Builder().addInterceptor(chain -> {
+    public SpotifyApi(String accessToken) {
+        this();
+        this.accessToken = accessToken;
+    }
+
+    private OkHttpClient createOkHttpClient()
+    {
+        return new OkHttpClient.Builder().addInterceptor(chain ->
+        {
             Request request = chain.request();
-            if (accessToken != null) {
+            if (accessToken != null)
+            {
 
                 request = request.newBuilder()
-                    .addHeader("Authorization", "Bearer " + accessToken)
-                    .build();
+                        .addHeader("Authorization", "Bearer " + accessToken)
+                        .build();
             }
             return chain.proceed(request);
         }).build();
     }
 
-    private ObjectMapper createObjectMapper() {
+    private ObjectMapper createObjectMapper()
+    {
         return new ObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
@@ -99,6 +112,11 @@ public class SpotifyApi
         return libraryService;
     }
 
+    public PersonalizationSpotifyService getPersonalizationService()
+    {
+        return personalizationService;
+    }
+
     public PlaylistsSpotifyService getPlaylistsService()
     {
         return playlistsService;
@@ -112,5 +130,10 @@ public class SpotifyApi
     public TracksSpotifyService getTracksService()
     {
         return tracksService;
+    }
+
+    public UsersProfileSpotifyService getUsersProfileService()
+    {
+        return usersProfileService;
     }
 }

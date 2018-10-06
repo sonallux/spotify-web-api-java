@@ -37,28 +37,6 @@ public interface AlbumsSpotifyService
     Call<Album> getAlbum(@Path("id") String albumId, @QueryMap Map<String, Object> options);
 
     /**
-     * Get Spotify catalog information for multiple albums identified by their Spotify IDs.
-     *
-     * @param albumIds A comma-separated list of the Spotify IDs for the albums
-     * @return Object whose key is "albums" and whose value is an array of album objects.
-     * @see <a href="https://developer.spotify.com/web-api/get-several-albums/">Get Several Albums</a>
-     */
-    @GET("albums")
-    Call<Albums> getAlbums(@Query("ids") String albumIds);
-
-    /**
-     * Get Spotify catalog information for multiple albums identified by their Spotify IDs.
-     *
-     * @param albumIds A comma-separated list of the Spotify IDs for the albums
-     * @param options  Optional parameters. For list of supported parameters see
-     *                 <a href="https://developer.spotify.com/web-api/get-several-albums/">endpoint documentation</a>
-     * @return Object whose key is "albums" and whose value is an array of album objects.
-     * @see <a href="https://developer.spotify.com/web-api/get-several-albums/">Get Several Albums</a>
-     */
-    @GET("albums")
-    Call<Albums> getAlbums(@Query("ids") String albumIds, @QueryMap Map<String, Object> options);
-
-    /**
      * Get Spotify catalog information about an album’s tracks.
      *
      * @param albumId The Spotify ID for the album.
@@ -80,4 +58,25 @@ public interface AlbumsSpotifyService
     @GET("albums/{id}/tracks")
     Call<Pager<Track>> getAlbumTracks(@Path("id") String albumId, @QueryMap Map<String, Object> options);
 
+    /**
+     * Get Spotify catalog information for multiple albums identified by their Spotify IDs.
+     *
+     * @param albumIds A comma-separated list of the Spotify IDs for the albums
+     * @return Object whose key is "albums" and whose value is an array of album objects.
+     * @see <a href="https://developer.spotify.com/web-api/get-several-albums/">Get Several Albums</a>
+     */
+    @GET("albums")
+    Call<Albums> getAlbums(@Query("ids") String albumIds);
+
+    /**
+     * Get Spotify catalog information for multiple albums identified by their Spotify IDs.
+     *
+     * @param albumIds A comma-separated list of the Spotify IDs for the albums
+     * @param options  Optional parameters. For list of supported parameters see
+     *                 <a href="https://developer.spotify.com/web-api/get-several-albums/">endpoint documentation</a>
+     * @return Object whose key is "albums" and whose value is an array of album objects.
+     * @see <a href="https://developer.spotify.com/web-api/get-several-albums/">Get Several Albums</a>
+     */
+    @GET("albums")
+    Call<Albums> getAlbums(@Query("ids") String albumIds, @QueryMap Map<String, Object> options);
 }

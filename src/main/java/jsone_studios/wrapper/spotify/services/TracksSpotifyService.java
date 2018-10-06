@@ -14,6 +14,37 @@ import java.util.Map;
 
 public interface TracksSpotifyService
 {
+    //TODO: Enable get audio analysis endpoint
+    ///**
+    // * Get a detailed audio analysis for a single track identified by its unique Spotify ID.
+    // *
+    // * @param id The Spotify ID for the track.
+    // * @return Audio analysis  object
+    // * @see <a href="https://developer.spotify.com/web-api/get-audio-analysis">Get Audio Analysis for a Track</a>
+    // */
+    //@GET("audio-analysis/{id}")
+    //Call<AudioAnalysisTrack> getTrackAudioAnalysis(@Path("id") String id);
+
+    /**
+     * Get audio feature information for a single track identified by its unique Spotify ID.
+     *
+     * @param id The Spotify ID for the track.
+     * @return Audio features object
+     * @see <a href="https://developer.spotify.com/web-api/get-audio-features/">Get Audio Features for a Track</a>
+     */
+    @GET("audio-features/{id}")
+    Call<AudioFeaturesTrack> getTrackAudioFeatures(@Path("id") String id);
+
+    /**
+     * Get audio features for multiple tracks based on their Spotify IDs.
+     *
+     * @param ids A comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs
+     * @return An object whose key is "audio_features" and whose value is an array of audio features objects.
+     * @see <a href="https://developer.spotify.com/web-api/get-several-audio-features/">Get Audio Features for Several Tracks</a>
+     */
+    @GET("audio-features")
+    Call<AudioFeaturesTracks> getTracksAudioFeatures(@Query("ids") String ids);
+
     /**
      * Get Spotify catalog information for a single track identified by their unique Spotify ID.
      *
@@ -57,22 +88,4 @@ public interface TracksSpotifyService
      */
     @GET("tracks")
     Call<Tracks> getTracks(@Query("ids") String trackIds, @QueryMap Map<String, Object> options);
-
-    /**
-     * Get audio features for multiple tracks based on their Spotify IDs.
-     *
-     * @param ids A comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs
-     * @return An object whose key is "audio_features" and whose value is an array of audio features objects.
-     */
-    @GET("audio-features")
-    Call<AudioFeaturesTracks> getTracksAudioFeatures(@Query("ids") String ids);
-
-    /**
-     * Get audio feature information for a single track identified by its unique Spotify ID.
-     *
-     * @param id The Spotify ID for the track.
-     * @return Audio features object
-     */
-    @GET("audio-features/{id}")
-    Call<AudioFeaturesTrack> getTrackAudioFeatures(@Path("id") String id);
 }

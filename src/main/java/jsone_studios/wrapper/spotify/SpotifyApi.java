@@ -58,7 +58,6 @@ public class SpotifyApi
             Request request = chain.request();
             if (accessToken != null)
             {
-
                 request = request.newBuilder()
                         .addHeader("Authorization", "Bearer " + accessToken)
                         .build();

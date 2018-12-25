@@ -25,8 +25,6 @@ public class SpotifyAuthApiTest
             "https://example.com/callback", "34fFs29kd09", Arrays.asList(Scope.USER_READ_PRIVATE, Scope.USER_READ_EMAIL));
 
         Assert.assertEquals(expectedUrl, realUrl);
-
-
     }
 
     @Test

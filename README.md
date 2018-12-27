@@ -9,25 +9,25 @@ A Java wrapper for Spotify's Web API using [Retrofit](http://square.github.io/re
 ```
 <repositories>
     <repository>
-        <id>jsone-studios</id>
-        <url>https://maven.jsone-studios.de/repository</url>
+        <id>jsone-studios-nexus</id>
+        <url>https://nexus.jsone-studios.de/repository/maven-public</url>
     </repository>
 </repositories>
 
 <dependency>
     <groupId>jsone_studios.spotify-web-api-java</groupId>
     <artifactId>spotify-web-api-java</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 ### Gradle
 ```
 repositories {
-    maven { url 'https://maven.jsone-studios.de/repository'}    
+    maven { url 'https://nexus.jsone-studios.de/repository/maven-public'}
 }
 
 dependencies {
-    compile 'jsone_studios.spotify-web-api-java:spotify-web-api-java:0.0.1-SNAPSHOT'
+    compile 'jsone_studios.spotify-web-api-java:spotify-web-api-java:1.0.0'
 }    
 ```

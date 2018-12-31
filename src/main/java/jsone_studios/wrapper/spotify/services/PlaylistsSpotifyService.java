@@ -1,12 +1,10 @@
 package jsone_studios.wrapper.spotify.services;
 
-import jsone_studios.wrapper.spotify.models.Pager;
-import jsone_studios.wrapper.spotify.models.Playlist;
-import jsone_studios.wrapper.spotify.models.PlaylistSimple;
-import jsone_studios.wrapper.spotify.models.Result;
+import jsone_studios.wrapper.spotify.models.*;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.List;
 import java.util.Map;
 
 public interface PlaylistsSpotifyService
@@ -95,4 +93,25 @@ public interface PlaylistsSpotifyService
      */
     @PUT("playlists/{playlist_id}")
     Call<Result> changePlaylistDetails(@Path("playlist_id") String playlistId, @Body Map<String, Object> body);
+
+    /**
+     * Get the current image associated with a specific playlist.
+     *
+     * @param playlistId The Spotify ID for the playlist
+     * @return A list of image objects
+     * @see <a href="https://developer.spotify.com/documentation/web-api/reference/playlists/get-playlist-cover">Get a Playlist Cover Image</a>
+     */
+    @GET("playlists/{playlist_id}/images")
+    Call<List<Image>> getPlaylistCoverImages(@Path("playlist_id") String playlistId);
+
+    /**
+     * Replace the image used to represent a specific playlist.
+     *
+     * @param playlistId The Spotify ID for the playlist
+     * @param base64Image Base64 encoded JPEG image data, maximum payload size is 256 KB
+     * @return A successful request will return a 202 ACCEPTED response code
+     */
+    @PUT("playlists/{playlist_id}/images")
+    @Headers({"Content-Type: image/jpeg"})
+    Call<Result> uploadPlaylistCoverImage(@Path("playlist_id") String playlistId, @Body String base64Image);
 }

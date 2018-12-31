@@ -2,7 +2,6 @@ package jsone_studios.wrapper.spotify.models;
 
 public class Seed
 {
-
     public int afterFilteringSize;
     public int afterRelinkingSize;
     public String href;

@@ -1,9 +1,6 @@
 package jsone_studios.wrapper.spotify.services;
 
-import jsone_studios.wrapper.spotify.models.AudioFeaturesTrack;
-import jsone_studios.wrapper.spotify.models.AudioFeaturesTracks;
-import jsone_studios.wrapper.spotify.models.Track;
-import jsone_studios.wrapper.spotify.models.Tracks;
+import jsone_studios.wrapper.spotify.models.*;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -14,16 +11,15 @@ import java.util.Map;
 
 public interface TracksSpotifyService
 {
-    //TODO: Enable get audio analysis endpoint
-    ///**
-    // * Get a detailed audio analysis for a single track identified by its unique Spotify ID.
-    // *
-    // * @param id The Spotify ID for the track.
-    // * @return Audio analysis  object
-    // * @see <a href="https://developer.spotify.com/web-api/get-audio-analysis">Get Audio Analysis for a Track</a>
-    // */
-    //@GET("audio-analysis/{id}")
-    //Call<AudioAnalysisTrack> getTrackAudioAnalysis(@Path("id") String id);
+    /**
+     * Get a detailed audio analysis for a single track identified by its unique Spotify ID.
+     *
+     * @param id The Spotify ID for the track.
+     * @return Audio analysis  object
+     * @see <a href="https://developer.spotify.com/web-api/get-audio-analysis">Get Audio Analysis for a Track</a>
+     */
+    @GET("audio-analysis/{id}")
+    Call<AudioAnalysisTrack> getTrackAudioAnalysis(@Path("id") String id);
 
     /**
      * Get audio feature information for a single track identified by its unique Spotify ID.

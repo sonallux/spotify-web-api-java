@@ -1,9 +1,8 @@
 package jsone_studios.wrapper.spotify.services;
 
 import jsone_studios.wrapper.spotify.models.ArtistsCursorPager;
+import jsone_studios.wrapper.spotify.models.PlaylistFollowPrivacy;
 import jsone_studios.wrapper.spotify.models.Result;
-import jsone_studios.wrapper.spotify.util.SpotifyUri;
-import jsone_studios.wrapper.spotify.util.SpotifyUriException;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -34,20 +33,13 @@ public interface FollowSpotifyService
     /**
      * Check to see if one or more Spotify users are following a specified playlist.
      *
-     * @param userId     The Spotify user ID of the person who owns the playlist.
      * @param playlistId The Spotify ID of the playlist.
      * @param ids        A comma-separated list of the Spotify IDs for the users
      * @return An array with boolean values indicating whether the playlist is followed by the users
      * @see <a href="https://developer.spotify.com/web-api/check-user-following-playlist/">Check if Users Follow a Playlist</a>
      */
-    @GET("users/{user_id}/playlists/{playlist_id}/followers/contains")
-    Call<Boolean[]> areFollowingPlaylist(@Path("user_id") String userId, @Path("playlist_id") String playlistId, @Query("ids") String ids);
-
-    default Call<Boolean[]> areFollowingPlaylist(String playlistUri, String ids) throws SpotifyUriException
-    {
-        SpotifyUri spotifyUri = SpotifyUri.parseUri(playlistUri);
-        return areFollowingPlaylist(spotifyUri.getUserId(), spotifyUri.getPlaylistId(), ids);
-    }
+    @GET("playlists/{playlist_id}/followers/contains")
+    Call<Boolean[]> areFollowingPlaylist(@Path("playlist_id") String playlistId, @Query("ids") String ids);
 
     /**
      * Add the current user as a follower of one or more Spotify users.
@@ -70,21 +62,25 @@ public interface FollowSpotifyService
     Call<Result> followArtists(@Query("ids") String ids);
 
     /**
-     * Add the current user as a follower of the specified playlist.
+     * Add the current user as a follower of a playlist.
      *
-     * @param userId     The Spotify user ID of the person who owns the playlist.
-     * @param playlistId The Spotify ID of the playlist.
+     * @param playlistId The Spotify ID of the playlist
      * @return An empty result
      * @see <a href="https://developer.spotify.com/web-api/follow-playlist/">Follow a Playlist</a>
      */
-    @PUT("users/{user_id}/playlists/{playlist_id}/followers")
-    Call<Result> followPlaylist(@Path("user_id") String userId, @Path("playlist_id") String playlistId);
+    @PUT("playlists/{playlist_id}/followers")
+    Call<Result> followPlaylist(@Path("playlist_id") String playlistId);
 
-    default Call<Result> followPlaylist(String playlistUri) throws SpotifyUriException
-    {
-        SpotifyUri spotifyUri = SpotifyUri.parseUri(playlistUri);
-        return followPlaylist(spotifyUri.getUserId(), spotifyUri.getPlaylistId());
-    }
+    /**
+     * Add the current user as a follower of a playlist.
+     *
+     * @param playlistId            The Spotify ID of the playlist
+     * @param playlistFollowPrivacy The privacy state of the playlist
+     * @return An empty result
+     * @see <a href="https://developer.spotify.com/web-api/follow-playlist/">Follow a Playlist</a>
+     */
+    @PUT("playlists/{playlist_id}/followers")
+    Call<Result> followPlaylist(@Path("playlist_id") String playlistId, @Body PlaylistFollowPrivacy playlistFollowPrivacy);
 
     /**
      * Get the current user's followed artists.
@@ -125,4 +121,14 @@ public interface FollowSpotifyService
      */
     @DELETE("me/following?type=artist")
     Call<Result> unfollowArtists(@Query("ids") String ids);
+
+    /**
+     * Unfollow a Playlist
+     *
+     * @param playlistId The Spotify ID of the playlist
+     * @return An empty result
+     * @see <a href="https://developer.spotify.com/web-api/unfollow-playlist/">Unfollow a Playlist</a>
+     */
+    @DELETE("playlists/{playlist_id}/followers")
+    Call<Result> unfollowPlaylist(@Path("playlist_id") String playlistId);
 }

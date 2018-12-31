@@ -82,6 +82,16 @@ public interface LibrarySpotifyService
     Call<Result> removeFromMySavedAlbums(@Query("ids") String ids);
 
     /**
+     * Remove one or more albums from the current user’s “Your Music” library.
+     *
+     * @param ids A list of the Spotify IDs for the albums
+     * @return An empty result
+     * @see <a href="https://developer.spotify.com/web-api/remove-albums-user/">Remove User’s Saved Albums</a>
+     */
+    @DELETE("me/albums")
+    Call<Result> removeFromMySavedAlbums(@Body String[] ids);
+
+    /**
      * Remove one or more tracks from the current user’s “Your Music” library.
      *
      * @param ids A comma-separated list of the Spotify IDs for the tracks
@@ -90,6 +100,16 @@ public interface LibrarySpotifyService
      */
     @DELETE("me/tracks")
     Call<Result> removeFromMySavedTracks(@Query("ids") String ids);
+
+    /**
+     * Remove one or more tracks from the current user’s “Your Music” library.
+     *
+     * @param ids A list of the Spotify IDs for the tracks
+     * @return An empty result
+     * @see <a href="https://developer.spotify.com/web-api/remove-tracks-user/">Remove User’s Saved Tracks</a>
+     */
+    @DELETE("me/tracks")
+    Call<Result> removeFromMySavedTracks(@Body String[] ids);
 
     /**
      * Save one or more albums to the current user’s “Your Music” library.
@@ -102,6 +122,16 @@ public interface LibrarySpotifyService
     Call<Result> addToMySavedAlbums(@Query("ids") String ids);
 
     /**
+     * Save one or more albums to the current user’s “Your Music” library.
+     *
+     * @param ids A list of the Spotify IDs for the albums
+     * @return An empty result
+     * @see <a href="https://developer.spotify.com/web-api/save-albums-user/">Save Albums for User</a>
+     */
+    @PUT("me/albums")
+    Call<Result> addToMySavedAlbums(@Body String[] ids);
+
+    /**
      * Save one or more tracks to the current user’s “Your Music” library.
      *
      * @param ids A comma-separated list of the Spotify IDs for the tracks
@@ -110,4 +140,14 @@ public interface LibrarySpotifyService
      */
     @PUT("me/tracks")
     Call<Result> addToMySavedTracks(@Query("ids") String ids);
+
+    /**
+     * Save one or more tracks to the current user’s “Your Music” library.
+     *
+     * @param ids A list of the Spotify IDs for the tracks
+     * @return An empty result
+     * @see <a href="https://developer.spotify.com/web-api/save-tracks-user/">Save Tracks for User</a>
+     */
+    @PUT("me/tracks")
+    Call<Result> addToMySavedTracks(@Body String[] ids);
 }

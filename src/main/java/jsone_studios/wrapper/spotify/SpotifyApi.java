@@ -19,6 +19,7 @@ public class SpotifyApi
     private final LibrarySpotifyService libraryService;
     private final PersonalizationSpotifyService personalizationService;
     private final PlaylistsSpotifyService playlistsService;
+    private final PlaylistTracksSpotifyService playlistTracksService;
     private final SearchSpotifyService searchService;
     private final TracksSpotifyService tracksService;
     private final UsersProfileSpotifyService usersProfileService;
@@ -41,6 +42,7 @@ public class SpotifyApi
         this.libraryService = retrofit.create(LibrarySpotifyService.class);
         this.personalizationService = retrofit.create(PersonalizationSpotifyService.class);
         this.playlistsService = retrofit.create(PlaylistsSpotifyService.class);
+        this.playlistTracksService = retrofit.create(PlaylistTracksSpotifyService.class);
         this.searchService = retrofit.create(SearchSpotifyService.class);
         this.tracksService = retrofit.create(TracksSpotifyService.class);
         this.usersProfileService = retrofit.create(UsersProfileSpotifyService.class);
@@ -119,6 +121,11 @@ public class SpotifyApi
     public PlaylistsSpotifyService getPlaylistsService()
     {
         return playlistsService;
+    }
+
+    public PlaylistTracksSpotifyService getPlaylistTracksService()
+    {
+        return playlistTracksService;
     }
 
     public SearchSpotifyService getSearchService()

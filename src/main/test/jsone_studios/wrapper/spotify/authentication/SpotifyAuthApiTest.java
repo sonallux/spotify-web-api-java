@@ -14,15 +14,15 @@ public class SpotifyAuthApiTest
     @Before
     public void setup()
     {
-        this.authApi = new SpotifyAuthApi();
+        this.authApi = new SpotifyAuthApi("1a2b3c4d5e6f7", "bar456");
     }
 
     @Test
     public void testGetAuthorizeUrl()
     {
-        HttpUrl expectedUrl = HttpUrl.parse("https://accounts.spotify.com/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-private user-read-email&state=34fFs29kd09");
-        HttpUrl realUrl = authApi.getAuthorizeUrl("5fe01282e44241328a84e7c5cc169165", "code",
-            "https://example.com/callback", "34fFs29kd09", Arrays.asList(Scope.USER_READ_PRIVATE, Scope.USER_READ_EMAIL));
+        HttpUrl expectedUrl = HttpUrl.parse("https://accounts.spotify.com/authorize?client_id=1a2b3c4d5e6f7&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-private user-read-email&state=34fFs29kd10");
+        HttpUrl realUrl = authApi.getAuthorizeUrl("code", "https://example.com/callback",
+                "34fFs29kd10", Arrays.asList(Scope.USER_READ_PRIVATE, Scope.USER_READ_EMAIL));
 
         Assert.assertEquals(expectedUrl, realUrl);
     }

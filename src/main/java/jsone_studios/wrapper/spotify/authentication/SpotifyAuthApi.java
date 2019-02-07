@@ -13,10 +13,15 @@ public class SpotifyAuthApi
 {
     public static final String SPOTIFY_ACCOUNTS_ENDPOINT = "https://accounts.spotify.com";
 
+    private final String clientId;
+    private final String clientSecret;
+
     private final AuthSpotifyService authService;
 
-    public SpotifyAuthApi()
+    public SpotifyAuthApi(String clientId, String clientSecret)
     {
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
         this.authService = createAuthService();
     }
 
@@ -29,7 +34,7 @@ public class SpotifyAuthApi
         return retrofit.create(AuthSpotifyService.class);
     }
 
-    public HttpUrl getAuthorizeUrl(String clientId, String responseType, String redirectUri, String state, List<Scope> scopes)
+    public HttpUrl getAuthorizeUrl(String responseType, String redirectUri, String state, List<Scope> scopes)
     {
         String scope;
         if (scopes == null || scopes.size() == 0)
@@ -53,19 +58,19 @@ public class SpotifyAuthApi
             .build();
     }
 
-    public Call<AuthTokens> getAuthTokensFromAuthCode(String code, String redirectUri, String clientId, String clientSecret)
+    public Call<AuthTokens> getAuthTokensFromAuthCode(String code, String redirectUri)
     {
-        String authHeader = getAuthorizationHeaderValue(clientId, clientSecret);
+        String authHeader = createAuthorizationHeaderValue();
         return authService.getAuthTokens(authHeader, "authorization_code", code, redirectUri);
     }
 
-    public Call<AuthTokens> getAuthTokensFromRefreshToken(String refreshToken, String clientId, String clientSecret)
+    public Call<AuthTokens> getAuthTokensFromRefreshToken(String refreshToken)
     {
-        String authHeader = getAuthorizationHeaderValue(clientId, clientSecret);
+        String authHeader = createAuthorizationHeaderValue();
         return authService.getAuthTokens(authHeader, "refresh_token", refreshToken);
     }
 
-    private String getAuthorizationHeaderValue(String clientId, String clientSecret)
+    private String createAuthorizationHeaderValue()
     {
         String clientInfo = clientId + ":" + clientSecret;
         String base64ClientInfo = Base64.getEncoder().encodeToString(clientInfo.getBytes());

@@ -1,7 +1,7 @@
 package jsone_studios.wrapper.spotify.models;
 
 /**
- * <a href="https://developer.spotify.com/web-api/object-model/#image-object">Image object model</a>
+ * <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#image-object">Image object model</a>
  */
 public class Image
 {

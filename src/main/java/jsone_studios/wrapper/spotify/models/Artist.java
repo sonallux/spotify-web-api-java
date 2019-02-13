@@ -3,7 +3,7 @@ package jsone_studios.wrapper.spotify.models;
 import java.util.List;
 
 /**
- * <a href="https://developer.spotify.com/web-api/object-model/#artist-object-full">Artist object model</a>
+ * <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#artist-object-full">Artist object model</a>
  */
 public class Artist extends ArtistSimple
 {

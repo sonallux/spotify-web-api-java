@@ -3,6 +3,9 @@ package jsone_studios.wrapper.spotify.models;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#track-object-simplified">Track object model (simplified)</a>
+ */
 public class TrackSimple
 {
     public List<ArtistSimple> artists;

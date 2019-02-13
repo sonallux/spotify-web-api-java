@@ -1,7 +1,7 @@
 package jsone_studios.wrapper.spotify.models;
 
 /**
- * <a href="https://developer.spotify.com/web-api/object-model/#playlist-object-full">Playlist object model</a>
+ * <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#playlist-object-full">Playlist object model</a>
  */
 public class Playlist extends PlaylistBase
 {

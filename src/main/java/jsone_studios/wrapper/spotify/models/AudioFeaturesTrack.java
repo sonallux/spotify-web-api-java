@@ -1,11 +1,10 @@
 package jsone_studios.wrapper.spotify.models;
 
 /**
- * <a href="https://developer.spotify.com/web-api/object-model/#audio-features-object">Audio Features Object</a>
+ * <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#audio-features-object">Audio Features Object</a>
  */
 public class AudioFeaturesTrack
 {
-
     public float acousticness;
     public String analysis_url;
     public float danceability;

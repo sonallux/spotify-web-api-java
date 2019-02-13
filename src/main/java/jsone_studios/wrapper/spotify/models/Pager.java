@@ -3,7 +3,7 @@ package jsone_studios.wrapper.spotify.models;
 import java.util.List;
 
 /**
- * <a href="https://developer.spotify.com/web-api/object-model/#paging-object">Paging object model</a>
+ * <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#paging-object">Paging object model</a>
  *
  * @param <T> expected object that is paged
  */

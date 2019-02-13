@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <a href="https://developer.spotify.com/web-api/object-model/#album-object-full">Album object model</a>
+ * <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#album-object-full">Album object model</a>
  */
 public class Album extends AlbumSimple
 {

@@ -94,7 +94,7 @@ public class SpotifyUri
         }
         else if (playlistId != null)
         {
-            return "spotify:user:" + userId + ":playlist:" + playlistId;
+            return "spotify:playlist:" + playlistId;
         }
         else if (userId != null)
         {
@@ -124,7 +124,7 @@ public class SpotifyUri
         }
 
         String[] parts = string.split(":");
-        if (parts.length != 3 && parts.length != 5)
+        if (parts.length != 3)
         {
             throw new SpotifyUriException("SpotifyUri has wrong format: " + string);
         }
@@ -148,10 +148,11 @@ public class SpotifyUri
         else if ("user".equals(parts[1]))
         {
             spotifyUri.userId = parts[2];
-            if (parts.length == 5 && "playlist".equals(parts[3]))
-            {
-                spotifyUri.playlistId = parts[4];
-            }
+
+        }
+        else if ("playlist".equals(parts[1]))
+        {
+            spotifyUri.playlistId = parts[2];
         }
         else
         {

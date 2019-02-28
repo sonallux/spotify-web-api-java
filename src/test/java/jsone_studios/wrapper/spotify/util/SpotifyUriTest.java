@@ -1,14 +1,13 @@
 package jsone_studios.wrapper.spotify.util;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class SpotifyUriTest
+class SpotifyUriTest
 {
     @Test
-    public void testParseArtist() throws SpotifyUriException
+    void testParseArtist() throws SpotifyUriException
     {
         SpotifyUri spotifyUri = SpotifyUri.parseUri("spotify:artist:3t5xRXzsuZmMDkQzgOX35S");
         assertTrue(spotifyUri.isArtist());
@@ -17,7 +16,7 @@ public class SpotifyUriTest
     }
 
     @Test
-    public void testParseAlbum() throws SpotifyUriException
+    void testParseAlbum() throws SpotifyUriException
     {
         SpotifyUri spotifyUri = SpotifyUri.parseUri("spotify:album:6PbItq7wFLcz5pNlvbGH8D");
         assertTrue(spotifyUri.isAlbum());
@@ -26,7 +25,7 @@ public class SpotifyUriTest
     }
 
     @Test
-    public void testParseTrack() throws SpotifyUriException
+    void testParseTrack() throws SpotifyUriException
     {
         SpotifyUri spotifyUri = SpotifyUri.parseUri("spotify:track:30t2cItUPY7CvZOup7zptn");
         assertTrue(spotifyUri.isTrack());
@@ -35,7 +34,7 @@ public class SpotifyUriTest
     }
 
     @Test
-    public void testParseUser() throws SpotifyUriException
+    void testParseUser() throws SpotifyUriException
     {
         SpotifyUri spotifyUri = SpotifyUri.parseUri("spotify:user:foo123");
         assertTrue(spotifyUri.isUser());
@@ -44,7 +43,7 @@ public class SpotifyUriTest
     }
 
     @Test
-    public void testParsePlaylist() throws SpotifyUriException
+    void testParsePlaylist() throws SpotifyUriException
     {
         SpotifyUri spotifyUri = SpotifyUri.parseUri("spotify:playlist:37i9dQZF1DX4npDJDFDYLg");
         assertTrue(spotifyUri.isPlaylist());
@@ -55,9 +54,10 @@ public class SpotifyUriTest
         assertEquals("a7i1dQZF1DX6npDJDFDYLg", spotifyUri.getPlaylistId());
     }
 
-    @Test(expected = SpotifyUriException.class)
-    public void testParsePlaylistOldFormat() throws SpotifyUriException
+    @Test
+    void testParsePlaylistOldFormat()
     {
-        SpotifyUri.parseUri("spotify:user:spotify:playlist:37i9dQZF1DX4npDJDFDYLg");
+        assertThrows(SpotifyUriException.class,
+                () -> SpotifyUri.parseUri("spotify:user:spotify:playlist:37i9dQZF1DX4npDJDFDYLg"));
     }
 }

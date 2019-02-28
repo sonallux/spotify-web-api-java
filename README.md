@@ -17,7 +17,7 @@ A Java wrapper for Spotify's Web API using [Retrofit](http://square.github.io/re
 <dependency>
     <groupId>jsone_studios.spotify-web-api-java</groupId>
     <artifactId>spotify-web-api-java</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 </dependency>
 ```
 
@@ -28,6 +28,6 @@ repositories {
 }
 
 dependencies {
-    compile 'jsone_studios.spotify-web-api-java:spotify-web-api-java:1.0.3'
+    compile 'jsone_studios.spotify-web-api-java:spotify-web-api-java:1.0.4'
 }    
 ```

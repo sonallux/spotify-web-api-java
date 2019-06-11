@@ -18,20 +18,34 @@ public class SpotifyAuthApi
 
     private final AuthSpotifyService authService;
 
-    public SpotifyAuthApi(String clientId, String clientSecret)
+    public SpotifyAuthApi(String clientId, String clientSecret, HttpUrl baseUrl)
     {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
-        this.authService = createAuthService();
+        this.authService = createAuthService(baseUrl);
     }
 
-    private AuthSpotifyService createAuthService()
+    public SpotifyAuthApi(String clientId, String clientSecret, String baseUrl)
+    {
+        this(clientId, clientSecret, HttpUrl.get(baseUrl));
+    }
+
+    public SpotifyAuthApi(String clientId, String clientSecret)
+    {
+        this(clientId, clientSecret, SPOTIFY_ACCOUNTS_ENDPOINT);
+    }
+
+    private AuthSpotifyService createAuthService(HttpUrl baseUrl)
     {
         Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(SPOTIFY_ACCOUNTS_ENDPOINT)
+            .baseUrl(baseUrl)
             .addConverterFactory(JacksonConverterFactory.create())
             .build();
         return retrofit.create(AuthSpotifyService.class);
+    }
+
+    public HttpUrl getAuthorizeUrl(String redirectUri, String state, List<Scope> scopes) {
+        return getAuthorizeUrl("code", redirectUri, state, scopes);
     }
 
     public HttpUrl getAuthorizeUrl(String responseType, String redirectUri, String state, List<Scope> scopes)

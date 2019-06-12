@@ -23,7 +23,7 @@ public interface PlaylistTracksSpotifyService
      * Add tracks to a playlist
      *
      * @param playlistId  The playlist's ID
-     * @param tracksToAdd The tracks to add as list of track uris
+     * @param tracksToAdd The tracks to add as list of track uris. A maximum of 100 tracks can be added in one request.
      * @return A snapshot ID (the version of the playlist)
      * @see <a href="https://developer.spotify.com/web-api/add-tracks-to-playlist/">Add Tracks to a Playlist</a>
      */
@@ -34,7 +34,8 @@ public interface PlaylistTracksSpotifyService
      * Add tracks to a playlist
      *
      * @param playlistId  The playlist's ID
-     * @param tracksToAddWithPosition The tracks to add as list of track uris and the position to add the track
+     * @param tracksToAddWithPosition The tracks to add as list of track uris and the position to add the track.
+     *                                A maximum of 100 tracks can be added in one request.
      * @return A snapshot ID (the version of the playlist)
      * @see <a href="https://developer.spotify.com/web-api/add-tracks-to-playlist/">Add Tracks to a Playlist</a>
      */
@@ -67,7 +68,7 @@ public interface PlaylistTracksSpotifyService
      * Remove one or more tracks from a user’s playlist.
      *
      * @param playlistId     The playlist's Id
-     * @param tracksToRemove A list of tracks to remove
+     * @param tracksToRemove A list of tracks to remove. A maximum of 100 objects can be sent at once.
      * @return A snapshot ID (the version of the playlist)
      * @see <a href="https://developer.spotify.com/web-api/remove-tracks-playlist/">Remove Tracks from a Playlist</a>
      */
@@ -78,7 +79,8 @@ public interface PlaylistTracksSpotifyService
      * Remove one or more tracks from a user’s playlist.
      *
      * @param playlistId                 The playlist's Id
-     * @param tracksToRemoveWithPosition A list of tracks to remove, together with their specific positions
+     * @param tracksToRemoveWithPosition A list of tracks to remove, together with their specific positions.
+     *                                   A maximum of 100 objects can be sent at once.
      * @return A snapshot ID (the version of the playlist)
      * @see <a href="https://developer.spotify.com/web-api/remove-tracks-playlist/">Remove Tracks from a Playlist</a>
      */
@@ -90,7 +92,7 @@ public interface PlaylistTracksSpotifyService
      * replacing tracks, re-ordering existing tracks, or clearing the playlist.
      *
      * @param playlistId The playlist's Id
-     * @param trackUris  A list of comma-separated track uris
+     * @param trackUris  A list of comma-separated track uris. A maximum of 100 tracks can be set in one request.
      * @return An empty result
      * @see <a href="https://developer.spotify.com/web-api/replace-playlists-tracks/">Replace a Playlist’s Tracks</a>
      */
@@ -102,7 +104,7 @@ public interface PlaylistTracksSpotifyService
      * replacing tracks, re-ordering existing tracks, or clearing the playlist.
      *
      * @param playlistId The playlist's Id
-     * @param newTracksToSet A list of track uris
+     * @param newTracksToSet A list of track uris. A maximum of 100 tracks can be set in one request.
      * @return An empty result
      * @see <a href="https://developer.spotify.com/web-api/replace-playlists-tracks/">Replace a Playlist’s Tracks</a>
      */

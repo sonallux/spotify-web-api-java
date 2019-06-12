@@ -14,7 +14,7 @@ public interface LibrarySpotifyService
     /**
      * Check if one or more albums is already saved in the current Spotify user’s “Your Music” library.
      *
-     * @param ids A comma-separated list of the Spotify IDs for the albums
+     * @param ids A comma-separated list of the Spotify IDs for the albums. Maximum: 50 IDs.
      * @return An array with boolean values that indicate whether the albums are in the current Spotify user’s “Your Music” library.
      * @see <a href="https://developer.spotify.com/web-api/check-users-saved-albums/">Check User’s Saved Albums</a>
      */
@@ -24,7 +24,7 @@ public interface LibrarySpotifyService
     /**
      * Check if one or more tracks is already saved in the current Spotify user’s “Your Music” library.
      *
-     * @param ids A comma-separated list of the Spotify IDs for the tracks
+     * @param ids A comma-separated list of the Spotify IDs for the tracks. Maximum: 50 IDs.
      * @return An array with boolean values that indicate whether the tracks are in the current Spotify user’s “Your Music” library.
      * @see <a href="https://developer.spotify.com/web-api/check-users-saved-tracks/">Check User’s Saved Tracks</a>
      */

@@ -67,7 +67,7 @@ public interface ArtistsSpotifyService
     /**
      * Get Spotify catalog information for several artists based on their Spotify IDs.
      *
-     * @param artistIds A comma-separated list of the Spotify IDs for the artists
+     * @param artistIds A comma-separated list of the Spotify IDs for the artists. Maximum: 50 IDs.
      * @return An object whose key is "artists" and whose value is an array of artist objects.
      * @see <a href="https://developer.spotify.com/web-api/get-several-artists/">Get Several Artists</a>
      */

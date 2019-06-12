@@ -66,7 +66,7 @@ public interface TracksSpotifyService
     /**
      * Get Several Tracks
      *
-     * @param trackIds A comma-separated list of the Spotify IDs for the tracks
+     * @param trackIds A comma-separated list of the Spotify IDs for the tracks. Maximum: 50 IDs.
      * @return An object whose key is "tracks" and whose value is an array of track objects.
      * @see <a href="https://developer.spotify.com/web-api/get-several-tracks/">Get Several Tracks</a>
      */
@@ -76,7 +76,7 @@ public interface TracksSpotifyService
     /**
      * Get Several Tracks
      *
-     * @param trackIds A comma-separated list of the Spotify IDs for the tracks
+     * @param trackIds A comma-separated list of the Spotify IDs for the tracks. Maximum: 50 IDs.
      * @param options  Optional parameters. For list of supported parameters see
      *                 <a href="https://developer.spotify.com/web-api/get-several-tracks/">endpoint documentation</a>
      * @return An object whose key is "tracks" and whose value is an array of track objects.

@@ -61,7 +61,7 @@ public interface AlbumsSpotifyService
     /**
      * Get Spotify catalog information for multiple albums identified by their Spotify IDs.
      *
-     * @param albumIds A comma-separated list of the Spotify IDs for the albums
+     * @param albumIds A comma-separated list of the Spotify IDs for the albums. Maximum: 20 IDs.
      * @return Object whose key is "albums" and whose value is an array of album objects.
      * @see <a href="https://developer.spotify.com/web-api/get-several-albums/">Get Several Albums</a>
      */
@@ -71,7 +71,7 @@ public interface AlbumsSpotifyService
     /**
      * Get Spotify catalog information for multiple albums identified by their Spotify IDs.
      *
-     * @param albumIds A comma-separated list of the Spotify IDs for the albums
+     * @param albumIds A comma-separated list of the Spotify IDs for the albums. Maximum: 20 IDs.
      * @param options  Optional parameters. For list of supported parameters see
      *                 <a href="https://developer.spotify.com/web-api/get-several-albums/">endpoint documentation</a>
      * @return Object whose key is "albums" and whose value is an array of album objects.

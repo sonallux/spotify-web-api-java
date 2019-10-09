@@ -18,6 +18,7 @@ public class TrackSimple
     public Map<String, String> external_urls;
     public String href;
     public String id;
+    public boolean is_local;
     public String name;
     public String preview_url;
     public int track_number;

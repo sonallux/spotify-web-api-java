@@ -8,13 +8,11 @@ import java.util.Map;
  */
 public class Album extends AlbumSimple
 {
-    public List<ArtistSimple> artists;
     public List<Copyright> copyrights;
     public Map<String, String> external_ids;
     public List<String> genres;
+    public String label;
     public int popularity;
-    public String release_date;
-    public String release_date_precision;
     public Pager<TrackSimple> tracks;
 
     public Album()

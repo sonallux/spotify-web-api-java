@@ -6,7 +6,7 @@
 
     <groupId>jsone_studios.spotify-web-api-java</groupId>
     <artifactId>spotify-web-api-java</artifactId>
-    <version>1.1.1-SNAPSHOT</version>
+    <version>1.1.1</version>
     <packaging>jar</packaging>
 
     <name>spotify-web-api-java</name>

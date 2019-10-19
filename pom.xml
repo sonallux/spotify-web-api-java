@@ -49,7 +49,7 @@
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 
         <!-- Dependencies -->
-        <retrofit.version>2.6.0</retrofit.version>
+        <retrofit.version>2.6.2</retrofit.version>
 
         <!-- Test Dependencies -->
         <junit.version>5.5.2</junit.version>

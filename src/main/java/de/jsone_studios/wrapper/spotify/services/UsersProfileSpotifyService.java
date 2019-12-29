@@ -21,6 +21,7 @@ public interface UsersProfileSpotifyService
     /**
      * Get public profile information about a Spotify user.
      *
+     * @param userId the user id
      * @return user object (public)
      * @see <a href="https://developer.spotify.com/web-api/get-users-profile/">Get a User's Profile</a>
      */

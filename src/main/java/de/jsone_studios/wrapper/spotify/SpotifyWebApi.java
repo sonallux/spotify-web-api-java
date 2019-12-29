@@ -7,9 +7,10 @@ import okhttp3.HttpUrl;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
-public class SpotifyWebApi implements SpotifyServices
-{
+public class SpotifyWebApi implements SpotifyServices {
     public static final String SPOTIFY_WEB_API_ENDPOINT = "https://api.spotify.com/v1/";
+
+    private final Retrofit retrofit;
 
     private final AlbumsSpotifyService albumsService;
     private final ArtistsSpotifyService artistsService;
@@ -23,8 +24,8 @@ public class SpotifyWebApi implements SpotifyServices
     private final TracksSpotifyService tracksService;
     private final UsersProfileSpotifyService usersProfileService;
 
-    public SpotifyWebApi(Retrofit retrofit)
-    {
+    public SpotifyWebApi(Retrofit retrofit) {
+        this.retrofit = retrofit;
         this.albumsService = retrofit.create(AlbumsSpotifyService.class);
         this.artistsService = retrofit.create(ArtistsSpotifyService.class);
         this.browseService = retrofit.create(BrowseSpotifyService.class);
@@ -60,68 +61,62 @@ public class SpotifyWebApi implements SpotifyServices
     }
 
     @Override
-    public AlbumsSpotifyService getAlbumsService()
-    {
+    public Retrofit getRetrofit() {
+        return retrofit;
+    }
+
+    @Override
+    public AlbumsSpotifyService getAlbumsService() {
         return albumsService;
     }
 
     @Override
-    public ArtistsSpotifyService getArtistsService()
-    {
+    public ArtistsSpotifyService getArtistsService() {
         return artistsService;
     }
 
     @Override
-    public BrowseSpotifyService getBrowseService()
-    {
+    public BrowseSpotifyService getBrowseService() {
         return browseService;
     }
 
     @Override
-    public FollowSpotifyService getFollowService()
-    {
+    public FollowSpotifyService getFollowService() {
         return followService;
     }
 
     @Override
-    public LibrarySpotifyService getLibraryService()
-    {
+    public LibrarySpotifyService getLibraryService() {
         return libraryService;
     }
 
     @Override
-    public PersonalizationSpotifyService getPersonalizationService()
-    {
+    public PersonalizationSpotifyService getPersonalizationService() {
         return personalizationService;
     }
 
     @Override
-    public PlaylistsSpotifyService getPlaylistsService()
-    {
+    public PlaylistsSpotifyService getPlaylistsService() {
         return playlistsService;
     }
 
     @Override
-    public PlaylistTracksSpotifyService getPlaylistTracksService()
-    {
+    public PlaylistTracksSpotifyService getPlaylistTracksService() {
         return playlistTracksService;
     }
 
     @Override
-    public SearchSpotifyService getSearchService()
-    {
+    public SearchSpotifyService getSearchService() {
         return searchService;
     }
 
     @Override
-    public TracksSpotifyService getTracksService()
-    {
+    public TracksSpotifyService getTracksService() {
         return tracksService;
     }
 
     @Override
-    public UsersProfileSpotifyService getUsersProfileService()
-    {
+    public UsersProfileSpotifyService getUsersProfileService() {
         return usersProfileService;
     }
 }

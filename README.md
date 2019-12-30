@@ -7,7 +7,31 @@
 
 A Java wrapper for Spotify's Web API using [Retrofit](http://square.github.io/retrofit/)
 
-## Usage
+## Example: Get the number of tracks of a playlist
+````java
+AuthenticationProvider authProvider = ...;
+SpotifyApi api = new AuthenticatedSpotifyApi(authProvider);
+try {
+    Playlist playlist = api.callApiAndReturnBody(
+        api.getPlaylistsService().getPlaylist("spotify:playlist:37i9dQZEVXbMDoHDwVN2tF"));
+    System.out.printf("Playlist %s has %s tracks\n", playlist.name, playlist.tracks.total);
+}
+catch (SpotifyApiException e) {
+    System.err.println(e.getMessage());
+}
+````
+
+## Authentication and Authorization
+All calls to the Spotify Web Api need authorization. Therefore it is mandatory to provide the required authentication 
+and authorization data. Spotify provides multiple [authorization flows](https://developer.spotify.com/documentation/general/guides/authorization-guide/).
+This library provides two option for authentication and authorization:
+- The `AuthenticatedSpotifyApi` provides support for the authorization code flow. Therefore only the 
+`AuthenticationProvider` interface must be implemented.
+- The `SpotifyWebApi` provides no built in authentication or authorization. But a `OkHttpClient` can be provided 
+to customize the authentication and authorization. For example a custom `Interceptor`
+can be used to add the access token to every request.
+
+## Releases
 `spotify-web-api-java` is available on Maven Central.
 
 ### Maven

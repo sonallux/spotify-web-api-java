@@ -6,10 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Add `callApi()`, `getBody()` and `callApiAndReturnBody()` methods to `SpotifyWebApi`
+- Add `callApi()`, `getBody()` and `callApiAndReturnBody()` methods to `SpotifyApi`
 - Tests are also executed on openjdk 11, 12, 13
 
 ### Changed
+- Renamed class `SpotifyApi` to `AuthenticatedSpotifyApi`
+- Renamed interface `SpotifyServices` to `SpotifyApi`
 - Update retrofit to v2.7.0
 
 ## [1.2.0]

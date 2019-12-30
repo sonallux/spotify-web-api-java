@@ -22,10 +22,10 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class SpotifyApiTest {
+class AuthenticatedSpotifyApiTest {
 
     private MockWebServer webServer;
-    private SpotifyApi api;
+    private AuthenticatedSpotifyApi api;
 
     @Mock
     AuthenticationProvider authProvider;
@@ -37,7 +37,7 @@ class SpotifyApiTest {
         HttpUrl baseUrl = webServer.url("/");
         when(authProvider.getClientId()).thenReturn("clientId");
         when(authProvider.getClientSecret()).thenReturn("clientSecret");
-        api = new SpotifyApi(authProvider, baseUrl, baseUrl);
+        api = new AuthenticatedSpotifyApi(authProvider, baseUrl, baseUrl);
     }
 
     @Test

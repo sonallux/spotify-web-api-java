@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Renamed class `SpotifyApi` to `AuthenticatedSpotifyApi`
 - Renamed interface `SpotifyServices` to `SpotifyApi`
-- Update retrofit to v2.7.0
+- Update retrofit to v2.7.1
 
 ## [1.2.0]
 ### Initial release

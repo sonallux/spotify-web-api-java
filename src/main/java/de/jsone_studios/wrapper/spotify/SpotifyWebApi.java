@@ -41,22 +41,22 @@ public class SpotifyWebApi implements SpotifyApi {
     }
 
     public SpotifyWebApi(OkHttpClient okHttpClient) {
-        this(createDefaultRetrofit(HttpUrl.get(SPOTIFY_WEB_API_ENDPOINT), okHttpClient));
+        this(createDefaultRetrofit(okHttpClient, HttpUrl.get(SPOTIFY_WEB_API_ENDPOINT)));
+    }
+
+    public SpotifyWebApi(OkHttpClient okHttpClient, HttpUrl baseUrl) {
+        this(createDefaultRetrofit(okHttpClient, baseUrl));
+    }
+
+    public SpotifyWebApi(HttpUrl baseUrl) {
+        this(new OkHttpClient(), baseUrl);
     }
 
     public SpotifyWebApi() {
         this(new OkHttpClient());
     }
 
-    public SpotifyWebApi(HttpUrl baseUrl, OkHttpClient okHttpClient) {
-        this(createDefaultRetrofit(baseUrl, okHttpClient));
-    }
-
-    public SpotifyWebApi(HttpUrl baseUrl) {
-        this(baseUrl, new OkHttpClient());
-    }
-
-    private static Retrofit createDefaultRetrofit(HttpUrl baseUrl, OkHttpClient okHttpClient) {
+    private static Retrofit createDefaultRetrofit(OkHttpClient okHttpClient, HttpUrl baseUrl) {
         ObjectMapper mapper = new ObjectMapper()
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return new Retrofit.Builder()

@@ -13,7 +13,7 @@ public class AuthenticatedSpotifyApi extends SpotifyWebApi {
     private final SpotifyAuthApi authApi;
 
     public AuthenticatedSpotifyApi(AuthenticationProvider authProvider, HttpUrl baseUrlWebApi, HttpUrl baseUrlAuthApi) {
-        super(baseUrlWebApi, createOkHttpClient(authProvider));
+        super(createOkHttpClient(authProvider), baseUrlWebApi);
         this.authProvider = authProvider;
         this.authApi = new SpotifyAuthApi(authProvider.getClientId(), authProvider.getClientSecret(), baseUrlAuthApi);
     }

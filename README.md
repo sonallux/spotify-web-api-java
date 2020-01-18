@@ -52,5 +52,6 @@ dependencies {
 
 ## Deploy a new release to Maven Central
 - Update version number
+- Create signed git tag with `git tag -s <tag>`
 - Run `mvn clean deploy -Pdeploy`
 - Update version number to next SNAPSHOT version

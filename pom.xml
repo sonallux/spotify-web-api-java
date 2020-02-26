@@ -49,13 +49,13 @@
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 
         <!-- Dependencies -->
-        <retrofit.version>2.7.1</retrofit.version>
+        <retrofit.version>2.7.2</retrofit.version>
 
         <!-- Test Dependencies -->
         <junit.version>5.6.0</junit.version>
         <mockito-junit-jupiter.version>3.3.0</mockito-junit-jupiter.version>
         <!-- This version should match the OkHttp version Retrofit is using -->
-        <mockwebserver.version>3.14.4</mockwebserver.version>
+        <mockwebserver.version>3.14.7</mockwebserver.version>
     </properties>
 
     <dependencies>

@@ -52,7 +52,7 @@
         <retrofit.version>2.7.2</retrofit.version>
 
         <!-- Test Dependencies -->
-        <junit.version>5.6.0</junit.version>
+        <junit.version>5.6.1</junit.version>
         <mockito-junit-jupiter.version>3.3.3</mockito-junit-jupiter.version>
         <!-- This version should match the OkHttp version Retrofit is using -->
         <mockwebserver.version>3.14.7</mockwebserver.version>

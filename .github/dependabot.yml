@@ -1,0 +1,13 @@
+version: 2
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 10
+  reviewers:
+  - jsone-studios
+  ignore:
+  - dependency-name: com.squareup.okhttp3:mockwebserver
+    versions:
+    - "> 3.14.7"

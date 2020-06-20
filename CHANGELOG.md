@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.2]
+- Update retrofit to 2.9.0, this also updates OkHttp to 3.14.9
+
 ## [1.3.1]
 - Update retrofit to 2.8.1, this also updates OkHttp to 3.14.7
 

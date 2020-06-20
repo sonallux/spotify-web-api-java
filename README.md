@@ -39,19 +39,20 @@ can be used to add the access token to every request.
 <dependency>
     <groupId>de.jsone-studios</groupId>
     <artifactId>spotify-web-api-java</artifactId>
-    <version>1.3.1</version>
+    <version>1.3.2</version>
 </dependency>
 ```
 
 ### Gradle
 ```
 dependencies {
-    compile 'de.jsone-studios:spotify-web-api-java:1.3.1'
+    compile 'de.jsone-studios:spotify-web-api-java:1.3.2'
 }    
 ```
 
 ## Deploy a new release to Maven Central
 - Update version number
+- Commit changes
 - Create signed git tag with `git tag -s <tag>`
 - Run `mvn clean deploy -Pdeploy`
 - Update version number to next SNAPSHOT version

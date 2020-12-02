@@ -3,7 +3,6 @@
 [![Build Status](https://travis-ci.com/sonallux/spotify-web-api-java.svg?branch=master)](https://travis-ci.com/sonallux/spotify-web-api-java)
 [![Maven Central](https://img.shields.io/maven-central/v/de.jsone-studios/spotify-web-api-java)](https://search.maven.org/search?q=g:%22de.jsone-studios%22%20AND%20a:%22spotify-web-api-java%22)
 [![GitHub](https://img.shields.io/github/license/sonallux/spotify-web-api-java)](https://github.com/sonallux/spotify-web-api-java/blob/master/LICENSE)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=sonallux/spotify-web-api-java)](https://dependabot.com)
 
 A Java wrapper for Spotify's Web API using [Retrofit](http://square.github.io/retrofit/)
 

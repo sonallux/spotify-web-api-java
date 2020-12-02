@@ -6,7 +6,7 @@ updates:
     interval: weekly
   open-pull-requests-limit: 10
   reviewers:
-  - jsone-studios
+  - sonallux
   ignore:
   - dependency-name: com.squareup.okhttp3:mockwebserver
     versions:

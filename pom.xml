@@ -11,26 +11,26 @@
 
     <name>spotify-web-api-java</name>
     <description>A Java wrapper for Spotify's Web API using Retrofit</description>
-    <url>https://github.com/jsone-studios/spotify-web-api-java</url>
+    <url>https://github.com/sonallux/spotify-web-api-java</url>
 
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>https://github.com/jsone-studios/spotify-web-api-java/blob/master/LICENSE</url>
+            <url>https://github.com/sonallux/spotify-web-api-java/blob/master/LICENSE</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
 
     <scm>
-        <connection>scm:git:https://github.com/jsone-studios/spotify-web-api-java</connection>
-        <url>https://github.com/jsone-studios/jsone-studios/spotify-web-api-java</url>
+        <connection>scm:git:https://github.com/sonallux/spotify-web-api-java</connection>
+        <url>https://github.com/sonallux/spotify-web-api-java</url>
     </scm>
 
     <developers>
         <developer>
-            <id>jsone-studios</id>
+            <id>sonallux</id>
             <name>Jonas</name>
-            <url>https://github.com/jsone-studios</url>
+            <url>https://github.com/sonallux</url>
         </developer>
     </developers>
 

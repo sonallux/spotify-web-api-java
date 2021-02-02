@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-- Update to my new GitHub username `sonallux`
+- Update to my new GitHub username `sonallux`. The maven coordinates and java package name of this library did not change. But this repo will soon retire, because the `spotify-web-api-java` version `2.0.0` is close to being released from the new [spotify-web-api](https://github.com/sonallux/spotify-web-api) repository. Starting from version `2.0.0` the library will be generated automatically from Spotify's Web API reference documentation.
 - Update dev dependencies
 
 ## [1.3.2]

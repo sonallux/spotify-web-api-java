@@ -5,26 +5,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+Complete rewrite of the library. The models and endpoints are generated from output of my [spotify-web-api-parser](https://github.com/sonallux/spotify-web-api) which generates a machine-readable format of the [Spotify Web API Reference](https://developer.spotify.com/documentation/web-api/reference). This results in a lot of breaking changes around naming of objects, properties, endpoints and parameters. 
 
-## [1.3.3]
-- Update to my new GitHub username `sonallux`. The maven coordinates and java package name of this library did not change. But this repo will soon retire, because the `spotify-web-api-java` version `2.0.0` is close to being released from the new [spotify-web-api](https://github.com/sonallux/spotify-web-api) repository. Starting from version `2.0.0` the library will be generated automatically from Spotify's Web API reference documentation.
-- Update dev dependencies
+Other notable changes:
 
-## [1.3.2]
-- Update retrofit to 2.9.0, this also updates OkHttp to 3.14.9
+- Renamed the maven groupId from `de.jsone-studios` to `de.sonallux.spotify`
+- Renamed package from `de.jsone_studios.wrapper.spotify` to `de.sonallux.spotify.api`
+- Removed `SpotifyApi` interface in favour of a `SpotifyWebApi`
+- `SpotifyWebApi` uses the builder pattern to create an instance
+- Replaced [retrofit](https://square.github.io/retrofit) by a custom wrapper around [OkHttp](https://square.github.io/okhttp)
+- Requests are now created with a builder style api for optional parameters. For example:
+```java
+ApiCall<?> call1 = spotifyWebApi.getXApi().getX("requiredParam").build();
+ApiCall<?> call2 = spotifyWebApi.getXApi().getX("requiredParam").optionalParam1("Y").build();
+```
+- Removed `SpotifyApi.callApi()` in favour of an `executeCall()` method on the new `ApiCall` class
+- Removed `SpotifyApi.callApiAndReturnBody()` in favour of an `execute()` method on the new `ApiCall` class
+- Added support for all authorization flows. See [here](https://github.com/sonallux/spotify-web-api-java/tree/master/spotify-web-api-java#authorization) for more details.
 
-## [1.3.1]
-- Update retrofit to 2.8.1, this also updates OkHttp to 3.14.7
-
-## [1.3.0]
-### Added
-- Add `callApi()`, `getBody()` and `callApiAndReturnBody()` methods to `SpotifyApi`
-- Tests are also executed on openjdk 11, 12, 13
-
-### Changed
-- Renamed class `SpotifyApi` to `AuthenticatedSpotifyApi`
-- Renamed interface `SpotifyServices` to `SpotifyApi`
-- Update retrofit to v2.7.1
-
-## [1.2.0]
-### Initial release
+## [1.x.x]
+The changelog of the `1.x.x` version of the `spotify-web-api-java` can be found [on the master branch](https://github.com/sonallux/spotify-web-api-java/blob/master/CHANGELOG.md).

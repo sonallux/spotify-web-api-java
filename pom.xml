@@ -67,6 +67,7 @@
         <mockito-junit-jupiter.version>3.8.0</mockito-junit-jupiter.version>
     </properties>
 
+    <!-- Remove this when spotify-web-api-core is available on maven central -->
     <repositories>
         <repository>
             <id>ossrh-snapshots</id>

@@ -24,4 +24,4 @@ ApiCall<?> call2 = spotifyWebApi.getXApi().getX("requiredParam").optionalParam1(
 - Added support for all authorization flows. See [here](https://github.com/sonallux/spotify-web-api-java/tree/master/spotify-web-api-java#authorization) for more details.
 
 ## [1.x.x]
-The changelog of the `1.x.x` version of the `spotify-web-api-java` can be found [on the master branch](https://github.com/sonallux/spotify-web-api-java/blob/master/CHANGELOG.md).
+The changelog of the `1.x.x` version of the `spotify-web-api-java` can be found on the [master branch](https://github.com/sonallux/spotify-web-api-java/blob/master/CHANGELOG.md).

@@ -6,6 +6,8 @@
 
 A Java wrapper for Spotify's Web API.
 
+This is the 2.x.x version of the `spotify-web-api-java` library. The 1.x.x version can be found on the [master branch](https://github.com/sonallux/spotify-web-api-java/tree/master)
+
 ## Installation
 This library will be available on [Maven Central](https://search.maven.org/search?q=g:%22de.sonallux.spotify%22%20AND%20a:%22spotify-web-api-java%22) in the future:
 
@@ -43,3 +45,9 @@ Code example: [AuthorizationCodePKCEExample.java](spotify-web-api-java/src/test/
 Code example: [ImplicitGrantExample.java](spotify-web-api-java/src/test/java/examples/ImplicitGrantExample.java)
 ### [Client credentials flow](https://developer.spotify.com/documentation/general/guides/authorization-guide/#client-credentials-flow)
 Code example: [ClientCredentialsExample.java](spotify-web-api-java/src/test/java/examples/ClientCredentialsExample.java)
+
+## How to release a new version
+1. Update the version number with `./mvnw versions:set -DnewVersion="<version>" -DgenerateBackupPoms=false`
+2. Commit and push changes to GitHub
+3. Wait till CI is green
+4. Tag and push the commit created in step 1. A GitHub actions workflow will automatically deploy the artifacts to Maven Central.

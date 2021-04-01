@@ -6,7 +6,7 @@
 
 A Java wrapper for Spotify's Web API using [Retrofit](http://square.github.io/retrofit/)
 
-I am currently working on a new `spotify-web-api-java` library that is generated automatically from the [Spotify Web Api documentation](https://developer.spotify.com/documentation/web-api/reference-beta). Check out the new project [here](https://github.com/sonallux/spotify-web-api).
+This is the `1.x.x` version of the `spotify-web-api-java` library. The `2.x.x` version can be found on the [main branch](https://github.com/sonallux/spotify-web-api-java/tree/main). Starting from version `2.0.0` the library will be generated automatically from Spotify's Web API reference documentation using my [spotify-web-api-parser](https://github.com/sonallux/spotify-web-api) library.
 
 ## Example: Get the number of tracks of a playlist
 ````java

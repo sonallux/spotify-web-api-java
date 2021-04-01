@@ -94,7 +94,7 @@ public class CLI implements Runnable {
     }
 
     static class ManifestVersionProvider implements IVersionProvider {
-        private static final String IMPLEMENTATION_TITLE = "spotify-web-api-generator-java";
+        private static final String IMPLEMENTATION_TITLE = "spotify-web-api-java-generator";
 
         @Override
         public String[] getVersion() throws Exception {

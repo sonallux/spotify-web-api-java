@@ -1,16 +1,16 @@
 #!/bin/sh
 
-# This script runs the spotify-web-api-generator-java to generate the java wrapper.
+# This script runs the spotify-web-api-java-generator to generate the java wrapper.
 
 OUTPUT_FOLDER=./spotify-web-api-java/src/main/generated/
 JAVA_PACKAGE_NAME="de.sonallux.spotify.api"
 
 # Find a '*.cli-jar'
-cliJarFile=$(find ./spotify-web-api-generator-java/target -maxdepth 1 -type f -name "*-cli.jar" -print -quit)
+cliJarFile=$(find ./spotify-web-api-java-generator/target -maxdepth 1 -type f -name "*-cli.jar" -print -quit)
 
 if [ -z "$cliJarFile" ]
 then
-  echo "Unable to find generator-java cli jar file. Did you run './mvnw package'?"
+  echo "Unable to find java-generator cli jar file. Did you run './mvnw package'?"
   exit 1
 fi
 

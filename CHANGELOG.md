@@ -11,9 +11,9 @@ Other notable changes:
 
 - Renamed the maven groupId from `de.jsone-studios` to `de.sonallux.spotify`
 - Renamed package from `de.jsone_studios.wrapper.spotify` to `de.sonallux.spotify.api`
-- Removed `SpotifyApi` interface in favour of a `SpotifyWebApi`
+- Removed `SpotifyApi` interface in favour of an updated `SpotifyWebApi` class
 - `SpotifyWebApi` uses the builder pattern to create an instance
-- Replaced [retrofit](https://square.github.io/retrofit) by a custom wrapper around [OkHttp](https://square.github.io/okhttp)
+- Replaced [retrofit](https://square.github.io/retrofit) with a custom wrapper around [OkHttp](https://square.github.io/okhttp)
 - Requests are now created with a builder style api for optional parameters. For example:
 ```java
 ApiCall<?> call1 = spotifyWebApi.getXApi().getX("requiredParam").build();
@@ -21,7 +21,7 @@ ApiCall<?> call2 = spotifyWebApi.getXApi().getX("requiredParam").optionalParam1(
 ```
 - Removed `SpotifyApi.callApi()` in favour of an `executeCall()` method on the new `ApiCall` class
 - Removed `SpotifyApi.callApiAndReturnBody()` in favour of an `execute()` method on the new `ApiCall` class
-- Added support for all authorization flows. See [here](https://github.com/sonallux/spotify-web-api-java/tree/master/spotify-web-api-java#authorization) for more details.
+- Added support for all authorization flows. See [here](https://github.com/sonallux/spotify-web-api-java/tree/main#authorization) for more details.
 
 ## [1.x.x]
 The changelog of the `1.x.x` version of the `spotify-web-api-java` can be found on the [master branch](https://github.com/sonallux/spotify-web-api-java/blob/master/CHANGELOG.md).

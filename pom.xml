@@ -14,7 +14,7 @@
     <url>https://github.com/sonallux/spotify-web-api-java</url>
 
     <modules>
-        <module>spotify-web-api-generator-java</module>
+        <module>spotify-web-api-java-generator</module>
         <module>spotify-web-api-java</module>
     </modules>
 

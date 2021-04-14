@@ -15,7 +15,6 @@ import de.sonallux.spotify.api.models.*;
  * <h3>Response</h3>
  * <ul>
  * <li>On success, the HTTP status code in the response header is <code>200</code> OK and the response body contains an array of <a href="https://developer.spotify.com/documentation/web-api/reference/#object-savedepisodeobject">saved episode objects</a> (wrapped in a <a href="https://developer.spotify.com/documentation/web-api/reference/#object-pagingobject">paging object</a>) in JSON format. On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a> and the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>.</li>
- * <li>Trying to get more than 2000 episodes for a user will return results for 2000 episodes. Only the 2000 returned episodes are sorted. This limitation will be removed in the near future.</li>
  * </ul>
  */
 public class GetUsersSavedEpisodesRequest {

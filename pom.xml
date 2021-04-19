@@ -60,7 +60,7 @@
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 
         <!-- Dependencies -->
-        <lombok.version>1.18.18</lombok.version>
+        <lombok.version>1.18.20</lombok.version>
 
         <!-- Test Dependencies -->
         <junit.version>5.7.1</junit.version>

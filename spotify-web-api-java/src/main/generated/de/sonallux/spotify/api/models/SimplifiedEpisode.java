@@ -16,7 +16,7 @@ public class SimplifiedEpisode extends BaseObject {
      */
     public String audioPreviewUrl;
     /**
-     * <p>A description of the episode.</p>
+     * <p>A description of the episode. HTML tags are stripped away from this field, use <code>html_description</code> field in case HTML tags are needed.</p>
      */
     public String description;
     /**
@@ -31,6 +31,10 @@ public class SimplifiedEpisode extends BaseObject {
      * <p>External URLs for this episode.</p>
      */
     public ExternalUrl externalUrls;
+    /**
+     * <p>A description of the episode. This field may contain HTML tags.</p>
+     */
+    public String htmlDescription;
     /**
      * <p>The cover art for the episode in various sizes, widest first.</p>
      */
@@ -63,6 +67,10 @@ public class SimplifiedEpisode extends BaseObject {
      * <p>The precision with which <code>release_date</code> value is known: <code>&quot;year&quot;</code>, <code>&quot;month&quot;</code>, or <code>&quot;day&quot;</code>.</p>
      */
     public String releaseDatePrecision;
+    /**
+     * <p>Included in the response when a content restriction is applied. See <a href="https://developer.spotify.com/documentation/web-api/reference/#object-episoderestrictionobject">Restriction Object</a> for more details.</p>
+     */
+    public EpisodeRestriction restrictions;
     /**
      * <p>The user's most recent position in the episode. Set if the supplied access token is a user token and has the scope 'user-read-playback-position'.</p>
      */

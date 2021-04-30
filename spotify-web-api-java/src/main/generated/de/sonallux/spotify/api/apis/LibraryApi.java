@@ -110,10 +110,10 @@ public class LibraryApi {
     /**
      * <h3>Remove User's Saved Shows</h3>
      * <p>Delete one or more shows from current Spotify user's library.</p>
-     * @param ids <p>A comma-separated list of Spotify IDs for the shows to be deleted from the user's library.</p>
+     * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>.<br>A maximum of 50 items can be specified in one request. <em>Note: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link RemoveShowsUserRequest} object to build and execute the request
      */
-    public RemoveShowsUserRequest removeShowsUser(String ids) {
+    public RemoveShowsUserRequest removeShowsUser(java.util.List<String> ids) {
         return new RemoveShowsUserRequest(apiClient, ids);
     }
 
@@ -150,10 +150,10 @@ public class LibraryApi {
     /**
      * <h3>Save Shows for Current User</h3>
      * <p>Save one or more shows to current Spotify user's library.</p>
-     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. Maximum: 50 IDs.</p>
+     * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>.<br>A maximum of 50 items can be specified in one request. <em>Note: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link SaveShowsUserRequest} object to build and execute the request
      */
-    public SaveShowsUserRequest saveShowsUser(String ids) {
+    public SaveShowsUserRequest saveShowsUser(java.util.List<String> ids) {
         return new SaveShowsUserRequest(apiClient, ids);
     }
 

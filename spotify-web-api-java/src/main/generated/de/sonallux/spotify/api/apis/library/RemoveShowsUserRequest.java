@@ -24,12 +24,12 @@ public class RemoveShowsUserRequest {
     /**
      * <h3>Remove User's Saved Shows request</h3>
      * @param apiClient <p>The API client</p>
-     * @param ids <p>A comma-separated list of Spotify IDs for the shows to be deleted from the user's library.</p>
+     * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>.<br>A maximum of 50 items can be specified in one request. <em>Note: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      */
-    public RemoveShowsUserRequest(ApiClient apiClient, String ids) {
+    public RemoveShowsUserRequest(ApiClient apiClient, java.util.List<String> ids) {
         this.apiClient = apiClient;
         this.request = new Request("DELETE", "/me/shows")
-            .addQueryParameter("ids", String.valueOf(ids))
+            .addBodyParameter("ids", ids)
         ;
     }
 

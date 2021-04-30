@@ -23,12 +23,12 @@ public class SaveShowsUserRequest {
     /**
      * <h3>Save Shows for Current User request</h3>
      * @param apiClient <p>The API client</p>
-     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. Maximum: 50 IDs.</p>
+     * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>.<br>A maximum of 50 items can be specified in one request. <em>Note: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      */
-    public SaveShowsUserRequest(ApiClient apiClient, String ids) {
+    public SaveShowsUserRequest(ApiClient apiClient, java.util.List<String> ids) {
         this.apiClient = apiClient;
         this.request = new Request("PUT", "/me/shows")
-            .addQueryParameter("ids", String.valueOf(ids))
+            .addBodyParameter("ids", ids)
         ;
     }
 

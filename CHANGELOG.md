@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Update to spotify-web-api-core `2021.5.1`
+  - The `ids` parameter in the `RemoveShowsUserRequest` and `SaveShowsUserRequest` is now passed in the body
+  - Add `htmlDescription` and `restrictions` fields to `Episode` and `SimplifiedEpisode`
+  - Fix `SearchResponse` object
 
 ## [2.0.0]
 Complete rewrite of the library. The models and endpoints are generated from output of my [spotify-web-api-parser](https://github.com/sonallux/spotify-web-api) which generates a machine-readable format of the [Spotify Web API Reference](https://developer.spotify.com/documentation/web-api/reference). This results in a lot of breaking changes around naming of objects, properties, endpoints and parameters. 

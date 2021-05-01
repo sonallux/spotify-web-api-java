@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [2.1.0]
 - Update to spotify-web-api-core `2021.5.1`
   - The `ids` parameter in the `RemoveShowsUserRequest` and `SaveShowsUserRequest` is now passed in the body
   - Add `htmlDescription` and `restrictions` fields to `Episode` and `SimplifiedEpisode`

@@ -9,20 +9,20 @@ A Java wrapper for Spotify's Web API.
 This is the 2.x.x version of the `spotify-web-api-java` library. The 1.x.x version can be found on the [master branch](https://github.com/sonallux/spotify-web-api-java/tree/master)
 
 ## Installation
-This library is available on [Maven Central](https://search.maven.org/search?q=g:%22de.sonallux.spotify%22%20AND%20a:%22spotify-web-api-java%22) and requires at least Java 11:
+This library is available on [Maven Central](https://search.maven.org/search?q=g:%22de.sonallux.spotify%22%20AND%20a:%22spotify-web-api-java%22) and requires at least Java 11.
 
 ### With maven
 ```xml
 <dependency>
   <groupId>de.sonallux.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>2.0.0</version>
+  <version>2.1.0</version>
 </dependency>
 ```
 
 ### With gradle
 ```groovy
-compile 'de.sonallux.spotify:spotify-web-api-java:2.0.0'
+compile 'de.sonallux.spotify:spotify-web-api-java:2.1.0'
 ```
 
 ## General usage
@@ -48,7 +48,7 @@ Code example: [ClientCredentialsExample.java](spotify-web-api-java/src/test/java
 
 ## How to release a new version
 1. Update the version number with `./mvnw versions:set -DnewVersion="<version>" -DgenerateBackupPoms=false`
-2. Update CHANGELOG.md
+2. Update version in CHANGELOG.md and README.md
 3. Commit and push changes to GitHub
 4. Wait till CI is green
 5. Tag and push the commit created in step 1. A GitHub actions workflow will automatically deploy the artifacts to Maven Central.

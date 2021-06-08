@@ -20,7 +20,7 @@ public class Show extends BaseObject {
      */
     public java.util.List<Copyright> copyrights;
     /**
-     * <p>A description of the show.</p>
+     * <p>A description of the show. HTML tags are stripped away from this field, use <code>html_description</code> field in case HTML tags are needed.</p>
      */
     public String description;
     /**
@@ -35,6 +35,10 @@ public class Show extends BaseObject {
      * <p>External URLs for this show.</p>
      */
     public ExternalUrl externalUrls;
+    /**
+     * <p>A description of the show. This field may contain HTML tags.</p>
+     */
+    public String htmlDescription;
     /**
      * <p>The cover art for the show in various sizes, widest first.</p>
      */

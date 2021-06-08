@@ -10,7 +10,7 @@ import de.sonallux.spotify.api.models.*;
  * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-follow-playlist">Follow a Playlist request</a>
  *
  * <h3>Required OAuth scopes</h3>
- * <code>user-follow-modify</code>
+ * <code>playlist-modify-public, playlist-modify-private</code>
  *
  * <h3>Response</h3>
  * <p>On success, the HTTP status code in the response header is <code>200</code> OK and the response body is empty.
@@ -34,7 +34,7 @@ public class FollowPlaylistRequest {
     }
 
     /**
-     * <p>Defaults to <code>true</code>. If <code>true</code> the playlist will be included in user's public playlists, if <code>false</code> it will remain private. To be able to follow playlists privately, the user must have granted the <code>playlist-modify-private</code> <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes">scope</a>.</p>
+     * <p>Defaults to <code>true</code>. If <code>true</code> the playlist will be included in user's public playlists, if <code>false</code> it will remain private.</p>
      */
     public FollowPlaylistRequest _public(boolean _public) {
         this.request.addBodyParameter("public", _public);

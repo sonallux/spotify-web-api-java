@@ -68,6 +68,10 @@ public class Album extends BaseObject {
      */
     public AlbumRestriction restrictions;
     /**
+     * <p>The total number of tracks in the album.</p>
+     */
+    public int totalTracks;
+    /**
      * <p>The tracks of the album.</p>
      */
     public Paging<SimplifiedTrack> tracks;

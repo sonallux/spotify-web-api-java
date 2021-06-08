@@ -7,12 +7,12 @@
     <parent>
         <groupId>de.sonallux.spotify</groupId>
         <artifactId>spotify-web-api-java-parent</artifactId>
-        <version>2.1.0</version>
+        <version>2.2.0-beta.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>spotify-web-api-java-generator</artifactId>
-    <version>2.1.0</version>
+    <version>2.2.0-beta.0</version>
     <packaging>jar</packaging>
 
     <name>spotify-web-api-java-generator</name>
@@ -26,6 +26,8 @@
         <flexmark.version>0.62.2</flexmark.version>
         <mustache.java.version>0.9.10</mustache.java.version>
         <slf4j.version>1.7.30</slf4j.version>
+
+        <moditect.module.name>de.sonallux.spotify.generator.java</moditect.module.name>
     </properties>
 
     <dependencies>

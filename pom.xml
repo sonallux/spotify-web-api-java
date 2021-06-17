@@ -162,9 +162,6 @@
                         </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <jvmVersion>11</jvmVersion>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -241,10 +238,6 @@
                                             </moduleInfo>
                                         </module>
                                     </modules>
-                                    <jdepsExtraArgs>
-                                        <arg>--multi-release</arg>
-                                        <arg>11</arg>
-                                    </jdepsExtraArgs>
                                 </configuration>
                             </execution>
                         </executions>

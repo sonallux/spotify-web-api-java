@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - Update to spotify-web-api-core `2021.6.17`
   - Fix response type of `ReplacePlaylistsTracksRequest` from `Void` to `SnapshotId`.
+- Add a module-info file, so the library is usable with the Java module system.
 
 ## [2.1.0]
 - Update to spotify-web-api-core `2021.5.1`

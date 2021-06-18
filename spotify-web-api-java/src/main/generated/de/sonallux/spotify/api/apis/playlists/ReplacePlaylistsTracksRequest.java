@@ -13,11 +13,15 @@ import de.sonallux.spotify.api.models.*;
  * <code>playlist-modify-public, playlist-modify-private</code>
  *
  * <h3>Response</h3>
- * <p>On a successful <strong>replace</strong> operation, the HTTP status code in the response header is <code>201</code> Created.</p>
- * <p>On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a>, the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>, and the existing playlist is unmodified. Trying to set an item when you do not have the user's authorization returns error <code>403</code> Forbidden.</p>
+ * <p>On a successful <strong>replace</strong> operation, the HTTP status code in the response header is <code>201</code>
+ * Created.</p>
+ * <p>On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a>,
+ * the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>,
+ * and the existing playlist is unmodified.
+ * Trying to set an item when you do not have the user's authorization returns error <code>403</code> Forbidden.</p>
  */
 public class ReplacePlaylistsTracksRequest {
-    private static final TypeReference<Void> RESPONSE_TYPE = new TypeReference<>() {};
+    private static final TypeReference<SnapshotId> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;
     private final Request request;
 
@@ -38,7 +42,7 @@ public class ReplacePlaylistsTracksRequest {
     /**
      * Build the request into an executable call
      */
-    public ApiCall<Void> build() {
+    public ApiCall<SnapshotId> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);
     }
 }

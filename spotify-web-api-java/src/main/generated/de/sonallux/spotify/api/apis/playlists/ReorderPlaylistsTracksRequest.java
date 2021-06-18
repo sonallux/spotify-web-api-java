@@ -13,8 +13,13 @@ import de.sonallux.spotify.api.models.*;
  * <code>playlist-modify-public, playlist-modify-private</code>
  *
  * <h3>Response</h3>
- * <p>On a successful <strong>reorder</strong> operation, the response body contains a <code>snapshot_id</code> in JSON format and the HTTP status code in the response header is <code>200</code> OK. The <code>snapshot_id</code> can be used to identify your playlist version in future requests.</p>
- * <p>On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a>, the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>, and the existing playlist is unmodified. Trying to set an item when you do not have the user's authorization returns error <code>403</code> Forbidden.</p>
+ * <p>On a successful <strong>reorder</strong> operation, the response body contains a <code>snapshot_id</code> in JSON format
+ * and the HTTP status code in the response header is <code>200</code> OK. The <code>snapshot_id</code>
+ * can be used to identify your playlist version in future requests.</p>
+ * <p>On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a>,
+ * the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>,
+ * and the existing playlist is unmodified.
+ * Trying to set an item when you do not have the user's authorization returns error <code>403</code> Forbidden.</p>
  */
 public class ReorderPlaylistsTracksRequest {
     private static final TypeReference<SnapshotId> RESPONSE_TYPE = new TypeReference<>() {};

@@ -14,7 +14,7 @@ public class Recommendations {
      */
     public java.util.List<RecommendationSeed> seeds;
     /**
-     * <p>An array of <a href="https://developer.spotify.com/documentation/web-api/reference/#object-simplifiedtrackobject">track object (simplified)</a> ordered according to the parameters supplied.</p>
+     * <p>An array of <a href="https://developer.spotify.com/documentation/web-api/reference/#object-trackobject">track object</a> ordered according to the parameters supplied.</p>
      */
-    public java.util.List<SimplifiedTrack> tracks;
+    public java.util.List<Track> tracks;
 }

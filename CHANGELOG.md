@@ -40,4 +40,4 @@ ApiCall<?> call2 = spotifyWebApi.getXApi().getX("requiredParam").optionalParam1(
 - Bump minimum required Java version to Java 11
 
 ## [1.x.x]
-The changelog of the `1.x.x` version of the `spotify-web-api-java` can be found on the [master branch](https://github.com/sonallux/spotify-web-api-java/blob/master/CHANGELOG.md).
+The changelog of the `1.x.x` version of the `spotify-web-api-java` can be found on the [1.x branch](https://github.com/sonallux/spotify-web-api-java/blob/1.x/CHANGELOG.md).

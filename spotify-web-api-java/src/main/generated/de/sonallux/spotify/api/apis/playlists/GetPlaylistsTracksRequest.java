@@ -21,15 +21,21 @@ public class GetPlaylistsTracksRequest {
      * <h3>Get a Playlist's Items request</h3>
      * @param apiClient <p>The API client</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> for the playlist.</p>
-     * @param market <p>An <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a> or the string <code>from_token</code>. Provide this parameter if you want to apply <a href="https://developer.spotify.com/documentation/general/guides/track-relinking-guide/">Track Relinking</a>. For episodes, if a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em>Note: If neither market or user country are provided, the episode is considered unavailable for the client.</em></p>
      */
-    public GetPlaylistsTracksRequest(ApiClient apiClient, String playlistId, String market) {
+    public GetPlaylistsTracksRequest(ApiClient apiClient, String playlistId) {
         this.apiClient = apiClient;
         this.request = new Request("GET", "/playlists/{playlist_id}/tracks")
             .addPathParameter("playlist_id", String.valueOf(playlistId))
-            .addQueryParameter("market", String.valueOf(market))
         ;
         this.additionalTypes("track,episode");
+    }
+
+    /**
+     * <p>An <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a> or the string <code>from_token</code>. Provide this parameter if you want to apply <a href="https://developer.spotify.com/documentation/general/guides/track-relinking-guide/">Track Relinking</a>. For episodes, if a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em>Note: If neither market or user country are provided, the episode is considered unavailable for the client.</em></p>
+     */
+    public GetPlaylistsTracksRequest market(String market) {
+        this.request.addQueryParameter("market", String.valueOf(market));
+        return this;
     }
 
     /**

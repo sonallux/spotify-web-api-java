@@ -97,7 +97,7 @@ class ConversionTest {
     void testUnionTypeHandlingWithAdditionalTypesParameter() throws Exception {
         webServer.enqueue(loadMockResponse("get-playlists-tracks-union.json"));
 
-        var response = api.getPlaylistsApi().getPlaylistsTracks("foo", "DE").build().execute();
+        var response = api.getPlaylistsApi().getPlaylistsTracks("foo").build().execute();
         var track = response.getItems().get(0).getTrack();
         assertNotNull(track);
         assertEquals("track", track.getType());
@@ -110,14 +110,14 @@ class ConversionTest {
         assertNotNull(((Episode) episode).getShow());
 
         var request = webServer.takeRequest();
-        assertEquals("/playlists/foo/tracks?market=DE&additional_types=track%2Cepisode", request.getPath());
+        assertEquals("/playlists/foo/tracks?additional_types=track%2Cepisode", request.getPath());
     }
 
     @Test
     void testUnionTypeHandlingWithoutAdditionalTypesParameter() throws Exception {
         webServer.enqueue(loadMockResponse("get-playlists-tracks.json"));
 
-        var response = api.getPlaylistsApi().getPlaylistsTracks("foo", "DE")
+        var response = api.getPlaylistsApi().getPlaylistsTracks("foo")
             .additionalTypes("track")
             .build().execute();
         var track = response.getItems().get(0).getTrack();
@@ -132,7 +132,7 @@ class ConversionTest {
         assertNull(((Episode) episode).getShow());//show is not set, because episode is returned with track format
 
         var request = webServer.takeRequest();
-        assertEquals("/playlists/foo/tracks?market=DE&additional_types=track", request.getPath());
+        assertEquals("/playlists/foo/tracks?additional_types=track", request.getPath());
     }
 
     @Test

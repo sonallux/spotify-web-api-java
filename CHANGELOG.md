@@ -5,8 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-- Update to spotify-web-api-core `2021.6.30`
-  - Fix tracks property in `Recommendations`
+- Update to spotify-web-api-core `2021.7.20`
+  - Fix `tracks` property in `Recommendations`
+  - Mark `market` parameter in "Get Playlist's Items" endpoint as optional
 
 ## [2.2.0]
 - Update to spotify-web-api-core `2021.6.18`

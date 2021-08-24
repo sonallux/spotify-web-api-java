@@ -14,7 +14,7 @@ public class AudioFeatures {
      */
     public float acousticness;
     /**
-     * <p>An HTTP URL to access the full audio analysis of this track. An access token is required to access this data.</p>
+     * <p>A URL to access the full audio analysis of this track. An access token is required to access this data.</p>
      */
     public String analysisUrl;
     /**
@@ -70,7 +70,7 @@ public class AudioFeatures {
      */
     public String trackHref;
     /**
-     * <p>The object type: &quot;audio_features&quot;</p>
+     * <p>The object type.</p>
      */
     public String type;
     /**

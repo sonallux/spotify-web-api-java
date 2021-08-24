@@ -123,6 +123,7 @@ public class ApiTemplate {
         var optionalPathParameters = new ArrayList<Parameter>();
         var optionalQueryParameters = new ArrayList<Parameter>();
         var optionalBodyParameters = new ArrayList<Parameter>();
+        Parameter rawBodyParameter = null;
 
         for (var parameter : endpoint.getParameters()) {
             switch (parameter.getLocation()) {
@@ -134,10 +135,16 @@ public class ApiTemplate {
                     addParameter(parameter, requiredQueryParameters, optionalQueryParameters);
                     break;
                 }
-                case BODY: {
-                    addParameter(parameter, requiredBodyParameters, optionalBodyParameters);
-                    break;
-                }
+            }
+        }
+
+        if (endpoint.getRequestBody() != null) {
+            if (endpoint.getRequestBody() instanceof SpotifyWebApiEndpoint.JsonRequestBody) {
+                var requestBody = ((SpotifyWebApiEndpoint.JsonRequestBody) endpoint.getRequestBody());
+                requestBody.getParameters().forEach(p -> addParameter(p, requiredBodyParameters, optionalBodyParameters));
+            } else if (endpoint.getRequestBody() instanceof SpotifyWebApiEndpoint.Base64ImageRequestBody) {
+                var requestBody = ((SpotifyWebApiEndpoint.Base64ImageRequestBody) endpoint.getRequestBody());
+                rawBodyParameter = new RawBodyParameter("base64Image", "String", requestBody.getDescription(), requestBody.getContentType());
             }
         }
 
@@ -147,12 +154,16 @@ public class ApiTemplate {
         context.put("optionalPathParameters", optionalPathParameters);
         context.put("optionalQueryParameters", optionalQueryParameters);
         context.put("optionalBodyParameters", optionalBodyParameters);
+        context.put("rawBodyParameter", rawBodyParameter);
 
         List<Parameter> requiredParameterList = new ArrayList<>();
         requiredParameterList.add(new Parameter("apiClient", "ApiClient", "The API client"));
         requiredParameterList.addAll(requiredPathParameters);
         requiredParameterList.addAll(requiredQueryParameters);
         requiredParameterList.addAll(requiredBodyParameters);
+        if (rawBodyParameter != null) {
+            requiredParameterList.add(rawBodyParameter);
+        }
         context.put("requiredParameters", requiredParameterList.stream()
             .map(Parameter::asMethodParameter)
             .collect(joining(", ")));
@@ -218,6 +229,17 @@ public class ApiTemplate {
         }
         public String asJavaDoc() {
             return "@param " + javaName + " " + description;
+        }
+    }
+
+    @Getter
+    @Setter
+    private static class RawBodyParameter extends Parameter {
+        private String contentType;
+
+        public RawBodyParameter(String name, String type, String description, String contentType) {
+            super(name, type, description);
+            this.contentType = contentType;
         }
     }
 }

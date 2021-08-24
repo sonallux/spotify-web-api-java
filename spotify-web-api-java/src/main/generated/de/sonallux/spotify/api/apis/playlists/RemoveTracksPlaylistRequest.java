@@ -45,7 +45,7 @@ public class RemoveTracksPlaylistRequest {
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a></p>
      * @param tracks <p>An array of objects containing <a href="https://developer.spotify.com/spotify-documentation/web-api/#spotify-uris-and-ids">Spotify URIs</a> of the tracks or episodes to remove. For example: <code>{ &quot;tracks&quot;: [{ &quot;uri&quot;: &quot;spotify:track:4iV5W9uYEdYUVa79Axb7Rh&quot; },{ &quot;uri&quot;: &quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot; }] }</code>. A maximum of 100 objects can be sent at once.</p>
      */
-    public RemoveTracksPlaylistRequest(ApiClient apiClient, String playlistId, java.util.List<String> tracks) {
+    public RemoveTracksPlaylistRequest(ApiClient apiClient, String playlistId, java.util.List<java.util.Map<String, Object>> tracks) {
         this.apiClient = apiClient;
         this.request = new Request("DELETE", "/playlists/{playlist_id}/tracks")
             .addPathParameter("playlist_id", String.valueOf(playlistId))

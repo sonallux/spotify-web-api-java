@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#object-simplifiedalbumobject">SimplifiedAlbumObject</a>
+ * <a href="https://developer.spotify.com/documentation/web-api/reference/#object-albumbase">SimplifiedAlbumObject</a>
  */
 @Getter
 @Setter
@@ -12,11 +12,11 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE) // Disable deserialization based on @JsonTypeInfo
 public class SimplifiedAlbum extends BaseObject {
     /**
-     * <p>The field is present when getting an artist's albums. Possible values are &quot;album&quot;, &quot;single&quot;, &quot;compilation&quot;, &quot;appears_on&quot;. Compare to album_type this field represents relationship between the artist and the album.</p>
+     * <p>The field is present when getting an artist's albums. Compare to album_type this field represents relationship between the artist and the album.</p>
      */
     public String albumGroup;
     /**
-     * <p>The type of the album: one of &quot;album&quot;, &quot;single&quot;, or &quot;compilation&quot;.</p>
+     * <p>The type of the album.</p>
      */
     public String albumType;
     /**
@@ -40,19 +40,19 @@ public class SimplifiedAlbum extends BaseObject {
      */
     public String name;
     /**
-     * <p>The date the album was first released, for example <code>1981</code>. Depending on the precision, it might be shown as <code>1981-12</code> or <code>1981-12-15</code>.</p>
+     * <p>The date the album was first released.</p>
      */
     public String releaseDate;
     /**
-     * <p>The precision with which <code>release_date</code> value is known: <code>year</code> , <code>month</code> , or <code>day</code>.</p>
+     * <p>The precision with which <code>release_date</code> value is known.</p>
      */
     public String releaseDatePrecision;
     /**
-     * <p>Included in the response when a content restriction is applied. See <a href="https://developer.spotify.com/documentation/web-api/reference/#object-albumrestrictionobject">Restriction Object</a> for more details.</p>
+     * <p>Included in the response when a content restriction is applied.</p>
      */
     public AlbumRestriction restrictions;
     /**
-     * <p>The total number of tracks in the album.</p>
+     * <p>The number of tracks in the album.</p>
      */
     public int totalTracks;
 }

@@ -99,7 +99,7 @@ public class PlaylistsApi {
      * @param tracks <p>An array of objects containing <a href="https://developer.spotify.com/spotify-documentation/web-api/#spotify-uris-and-ids">Spotify URIs</a> of the tracks or episodes to remove. For example: <code>{ &quot;tracks&quot;: [{ &quot;uri&quot;: &quot;spotify:track:4iV5W9uYEdYUVa79Axb7Rh&quot; },{ &quot;uri&quot;: &quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot; }] }</code>. A maximum of 100 objects can be sent at once.</p>
      * @return a {@link RemoveTracksPlaylistRequest} object to build and execute the request
      */
-    public RemoveTracksPlaylistRequest removeTracksPlaylist(String playlistId, java.util.List<String> tracks) {
+    public RemoveTracksPlaylistRequest removeTracksPlaylist(String playlistId, java.util.List<java.util.Map<String, Object>> tracks) {
         return new RemoveTracksPlaylistRequest(apiClient, playlistId, tracks);
     }
 
@@ -130,9 +130,10 @@ public class PlaylistsApi {
      * <h3>Upload a Custom Playlist Cover Image</h3>
      * <p>Replace the image used to represent a specific playlist.</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> for the playlist.</p>
+     * @param base64Image <p>The new cover image of the playlist as a Base64 encoded JPEG image. Maximum payload size is 256KB.</p>
      * @return a {@link UploadCustomPlaylistCoverRequest} object to build and execute the request
      */
-    public UploadCustomPlaylistCoverRequest uploadCustomPlaylistCover(String playlistId) {
-        return new UploadCustomPlaylistCoverRequest(apiClient, playlistId);
+    public UploadCustomPlaylistCoverRequest uploadCustomPlaylistCover(String playlistId, String base64Image) {
+        return new UploadCustomPlaylistCoverRequest(apiClient, playlistId, base64Image);
     }
 }

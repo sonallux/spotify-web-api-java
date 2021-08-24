@@ -31,11 +31,13 @@ public class UploadCustomPlaylistCoverRequest {
      * <h3>Upload a Custom Playlist Cover Image request</h3>
      * @param apiClient <p>The API client</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> for the playlist.</p>
+     * @param base64Image <p>The new cover image of the playlist as a Base64 encoded JPEG image. Maximum payload size is 256KB.</p>
      */
-    public UploadCustomPlaylistCoverRequest(ApiClient apiClient, String playlistId) {
+    public UploadCustomPlaylistCoverRequest(ApiClient apiClient, String playlistId, String base64Image) {
         this.apiClient = apiClient;
         this.request = new Request("PUT", "/playlists/{playlist_id}/images")
             .addPathParameter("playlist_id", String.valueOf(playlistId))
+            .withRawBody(okhttp3.RequestBody.create(base64Image, okhttp3.MediaType.get("image/jpeg")))
         ;
     }
 

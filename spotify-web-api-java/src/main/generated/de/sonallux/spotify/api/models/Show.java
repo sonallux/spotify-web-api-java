@@ -3,9 +3,6 @@ package de.sonallux.spotify.api.models;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
-/**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#object-showobject">ShowObject</a>
- */
 @Getter
 @Setter
 @NoArgsConstructor

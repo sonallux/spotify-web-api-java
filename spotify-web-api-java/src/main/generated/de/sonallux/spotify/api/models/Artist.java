@@ -20,7 +20,7 @@ public class Artist extends BaseObject {
      */
     public Followers followers;
     /**
-     * <p>A list of the genres the artist is associated with. For example: <code>&quot;Prog Rock&quot;</code> , <code>&quot;Post-Grunge&quot;</code>. (If not yet classified, the array is empty.)</p>
+     * <p>A list of the genres the artist is associated with. If not yet classified, the array is empty.</p>
      */
     public java.util.List<String> genres;
     /**

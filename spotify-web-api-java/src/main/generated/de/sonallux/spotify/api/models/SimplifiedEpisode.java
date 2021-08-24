@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#object-simplifiedepisodeobject">SimplifiedEpisodeObject</a>
+ * <a href="https://developer.spotify.com/documentation/web-api/reference/#object-episodebase">SimplifiedEpisodeObject</a>
  */
 @Getter
 @Setter
@@ -48,11 +48,11 @@ public class SimplifiedEpisode extends BaseObject {
      */
     public boolean isPlayable;
     /**
-     * <p><strong>Note: This field is deprecated and might be removed in the future. Please use the <code>languages</code> field instead.</strong> The language used in the episode, identified by a <a href="https://en.wikipedia.org/wiki/ISO_639">ISO 639</a> code.</p>
+     * <p>The language used in the episode, identified by a <a href="https://en.wikipedia.org/wiki/ISO_639">ISO 639</a> code. This field is deprecated and might be removed in the future. Please use the <code>languages</code> field instead.</p>
      */
     public String language;
     /**
-     * <p>A list of the languages used in the episode, identified by their <a href="https://en.wikipedia.org/wiki/ISO_639">ISO 639</a> code.</p>
+     * <p>A list of the languages used in the episode, identified by their <a href="https://en.wikipedia.org/wiki/ISO_639">ISO 639-1</a> code.</p>
      */
     public java.util.List<String> languages;
     /**
@@ -64,7 +64,7 @@ public class SimplifiedEpisode extends BaseObject {
      */
     public String releaseDate;
     /**
-     * <p>The precision with which <code>release_date</code> value is known: <code>&quot;year&quot;</code>, <code>&quot;month&quot;</code>, or <code>&quot;day&quot;</code>.</p>
+     * <p>The precision with which <code>release_date</code> value is known.</p>
      */
     public String releaseDatePrecision;
     /**

@@ -36,7 +36,7 @@ public class FollowApi {
     /**
      * <h3>Follow Artists or Users</h3>
      * <p>Add the current user as a follower of one or more artists or other Spotify users.</p>
-     * @param type <p>The ID type: either <code>artist</code> or <code>user</code>.</p>
+     * @param type <p>The ID type.</p>
      * @param ids <p>A JSON array of the artist or user <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>{ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;, &quot;08td7MxkoHQkXnWAYD8d6Q&quot;]}</code>. A maximum of 50 IDs can be sent in one request. <em>Note: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link FollowArtistsUsersRequest} object to build and execute the request
      */

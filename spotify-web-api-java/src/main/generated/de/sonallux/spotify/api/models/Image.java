@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Image {
     /**
-     * <p>The image height in pixels. If unknown: <code>null</code> or not returned.</p>
+     * <p>The image height in pixels.</p>
      */
     public int height;
     /**
@@ -18,7 +18,7 @@ public class Image {
      */
     public String url;
     /**
-     * <p>The image width in pixels. If unknown: <code>null</code> or not returned.</p>
+     * <p>The image width in pixels.</p>
      */
     public int width;
 }

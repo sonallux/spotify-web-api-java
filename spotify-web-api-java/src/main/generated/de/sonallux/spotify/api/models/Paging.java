@@ -14,7 +14,7 @@ public class Paging<T> {
      */
     public String href;
     /**
-     * <p>The requested data.</p>
+     * <p>The requested content</p>
      */
     public java.util.List<T> items;
     /**

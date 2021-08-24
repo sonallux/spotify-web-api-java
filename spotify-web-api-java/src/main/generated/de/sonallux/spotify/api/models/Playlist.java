@@ -49,7 +49,7 @@ public class Playlist extends BaseObject {
      */
     public String snapshotId;
     /**
-     * <p>Information about the tracks of the playlist. Note, a track object may be <code>null</code>. This can happen if a track is no longer available.</p>
+     * <p>The tracks of the playlist.</p>
      */
     public Paging<PlaylistTrack> tracks;
 }

@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Followers {
     /**
-     * <p>A link to the Web API endpoint providing full details of the followers; <code>null</code> if not available. Please note that this will always be set to null, as the Web API does not support it at the moment.</p>
+     * <p>This will always be set to null, as the Web API does not support it at the moment.</p>
      */
     public String href;
     /**

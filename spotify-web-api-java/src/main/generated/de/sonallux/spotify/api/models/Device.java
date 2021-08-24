@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Device {
     /**
-     * <p>The device ID. This may be <code>null</code>.</p>
+     * <p>The device ID.</p>
      */
     public String id;
     /**
@@ -34,7 +34,7 @@ public class Device {
      */
     public String type;
     /**
-     * <p>The current volume in percent. This may be null.</p>
+     * <p>The current volume in percent.</p>
      */
     public int volumePercent;
 }

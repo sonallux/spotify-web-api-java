@@ -49,6 +49,9 @@ public class {{className}} {
 {{#requiredBodyParameters}}
             .addBodyParameter("{{name}}", {{javaName}})
 {{/requiredBodyParameters}}
+{{#rawBodyParameter}}
+            .withRawBody(okhttp3.RequestBody.create({{javaName}}, okhttp3.MediaType.get("{{contentType}}")))
+{{/rawBodyParameter}}
         ;
 {{#parametersWithDefaultValue}}
         this.{{javaName}}({{defaultValue}});

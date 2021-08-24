@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#object-simplifiedshowobject">SimplifiedShowObject</a>
+ * <a href="https://developer.spotify.com/documentation/web-api/reference/#object-showbase">SimplifiedShowObject</a>
  */
 @Getter
 @Setter

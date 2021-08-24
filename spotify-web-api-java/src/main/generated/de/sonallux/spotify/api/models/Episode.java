@@ -3,9 +3,6 @@ package de.sonallux.spotify.api.models;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
-/**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#object-episodeobject">EpisodeObject</a>
- */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -64,7 +61,7 @@ public class Episode extends BaseObject {
      */
     public String releaseDate;
     /**
-     * <p>The precision with which <code>release_date</code> value is known: <code>&quot;year&quot;</code>, <code>&quot;month&quot;</code>, or <code>&quot;day&quot;</code>.</p>
+     * <p>The precision with which <code>release_date</code> value is known.</p>
      */
     public String releaseDatePrecision;
     /**

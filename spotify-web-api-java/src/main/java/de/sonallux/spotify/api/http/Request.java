@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Getter
 @RequiredArgsConstructor
@@ -23,6 +24,8 @@ public class Request {
     private final Map<String, String> headerParameters = new LinkedHashMap<>();
     private final Map<String, Object> bodyParameters = new LinkedHashMap<>();
     private final Map<String, String> formParameters = new LinkedHashMap<>();
+
+    private Optional<RequestBody> rawBody = Optional.empty();
 
     /**
      * Add a path parameter
@@ -64,6 +67,11 @@ public class Request {
         return this;
     }
 
+    public Request withRawBody(RequestBody rawBody) {
+        this.rawBody = Optional.of(rawBody);
+        return this;
+    }
+
     okhttp3.Request.Builder toOkHttpRequest(ApiClient apiClient) throws IOException {
         var requestBody = createRequestBody(apiClient.getObjectMapper());
         if (requestBody == null && HttpMethod.requiresRequestBody(getMethod())) {
@@ -76,6 +84,10 @@ public class Request {
     }
 
     private RequestBody createRequestBody(ObjectMapper objectMapper) throws IOException {
+        if (rawBody.isPresent()) {
+            return rawBody.get();
+        }
+
         if (getBodyParameters().size() > 0 && getFormParameters().size() > 0) {
             throw new IllegalArgumentException("Can not use body parameters and form fields in one request");
         } else if (getBodyParameters().size() > 0) {

@@ -13,9 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup java
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v2
         with:
           java-version: 11
+          distribution: 'zulu'
+          cache: 'maven'
           server-id: ossrh
           server-username: OSSRH_USERNAME # env variable for username in deploy
           server-password: OSSRH_PASSWORD # env variable for password in deploy
@@ -26,4 +28,4 @@ jobs:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           OSSRH_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_PASSPHRASE }}
-        run: mvn -B clean deploy -Pdeploy
+        run: mvn -B deploy -Pdeploy

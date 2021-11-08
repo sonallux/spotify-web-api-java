@@ -16,13 +16,13 @@ This library is available on [Maven Central](https://search.maven.org/artifact/d
 <dependency>
   <groupId>de.sonallux.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>2.3.0</version>
+  <version>2.4.0</version>
 </dependency>
 ```
 
 ### With gradle
 ```groovy
-compile 'de.sonallux.spotify:spotify-web-api-java:2.3.0'
+compile 'de.sonallux.spotify:spotify-web-api-java:2.4.0'
 ```
 
 ## General usage

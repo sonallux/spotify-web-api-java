@@ -47,7 +47,7 @@ public class GetCategoriesPlaylistsRequest {
     }
 
     /**
-     * <p>The index of the first item to return. Default: 0 (the first object). Use with <code>limit</code> to get the next set of items.</p>
+     * <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
      */
     public GetCategoriesPlaylistsRequest offset(int offset) {
         this.request.addQueryParameter("offset", String.valueOf(offset));

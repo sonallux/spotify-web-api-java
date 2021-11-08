@@ -10,7 +10,7 @@ import de.sonallux.spotify.api.models.*;
  * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-follow-playlist">Follow a Playlist request</a>
  *
  * <h3>Required OAuth scopes</h3>
- * <code>playlist-modify-public, playlist-modify-private</code>
+ * <code>playlist-modify-private, playlist-modify-public</code>
  *
  * <h3>Response</h3>
  * <p>On success, the HTTP status code in the response header is <code>200</code> OK and the response body is empty.
@@ -24,7 +24,7 @@ public class FollowPlaylistRequest {
     /**
      * <h3>Follow a Playlist request</h3>
      * @param apiClient <p>The API client</p>
-     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist. Any playlist can be followed, regardless of its <a href="https://developer.spotify.com/documentation/general/guides/working-with-playlists/#public-private-and-collaborative-status">public/private status</a>, as long as you know its playlist ID.</p>
+     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      */
     public FollowPlaylistRequest(ApiClient apiClient, String playlistId) {
         this.apiClient = apiClient;

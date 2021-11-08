@@ -42,7 +42,7 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * <p>An <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a> or the string <code>from_token</code>. Provide this parameter if you want to apply <a href="https://developer.spotify.com/documentation/general/guides/track-relinking-guide">Track Relinking</a>. Because <code>min_*</code>, <code>max_*</code> and <code>target_*</code> are applied to pools before relinking, the generated results may not precisely match the filters applied. Original, non-relinked tracks are available via the <code>linked_from</code> attribute of the <a href="https://developer.spotify.com/documentation/general/guides/track-relinking-guide">relinked track response</a>.</p>
+     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only episodes that are available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
      */
     public GetRecommendationsRequest market(String market) {
         this.request.addQueryParameter("market", String.valueOf(market));

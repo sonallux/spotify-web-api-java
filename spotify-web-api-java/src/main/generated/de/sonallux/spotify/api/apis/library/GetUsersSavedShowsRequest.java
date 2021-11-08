@@ -33,7 +33,7 @@ public class GetUsersSavedShowsRequest {
     }
 
     /**
-     * <p>The maximum number of shows to return. Default: 20. Minimum: 1. Maximum: 50</p>
+     * <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
      */
     public GetUsersSavedShowsRequest limit(int limit) {
         this.request.addQueryParameter("limit", String.valueOf(limit));
@@ -41,7 +41,7 @@ public class GetUsersSavedShowsRequest {
     }
 
     /**
-     * <p>The index of the first show to return. Default: 0 (the first object). Use with limit to get the next set of shows.</p>
+     * <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
      */
     public GetUsersSavedShowsRequest offset(int offset) {
         this.request.addQueryParameter("offset", String.valueOf(offset));

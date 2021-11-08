@@ -10,7 +10,7 @@ import de.sonallux.spotify.api.models.*;
  * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-reorder-or-replace-playlists-tracks">Replace items in a playlist request</a>
  *
  * <h3>Required OAuth scopes</h3>
- * <code>playlist-modify-public, playlist-modify-private</code>
+ * <code>playlist-modify-private, playlist-modify-public</code>
  *
  * <h3>Response</h3>
  * <p>On a successful <strong>replace</strong> operation, the HTTP status code in the response header is <code>201</code>
@@ -28,7 +28,7 @@ public class ReplacePlaylistsTracksRequest {
     /**
      * <h3>Replace items in a playlist request</h3>
      * @param apiClient <p>The API client</p>
-     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> for the playlist.</p>
+     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @param uris <p>A comma-separated list of <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify URIs</a> to set, can be track or episode URIs. For example: <code>uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M,spotify:episode:512ojhOuo1ktJprKbVcKyQ</code><br>A maximum of 100 items can be set in one request.</p>
      */
     public ReplacePlaylistsTracksRequest(ApiClient apiClient, String playlistId, java.util.List<String> uris) {

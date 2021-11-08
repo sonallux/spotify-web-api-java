@@ -9,6 +9,9 @@ import de.sonallux.spotify.api.models.*;
 /**
  * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-an-episode">Get an Episode request</a>
  *
+ * <h3>Required OAuth scopes</h3>
+ * <code>user-read-playback-position</code>
+ *
  * <h3>Response</h3>
  * <p>On success, the HTTP status code in the response header is <code>200</code>
  * OK and the response body contains an <a href="https://developer.spotify.com/documentation/web-api/reference/#object-episodeobject">episode object</a>
@@ -35,7 +38,7 @@ public class GetEpisodeRequest {
     }
 
     /**
-     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only shows and episodes that are available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em>Note: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
+     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only episodes that are available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
      */
     public GetEpisodeRequest market(String market) {
         this.request.addQueryParameter("market", String.valueOf(market));

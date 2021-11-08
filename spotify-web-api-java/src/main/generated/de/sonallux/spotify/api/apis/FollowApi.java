@@ -37,7 +37,7 @@ public class FollowApi {
      * <h3>Follow Artists or Users</h3>
      * <p>Add the current user as a follower of one or more artists or other Spotify users.</p>
      * @param type <p>The ID type.</p>
-     * @param ids <p>A JSON array of the artist or user <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>{ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;, &quot;08td7MxkoHQkXnWAYD8d6Q&quot;]}</code>. A maximum of 50 IDs can be sent in one request. <em>Note: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
+     * @param ids <p>A JSON array of the artist or user <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>{ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;, &quot;08td7MxkoHQkXnWAYD8d6Q&quot;]}</code>. A maximum of 50 IDs can be sent in one request. <em><strong>Note</strong> : if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link FollowArtistsUsersRequest} object to build and execute the request
      */
     public FollowArtistsUsersRequest followArtistsUsers(String type, java.util.List<String> ids) {
@@ -47,7 +47,7 @@ public class FollowApi {
     /**
      * <h3>Follow a Playlist</h3>
      * <p>Add the current user as a follower of a playlist.</p>
-     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist. Any playlist can be followed, regardless of its <a href="https://developer.spotify.com/documentation/general/guides/working-with-playlists/#public-private-and-collaborative-status">public/private status</a>, as long as you know its playlist ID.</p>
+     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @return a {@link FollowPlaylistRequest} object to build and execute the request
      */
     public FollowPlaylistRequest followPlaylist(String playlistId) {
@@ -68,7 +68,7 @@ public class FollowApi {
      * <h3>Unfollow Artists or Users</h3>
      * <p>Remove the current user as a follower of one or more artists or other Spotify users.</p>
      * @param type <p>The ID type: either <code>artist</code> or <code>user</code>.</p>
-     * @param ids <p>A JSON array of the artist or user <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>{ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;, &quot;08td7MxkoHQkXnWAYD8d6Q&quot;]}</code>. A maximum of 50 IDs can be sent in one request. <em>Note: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
+     * @param ids <p>A JSON array of the artist or user <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>{ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;, &quot;08td7MxkoHQkXnWAYD8d6Q&quot;]}</code>. A maximum of 50 IDs can be sent in one request. <em><strong>Note</strong> : if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link UnfollowArtistsUsersRequest} object to build and execute the request
      */
     public UnfollowArtistsUsersRequest unfollowArtistsUsers(String type, java.util.List<String> ids) {
@@ -78,7 +78,7 @@ public class FollowApi {
     /**
      * <h3>Unfollow Playlist</h3>
      * <p>Remove the current user as a follower of a playlist.</p>
-     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist that is to be no longer followed.</p>
+     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @return a {@link UnfollowPlaylistRequest} object to build and execute the request
      */
     public UnfollowPlaylistRequest unfollowPlaylist(String playlistId) {

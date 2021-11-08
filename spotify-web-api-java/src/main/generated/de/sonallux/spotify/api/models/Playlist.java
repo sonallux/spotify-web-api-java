@@ -28,7 +28,7 @@ public class Playlist extends BaseObject {
      */
     public Followers followers;
     /**
-     * <p>Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See <a href="https://developer.spotify.com/documentation/general/guides/working-with-playlists/">Working with Playlists</a>. <em>Note: If returned, the source URL for the image (<code>url</code>) is temporary and will expire in less than a day.</em></p>
+     * <p>Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See <a href="https://developer.spotify.com/documentation/general/guides/working-with-playlists/">Working with Playlists</a>. <em><strong>Note</strong> : If returned, the source URL for the image (<code>url</code>) is temporary and will expire in less than a day.</em></p>
      */
     public java.util.List<Image> images;
     /**

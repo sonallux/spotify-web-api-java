@@ -25,7 +25,7 @@ public class TransferUsersPlaybackRequest {
     /**
      * <h3>Transfer a User's Playback request</h3>
      * @param apiClient <p>The API client</p>
-     * @param deviceIds <p>A JSON array containing the ID of the device on which playback should be started/transferred.<br>For example:<code>{device_ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;]}</code><br>Note: Although an array is accepted, only a single device_id is currently supported. Supplying more than one will return <code>400 Bad Request</code></p>
+     * @param deviceIds <p>A JSON array containing the ID of the device on which playback should be started/transferred.<br>For example:<code>{device_ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;]}</code><br><em><strong>Note</strong> : Although an array is accepted, only a single device_id is currently supported. Supplying more than one will return <code>400 Bad Request</code></em></p>
      */
     public TransferUsersPlaybackRequest(ApiClient apiClient, java.util.List<String> deviceIds) {
         this.apiClient = apiClient;

@@ -10,7 +10,7 @@ import de.sonallux.spotify.api.models.*;
  * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-followed">Get User's Followed Artists request</a>
  *
  * <h3>Required OAuth scopes</h3>
- * <code>user-follow-modify</code>
+ * <code>user-follow-read</code>
  *
  * <h3>Response</h3>
  * <p>On success, the HTTP status code in the response header is <code>200</code> OK and the response body contains an <code>artists</code> object.

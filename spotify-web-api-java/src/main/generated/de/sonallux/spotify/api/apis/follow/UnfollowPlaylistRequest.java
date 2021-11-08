@@ -10,7 +10,7 @@ import de.sonallux.spotify.api.models.*;
  * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-unfollow-playlist">Unfollow Playlist request</a>
  *
  * <h3>Required OAuth scopes</h3>
- * <code>playlist-modify-public, playlist-modify-private</code>
+ * <code>playlist-modify-private, playlist-modify-public</code>
  *
  * <h3>Response</h3>
  * <p>On success, the HTTP status code in the response header is <code>200</code> OK and the response body is empty.
@@ -24,7 +24,7 @@ public class UnfollowPlaylistRequest {
     /**
      * <h3>Unfollow Playlist request</h3>
      * @param apiClient <p>The API client</p>
-     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist that is to be no longer followed.</p>
+     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      */
     public UnfollowPlaylistRequest(ApiClient apiClient, String playlistId) {
         this.apiClient = apiClient;

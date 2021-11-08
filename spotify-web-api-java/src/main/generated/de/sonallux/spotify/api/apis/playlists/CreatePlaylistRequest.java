@@ -10,7 +10,7 @@ import de.sonallux.spotify.api.models.*;
  * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-create-playlist">Create a Playlist request</a>
  *
  * <h3>Required OAuth scopes</h3>
- * <code>playlist-modify-public, playlist-modify-private</code>
+ * <code>playlist-modify-private, playlist-modify-public</code>
  *
  * <h3>Response</h3>
  * <p>On success, the response body contains the created <a href="https://developer.spotify.com/documentation/web-api/reference/#object-playlistobject">playlist object</a>
@@ -28,7 +28,7 @@ public class CreatePlaylistRequest {
      * <h3>Create a Playlist request</h3>
      * @param apiClient <p>The API client</p>
      * @param userId <p>The user's <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify user ID</a>.</p>
-     * @param name <p>The name for the new playlist, for example <code>&quot;Your Coolest Playlist&quot;</code> . This name does not need to be unique; a user may have several playlists with the same name.</p>
+     * @param name <p>The name for the new playlist, for example <code>&quot;Your Coolest Playlist&quot;</code>. This name does not need to be unique; a user may have several playlists with the same name.</p>
      */
     public CreatePlaylistRequest(ApiClient apiClient, String userId, String name) {
         this.apiClient = apiClient;
@@ -39,7 +39,7 @@ public class CreatePlaylistRequest {
     }
 
     /**
-     * <p>Defaults to <code>true</code> . If <code>true</code> the playlist will be public, if <code>false</code> it will be private. To be able to create private playlists, the user must have granted the <code>playlist-modify-private</code> <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes">scope</a></p>
+     * <p>Defaults to <code>true</code>. If <code>true</code> the playlist will be public, if <code>false</code> it will be private. To be able to create private playlists, the user must have granted the <code>playlist-modify-private</code> <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes">scope</a></p>
      */
     public CreatePlaylistRequest _public(boolean _public) {
         this.request.addBodyParameter("public", _public);
@@ -47,7 +47,7 @@ public class CreatePlaylistRequest {
     }
 
     /**
-     * <p>Defaults to <code>false</code> . If <code>true</code> the playlist will be collaborative. Note that to create a collaborative playlist you must also set <code>public</code> to <code>false</code> . To create collaborative playlists you must have granted <code>playlist-modify-private</code> and <code>playlist-modify-public</code> <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes">scopes</a> .</p>
+     * <p>Defaults to <code>false</code>. If <code>true</code> the playlist will be collaborative. <em><strong>Note</strong> : to create a collaborative playlist you must also set <code>public</code> to <code>false</code>. To create collaborative playlists you must have granted <code>playlist-modify-private</code> and <code>playlist-modify-public</code> <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes">scopes</a>.</em></p>
      */
     public CreatePlaylistRequest collaborative(boolean collaborative) {
         this.request.addBodyParameter("collaborative", collaborative);

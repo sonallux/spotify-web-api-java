@@ -24,7 +24,7 @@ public class SimplifiedAlbum extends BaseObject {
      */
     public java.util.List<SimplifiedArtist> artists;
     /**
-     * <p>The markets in which the album is available: <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country codes</a>. Note that an album is considered available in a market when at least 1 of its tracks is available in that market.</p>
+     * <p>The markets in which the album is available: <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country codes</a>. <em><strong>NOTE</strong>: an album is considered available in a market when at least 1 of its tracks is available in that market.</em></p>
      */
     public java.util.List<String> availableMarkets;
     /**

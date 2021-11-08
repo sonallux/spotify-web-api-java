@@ -41,7 +41,7 @@ public class PlayerApi {
 
     /**
      * <h3>Get Current User's Recently Played Tracks</h3>
-     * <p>Get tracks from the current user's recently played tracks. <em>Note: Currently doesn't support podcast episodes.</em></p>
+     * <p>Get tracks from the current user's recently played tracks. <em><strong>Note</strong>: Currently doesn't support podcast episodes.</em></p>
      * @return a {@link GetRecentlyPlayedRequest} object to build and execute the request
      */
     public GetRecentlyPlayedRequest getRecentlyPlayed() {
@@ -51,11 +51,10 @@ public class PlayerApi {
     /**
      * <h3>Get the User's Currently Playing Track</h3>
      * <p>Get the object currently being played on the user's Spotify account.</p>
-     * @param market <p>An <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a> or the string <code>from_token</code>. Provide this parameter if you want to apply <a href="https://developer.spotify.com/documentation/general/guides/track-relinking-guide/">Track Relinking</a>.</p>
      * @return a {@link GetUsersCurrentlyPlayingTrackRequest} object to build and execute the request
      */
-    public GetUsersCurrentlyPlayingTrackRequest getUsersCurrentlyPlayingTrack(String market) {
-        return new GetUsersCurrentlyPlayingTrackRequest(apiClient, market);
+    public GetUsersCurrentlyPlayingTrackRequest getUsersCurrentlyPlayingTrack() {
+        return new GetUsersCurrentlyPlayingTrackRequest(apiClient);
     }
 
     /**
@@ -137,7 +136,7 @@ public class PlayerApi {
     /**
      * <h3>Transfer a User's Playback</h3>
      * <p>Transfer playback to a new device and determine if it should start playing.</p>
-     * @param deviceIds <p>A JSON array containing the ID of the device on which playback should be started/transferred.<br>For example:<code>{device_ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;]}</code><br>Note: Although an array is accepted, only a single device_id is currently supported. Supplying more than one will return <code>400 Bad Request</code></p>
+     * @param deviceIds <p>A JSON array containing the ID of the device on which playback should be started/transferred.<br>For example:<code>{device_ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;]}</code><br><em><strong>Note</strong> : Although an array is accepted, only a single device_id is currently supported. Supplying more than one will return <code>400 Bad Request</code></em></p>
      * @return a {@link TransferUsersPlaybackRequest} object to build and execute the request
      */
     public TransferUsersPlaybackRequest transferUsersPlayback(java.util.List<String> deviceIds) {

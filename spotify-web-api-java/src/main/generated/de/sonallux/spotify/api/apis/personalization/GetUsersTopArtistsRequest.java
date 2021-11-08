@@ -39,7 +39,7 @@ public class GetUsersTopArtistsRequest {
     }
 
     /**
-     * <p>The number of entities to return. Default: 20. Minimum: 1. Maximum: 50. For example: <code>limit=2</code></p>
+     * <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
      */
     public GetUsersTopArtistsRequest limit(int limit) {
         this.request.addQueryParameter("limit", String.valueOf(limit));
@@ -47,7 +47,7 @@ public class GetUsersTopArtistsRequest {
     }
 
     /**
-     * <p>The index of the first entity to return. Default: 0 (i.e., the first track). Use with limit to get the next set of entities.</p>
+     * <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
      */
     public GetUsersTopArtistsRequest offset(int offset) {
         this.request.addQueryParameter("offset", String.valueOf(offset));

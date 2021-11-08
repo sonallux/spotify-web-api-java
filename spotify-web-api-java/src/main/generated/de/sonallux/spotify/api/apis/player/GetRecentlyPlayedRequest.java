@@ -9,6 +9,9 @@ import de.sonallux.spotify.api.models.*;
 /**
  * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-recently-played">Get Current User's Recently Played Tracks request</a>
  *
+ * <h3>Required OAuth scopes</h3>
+ * <code>user-read-recently-played</code>
+ *
  * <h3>Response</h3>
  * <p>On success, the HTTP status code in the response header is <code>200</code> OK and the response body contains an array of <a href="#play-history-object">play history objects</a> (wrapped in a <a href="#cursor-based-paging-object">cursor-based paging object</a>) in JSON format. The play history items each contain the context the track was played from (e.g. playlist, album), the date and time the track was played, and a <a href="https://developer.spotify.com/documentation/web-api/reference/#object-simplifiedtrackobject">track object (simplified)</a>. On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a> and the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>.</p>
  * <p>If private session is enabled the response will be a <code>204 NO CONTENT</code> with an empty payload.</p>

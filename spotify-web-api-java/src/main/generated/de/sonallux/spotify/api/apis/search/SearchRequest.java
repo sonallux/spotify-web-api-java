@@ -9,6 +9,9 @@ import de.sonallux.spotify.api.models.*;
 /**
  * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-search">Search for an Item request</a>
  *
+ * <h3>Required OAuth scopes</h3>
+ * <code>user-read-private</code>
+ *
  * <h3>Notes</h3>
  * <p><strong>Writing a Query - Guidelines</strong></p>
  * <p><strong>Encode spaces</strong> with the hex code <code>%20</code> or <code>+</code>.</p>
@@ -77,7 +80,7 @@ public class SearchRequest {
      * <h3>Search for an Item request</h3>
      * @param apiClient <p>The API client</p>
      * @param q <p>Search <a href="#writing-a-query---guidelines">query</a> keywords and optional field filters and operators.<br>For example:<br><code>q=roadhouse%20blues</code>.</p>
-     * @param type <p>A comma-separated list of item types to search across.<br>Valid types are: <code>album</code> , <code>artist</code>, <code>playlist</code>, <code>track</code>, <code>show</code> and <code>episode</code>.<br>Search results include hits from all the specified item types.<br>For example: <code>q=name:abacab&amp;type=album,track</code> returns both albums <em><strong>and</strong></em> tracks with &quot;abacab&quot; included in their name.</p>
+     * @param type <p>A comma-separated list of item types to search across.<br>Valid types are: <code>album</code>, <code>artist</code>, <code>playlist</code>, <code>track</code>, <code>show</code> and <code>episode</code>.<br>Search results include hits from all the specified item types.<br>For example: <code>q=name:abacab&amp;type=album,track</code> returns both albums <em><strong>and</strong></em> tracks with &quot;abacab&quot; included in their name.</p>
      */
     public SearchRequest(ApiClient apiClient, String q, String type) {
         this.apiClient = apiClient;
@@ -88,7 +91,7 @@ public class SearchRequest {
     }
 
     /**
-     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a> or the string <code>from_token</code>.<br>If a country code is specified, only content that is playable in that market is returned.<br><strong>Note</strong> :</p><ul><li>Playlist results are not affected by the market parameter.</li><li>If market is set to <code>from_token</code>, and a valid access token is specified in the request header, only content playable in the country associated with the user account, is returned.</li><li>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>. A user must grant access to the <code>user-read-private</code> scope prior to when the access token is issued.</li></ul>
+     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only episodes that are available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
      */
     public SearchRequest market(String market) {
         this.request.addQueryParameter("market", String.valueOf(market));

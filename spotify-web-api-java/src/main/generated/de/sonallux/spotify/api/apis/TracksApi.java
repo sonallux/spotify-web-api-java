@@ -44,7 +44,7 @@ public class TracksApi {
     /**
      * <h3>Get Several Tracks</h3>
      * <p>Get Spotify catalog information for multiple tracks based on their Spotify IDs.</p>
-     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the tracks. Maximum: 50 IDs.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M</code>. Maximum: 50 IDs.</p>
      * @return a {@link GetSeveralTracksRequest} object to build and execute the request
      */
     public GetSeveralTracksRequest getSeveralTracks(String ids) {

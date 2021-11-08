@@ -20,7 +20,7 @@ public class GetArtistsAlbumsRequest {
     /**
      * <h3>Get an Artist's Albums request</h3>
      * @param apiClient <p>The API client</p>
-     * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> for the artist.</p>
+     * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the artist.</p>
      */
     public GetArtistsAlbumsRequest(ApiClient apiClient, String id) {
         this.apiClient = apiClient;
@@ -30,7 +30,7 @@ public class GetArtistsAlbumsRequest {
     }
 
     /**
-     * <p>A comma-separated list of keywords that will be used to filter the response. If not supplied, all album types will be returned. Valid values are:</p><ul><li><code>album</code></li><li><code>single</code></li><li><code>appears_on</code></li><li><code>compilation</code><br>For example: <code>include_groups=album,single</code>.</li></ul>
+     * <p>A comma-separated list of keywords that will be used to filter the response. If not supplied, all album types will be returned.<br>Valid values are:</p><ul><li><code>album</code></li><li><code>single</code></li><li><code>appears_on</code></li><li><code>compilation</code><br>For example: <code>include_groups=album,single</code>.</li></ul>
      */
     public GetArtistsAlbumsRequest includeGroups(String includeGroups) {
         this.request.addQueryParameter("include_groups", String.valueOf(includeGroups));
@@ -38,7 +38,7 @@ public class GetArtistsAlbumsRequest {
     }
 
     /**
-     * <p>Synonym for <code>country</code>. An <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a> or the string <code>from_token</code>.<br>Supply this parameter to limit the response to one particular geographical market. For example, for albums available in Sweden: <code>market=SE</code>.<br><em>If not given, results will be returned for all markets and you are likely to get duplicate results per album, one for each market in which the album is available!</em></p>
+     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only episodes that are available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
      */
     public GetArtistsAlbumsRequest market(String market) {
         this.request.addQueryParameter("market", String.valueOf(market));
@@ -46,7 +46,7 @@ public class GetArtistsAlbumsRequest {
     }
 
     /**
-     * <p>The number of album objects to return. Default: 20. Minimum: 1. Maximum: 50. For example: <code>limit=2</code></p>
+     * <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
      */
     public GetArtistsAlbumsRequest limit(int limit) {
         this.request.addQueryParameter("limit", String.valueOf(limit));
@@ -54,7 +54,7 @@ public class GetArtistsAlbumsRequest {
     }
 
     /**
-     * <p>The index of the first album to return. Default: 0 (i.e., the first album). Use with <code>limit</code> to get the next set of albums.</p>
+     * <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
      */
     public GetArtistsAlbumsRequest offset(int offset) {
         this.request.addQueryParameter("offset", String.valueOf(offset));

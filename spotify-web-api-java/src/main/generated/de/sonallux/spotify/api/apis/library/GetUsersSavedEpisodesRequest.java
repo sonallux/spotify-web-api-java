@@ -33,7 +33,7 @@ public class GetUsersSavedEpisodesRequest {
     }
 
     /**
-     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only episodes that are available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em>Note: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
+     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only episodes that are available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
      */
     public GetUsersSavedEpisodesRequest market(String market) {
         this.request.addQueryParameter("market", String.valueOf(market));
@@ -41,7 +41,7 @@ public class GetUsersSavedEpisodesRequest {
     }
 
     /**
-     * <p>The maximum number of objects to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
      */
     public GetUsersSavedEpisodesRequest limit(int limit) {
         this.request.addQueryParameter("limit", String.valueOf(limit));
@@ -49,7 +49,7 @@ public class GetUsersSavedEpisodesRequest {
     }
 
     /**
-     * <p>The index of the first object to return. Default: 0 (i.e., the first object). Use with <code>limit</code> to get the next set of objects.</p>
+     * <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
      */
     public GetUsersSavedEpisodesRequest offset(int offset) {
         this.request.addQueryParameter("offset", String.valueOf(offset));

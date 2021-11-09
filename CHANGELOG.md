@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update to spotify-web-api-core `2021.10.17`
   - Mark `market` parameter in "Get Artist's Top Tracks" endpoint as optional
   - Mark `market` parameter in "Get User's Currently Playing Track" endpoint as optional
+- Update to okhttp `4.9.2`
+- Update to jackson `2.12.5`
 
 ## [2.3.0]
 - Update to spotify-web-api-core `2021.8.23`
@@ -17,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Mark `market` parameter in "Get Playlist's Items" endpoint as optional
   - Make "Upload a Custom Playlist Cover Image" endpoint actually usable
   - Make type of `tracks` parameter in "Remove Items from a Playlist" endpoint more accurate
+- Update to jackson `2.12.4`
 
 ## [2.2.0]
 - Update to spotify-web-api-core `2021.6.18`

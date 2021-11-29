@@ -20,7 +20,7 @@
     <url>https://github.com/sonallux/spotify-web-api-java</url>
 
     <properties>
-        <okhttp.version>4.9.2</okhttp.version>
+        <okhttp.version>4.9.3</okhttp.version>
         <jackson.version>2.12.5</jackson.version>
 
         <moditect.module.name>de.sonallux.spotify.api</moditect.module.name>

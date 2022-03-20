@@ -7,20 +7,18 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-new-releases">Get All New Releases request</a>
+ * Get New Releases request
  *
  * <h3>Response</h3>
- * <p>On success, the HTTP status code in the response header is <code>200</code> OK and the response body contains a <code>message</code> and an<code>albums</code> object. The <code>albums</code> object contains an array of simplified <a href="https://developer.spotify.com/documentation/web-api/reference/#object-simplifiedalbumobject">album objects</a> (wrapped in a <a href="https://developer.spotify.com/documentation/web-api/reference/#object-pagingobject">paging object</a>) in JSON format. On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a> and the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>.</p>
- * <p>Once you have retrieved the list, you can use <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-an-albums-tracks">Get an Album's Tracks</a> to drill down further.</p>
- * <p>The results are returned in an order reflected within the Spotify clients, and therefore may not be ordered by date.</p>
+ * <p>A paged set of albums</p>
  */
 public class GetNewReleasesRequest {
-    private static final TypeReference<NewReleases> RESPONSE_TYPE = new TypeReference<>() {};
+    private static final TypeReference<PagedAlbums> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;
     private final Request request;
 
     /**
-     * <h3>Get All New Releases request</h3>
+     * <h3>Get New Releases request</h3>
      * @param apiClient <p>The API client</p>
      */
     public GetNewReleasesRequest(ApiClient apiClient) {
@@ -56,7 +54,7 @@ public class GetNewReleasesRequest {
     /**
      * Build the request into an executable call
      */
-    public ApiCall<NewReleases> build() {
+    public ApiCall<PagedAlbums> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);
     }
 }

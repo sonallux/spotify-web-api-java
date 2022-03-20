@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#object-trackobject">TrackObject</a>
+ * TrackObject
  */
 @Getter
 @Setter
@@ -48,11 +48,11 @@ public class Track extends BaseObject {
      */
     public boolean isLocal;
     /**
-     * <p>Part of the response when <a href="https://developer.spotify.com/documentation/general/guides/track-relinking-guide/">Track Relinking</a> is applied. If <code>true</code>, the track is playable in the given market. Otherwise <code>false</code>.</p>
+     * <p>Part of the response when <a href="/documentation/general/guides/track-relinking-guide/">Track Relinking</a> is applied. If <code>true</code>, the track is playable in the given market. Otherwise <code>false</code>.</p>
      */
     public boolean isPlayable;
     /**
-     * <p>Part of the response when <a href="https://developer.spotify.com/documentation/general/guides/track-relinking-guide/">Track Relinking</a> is applied, and the requested track has been replaced with different track. The track in the <code>linked_from</code> object contains information about the originally requested track.</p>
+     * <p>Part of the response when <a href="/documentation/general/guides/track-relinking-guide/">Track Relinking</a> is applied, and the requested track has been replaced with different track. The track in the <code>linked_from</code> object contains information about the originally requested track.</p>
      */
     public LinkedTrack linkedFrom;
     /**
@@ -60,9 +60,7 @@ public class Track extends BaseObject {
      */
     public String name;
     /**
-     * <p>The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.<br>
-     * The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.<br>
-     * Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. <em><strong>Note</strong>: the popularity value may lag actual popularity by a few days: the value is not updated in real time.</em></p>
+     * <p>The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.<br>The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.<br>Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. <em><strong>Note</strong>: the popularity value may lag actual popularity by a few days: the value is not updated in real time.</em></p>
      */
     public int popularity;
     /**
@@ -70,7 +68,8 @@ public class Track extends BaseObject {
      */
     public String previewUrl;
     /**
-     * <p>Included in the response when a content restriction is applied. See <a href="https://developer.spotify.com/documentation/web-api/reference/#object-trackrestrictionobject">Restriction Object</a> for more details.</p>
+     * <p>Included in the response when a content restriction is applied.
+     * See <a href="/documentation/web-api/reference/#object-trackrestrictionobject">Restriction Object</a> for more details.</p>
      */
     public TrackRestriction restrictions;
     /**

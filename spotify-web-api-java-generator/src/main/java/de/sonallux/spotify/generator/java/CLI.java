@@ -1,8 +1,8 @@
 package de.sonallux.spotify.generator.java;
 
-import de.sonallux.spotify.core.SpotifyWebApiUtils;
-import de.sonallux.spotify.core.model.SpotifyWebApi;
 import de.sonallux.spotify.generator.java.util.JavaPackage;
+import io.swagger.v3.parser.OpenAPIV3Parser;
+import io.swagger.v3.parser.core.models.ParseOptions;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.IVersionProvider;
@@ -20,8 +20,8 @@ import java.util.stream.Stream;
 @Command(versionProvider = CLI.ManifestVersionProvider.class)
 public class CLI implements Runnable {
 
-    @Option(names = {"-f", "--file"}, description = "The web API documentation file to a generate a Java wrapper for")
-    Path apiDocumentationFile;
+    @Option(names = {"-f", "--file"}, description = "The OpenAPI definition to a generate a Java wrapper for")
+    Path openApiFile;
 
     @Option(names = {"-o", "--output"}, required = true, description = "The folder to output the generated files to")
     Path outputFolder;
@@ -40,8 +40,6 @@ public class CLI implements Runnable {
 
     @Override
     public void run() {
-        var apiDocumentation = readSpotifyWebApi();
-
         try {
             if (hasFiles(outputFolder)) {
                 if (shouldClean) {
@@ -53,7 +51,18 @@ public class CLI implements Runnable {
 
             var javaPackage = JavaPackage.fromPackage(packageName);
 
-            new JavaGenerator().generate(apiDocumentation, outputFolder, javaPackage);
+            var openApiAsString = Files.readString(openApiFile);
+            var parseOptions = new ParseOptions();
+            parseOptions.setResolve(false);
+            parseOptions.setResolveFully(false);
+            parseOptions.setResolveCombinators(false);
+            var parseResult = new OpenAPIV3Parser().readContents(openApiAsString, null, parseOptions);
+            if (!parseResult.getMessages().isEmpty()) {
+                parseResult.getMessages().forEach(System.err::println);
+                System.exit(1);
+            }
+
+            new JavaGenerator().generate(parseResult.getOpenAPI(), outputFolder, javaPackage);
         } catch (IOException e) {
             System.err.println("Failed to write generated files: " + e.getMessage());
             System.exit(1);
@@ -72,19 +81,6 @@ public class CLI implements Runnable {
             walk.sorted(Comparator.reverseOrder())
                     .map(Path::toFile)
                     .forEach(File::delete);
-        }
-    }
-
-    private SpotifyWebApi readSpotifyWebApi() {
-        try {
-            if (apiDocumentationFile == null) {
-                return SpotifyWebApiUtils.load();
-            }
-            return SpotifyWebApiUtils.load(apiDocumentationFile);
-        } catch (IOException e) {
-            System.err.println("Failed to read web API documentation file: " + e.getMessage());
-            System.exit(1);
-            return null;
         }
     }
 

@@ -9,6 +9,6 @@ module de.sonallux.spotify.generator.java {
     requires spotify.web.api.core;
 
     exports de.sonallux.spotify.generator.java;
-    exports de.sonallux.spotify.generator.java.templates;
+    exports de.sonallux.spotify.generator.java.generators;
     exports de.sonallux.spotify.generator.java.util;
 }

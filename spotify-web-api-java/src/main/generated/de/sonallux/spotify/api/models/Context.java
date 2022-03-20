@@ -3,7 +3,7 @@ package de.sonallux.spotify.api.models;
 import lombok.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#object-contextobject">ContextObject</a>
+ * ContextObject
  */
 @Getter
 @Setter
@@ -22,7 +22,7 @@ public class Context {
      */
     public String type;
     /**
-     * <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify URI</a> for the context.</p>
+     * <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify URI</a> for the context.</p>
      */
     public String uri;
 }

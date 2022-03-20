@@ -7,16 +7,13 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-the-users-currently-playing-track">Get the User's Currently Playing Track request</a>
+ * Get Currently Playing Track request
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-read-currently-playing</code>
  *
  * <h3>Response</h3>
- * <p>A successful request will return a <code>200 OK</code> response code with a json payload that contains information about the currently playing track or episode and its context (see below). The information returned is for the last known state, which means an inactive device could be returned if it was the last one to execute playback.</p>
- * <p>When no available devices are found, the request will return a <code>200 OK</code> response but with no data populated.</p>
- * <p>When no track is currently playing, the request will return a <code>204 NO CONTENT</code> response with no payload.</p>
- * <p>If private session is enabled the response will be a <code>204 NO CONTENT</code> with an empty payload.</p>
+ * <p>Information about the currently playing track</p>
  */
 public class GetUsersCurrentlyPlayingTrackRequest {
     private static final TypeReference<CurrentlyPlaying> RESPONSE_TYPE = new TypeReference<>() {};
@@ -24,7 +21,7 @@ public class GetUsersCurrentlyPlayingTrackRequest {
     private final Request request;
 
     /**
-     * <h3>Get the User's Currently Playing Track request</h3>
+     * <h3>Get Currently Playing Track request</h3>
      * @param apiClient <p>The API client</p>
      */
     public GetUsersCurrentlyPlayingTrackRequest(ApiClient apiClient) {
@@ -35,7 +32,7 @@ public class GetUsersCurrentlyPlayingTrackRequest {
     }
 
     /**
-     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only episodes that are available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
+     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only content that is available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
      */
     public GetUsersCurrentlyPlayingTrackRequest market(String market) {
         this.request.addQueryParameter("market", String.valueOf(market));

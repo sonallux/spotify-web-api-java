@@ -7,15 +7,13 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-start-a-users-playback">Start/Resume a User's Playback request</a>
+ * Start/Resume Playback request
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-modify-playback-state</code>
  *
  * <h3>Response</h3>
- * <p>A completed request will return a <code>204 NO CONTENT</code> response code, and then issue the command to the player. Due to the asynchronous nature of the issuance of the command, you should use the <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-information-about-the-users-current-playback">Get Information About The User's Current Playback</a> endpoint to check that your issued command was handled correctly by the player.</p>
- * <p>If the device is not found, the request will return <code>404 NOT FOUND</code> response code.</p>
- * <p>If the user making the request is non-premium, a <code>403 FORBIDDEN</code> response code will be returned.</p>
+ * <p>Playback started</p>
  */
 public class StartUsersPlaybackRequest {
     private static final TypeReference<Void> RESPONSE_TYPE = new TypeReference<>() {};
@@ -23,7 +21,7 @@ public class StartUsersPlaybackRequest {
     private final Request request;
 
     /**
-     * <h3>Start/Resume a User's Playback request</h3>
+     * <h3>Start/Resume Playback request</h3>
      * @param apiClient <p>The API client</p>
      */
     public StartUsersPlaybackRequest(ApiClient apiClient) {
@@ -57,7 +55,7 @@ public class StartUsersPlaybackRequest {
     }
 
     /**
-     * <p>Indicates from where in the context playback should start. Only available when context_uri corresponds to an album or playlist object, or when the uris parameter is used. “position” is zero based and can’t be negative. Example: &quot;offset&quot;: {&quot;position&quot;: 5} “uri” is a string representing the uri of the item to start at. Example: &quot;offset&quot;: {&quot;uri&quot;: &quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot;}</p>
+     * <p>Indicates from where in the context playback should start. Only available when &quot;context_uri&quot; corresponds to an album or playlist object, or when the uris parameter is used. &quot;position&quot; is zero based and can't be negative. Example: &quot;offset&quot;: {&quot;position&quot;: 5} &quot;uri&quot; is a string representing the uri of the item to start at. Example: &quot;offset&quot;: {&quot;uri&quot;: &quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot;}</p>
      */
     public StartUsersPlaybackRequest offset(java.util.Map<String, Object> offset) {
         this.request.addBodyParameter("offset", offset);

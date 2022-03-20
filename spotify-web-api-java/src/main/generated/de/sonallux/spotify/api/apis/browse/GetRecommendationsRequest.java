@@ -7,10 +7,10 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-recommendations">Get Recommendations request</a>
+ * Get Recommendations request
  *
  * <h3>Response</h3>
- * <p>On success, the HTTP status code in the response header is <code>200 OK</code> and the response body contains a recommendations response object in JSON format.</p>
+ * <p>A set of recommendations</p>
  */
 public class GetRecommendationsRequest {
     private static final TypeReference<Recommendations> RESPONSE_TYPE = new TypeReference<>() {};
@@ -20,9 +20,9 @@ public class GetRecommendationsRequest {
     /**
      * <h3>Get Recommendations request</h3>
      * @param apiClient <p>The API client</p>
-     * @param seedArtists <p>A comma separated list of <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for seed artists. Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
-     * @param seedGenres <p>A comma separated list of any genres in the set of <a href="#available-genre-seeds">available genre seeds</a>. Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
-     * @param seedTracks <p>A comma separated list of <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for a seed track. Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
+     * @param seedArtists <p>A comma separated list of <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for seed artists.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
+     * @param seedGenres <p>A comma separated list of any genres in the set of <a href="#available-genre-seeds">available genre seeds</a>.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
+     * @param seedTracks <p>A comma separated list of <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for a seed track.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
      */
     public GetRecommendationsRequest(ApiClient apiClient, String seedArtists, String seedGenres, String seedTracks) {
         this.apiClient = apiClient;
@@ -42,7 +42,7 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only episodes that are available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
+     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only content that is available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
      */
     public GetRecommendationsRequest market(String market) {
         this.request.addQueryParameter("market", String.valueOf(market));
@@ -50,17 +50,17 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
-    public GetRecommendationsRequest minAcousticness(Number minAcousticness) {
+    public GetRecommendationsRequest minAcousticness(float minAcousticness) {
         this.request.addQueryParameter("min_acousticness", String.valueOf(minAcousticness));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
-    public GetRecommendationsRequest maxAcousticness(Number maxAcousticness) {
+    public GetRecommendationsRequest maxAcousticness(float maxAcousticness) {
         this.request.addQueryParameter("max_acousticness", String.valueOf(maxAcousticness));
         return this;
     }
@@ -68,23 +68,23 @@ public class GetRecommendationsRequest {
     /**
      * <p>For each of the tunable track attributes (below) a target value may be provided. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request <code>target_energy=0.6</code> and <code>target_danceability=0.8</code>. All target values will be weighed equally in ranking results.</p>
      */
-    public GetRecommendationsRequest targetAcousticness(Number targetAcousticness) {
+    public GetRecommendationsRequest targetAcousticness(float targetAcousticness) {
         this.request.addQueryParameter("target_acousticness", String.valueOf(targetAcousticness));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
-    public GetRecommendationsRequest minDanceability(Number minDanceability) {
+    public GetRecommendationsRequest minDanceability(float minDanceability) {
         this.request.addQueryParameter("min_danceability", String.valueOf(minDanceability));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
-    public GetRecommendationsRequest maxDanceability(Number maxDanceability) {
+    public GetRecommendationsRequest maxDanceability(float maxDanceability) {
         this.request.addQueryParameter("max_danceability", String.valueOf(maxDanceability));
         return this;
     }
@@ -92,13 +92,13 @@ public class GetRecommendationsRequest {
     /**
      * <p>For each of the tunable track attributes (below) a target value may be provided. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request <code>target_energy=0.6</code> and <code>target_danceability=0.8</code>. All target values will be weighed equally in ranking results.</p>
      */
-    public GetRecommendationsRequest targetDanceability(Number targetDanceability) {
+    public GetRecommendationsRequest targetDanceability(float targetDanceability) {
         this.request.addQueryParameter("target_danceability", String.valueOf(targetDanceability));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
     public GetRecommendationsRequest minDurationMs(int minDurationMs) {
         this.request.addQueryParameter("min_duration_ms", String.valueOf(minDurationMs));
@@ -106,7 +106,7 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
     public GetRecommendationsRequest maxDurationMs(int maxDurationMs) {
         this.request.addQueryParameter("max_duration_ms", String.valueOf(maxDurationMs));
@@ -122,17 +122,17 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
-    public GetRecommendationsRequest minEnergy(Number minEnergy) {
+    public GetRecommendationsRequest minEnergy(float minEnergy) {
         this.request.addQueryParameter("min_energy", String.valueOf(minEnergy));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
-    public GetRecommendationsRequest maxEnergy(Number maxEnergy) {
+    public GetRecommendationsRequest maxEnergy(float maxEnergy) {
         this.request.addQueryParameter("max_energy", String.valueOf(maxEnergy));
         return this;
     }
@@ -140,23 +140,23 @@ public class GetRecommendationsRequest {
     /**
      * <p>For each of the tunable track attributes (below) a target value may be provided. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request <code>target_energy=0.6</code> and <code>target_danceability=0.8</code>. All target values will be weighed equally in ranking results.</p>
      */
-    public GetRecommendationsRequest targetEnergy(Number targetEnergy) {
+    public GetRecommendationsRequest targetEnergy(float targetEnergy) {
         this.request.addQueryParameter("target_energy", String.valueOf(targetEnergy));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
-    public GetRecommendationsRequest minInstrumentalness(Number minInstrumentalness) {
+    public GetRecommendationsRequest minInstrumentalness(float minInstrumentalness) {
         this.request.addQueryParameter("min_instrumentalness", String.valueOf(minInstrumentalness));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
-    public GetRecommendationsRequest maxInstrumentalness(Number maxInstrumentalness) {
+    public GetRecommendationsRequest maxInstrumentalness(float maxInstrumentalness) {
         this.request.addQueryParameter("max_instrumentalness", String.valueOf(maxInstrumentalness));
         return this;
     }
@@ -164,13 +164,13 @@ public class GetRecommendationsRequest {
     /**
      * <p>For each of the tunable track attributes (below) a target value may be provided. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request <code>target_energy=0.6</code> and <code>target_danceability=0.8</code>. All target values will be weighed equally in ranking results.</p>
      */
-    public GetRecommendationsRequest targetInstrumentalness(Number targetInstrumentalness) {
+    public GetRecommendationsRequest targetInstrumentalness(float targetInstrumentalness) {
         this.request.addQueryParameter("target_instrumentalness", String.valueOf(targetInstrumentalness));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
     public GetRecommendationsRequest minKey(int minKey) {
         this.request.addQueryParameter("min_key", String.valueOf(minKey));
@@ -178,7 +178,7 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
     public GetRecommendationsRequest maxKey(int maxKey) {
         this.request.addQueryParameter("max_key", String.valueOf(maxKey));
@@ -194,17 +194,17 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
-    public GetRecommendationsRequest minLiveness(Number minLiveness) {
+    public GetRecommendationsRequest minLiveness(float minLiveness) {
         this.request.addQueryParameter("min_liveness", String.valueOf(minLiveness));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
-    public GetRecommendationsRequest maxLiveness(Number maxLiveness) {
+    public GetRecommendationsRequest maxLiveness(float maxLiveness) {
         this.request.addQueryParameter("max_liveness", String.valueOf(maxLiveness));
         return this;
     }
@@ -212,23 +212,23 @@ public class GetRecommendationsRequest {
     /**
      * <p>For each of the tunable track attributes (below) a target value may be provided. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request <code>target_energy=0.6</code> and <code>target_danceability=0.8</code>. All target values will be weighed equally in ranking results.</p>
      */
-    public GetRecommendationsRequest targetLiveness(Number targetLiveness) {
+    public GetRecommendationsRequest targetLiveness(float targetLiveness) {
         this.request.addQueryParameter("target_liveness", String.valueOf(targetLiveness));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
-    public GetRecommendationsRequest minLoudness(Number minLoudness) {
+    public GetRecommendationsRequest minLoudness(float minLoudness) {
         this.request.addQueryParameter("min_loudness", String.valueOf(minLoudness));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
-    public GetRecommendationsRequest maxLoudness(Number maxLoudness) {
+    public GetRecommendationsRequest maxLoudness(float maxLoudness) {
         this.request.addQueryParameter("max_loudness", String.valueOf(maxLoudness));
         return this;
     }
@@ -236,13 +236,13 @@ public class GetRecommendationsRequest {
     /**
      * <p>For each of the tunable track attributes (below) a target value may be provided. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request <code>target_energy=0.6</code> and <code>target_danceability=0.8</code>. All target values will be weighed equally in ranking results.</p>
      */
-    public GetRecommendationsRequest targetLoudness(Number targetLoudness) {
+    public GetRecommendationsRequest targetLoudness(float targetLoudness) {
         this.request.addQueryParameter("target_loudness", String.valueOf(targetLoudness));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
     public GetRecommendationsRequest minMode(int minMode) {
         this.request.addQueryParameter("min_mode", String.valueOf(minMode));
@@ -250,7 +250,7 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
     public GetRecommendationsRequest maxMode(int maxMode) {
         this.request.addQueryParameter("max_mode", String.valueOf(maxMode));
@@ -266,7 +266,7 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
     public GetRecommendationsRequest minPopularity(int minPopularity) {
         this.request.addQueryParameter("min_popularity", String.valueOf(minPopularity));
@@ -274,7 +274,7 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
     public GetRecommendationsRequest maxPopularity(int maxPopularity) {
         this.request.addQueryParameter("max_popularity", String.valueOf(maxPopularity));
@@ -290,17 +290,17 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
-    public GetRecommendationsRequest minSpeechiness(Number minSpeechiness) {
+    public GetRecommendationsRequest minSpeechiness(float minSpeechiness) {
         this.request.addQueryParameter("min_speechiness", String.valueOf(minSpeechiness));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
-    public GetRecommendationsRequest maxSpeechiness(Number maxSpeechiness) {
+    public GetRecommendationsRequest maxSpeechiness(float maxSpeechiness) {
         this.request.addQueryParameter("max_speechiness", String.valueOf(maxSpeechiness));
         return this;
     }
@@ -308,23 +308,23 @@ public class GetRecommendationsRequest {
     /**
      * <p>For each of the tunable track attributes (below) a target value may be provided. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request <code>target_energy=0.6</code> and <code>target_danceability=0.8</code>. All target values will be weighed equally in ranking results.</p>
      */
-    public GetRecommendationsRequest targetSpeechiness(Number targetSpeechiness) {
+    public GetRecommendationsRequest targetSpeechiness(float targetSpeechiness) {
         this.request.addQueryParameter("target_speechiness", String.valueOf(targetSpeechiness));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
-    public GetRecommendationsRequest minTempo(Number minTempo) {
+    public GetRecommendationsRequest minTempo(float minTempo) {
         this.request.addQueryParameter("min_tempo", String.valueOf(minTempo));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
-    public GetRecommendationsRequest maxTempo(Number maxTempo) {
+    public GetRecommendationsRequest maxTempo(float maxTempo) {
         this.request.addQueryParameter("max_tempo", String.valueOf(maxTempo));
         return this;
     }
@@ -332,13 +332,13 @@ public class GetRecommendationsRequest {
     /**
      * <p>Target tempo (BPM)</p>
      */
-    public GetRecommendationsRequest targetTempo(Number targetTempo) {
+    public GetRecommendationsRequest targetTempo(float targetTempo) {
         this.request.addQueryParameter("target_tempo", String.valueOf(targetTempo));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
     public GetRecommendationsRequest minTimeSignature(int minTimeSignature) {
         this.request.addQueryParameter("min_time_signature", String.valueOf(minTimeSignature));
@@ -346,7 +346,7 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
     public GetRecommendationsRequest maxTimeSignature(int maxTimeSignature) {
         this.request.addQueryParameter("max_time_signature", String.valueOf(maxTimeSignature));
@@ -362,17 +362,17 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * <p>For each tunable track attribute, a hard floor on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
+     * <p>For each tunable track attribute, a hard floor on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>min_tempo=140</code> would restrict results to only those tracks with a tempo of greater than 140 beats per minute.</p>
      */
-    public GetRecommendationsRequest minValence(Number minValence) {
+    public GetRecommendationsRequest minValence(float minValence) {
         this.request.addQueryParameter("min_valence", String.valueOf(minValence));
         return this;
     }
 
     /**
-     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute's value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
+     * <p>For each tunable track attribute, a hard ceiling on the selected track attribute’s value can be provided. See tunable track attributes below for the list of available options. For example, <code>max_instrumentalness=0.35</code> would filter out most tracks that are likely to be instrumental.</p>
      */
-    public GetRecommendationsRequest maxValence(Number maxValence) {
+    public GetRecommendationsRequest maxValence(float maxValence) {
         this.request.addQueryParameter("max_valence", String.valueOf(maxValence));
         return this;
     }
@@ -380,7 +380,7 @@ public class GetRecommendationsRequest {
     /**
      * <p>For each of the tunable track attributes (below) a target value may be provided. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request <code>target_energy=0.6</code> and <code>target_danceability=0.8</code>. All target values will be weighed equally in ranking results.</p>
      */
-    public GetRecommendationsRequest targetValence(Number targetValence) {
+    public GetRecommendationsRequest targetValence(float targetValence) {
         this.request.addQueryParameter("target_valence", String.valueOf(targetValence));
         return this;
     }

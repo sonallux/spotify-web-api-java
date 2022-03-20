@@ -7,23 +7,21 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-followed">Get User's Followed Artists request</a>
+ * Get Followed Artists request
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-follow-read</code>
  *
  * <h3>Response</h3>
- * <p>On success, the HTTP status code in the response header is <code>200</code> OK and the response body contains an <code>artists</code> object.
- * The <code>artists</code> object in turn contains a <a href="https://developer.spotify.com/documentation/web-api/reference/#object-cursorpagingobject">cursor-based paging object</a> of <a href="https://developer.spotify.com/documentation/web-api/reference/#object-artistobject">Artists</a>.
- * On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a> and the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>.</p>
+ * <p>A paged set of artists</p>
  */
 public class GetFollowedRequest {
-    private static final TypeReference<FollowingArtists> RESPONSE_TYPE = new TypeReference<>() {};
+    private static final TypeReference<CursorPagedArtists> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;
     private final Request request;
 
     /**
-     * <h3>Get User's Followed Artists request</h3>
+     * <h3>Get Followed Artists request</h3>
      * @param apiClient <p>The API client</p>
      * @param type <p>The ID type: currently only <code>artist</code> is supported.</p>
      */
@@ -53,7 +51,7 @@ public class GetFollowedRequest {
     /**
      * Build the request into an executable call
      */
-    public ApiCall<FollowingArtists> build() {
+    public ApiCall<CursorPagedArtists> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);
     }
 }

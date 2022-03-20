@@ -7,20 +7,13 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-upload-custom-playlist-cover">Upload a Custom Playlist Cover Image request</a>
+ * Add Custom Playlist Cover Image request
  *
  * <h3>Required OAuth scopes</h3>
- * <code>playlist-modify-private, playlist-modify-public, ugc-image-upload</code>
- *
- * <h3>Notes</h3>
- * <p>The request should contain a Base64 encoded JPEG image data, maximum payload size is 256 KB.</p>
- * <p><strong>Rate Limiting:</strong> If you get status code <code>429</code>, it means that you have sent too many requests.
- * If this happens, have a look in the <code>Retry-After</code> header, where you will see a number displayed. This is the amount of seconds that you need to wait, before you can retry sending your requests.</p>
+ * <code>ugc-image-upload, playlist-modify-public, playlist-modify-private</code>
  *
  * <h3>Response</h3>
- * <p>If you get status code <code>429</code>, it means that you have sent too many requests.
- * If this happens, have a look in the <code>Retry-After</code> header, where you will see a number displayed.
- * This is the amount of seconds that you need to wait, before you can retry sending your requests.</p>
+ * <p>Image uploaded</p>
  */
 public class UploadCustomPlaylistCoverRequest {
     private static final TypeReference<Void> RESPONSE_TYPE = new TypeReference<>() {};
@@ -28,9 +21,9 @@ public class UploadCustomPlaylistCoverRequest {
     private final Request request;
 
     /**
-     * <h3>Upload a Custom Playlist Cover Image request</h3>
+     * <h3>Add Custom Playlist Cover Image request</h3>
      * @param apiClient <p>The API client</p>
-     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
+     * @param playlistId <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @param base64Image <p>The new cover image of the playlist as a Base64 encoded JPEG image. Maximum payload size is 256KB.</p>
      */
     public UploadCustomPlaylistCoverRequest(ApiClient apiClient, String playlistId, String base64Image) {

@@ -1,0 +1,23 @@
+package {{package}};
+
+/**
+ * <a href="https://developer.spotify.com/documentation/general/guides/scopes">Authorization Scopes</a>
+ */
+public enum {{className}} {
+{{#scopes}}
+    /**
+     * {{description}}
+     */
+    {{enumName}}("{{name}}"){{#last}};{{/last}}{{^last}},{{/last}}
+{{/scopes}}
+
+    private final String scopeName;
+
+    Scope(String scopeName) {
+        this.scopeName = scopeName;
+    }
+
+    public String getName() {
+        return scopeName;
+    }
+}

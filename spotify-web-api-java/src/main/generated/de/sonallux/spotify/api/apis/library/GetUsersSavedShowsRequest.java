@@ -7,15 +7,13 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-users-saved-shows">Get User's Saved Shows request</a>
+ * Get User's Saved Shows request
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-library-read</code>
  *
  * <h3>Response</h3>
- * <p>On success, the HTTP status code in the response header is <code>200</code> OK and the response body contains an array of <a href="https://developer.spotify.com/documentation/web-api/reference/#object-savedshowobject">saved show objects</a> (wrapped in a <a href="https://developer.spotify.com/documentation/web-api/reference/#object-pagingobject">paging object</a>) in JSON format.
- * If the current user has no shows saved, the response will be an empty array. If a show is unavailable in the given <code>market</code> it is filtered out. The <code>total</code> field in the paging object represents the number of all items, filtered or not, and thus might be larger than the actual total number of observable items.
- * On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a> and the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#error-details">error object</a>.</p>
+ * <p>Pages of saved shows</p>
  */
 public class GetUsersSavedShowsRequest {
     private static final TypeReference<Paging<SavedShow>> RESPONSE_TYPE = new TypeReference<>() {};

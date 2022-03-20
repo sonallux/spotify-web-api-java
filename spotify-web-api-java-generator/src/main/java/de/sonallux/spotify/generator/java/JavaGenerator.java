@@ -1,11 +1,9 @@
 package de.sonallux.spotify.generator.java;
 
 import com.github.mustachejava.MustacheFactory;
-import de.sonallux.spotify.core.EndpointSplitter;
-import de.sonallux.spotify.core.SpotifyWebApiObjectUtils;
-import de.sonallux.spotify.core.model.SpotifyWebApi;
-import de.sonallux.spotify.generator.java.templates.*;
+import de.sonallux.spotify.generator.java.generators.*;
 import de.sonallux.spotify.generator.java.util.JavaPackage;
+import io.swagger.v3.oas.models.OpenAPI;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -19,32 +17,24 @@ public class JavaGenerator {
         this.mustacheFactory = new NoEscapingMustacheFactory();
     }
 
-    public void generate(SpotifyWebApi spotifyWebApi, Path outputFolder, JavaPackage javaPackage) throws IOException, GeneratorException {
-        try {
-            EndpointSplitter.splitEndpoints(spotifyWebApi);
-        } catch (IllegalArgumentException e) {
-            throw new GeneratorException("Failed to split endpoints", e);
-        }
+    public void generate(OpenAPI openAPI, Path outputDirectory, JavaPackage javaPackage) throws IOException, GeneratorException {
+        var generationContext = new GenerationContext(this.mustacheFactory, openAPI, javaPackage, outputDirectory);
 
-        var baseObjectTemplate = new BaseObjectTemplate().loadTemplate(this.mustacheFactory);
-        baseObjectTemplate.generate(SpotifyWebApiObjectUtils.SPOTIFY_BASE_OBJECT, outputFolder, javaPackage);
+        new BaseObjectGenerator(generationContext).generateBaseObject();
 
-        var objectTemplate = new ObjectTemplate().loadTemplate(this.mustacheFactory);
-        for (var object : spotifyWebApi.getObjectList()) {
-            objectTemplate.generate(object, outputFolder, javaPackage);
-        }
+        var objectGenerator = new ObjectGenerator(generationContext);
+        objectGenerator.generateAllObjects();
 
-        var apiTemplate = new ApiTemplate().loadTemplate(this.mustacheFactory);
-        for (var category : spotifyWebApi.getCategoryList()) {
-            apiTemplate.generate(category, outputFolder, javaPackage);
-        }
+        var objectModelCreator = new ObjectModelCreator(generationContext, objectGenerator::getObjectNameForResponse);
+        var spotifyWebApi = objectModelCreator.createSpotifyWebApiModel(openAPI);
 
-        new SpotifyWebApiTemplate()
-                .loadTemplate(this.mustacheFactory)
-                .generate(spotifyWebApi, outputFolder, javaPackage);
+        EndpointSplitter.splitEndpoints(spotifyWebApi);
 
-        new ScopeTemplate()
-                .loadTemplate(this.mustacheFactory)
-                .generate(spotifyWebApi.getScopes(), outputFolder, javaPackage);
+        var apiTemplate = new ApiGenerator(generationContext, objectGenerator::getObjectNameForResponse);
+        apiTemplate.generateEndpoints(spotifyWebApi);
+
+        new SpotifyWebApiGenerator(generationContext).generate();
+
+        new ScopeGenerator(generationContext).generate();
     }
 }

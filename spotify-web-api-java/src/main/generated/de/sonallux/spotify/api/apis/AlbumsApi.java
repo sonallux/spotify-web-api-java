@@ -5,16 +5,16 @@ import de.sonallux.spotify.api.apis.albums.*;
 import lombok.RequiredArgsConstructor;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#category-albums">Albums API</a>
+ * Albums
  */
 @RequiredArgsConstructor
 public class AlbumsApi {
     private final ApiClient apiClient;
 
     /**
-     * <h3>Get an Album</h3>
+     * <h3>Get Album</h3>
      * <p>Get Spotify catalog information for a single album.</p>
-     * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the album.</p>
+     * @param id <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the album.</p>
      * @return a {@link GetAlbumRequest} object to build and execute the request
      */
     public GetAlbumRequest getAlbum(String id) {
@@ -22,9 +22,9 @@ public class AlbumsApi {
     }
 
     /**
-     * <h3>Get an Album's Tracks</h3>
-     * <p>Get Spotify catalog information about an album's tracks. Optional parameters can be used to limit the number of tracks returned.</p>
-     * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the album.</p>
+     * <h3>Get Album Tracks</h3>
+     * <p>Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.</p>
+     * @param id <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the album.</p>
      * @return a {@link GetAlbumsTracksRequest} object to build and execute the request
      */
     public GetAlbumsTracksRequest getAlbumsTracks(String id) {
@@ -32,9 +32,9 @@ public class AlbumsApi {
     }
 
     /**
-     * <h3>Get Multiple Albums</h3>
+     * <h3>Get Several Albums</h3>
      * <p>Get Spotify catalog information for multiple albums identified by their Spotify IDs.</p>
-     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the albums. Maximum: 20 IDs.</p>
+     * @param ids <p>A comma-separated list of the <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the albums. Maximum: 20 IDs.</p>
      * @return a {@link GetMultipleAlbumsRequest} object to build and execute the request
      */
     public GetMultipleAlbumsRequest getMultipleAlbums(String ids) {

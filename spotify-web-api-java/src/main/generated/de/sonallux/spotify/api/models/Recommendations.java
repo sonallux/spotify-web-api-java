@@ -3,18 +3,18 @@ package de.sonallux.spotify.api.models;
 import lombok.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#object-recommendationsobject">RecommendationsObject</a>
+ * RecommendationsObject
  */
 @Getter
 @Setter
 @NoArgsConstructor
 public class Recommendations {
     /**
-     * <p>An array of <a href="https://developer.spotify.com/documentation/web-api/reference/#object-recommendationseedobject">recommendation seed objects</a>.</p>
+     * <p>An array of recommendation seed objects.</p>
      */
     public java.util.List<RecommendationSeed> seeds;
     /**
-     * <p>An array of <a href="https://developer.spotify.com/documentation/web-api/reference/#object-trackobject">track object</a> ordered according to the parameters supplied.</p>
+     * <p>An array of track objects ordered according to the parameters supplied.</p>
      */
     public java.util.List<Track> tracks;
 }

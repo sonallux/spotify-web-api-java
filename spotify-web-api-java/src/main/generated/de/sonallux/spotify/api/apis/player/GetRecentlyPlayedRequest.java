@@ -7,14 +7,13 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-recently-played">Get Current User's Recently Played Tracks request</a>
+ * Get Recently Played Tracks request
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-read-recently-played</code>
  *
  * <h3>Response</h3>
- * <p>On success, the HTTP status code in the response header is <code>200</code> OK and the response body contains an array of <a href="#play-history-object">play history objects</a> (wrapped in a <a href="#cursor-based-paging-object">cursor-based paging object</a>) in JSON format. The play history items each contain the context the track was played from (e.g. playlist, album), the date and time the track was played, and a <a href="https://developer.spotify.com/documentation/web-api/reference/#object-simplifiedtrackobject">track object (simplified)</a>. On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a> and the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>.</p>
- * <p>If private session is enabled the response will be a <code>204 NO CONTENT</code> with an empty payload.</p>
+ * <p>Pages of PlayHistory objects</p>
  */
 public class GetRecentlyPlayedRequest {
     private static final TypeReference<CursorPaging<PlayHistory>> RESPONSE_TYPE = new TypeReference<>() {};
@@ -22,7 +21,7 @@ public class GetRecentlyPlayedRequest {
     private final Request request;
 
     /**
-     * <h3>Get Current User's Recently Played Tracks request</h3>
+     * <h3>Get Recently Played Tracks request</h3>
      * @param apiClient <p>The API client</p>
      */
     public GetRecentlyPlayedRequest(ApiClient apiClient) {
@@ -40,7 +39,7 @@ public class GetRecentlyPlayedRequest {
     }
 
     /**
-     * <p>A Unix timestamp in milliseconds. Returns all items after (but not including) this cursor position. If <code>after</code> is specified, <code>before</code> must not be specified.</p>
+     * <p>A Unix timestamp in milliseconds. Returns all items after (but not including) this cursor position. If <code>after</code> is specified, <code>before</code>must not be specified.</p>
      */
     public GetRecentlyPlayedRequest after(int after) {
         this.request.addQueryParameter("after", String.valueOf(after));

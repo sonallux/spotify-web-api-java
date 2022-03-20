@@ -7,18 +7,18 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-recommendation-genres">Get Recommendation Genres request</a>
+ * Get Available Genre Seeds request
  *
  * <h3>Response</h3>
- * <p>On success, the HTTP status code in the response header is <code>200 OK</code> and the response body contains a recommendations response object in JSON format.</p>
+ * <p>A set of genres</p>
  */
 public class GetRecommendationGenresRequest {
-    private static final TypeReference<GenreSeeds> RESPONSE_TYPE = new TypeReference<>() {};
+    private static final TypeReference<ManyGenres> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;
     private final Request request;
 
     /**
-     * <h3>Get Recommendation Genres request</h3>
+     * <h3>Get Available Genre Seeds request</h3>
      * @param apiClient <p>The API client</p>
      */
     public GetRecommendationGenresRequest(ApiClient apiClient) {
@@ -30,7 +30,7 @@ public class GetRecommendationGenresRequest {
     /**
      * Build the request into an executable call
      */
-    public ApiCall<GenreSeeds> build() {
+    public ApiCall<ManyGenres> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);
     }
 }

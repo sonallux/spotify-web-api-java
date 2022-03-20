@@ -7,19 +7,18 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-featured-playlists">Get All Featured Playlists request</a>
+ * Get Featured Playlists request
  *
  * <h3>Response</h3>
- * <p>On success, the HTTP status code in the response header is <code>200</code> OK and the response body contains a <code>message</code> and a <code>playlists</code> object. The <code>playlists</code> object contains an array of simplified <a href="https://developer.spotify.com/documentation/web-api/reference/#object-simplifiedplaylistobject">playlist objects</a> (wrapped in a <a href="https://developer.spotify.com/documentation/web-api/reference/#object-pagingobject">paging object</a>) in JSON format. On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a> and the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>.</p>
- * <p>Once you have retrieved the list of playlist objects, you can use <a href="https://developer.spotify.com/web-api/get-playlist/">Get a Playlist</a> and <a href="https://developer.spotify.com/web-api/get-playlists-tracks/">Get a Playlist's Tracks</a> to drill down further.</p>
+ * <p>A paged set of playlists</p>
  */
 public class GetFeaturedPlaylistsRequest {
-    private static final TypeReference<FeaturedPlaylist> RESPONSE_TYPE = new TypeReference<>() {};
+    private static final TypeReference<PagedPlaylistsAndMessage> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;
     private final Request request;
 
     /**
-     * <h3>Get All Featured Playlists request</h3>
+     * <h3>Get Featured Playlists request</h3>
      * @param apiClient <p>The API client</p>
      */
     public GetFeaturedPlaylistsRequest(ApiClient apiClient) {
@@ -37,7 +36,7 @@ public class GetFeaturedPlaylistsRequest {
     }
 
     /**
-     * <p>The desired language, consisting of a lowercase <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1 language code</a> and an uppercase <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>, joined by an underscore. For example: <code>es_MX</code>, meaning &quot;Spanish (Mexico)&quot;. Provide this parameter if you want the results returned in a particular language (where available).<br><em><strong>Note</strong> : if <code>locale</code> is not supplied, or if the specified language is not available, all strings will be returned in the Spotify default language (American English). The <code>locale</code> parameter, combined with the <code>country</code> parameter, may give odd results if not carefully matched. For example <code>country=SE&amp;locale=de_DE</code> will return a list of categories relevant to Sweden but as German language strings.</em></p>
+     * <p>The desired language, consisting of a lowercase <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1 language code</a> and an uppercase <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>, joined by an underscore. For example: <code>es_MX</code>, meaning &quot;Spanish (Mexico)&quot;. Provide this parameter if you want the results returned in a particular language (where available). <br><em><strong>Note</strong>: if <code>locale</code> is not supplied, or if the specified language is not available, all strings will be returned in the Spotify default language (American English). The <code>locale</code> parameter, combined with the <code>country</code> parameter, may give odd results if not carefully matched. For example <code>country=SE&amp;locale=de_DE</code> will return a list of categories relevant to Sweden but as German language strings.</em></p>
      */
     public GetFeaturedPlaylistsRequest locale(String locale) {
         this.request.addQueryParameter("locale", String.valueOf(locale));
@@ -71,7 +70,7 @@ public class GetFeaturedPlaylistsRequest {
     /**
      * Build the request into an executable call
      */
-    public ApiCall<FeaturedPlaylist> build() {
+    public ApiCall<PagedPlaylistsAndMessage> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);
     }
 }

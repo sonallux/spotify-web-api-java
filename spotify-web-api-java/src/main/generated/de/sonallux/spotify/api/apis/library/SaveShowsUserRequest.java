@@ -7,13 +7,13 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-save-shows-user">Save Shows for Current User request</a>
+ * Save Shows for Current User request
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-library-modify</code>
  *
  * <h3>Response</h3>
- * <p>On success, the HTTP status code in the response header is <code>200</code> OK. On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a> and the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#error-details">error object</a>. A <code>403 Forbidden</code> while trying to add a show when you do not have the user's authorisation or when the user already has have over 10,000 items saved in library.</p>
+ * <p>Show saved</p>
  */
 public class SaveShowsUserRequest {
     private static final TypeReference<Void> RESPONSE_TYPE = new TypeReference<>() {};

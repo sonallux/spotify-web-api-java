@@ -1,18 +1,23 @@
 package de.sonallux.spotify.generator.java.util;
 
 import com.google.common.base.CaseFormat;
-import de.sonallux.spotify.core.SpotifyWebApiUtils;
-import de.sonallux.spotify.core.model.SpotifyWebApiCategory;
-import de.sonallux.spotify.core.model.SpotifyWebApiEndpoint;
+import de.sonallux.spotify.generator.java.generators.BaseObjectGenerator;
+import io.swagger.v3.oas.models.Operation;
+import io.swagger.v3.oas.models.PathItem;
+import io.swagger.v3.oas.models.media.ArraySchema;
+import io.swagger.v3.oas.models.media.ComposedSchema;
+import io.swagger.v3.oas.models.media.MapSchema;
+import io.swagger.v3.oas.models.media.Schema;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
+import java.util.Optional;
 
 import static com.google.common.base.CaseFormat.LOWER_CAMEL;
 import static com.google.common.base.CaseFormat.LOWER_UNDERSCORE;
-import static de.sonallux.spotify.core.SpotifyWebApiObjectUtils.BASE_OBJECT_NAMES;
 
+@Slf4j
 public class JavaUtils {
     public static final List<String> RESERVED_WORDS = Arrays.asList(
             "abstract", "assert", "boolean", "break", "byte",
@@ -24,10 +29,6 @@ public class JavaUtils {
             "this", "throw", "throws", "transient", "true", "try",
             "var", "void", "volatile", "while"
     );
-
-    public static String getObjectClassName(String type) {
-        return type.replace("Object", "");
-    }
 
     public static String getFileName(String className) {
         return className + ".java";
@@ -43,59 +44,124 @@ public class JavaUtils {
         return fieldName;
     }
 
-    public static String shrinkEndpointId(SpotifyWebApiEndpoint endpoint) {
-        return endpoint.getId()
-                .replace("endpoint-", "")
+    public static String shrinkOperationId(Operation operation) {
+        return operation.getOperationId()
                 .replace("-the-", "-")
                 .replace("-an-", "-")
                 .replace("-a-", "-");
     }
 
-    public static String mapToJavaType(String type) {
-        Matcher matcher;
-        if ("Timestamp".equals(type)) {
-            return "java.time.Instant";
-        } else if ("Object".equals(type)) {
-            return "java.util.Map<String, Object>";
-        } else if ("Void".equals(type)) {
-            return "Void";//java.lang.Void
-        } else if ((matcher = SpotifyWebApiUtils.ARRAY_TYPE_PATTERN.matcher(type)).matches()) {
-            return "java.util.List<" + mapToJavaType(matcher.group(1)) + ">";
-        } else if ((matcher = SpotifyWebApiUtils.PAGING_OBJECT_TYPE_PATTERN.matcher(type)).matches()) {
-            return "Paging<" + mapToJavaType(matcher.group(1)) + ">";
-        } else if ((matcher = SpotifyWebApiUtils.CURSOR_PAGING_OBJECT_TYPE_PATTERN.matcher(type)).matches()) {
-            return "CursorPaging<" + mapToJavaType(matcher.group(1)) + ">";
-        } else if (type.contains(" | ")) {
-            if (Arrays.stream(type.split(" \\| "))
-                .allMatch(BASE_OBJECT_NAMES::contains)) {
-                return "BaseObject";
+    public static Optional<String> getPrimitiveTypeOfSchema(Schema<?> schema) {
+        if ("boolean".equals(schema.getType())) {
+            return Optional.of("boolean");
+        } else if ("integer".equals(schema.getType())) {
+            return Optional.of("int");
+        } else if ("number".equals(schema.getType())) {
+            return Optional.of("float");
+        } else {
+            return getTypeOfSchema(schema);
+        }
+    }
+
+    public static Optional<String> getTypeOfSchema(Schema<?> schema) {
+        if (schema.get$ref() != null) {
+            return Optional.of(OpenApiUtils.getSchemaName(schema.get$ref()).replace("Object", ""));
+        }
+        if ("string".equals(schema.getType())) {
+            if ("date-time".equals(schema.getFormat())) {
+                return Optional.of("java.time.Instant");
             }
-            //Can not be mapped easily, so just use Map
-            return "java.util.Map<String, Object>";
-        } else {
-            return getObjectClassName(type);
+            return Optional.of("String");
         }
-    }
-
-    public static String mapToPrimitiveJavaType(String type) {
-        if ("String".equals(type)) {
-            return "String";
-        } else if ("Boolean".equals(type)) {
-            return "boolean";
-        } else if ("Integer".equals(type)) {
-            return "int";
-        } else if ("Float".equals(type)) {
-            return "float";
-        } else {
-            return mapToJavaType(type);
+        if ("integer".equals(schema.getType())) {
+            return Optional.of("Integer");
         }
+        if ("boolean".equals(schema.getType())) {
+            return Optional.of("Boolean");
+        }
+        if ("number".equals(schema.getType())) {
+            return Optional.of("Float");
+        }
+        if (schema instanceof ArraySchema arraySchema) {
+            return getTypeOfSchema(arraySchema.getItems())
+                    .map(itemsType -> "java.util.List<" + itemsType + ">")
+                    .or(() -> Optional.of("java.util.List<java.util.Map<String, Object>>"));
+        }
+        if (schema instanceof ComposedSchema composedSchema) {
+            var allOf = composedSchema.getAllOf();
+            if (allOf != null) {
+                //if (allOf.size() == 1) {
+                //    return getTypeOfSchema(allOf.get(0));
+                //}
+                if (allOf.size() == 2) {
+                    if (allOf.get(0).get$ref().equals("#/components/schemas/PagingObject")) {
+                        var itemsSchema = (ArraySchema) allOf.get(1).getProperties().get("items");
+                        return getTypeOfSchema(itemsSchema.getItems())
+                                .map(itemsType -> "Paging<" + itemsType + ">");
+                    }
+                    if (allOf.get(0).get$ref().equals("#/components/schemas/CursorPagingObject")) {
+                        var itemsSchema = (ArraySchema) allOf.get(1).getProperties().get("items");
+                        return getTypeOfSchema(itemsSchema.getItems())
+                                .map(itemsType -> "CursorPaging<" + itemsType + ">");
+                    }
+                }
+            }
+
+            var oneOf = composedSchema.getOneOf();
+            if (oneOf != null) {
+                var allBaseObjects = oneOf.stream().map(JavaUtils::getTypeOfSchema)
+                        .filter(Optional::isPresent)
+                        .map(Optional::get)
+                        .allMatch(BaseObjectGenerator.BASE_OBJECT_NAMES::contains);
+                if (allBaseObjects) {
+                    return Optional.of("BaseObject");
+                }
+            }
+
+            if (schema.getExtensions() != null) {
+                return Optional.ofNullable((String) schema.getExtensions().get("x-spotify-docs-type"))
+                        .map(type -> type.replace("Object", ""));
+            }
+        }
+
+        if (schema.getExtensions() != null) {
+            return Optional.ofNullable((String) schema.getExtensions().get("x-spotify-docs-type"))
+                    .map(type -> type.replace("Object", ""));
+        }
+
+        if (schema instanceof MapSchema) {
+            return Optional.of("java.util.Map<String, Object>");
+        }
+
+        log.warn("Can not get type for schema type: " + schema.getType());
+        return Optional.empty();
     }
 
-    public static String getClassName(SpotifyWebApiCategory category) {
-        return category.getName().replace(" ", "").replace("API", "Api");
+    public static String getCategoryName(PathItem pathItem) {
+        return (String)pathItem.getExtensions().get("x-spotify-docs-category");
     }
 
-    public static String getEndpointRequestBuilderName(SpotifyWebApiEndpoint endpoint) {
-        return CaseFormat.LOWER_HYPHEN.to(CaseFormat.UPPER_CAMEL, JavaUtils.shrinkEndpointId(endpoint)) + "Request";
+    public static String getCategoryClassName(PathItem pathItem) {
+        return getCategoryClassName(getCategoryName(pathItem));
+    }
+
+    public static String getCategoryClassName(String categoryName) {
+        return categoryName.replace(" ", "") + "Api";
+    }
+
+    public static String getCategoryPackageName(String categoryName) {
+        return categoryName.replace(" ", "").toLowerCase();
+    }
+
+    public static String getEndpointRequestBuilderName(String endpointId) {
+        return CaseFormat.LOWER_HYPHEN.to(CaseFormat.UPPER_CAMEL, endpointId) + "Request";
+    }
+
+    public static List<String> getScopes(Operation operation) {
+        var security = operation.getSecurity();
+        if (security.isEmpty()) {
+            return List.of();
+        }
+        return security.get(0).getOrDefault("oauth_2_0", List.of());
     }
 }

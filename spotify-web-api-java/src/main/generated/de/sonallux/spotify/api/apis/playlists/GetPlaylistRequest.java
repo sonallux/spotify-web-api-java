@@ -7,10 +7,10 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-playlist">Get a Playlist request</a>
+ * Get Playlist request
  *
  * <h3>Response</h3>
- * <p>On success, the response body contains a <a href="https://developer.spotify.com/documentation/web-api/reference/#object-playlistobject">playlist object</a> in JSON format and the HTTP status code in the response header is <code>200</code> OK. If an episode is unavailable in the given <code>market</code>, its information will not be included in the response. On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a> and the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>. Requesting playlists that you do not have the user's authorization to access returns error <code>403</code> Forbidden.</p>
+ * <p>A playlist</p>
  */
 public class GetPlaylistRequest {
     private static final TypeReference<Playlist> RESPONSE_TYPE = new TypeReference<>() {};
@@ -18,9 +18,9 @@ public class GetPlaylistRequest {
     private final Request request;
 
     /**
-     * <h3>Get a Playlist request</h3>
+     * <h3>Get Playlist request</h3>
      * @param apiClient <p>The API client</p>
-     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
+     * @param playlistId <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      */
     public GetPlaylistRequest(ApiClient apiClient, String playlistId) {
         this.apiClient = apiClient;
@@ -31,7 +31,7 @@ public class GetPlaylistRequest {
     }
 
     /**
-     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only episodes that are available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
+     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only content that is available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
      */
     public GetPlaylistRequest market(String market) {
         this.request.addQueryParameter("market", String.valueOf(market));

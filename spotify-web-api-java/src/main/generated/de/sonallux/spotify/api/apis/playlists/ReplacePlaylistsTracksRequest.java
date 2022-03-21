@@ -23,7 +23,7 @@ public class ReplacePlaylistsTracksRequest {
     /**
      * <h3>Replace Playlist Items request</h3>
      * @param apiClient <p>The API client</p>
-     * @param playlistId <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
+     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @param uris 
      */
     public ReplacePlaylistsTracksRequest(ApiClient apiClient, String playlistId, java.util.List<String> uris) {

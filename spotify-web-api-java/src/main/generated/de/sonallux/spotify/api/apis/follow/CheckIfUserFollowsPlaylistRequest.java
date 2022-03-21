@@ -20,8 +20,8 @@ public class CheckIfUserFollowsPlaylistRequest {
     /**
      * <h3>Check if Users Follow Playlist request</h3>
      * @param apiClient <p>The API client</p>
-     * @param playlistId <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
-     * @param ids <p>A comma-separated list of <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify User IDs</a> ; the ids of the users that you want to check to see if they follow the playlist. Maximum: 5 ids.</p>
+     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
+     * @param ids <p>A comma-separated list of <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify User IDs</a> ; the ids of the users that you want to check to see if they follow the playlist. Maximum: 5 ids.</p>
      */
     public CheckIfUserFollowsPlaylistRequest(ApiClient apiClient, String playlistId, String ids) {
         this.apiClient = apiClient;

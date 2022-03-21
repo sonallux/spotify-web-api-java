@@ -18,7 +18,7 @@ public class Category {
      */
     public java.util.List<Image> icons;
     /**
-     * <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify category ID</a> of the category.</p>
+     * <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify category ID</a> of the category.</p>
      */
     public String id;
     /**

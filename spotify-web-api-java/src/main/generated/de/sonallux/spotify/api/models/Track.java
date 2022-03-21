@@ -20,7 +20,7 @@ public class Track extends BaseObject {
      */
     public java.util.List<Artist> artists;
     /**
-     * <p>A list of the countries in which the track can be played, identified by their <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.</p>
+     * <p>A list of the countries in which the track can be played, identified by their <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.</p>
      */
     public java.util.List<String> availableMarkets;
     /**
@@ -69,7 +69,7 @@ public class Track extends BaseObject {
     public String previewUrl;
     /**
      * <p>Included in the response when a content restriction is applied.
-     * See <a href="/documentation/web-api/reference/#object-trackrestrictionobject">Restriction Object</a> for more details.</p>
+     * See <a href="https://developer.spotify.com/documentation/web-api/reference/#object-trackrestrictionobject">Restriction Object</a> for more details.</p>
      */
     public TrackRestriction restrictions;
     /**

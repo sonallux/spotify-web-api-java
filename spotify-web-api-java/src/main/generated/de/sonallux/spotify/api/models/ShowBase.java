@@ -12,7 +12,7 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE) // Disable deserialization based on @JsonTypeInfo
 public class ShowBase extends BaseObject {
     /**
-     * <p>A list of the countries in which the show can be played, identified by their <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.</p>
+     * <p>A list of the countries in which the show can be played, identified by their <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.</p>
      */
     public java.util.List<String> availableMarkets;
     /**

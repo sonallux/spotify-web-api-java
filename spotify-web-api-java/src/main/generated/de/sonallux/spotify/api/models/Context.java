@@ -22,7 +22,7 @@ public class Context {
      */
     public String type;
     /**
-     * <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify URI</a> for the context.</p>
+     * <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify URI</a> for the context.</p>
      */
     public String uri;
 }

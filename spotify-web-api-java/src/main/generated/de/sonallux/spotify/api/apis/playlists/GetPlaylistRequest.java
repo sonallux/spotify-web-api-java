@@ -20,7 +20,7 @@ public class GetPlaylistRequest {
     /**
      * <h3>Get Playlist request</h3>
      * @param apiClient <p>The API client</p>
-     * @param playlistId <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
+     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      */
     public GetPlaylistRequest(ApiClient apiClient, String playlistId) {
         this.apiClient = apiClient;

@@ -23,7 +23,7 @@ public class GetEpisodeRequest {
     /**
      * <h3>Get Episode request</h3>
      * @param apiClient <p>The API client</p>
-     * @param id <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> for the episode.</p>
+     * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> for the episode.</p>
      */
     public GetEpisodeRequest(ApiClient apiClient, String id) {
         this.apiClient = apiClient;

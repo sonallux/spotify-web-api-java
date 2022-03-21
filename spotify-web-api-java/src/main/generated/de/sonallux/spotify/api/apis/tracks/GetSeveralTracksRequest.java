@@ -20,7 +20,7 @@ public class GetSeveralTracksRequest {
     /**
      * <h3>Get Several Tracks request</h3>
      * @param apiClient <p>The API client</p>
-     * @param ids <p>A comma-separated list of the <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M</code>. Maximum: 50 IDs.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M</code>. Maximum: 50 IDs.</p>
      */
     public GetSeveralTracksRequest(ApiClient apiClient, String ids) {
         this.apiClient = apiClient;

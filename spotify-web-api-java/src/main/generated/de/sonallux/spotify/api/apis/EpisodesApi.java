@@ -14,7 +14,7 @@ public class EpisodesApi {
     /**
      * <h3>Get Episode</h3>
      * <p>Get Spotify catalog information for a single episode identified by its unique Spotify ID.</p>
-     * @param id <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> for the episode.</p>
+     * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> for the episode.</p>
      * @return a {@link GetEpisodeRequest} object to build and execute the request
      */
     public GetEpisodeRequest getEpisode(String id) {
@@ -24,7 +24,7 @@ public class EpisodesApi {
     /**
      * <h3>Get Several Episodes</h3>
      * <p>Get Spotify catalog information for several episodes based on their Spotify IDs.</p>
-     * @param ids <p>A comma-separated list of the <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the episodes. Maximum: 50 IDs.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the episodes. Maximum: 50 IDs.</p>
      * @return a {@link GetMultipleEpisodesRequest} object to build and execute the request
      */
     public GetMultipleEpisodesRequest getMultipleEpisodes(String ids) {

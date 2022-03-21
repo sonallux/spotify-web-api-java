@@ -20,7 +20,7 @@ public class GetAlbumRequest {
     /**
      * <h3>Get Album request</h3>
      * @param apiClient <p>The API client</p>
-     * @param id <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the album.</p>
+     * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the album.</p>
      */
     public GetAlbumRequest(ApiClient apiClient, String id) {
         this.apiClient = apiClient;

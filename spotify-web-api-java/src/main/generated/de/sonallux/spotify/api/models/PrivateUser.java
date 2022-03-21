@@ -12,7 +12,7 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE) // Disable deserialization based on @JsonTypeInfo
 public class PrivateUser extends BaseObject {
     /**
-     * <p>The country of the user, as set in the user's account profile. An <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. <em>This field is only available when the current user has granted access to the <a href="/documentation/general/guides/authorization-guide/#list-of-scopes">user-read-private</a> scope.</em></p>
+     * <p>The country of the user, as set in the user's account profile. An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. <em>This field is only available when the current user has granted access to the <a href="/documentation/general/guides/authorization-guide/#list-of-scopes">user-read-private</a> scope.</em></p>
      */
     public String country;
     /**

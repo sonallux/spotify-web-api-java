@@ -23,7 +23,7 @@ public class ChangePlaylistDetailsRequest {
     /**
      * <h3>Change Playlist Details request</h3>
      * @param apiClient <p>The API client</p>
-     * @param playlistId <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
+     * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      */
     public ChangePlaylistDetailsRequest(ApiClient apiClient, String playlistId) {
         this.apiClient = apiClient;

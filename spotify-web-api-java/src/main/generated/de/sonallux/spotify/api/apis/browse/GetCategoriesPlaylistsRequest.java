@@ -20,7 +20,7 @@ public class GetCategoriesPlaylistsRequest {
     /**
      * <h3>Get Category's Playlists request</h3>
      * @param apiClient <p>The API client</p>
-     * @param categoryId <p>The <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify category ID</a> for the category.</p>
+     * @param categoryId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify category ID</a> for the category.</p>
      */
     public GetCategoriesPlaylistsRequest(ApiClient apiClient, String categoryId) {
         this.apiClient = apiClient;
@@ -30,7 +30,7 @@ public class GetCategoriesPlaylistsRequest {
     }
 
     /**
-     * <p>A country: an <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. Provide this parameter to ensure that the category exists for a particular country.</p>
+     * <p>A country: an <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. Provide this parameter to ensure that the category exists for a particular country.</p>
      */
     public GetCategoriesPlaylistsRequest country(String country) {
         this.request.addQueryParameter("country", String.valueOf(country));

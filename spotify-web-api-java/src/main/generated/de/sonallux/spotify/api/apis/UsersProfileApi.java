@@ -23,7 +23,7 @@ public class UsersProfileApi {
     /**
      * <h3>Get User's Profile</h3>
      * <p>Get public profile information about a Spotify user.</p>
-     * @param userId <p>The user's <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify user ID</a>.</p>
+     * @param userId <p>The user's <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify user ID</a>.</p>
      * @return a {@link GetUsersProfileRequest} object to build and execute the request
      */
     public GetUsersProfileRequest getUsersProfile(String userId) {

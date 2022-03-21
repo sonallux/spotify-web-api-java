@@ -23,7 +23,7 @@ public class CheckUsersSavedShowsRequest {
     /**
      * <h3>Check User's Saved Shows request</h3>
      * @param apiClient <p>The API client</p>
-     * @param ids <p>A comma-separated list of the <a href="/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the shows. Maximum: 50 IDs.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the shows. Maximum: 50 IDs.</p>
      */
     public CheckUsersSavedShowsRequest(ApiClient apiClient, String ids) {
         this.apiClient = apiClient;

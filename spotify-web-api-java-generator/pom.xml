@@ -21,7 +21,7 @@
 
     <properties>
         <guava.version>31.1-jre</guava.version>
-        <picocli.version>4.6.2</picocli.version>
+        <picocli.version>4.6.3</picocli.version>
         <flexmark.version>0.62.2</flexmark.version>
         <mustache.java.version>0.9.10</mustache.java.version>
         <slf4j.version>1.7.36</slf4j.version>

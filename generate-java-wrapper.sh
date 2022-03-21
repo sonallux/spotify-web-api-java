@@ -2,6 +2,7 @@
 
 # This script runs the spotify-web-api-java-generator to generate the java wrapper.
 
+OPEN_API_FILE=./spotify-web-api-java-generator/fixed-spotify-open-api.yml
 OUTPUT_FOLDER=./spotify-web-api-java/src/main/generated/
 JAVA_PACKAGE_NAME="de.sonallux.spotify.api"
 
@@ -14,7 +15,7 @@ then
   exit 1
 fi
 
-java -jar $cliJarFile -o $OUTPUT_FOLDER -p $JAVA_PACKAGE_NAME --clean
+java -jar $cliJarFile -f $OPEN_API_FILE -o $OUTPUT_FOLDER -p $JAVA_PACKAGE_NAME --clean
 generationExitCode=$?
 if [ "$generationExitCode" != "0" ]
 then

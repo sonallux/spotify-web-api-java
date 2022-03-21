@@ -2,9 +2,12 @@ package de.sonallux.spotify.api.models;
 
 import lombok.*;
 
+/**
+ * TooManyRequests
+ */
 @Getter
 @Setter
 @NoArgsConstructor
-public class Artists {
-    public java.util.List<Artist> artists;
+public class TooManyRequests {
+    public Error error;
 }

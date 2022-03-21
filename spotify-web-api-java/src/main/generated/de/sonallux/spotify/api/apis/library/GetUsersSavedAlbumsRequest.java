@@ -7,14 +7,13 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-users-saved-albums">Get User's Saved Albums request</a>
+ * Get Saved Albums request
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-library-read</code>
  *
  * <h3>Response</h3>
- * <p>On success, the HTTP status code in the response header is <code>200</code> OK and the response body contains an array of <a href="https://developer.spotify.com/documentation/web-api/reference/#object-savedalbumobject">saved album objects</a> (wrapped in a <a href="https://developer.spotify.com/documentation/web-api/reference/#object-pagingobject">paging object</a>) in JSON format. Each album object is accompanied by a <a href="https://developer.spotify.com/documentation/web-api/#timestamps">timestamp</a> (<code>added_at</code>) to show when it was added. There is also an <strong>etag</strong> in the header that can be used in future <a href="https://developer.spotify.com/documentation/web-api/#conditional-requests">conditional requests</a>.</p>
- * <p>On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a> and the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>.</p>
+ * <p>Pages of saved albums</p>
  */
 public class GetUsersSavedAlbumsRequest {
     private static final TypeReference<Paging<SavedAlbum>> RESPONSE_TYPE = new TypeReference<>() {};
@@ -22,7 +21,7 @@ public class GetUsersSavedAlbumsRequest {
     private final Request request;
 
     /**
-     * <h3>Get User's Saved Albums request</h3>
+     * <h3>Get Saved Albums request</h3>
      * @param apiClient <p>The API client</p>
      */
     public GetUsersSavedAlbumsRequest(ApiClient apiClient) {
@@ -48,7 +47,7 @@ public class GetUsersSavedAlbumsRequest {
     }
 
     /**
-     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only episodes that are available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
+     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only content that is available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
      */
     public GetUsersSavedAlbumsRequest market(String market) {
         this.request.addQueryParameter("market", String.valueOf(market));

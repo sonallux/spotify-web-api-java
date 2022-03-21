@@ -7,14 +7,13 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-change-playlist-details">Change a Playlist's Details request</a>
+ * Change Playlist Details request
  *
  * <h3>Required OAuth scopes</h3>
- * <code>playlist-modify-private, playlist-modify-public</code>
+ * <code>playlist-modify-public, playlist-modify-private</code>
  *
  * <h3>Response</h3>
- * <p>On success the HTTP status code in the response header is <code>200</code> OK.</p>
- * <p>On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a> and the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>. Trying to change a playlist when you do not have the user's authorization returns error <code>403</code> Forbidden.</p>
+ * <p>Playlist updated</p>
  */
 public class ChangePlaylistDetailsRequest {
     private static final TypeReference<Void> RESPONSE_TYPE = new TypeReference<>() {};
@@ -22,7 +21,7 @@ public class ChangePlaylistDetailsRequest {
     private final Request request;
 
     /**
-     * <h3>Change a Playlist's Details request</h3>
+     * <h3>Change Playlist Details request</h3>
      * @param apiClient <p>The API client</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      */
@@ -50,7 +49,7 @@ public class ChangePlaylistDetailsRequest {
     }
 
     /**
-     * <p>If <code>true</code>, the playlist will become collaborative and other users will be able to modify the playlist in their Spotify client.<br><em><strong>Note</strong> : You can only set <code>collaborative</code> to <code>true</code> on non-public playlists.</em></p>
+     * <p>If <code>true</code>, the playlist will become collaborative and other users will be able to modify the playlist in their Spotify client. <br><em><strong>Note</strong>: You can only set <code>collaborative</code> to <code>true</code> on non-public playlists.</em></p>
      */
     public ChangePlaylistDetailsRequest collaborative(boolean collaborative) {
         this.request.addBodyParameter("collaborative", collaborative);

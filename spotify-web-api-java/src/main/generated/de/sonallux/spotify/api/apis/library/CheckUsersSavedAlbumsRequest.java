@@ -7,14 +7,13 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-check-users-saved-albums">Check User's Saved Albums request</a>
+ * Check Saved Albums request
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-library-read</code>
  *
  * <h3>Response</h3>
- * <p>On success, the HTTP status code in the response header is <code>200</code> OK and the response body contains a JSON array of <code>true</code> or <code>false</code> values, in the same order in which the <code>ids</code> were specified.
- * On error, the header status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a> and the response body contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>.</p>
+ * <p>Array of booleans</p>
  */
 public class CheckUsersSavedAlbumsRequest {
     private static final TypeReference<java.util.List<Boolean>> RESPONSE_TYPE = new TypeReference<>() {};
@@ -22,7 +21,7 @@ public class CheckUsersSavedAlbumsRequest {
     private final Request request;
 
     /**
-     * <h3>Check User's Saved Albums request</h3>
+     * <h3>Check Saved Albums request</h3>
      * @param apiClient <p>The API client</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the albums. Maximum: 20 IDs.</p>
      */

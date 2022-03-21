@@ -5,7 +5,7 @@ import de.sonallux.spotify.api.apis.markets.*;
 import lombok.RequiredArgsConstructor;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#category-markets">Markets API</a>
+ * Markets
  */
 @RequiredArgsConstructor
 public class MarketsApi {

@@ -2,9 +2,12 @@ package de.sonallux.spotify.api.models;
 
 import lombok.*;
 
+/**
+ * ManyArtists
+ */
 @Getter
 @Setter
 @NoArgsConstructor
-public class PlaylistPaging {
-    public Paging<SimplifiedPlaylist> playlists;
+public class ManyArtists {
+    public java.util.List<Artist> artists;
 }

@@ -7,82 +7,23 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-search">Search for an Item request</a>
- *
- * <h3>Required OAuth scopes</h3>
- * <code>user-read-private</code>
- *
- * <h3>Notes</h3>
- * <p><strong>Writing a Query - Guidelines</strong></p>
- * <p><strong>Encode spaces</strong> with the hex code <code>%20</code> or <code>+</code>.</p>
- * <p><strong>Keyword matching</strong> : Matching of search keywords is <em>not</em> case-sensitive. Operators, however, should be specified in uppercase.
- * Unless surrounded by double quotation marks, keywords are matched in any order. For example:
- * <code>q=roadhouse&amp;20blues</code> matches both &quot;Blues Roadhouse&quot; and &quot;Roadhouse of the Blues&quot;.
- * <code>q=&quot;roadhouse&amp;20blues&quot;</code> matches &quot;My Roadhouse Blues&quot; but not &quot;Roadhouse of the Blues&quot;.</p>
- * <p>Searching for <strong>playlists</strong> returns results where the query keyword(s) match any part of the playlist's name or description. Only popular public playlists are returned.</p>
- * <p><strong>Operator</strong>: The operator NOT can be used to exclude results.</p>
- * <p>For example: <code>q=roadhouse%20NOT%20blues</code> returns items that match &quot;roadhouse&quot; but excludes those that also contain the keyword &quot;blues&quot;.</p>
- * <p><em>Note</em>: The operator must be specified in uppercase. Otherwise, they are handled as normal keywords to be matched.</p>
- * <p><strong>Field filters</strong> : By default, results are returned when a match is found in <em>any</em> field of the target object type. Searches can be made more specific by specifying an <code>album</code>, <code>artist</code> or <code>track</code> field filter.</p>
- * <p>For example: The query <code>q=album:gold%20artist:abba&amp;type=album</code> returns only albums with the text &quot;gold&quot; in the album name and the text &quot;abba&quot; in the artist name.</p>
- * <p>To limit the results to a particular <code>year</code>, use the field filter year with album, artist, and track searches.</p>
- * <p>For example: <code>q=bob%20year:2014</code></p>
- * <p>Or with a date range. For example: <code>q=bob%20year:1980-2020</code></p>
- * <p>To retrieve only albums released in the last two weeks, use the field filter tag:new in album searches.</p>
- * <p>To retrieve only albums with the lowest 10% popularity, use the field filter tag:hipster in album searches.
- * <em>Note</em>: This field filter only works with album searches.</p>
- * <p>Depending on object types being searched for, other field filters, include genre (applicable to tracks and artists), <code>upc</code>, and <code>isrc</code>.
- * For example: <code>q=lil%20genre:%22southern%20hip%20hop%22&amp;type=artist</code>.
- * Use double quotation marks around the genre keyword string if it contains spaces.</p>
- * <p><strong>Notes</strong></p>
- * <ul>
- * <li>
- * <p>Currently, you cannot fetch sorted results.</p>
- * </li>
- * <li>
- * <p>You cannot search for playlists that contain a certain track.</p>
- * </li>
- * <li>
- * <p>You can search only one genre at a time.</p>
- * </li>
- * <li>
- * <p>You cannot search for playlists within a user's library.</p>
- * </li>
- * <li>
- * <p>In an effort to keep the response small, but include as much information as possible, Spotify has expanded the response and intends to continue and improve the Search endpoint.</p>
- * </li>
- * <li>
- * <p>To query based on a release date query at a year level using the year scope. For example:</p>
- * <p>The query</p>
- * <p><code>https://api.spotify.com/v1/search?q=bob%20year:2014&amp;type=album</code></p>
- * <p>Returns albums released in 2014 with their names or artist names containing &quot;bob&quot;. You can also use the tag:new field filter to get just these albums, as well as compilations and singles, released in the last 2 weeks.</p>
- * </li>
- * </ul>
+ * Search for Item request
  *
  * <h3>Response</h3>
- * <p><strong>On success</strong>:</p>
- * <ul>
- * <li>In the response <em><strong>header</strong></em> the HTTP status code is <code>200</code> OK.</li>
- * <li>For each type provided in the <code>type</code> parameter, the response <em><strong>body</strong></em> contains an array of <a href="https://developer.spotify.com/documentation/web-api/reference/#object-artistobject">artist objects</a> / <a href="https://developer.spotify.com/documentation/web-api/reference/#object-simplifiedalbumobject">simplified album objects</a> / <a href="https://developer.spotify.com/documentation/web-api/reference/#object-trackobject">track objects</a> / <a href="https://developer.spotify.com/documentation/web-api/reference/#object-simplifiedshowobject">simplified show objects</a> / <a href="https://developer.spotify.com/documentation/web-api/reference/#object-simplifiedepisodeobject">simplified episode objects</a> wrapped in a <a href="https://developer.spotify.com/documentation/web-api/reference/#object-pagingobject">paging object</a> in JSON.</li>
- * </ul>
- * <p><strong>On error</strong>:</p>
- * <ul>
- * <li>The <em><strong>header</strong></em> status code is an <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">error code</a>.</li>
- * <li>The response <em><strong>body</strong></em> contains an <a href="https://developer.spotify.com/documentation/web-api/#response-schema">error object</a>.</li>
- * </ul>
+ * <p>Search response</p>
  */
 public class SearchRequest {
-    private static final TypeReference<SearchResponse> RESPONSE_TYPE = new TypeReference<>() {};
+    private static final TypeReference<SearchItems> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;
     private final Request request;
 
     /**
-     * <h3>Search for an Item request</h3>
+     * <h3>Search for Item request</h3>
      * @param apiClient <p>The API client</p>
-     * @param q <p>Search <a href="#writing-a-query---guidelines">query</a> keywords and optional field filters and operators.<br>For example:<br><code>q=roadhouse%20blues</code>.</p>
-     * @param type <p>A comma-separated list of item types to search across.<br>Valid types are: <code>album</code>, <code>artist</code>, <code>playlist</code>, <code>track</code>, <code>show</code> and <code>episode</code>.<br>Search results include hits from all the specified item types.<br>For example: <code>q=name:abacab&amp;type=album,track</code> returns both albums <em><strong>and</strong></em> tracks with &quot;abacab&quot; included in their name.</p>
+     * @param q <p>Your search query.</p><p>You can narrow down your search using field filters. The available filters are <code>album</code>, <code>artist</code>, <code>track</code>, <code>year</code>, <code>upc</code>, <code>tag:hipster</code>, <code>tag:new</code>, <code>isrc</code>, and <code>genre</code>. Each field filter only applies to certain result types.</p><p>The <code>artist</code> filter can be used while searching albums, artists or tracks.<br>The <code>album</code> and <code>year</code> filters can be used while searching albums or tracks. You can filter on a single <code>year</code> or a range (e.g. 1955-1960).<br>The <code>genre</code> filter can be use while searching tracks and artists.<br>The <code>isrc</code> and <code>track</code> filters can be used while searching tracks.<br>The <code>upc</code>, <code>tag:new</code> and <code>tag:hipster</code> filters can only be used while searching albums. The <code>tag:new</code> filter will return albums released in the past two weeks and <code>tag:hipster</code> can be used to return only albums with the lowest 10% popularity.<br></p><p>You can also use the <code>NOT</code> operator to exclude keywords from your search.</p>
+     * @param type <p>A comma-separated list of item types to search across. Search results include hits from all the specified item types. For example: <code>q=name:abacab&amp;type=album,track</code> returns both albums and tracks with &quot;abacab&quot; included in their name.</p>
      */
-    public SearchRequest(ApiClient apiClient, String q, String type) {
+    public SearchRequest(ApiClient apiClient, String q, java.util.List<String> type) {
         this.apiClient = apiClient;
         this.request = new Request("GET", "/search")
             .addQueryParameter("q", String.valueOf(q))
@@ -91,7 +32,7 @@ public class SearchRequest {
     }
 
     /**
-     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only episodes that are available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
+     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only content that is available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
      */
     public SearchRequest market(String market) {
         this.request.addQueryParameter("market", String.valueOf(market));
@@ -99,7 +40,7 @@ public class SearchRequest {
     }
 
     /**
-     * <p>Maximum number of results to return.<br>Default: 20<br>Minimum: 1<br>Maximum: 50<br><strong>Note</strong> : The limit is applied within each type, not on the total response.<br>For example, if the limit value is 3 and the type is <code>artist,album</code>, the response contains 3 artists and 3 albums.</p>
+     * <p>The maximum number of results to return in each item type.</p>
      */
     public SearchRequest limit(int limit) {
         this.request.addQueryParameter("limit", String.valueOf(limit));
@@ -107,7 +48,7 @@ public class SearchRequest {
     }
 
     /**
-     * <p>The index of the first result to return.<br>Default: 0 (the first result).<br>Maximum offset (including limit): 1,000.<br>Use with limit to get the next page of search results.</p>
+     * <p>The index of the first result to return. Use with limit to get the next page of search results.</p>
      */
     public SearchRequest offset(int offset) {
         this.request.addQueryParameter("offset", String.valueOf(offset));
@@ -115,7 +56,7 @@ public class SearchRequest {
     }
 
     /**
-     * <p>Possible values: <em>audio</em><br>If <em>include_external=audio</em> is specified the response will include any relevant audio content that is hosted externally.<br>By default external content is filtered out from responses.</p>
+     * <p>If <code>include_external=audio</code> is specified it signals that the client can play externally hosted audio content, and marks the content as playable in the response. By default externally hosted audio content is marked as unplayable in the response.</p>
      */
     public SearchRequest includeExternal(String includeExternal) {
         this.request.addQueryParameter("include_external", String.valueOf(includeExternal));
@@ -125,7 +66,7 @@ public class SearchRequest {
     /**
      * Build the request into an executable call
      */
-    public ApiCall<SearchResponse> build() {
+    public ApiCall<SearchItems> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);
     }
 }

@@ -2,9 +2,12 @@ package de.sonallux.spotify.api.models;
 
 import lombok.*;
 
+/**
+ * ManyGenres
+ */
 @Getter
 @Setter
 @NoArgsConstructor
-public class Tracks {
-    public java.util.List<Track> tracks;
+public class ManyGenres {
+    public java.util.List<String> genres;
 }

@@ -2,6 +2,9 @@ package de.sonallux.spotify.api.models;
 
 import lombok.*;
 
+/**
+ * Markets
+ */
 @Getter
 @Setter
 @NoArgsConstructor

@@ -3,7 +3,7 @@ package de.sonallux.spotify.api.models;
 import lombok.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#object-playererrorobject">PlayerErrorObject</a>
+ * PlayerErrorObject
  */
 @Getter
 @Setter
@@ -37,7 +37,7 @@ public class PlayerError {
      */
     public String reason;
     /**
-     * <p>The HTTP status code. Either <code>404 NOT FOUND</code> or <code>403 FORBIDDEN</code>. Also returned in the response header.</p>
+     * <p>The HTTP status code. Either <code>404 NOT FOUND</code> or <code>403 FORBIDDEN</code>.  Also returned in the response header.</p>
      */
     public int status;
 }

@@ -2,9 +2,12 @@ package de.sonallux.spotify.api.models;
 
 import lombok.*;
 
+/**
+ * PagedAlbums
+ */
 @Getter
 @Setter
 @NoArgsConstructor
-public class Albums {
-    public java.util.List<Album> albums;
+public class PagedAlbums {
+    public Paging<SimplifiedAlbum> albums;
 }

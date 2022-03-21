@@ -2,9 +2,12 @@ package de.sonallux.spotify.api.models;
 
 import lombok.*;
 
+/**
+ * PlaylistSnapshotId
+ */
 @Getter
 @Setter
 @NoArgsConstructor
-public class ErrorResponse {
-    public Error error;
+public class PlaylistSnapshotId {
+    public String snapshotId;
 }

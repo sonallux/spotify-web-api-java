@@ -1,13 +1,12 @@
 package {{package}};
 
 /**
- * <a href="{{url}}">Authorization Scopes</a>
+ * <a href="https://developer.spotify.com/documentation/general/guides/scopes">Authorization Scopes</a>
  */
-public enum Scope {
+public enum {{className}} {
 {{#scopes}}
     /**
      * {{description}}
-     * @see <a href="{{link}}">{{name}}</a>
      */
     {{enumName}}("{{name}}"){{#last}};{{/last}}{{^last}},{{/last}}
 {{/scopes}}

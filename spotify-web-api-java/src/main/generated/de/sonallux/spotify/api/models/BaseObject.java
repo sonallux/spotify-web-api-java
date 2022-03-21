@@ -19,6 +19,10 @@ import lombok.*;
 })
 public abstract class BaseObject {
     /**
+     * <p>A link to the Web API endpoint providing full details of the object.</p>
+     */
+    public String href;
+    /**
      * <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> for the object.</p>
      */
     public String id;
@@ -26,10 +30,6 @@ public abstract class BaseObject {
      * <p>The object type.</p>
      */
     public String type;
-    /**
-     * <p>A link to the Web API endpoint providing full details of the object.</p>
-     */
-    public String href;
     /**
      * <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify URI</a> for the object.</p>
      */

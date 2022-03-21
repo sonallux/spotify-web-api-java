@@ -7,14 +7,13 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-a-users-available-devices">Get a User's Available Devices request</a>
+ * Get Available Devices request
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-read-playback-state</code>
  *
  * <h3>Response</h3>
- * <p>A successful request will return a <code>200 OK</code> response code with a json payload that contains the device objects (see below).
- * When no available devices are found, the request will return a 200 OK response with an empty devices list.</p>
+ * <p>A set of devices</p>
  */
 public class GetUsersAvailableDevicesRequest {
     private static final TypeReference<Devices> RESPONSE_TYPE = new TypeReference<>() {};
@@ -22,7 +21,7 @@ public class GetUsersAvailableDevicesRequest {
     private final Request request;
 
     /**
-     * <h3>Get a User's Available Devices request</h3>
+     * <h3>Get Available Devices request</h3>
      * @param apiClient <p>The API client</p>
      */
     public GetUsersAvailableDevicesRequest(ApiClient apiClient) {

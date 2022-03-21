@@ -1,6 +1,6 @@
 package de.sonallux.spotify.generator.java;
 
-public class GeneratorException extends Exception {
+public class GeneratorException extends RuntimeException {
     public GeneratorException(String message) {
         super(message);
     }

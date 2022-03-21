@@ -2,9 +2,12 @@ package de.sonallux.spotify.api.models;
 
 import lombok.*;
 
+/**
+ * Forbidden
+ */
 @Getter
 @Setter
 @NoArgsConstructor
-public class Categories {
-    public Paging<Category> categories;
+public class Forbidden {
+    public Error error;
 }

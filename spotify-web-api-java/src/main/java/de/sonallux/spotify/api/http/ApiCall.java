@@ -3,11 +3,15 @@ package de.sonallux.spotify.api.http;
 import com.fasterxml.jackson.core.type.TypeReference;
 import de.sonallux.spotify.api.SpotifyApiException;
 import de.sonallux.spotify.api.models.Error;
-import de.sonallux.spotify.api.models.ErrorResponse;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
-import okhttp3.*;
-import okio.*;
+import okhttp3.Call;
+import okhttp3.MediaType;
+import okhttp3.ResponseBody;
+import okio.Buffer;
+import okio.BufferedSource;
+import okio.ForwardingSource;
+import okio.Okio;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;

@@ -154,12 +154,13 @@ public class ObjectGenerator {
     }
 
     private ApiObject.Property generateApiObjectProperty(String objectName, String name, Schema<?> schema) {
-        var resolvedSchema = generationContext.resolveSchema(schema);
-        if (resolvedSchema instanceof ObjectSchema objectSchema) {
+        if (schema instanceof ObjectSchema objectSchema) {
             var innerObjectName = objectName + LOWER_UNDERSCORE.converterTo(UPPER_CAMEL).convert(name);
             generateApiObject(objectSchema, innerObjectName);
-            return new ApiObject.Property(name, innerObjectName, resolvedSchema.getDescription());
+            return new ApiObject.Property(name, innerObjectName, schema.getDescription());
         }
+
+        var resolvedSchema = generationContext.resolveSchema(schema);
         if (resolvedSchema instanceof ComposedSchema composedSchema && composedSchema.getAllOf() != null && composedSchema.getAllOf().size() == 1) {
             var innerSchemaName = OpenApiUtils.getSchemaName(composedSchema.getAllOf().get(0).get$ref());
             var innerSchema = generationContext.resolveSchema(composedSchema.getAllOf().get(0).get$ref());
@@ -168,7 +169,9 @@ public class ObjectGenerator {
 
             return new ApiObject.Property(name, innerType, firstNonNull(resolvedSchema.getDescription(), innerSchema.getDescription()));
         }
-        return new ApiObject.Property(name, JavaUtils.getPrimitiveTypeOfSchema(resolvedSchema).orElse("Object"), resolvedSchema.getDescription());
+
+        var type = JavaUtils.getPrimitiveTypeOfSchema(resolvedSchema).or(() -> JavaUtils.getPrimitiveTypeOfSchema(schema)).orElse("Object");
+        return new ApiObject.Property(name, type, resolvedSchema.getDescription());
     }
 
     private String getObjectNameOrGenerate(String openApiName, Schema schema) {

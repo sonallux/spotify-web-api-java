@@ -1,6 +1,8 @@
 package de.sonallux.spotify.api.models;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * Forbidden
@@ -9,5 +11,5 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 public class Forbidden {
-    public ForbiddenError error;
+    public Error error;
 }

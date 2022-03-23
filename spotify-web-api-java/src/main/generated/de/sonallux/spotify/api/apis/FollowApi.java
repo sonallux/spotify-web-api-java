@@ -12,7 +12,7 @@ public class FollowApi {
     private final ApiClient apiClient;
 
     /**
-     * <h3>Check If User Follows Artists or Users</h3>
+     * <h4>Check If User Follows Artists or Users</h4>
      * <p>Check to see if the current user is following one or more artists or other Spotify users.</p>
      * @param type <p>The ID type: either <code>artist</code> or <code>user</code>.</p>
      * @param ids <p>A comma-separated list of the artist or the user <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> to check. For example: <code>ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q</code>. A maximum of 50 IDs can be sent in one request.</p>
@@ -23,7 +23,7 @@ public class FollowApi {
     }
 
     /**
-     * <h3>Check if Users Follow Playlist</h3>
+     * <h4>Check if Users Follow Playlist</h4>
      * <p>Check to see if one or more Spotify users are following a specified playlist.</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @param ids <p>A comma-separated list of <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify User IDs</a> ; the ids of the users that you want to check to see if they follow the playlist. Maximum: 5 ids.</p>
@@ -34,7 +34,7 @@ public class FollowApi {
     }
 
     /**
-     * <h3>Follow Artists or Users</h3>
+     * <h4>Follow Artists or Users</h4>
      * <p>Add the current user as a follower of one or more artists or other Spotify users.</p>
      * @param type <p>The ID type.</p>
      * @param ids <p>A JSON array of the artist or user <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>{ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;, &quot;08td7MxkoHQkXnWAYD8d6Q&quot;]}</code>. A maximum of 50 IDs can be sent in one request. <em><strong>Note</strong>: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
@@ -45,7 +45,7 @@ public class FollowApi {
     }
 
     /**
-     * <h3>Follow Playlist</h3>
+     * <h4>Follow Playlist</h4>
      * <p>Add the current user as a follower of a playlist.</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @return a {@link FollowPlaylistRequest} object to build and execute the request
@@ -55,7 +55,7 @@ public class FollowApi {
     }
 
     /**
-     * <h3>Get Followed Artists</h3>
+     * <h4>Get Followed Artists</h4>
      * <p>Get the current user's followed artists.</p>
      * @param type <p>The ID type: currently only <code>artist</code> is supported.</p>
      * @return a {@link GetFollowedRequest} object to build and execute the request
@@ -65,7 +65,7 @@ public class FollowApi {
     }
 
     /**
-     * <h3>Unfollow Artists or Users</h3>
+     * <h4>Unfollow Artists or Users</h4>
      * <p>Remove the current user as a follower of one or more artists or other Spotify users.</p>
      * @param type <p>The ID type: either <code>artist</code> or <code>user</code>.</p>
      * @param ids <p>A JSON array of the artist or user <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>{ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;, &quot;08td7MxkoHQkXnWAYD8d6Q&quot;]}</code>. A maximum of 50 IDs can be sent in one request. <em><strong>Note</strong>: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
@@ -76,7 +76,7 @@ public class FollowApi {
     }
 
     /**
-     * <h3>Unfollow Playlist</h3>
+     * <h4>Unfollow Playlist</h4>
      * <p>Remove the current user as a follower of a playlist.</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @return a {@link UnfollowPlaylistRequest} object to build and execute the request

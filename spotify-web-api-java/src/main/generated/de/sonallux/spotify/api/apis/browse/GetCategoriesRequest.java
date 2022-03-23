@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Several Browse Categories request
+ * <h2>Get Several Browse Categories request</h2>
  *
  * <h3>Response</h3>
  * <p>A paged set of categories</p>
@@ -18,7 +18,7 @@ public class GetCategoriesRequest {
     private final Request request;
 
     /**
-     * <h3>Get Several Browse Categories request</h3>
+     * Get Several Browse Categories request
      * @param apiClient <p>The API client</p>
      */
     public GetCategoriesRequest(ApiClient apiClient) {
@@ -28,7 +28,8 @@ public class GetCategoriesRequest {
     }
 
     /**
-     * <p>A country: an <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. Provide this parameter if you want to narrow the list of returned categories to those relevant to a particular country. If omitted, the returned items will be globally relevant.</p>
+     * @param country <p>A country: an <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. Provide this parameter if you want to narrow the list of returned categories to those relevant to a particular country. If omitted, the returned items will be globally relevant.</p>
+     * @return this request
      */
     public GetCategoriesRequest country(String country) {
         this.request.addQueryParameter("country", String.valueOf(country));
@@ -36,7 +37,8 @@ public class GetCategoriesRequest {
     }
 
     /**
-     * <p>The desired language, consisting of an <a href="https://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a> language code and an <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>, joined by an underscore. For example: <code>es_MX</code>, meaning &quot;Spanish (Mexico)&quot;. Provide this parameter if you want the category metadata returned in a particular language. <br><em><strong>Note</strong>: if <code>locale</code> is not supplied, or if the specified language is not available, all strings will be returned in the Spotify default language (American English). The <code>locale</code> parameter, combined with the <code>country</code> parameter, may give odd results if not carefully matched. For example <code>country=SE&amp;locale=de_DE</code> will return a list of categories relevant to Sweden but as German language strings.</em></p>
+     * @param locale <p>The desired language, consisting of an <a href="https://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a> language code and an <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>, joined by an underscore. For example: <code>es_MX</code>, meaning &quot;Spanish (Mexico)&quot;. Provide this parameter if you want the category metadata returned in a particular language. <br><em><strong>Note</strong>: if <code>locale</code> is not supplied, or if the specified language is not available, all strings will be returned in the Spotify default language (American English). The <code>locale</code> parameter, combined with the <code>country</code> parameter, may give odd results if not carefully matched. For example <code>country=SE&amp;locale=de_DE</code> will return a list of categories relevant to Sweden but as German language strings.</em></p>
+     * @return this request
      */
     public GetCategoriesRequest locale(String locale) {
         this.request.addQueryParameter("locale", String.valueOf(locale));
@@ -44,7 +46,8 @@ public class GetCategoriesRequest {
     }
 
     /**
-     * <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @param limit <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @return this request
      */
     public GetCategoriesRequest limit(int limit) {
         this.request.addQueryParameter("limit", String.valueOf(limit));
@@ -52,7 +55,8 @@ public class GetCategoriesRequest {
     }
 
     /**
-     * <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
+     * @param offset <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
+     * @return this request
      */
     public GetCategoriesRequest offset(int offset) {
         this.request.addQueryParameter("offset", String.valueOf(offset));
@@ -60,7 +64,8 @@ public class GetCategoriesRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<PagedCategories> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

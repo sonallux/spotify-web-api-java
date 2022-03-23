@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Followed Artists request
+ * <h2>Get Followed Artists request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-follow-read</code>
@@ -21,7 +21,7 @@ public class GetFollowedRequest {
     private final Request request;
 
     /**
-     * <h3>Get Followed Artists request</h3>
+     * Get Followed Artists request
      * @param apiClient <p>The API client</p>
      * @param type <p>The ID type: currently only <code>artist</code> is supported.</p>
      */
@@ -33,7 +33,8 @@ public class GetFollowedRequest {
     }
 
     /**
-     * <p>The last artist ID retrieved from the previous request.</p>
+     * @param after <p>The last artist ID retrieved from the previous request.</p>
+     * @return this request
      */
     public GetFollowedRequest after(String after) {
         this.request.addQueryParameter("after", String.valueOf(after));
@@ -41,7 +42,8 @@ public class GetFollowedRequest {
     }
 
     /**
-     * <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @param limit <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @return this request
      */
     public GetFollowedRequest limit(int limit) {
         this.request.addQueryParameter("limit", String.valueOf(limit));
@@ -49,7 +51,8 @@ public class GetFollowedRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<CursorPagedArtists> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

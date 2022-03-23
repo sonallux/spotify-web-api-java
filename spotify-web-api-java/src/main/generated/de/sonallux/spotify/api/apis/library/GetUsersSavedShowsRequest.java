@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get User's Saved Shows request
+ * <h2>Get User's Saved Shows request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-library-read</code>
@@ -21,7 +21,7 @@ public class GetUsersSavedShowsRequest {
     private final Request request;
 
     /**
-     * <h3>Get User's Saved Shows request</h3>
+     * Get User's Saved Shows request
      * @param apiClient <p>The API client</p>
      */
     public GetUsersSavedShowsRequest(ApiClient apiClient) {
@@ -31,7 +31,8 @@ public class GetUsersSavedShowsRequest {
     }
 
     /**
-     * <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @param limit <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @return this request
      */
     public GetUsersSavedShowsRequest limit(int limit) {
         this.request.addQueryParameter("limit", String.valueOf(limit));
@@ -39,7 +40,8 @@ public class GetUsersSavedShowsRequest {
     }
 
     /**
-     * <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
+     * @param offset <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
+     * @return this request
      */
     public GetUsersSavedShowsRequest offset(int offset) {
         this.request.addQueryParameter("offset", String.valueOf(offset));
@@ -47,7 +49,8 @@ public class GetUsersSavedShowsRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<Paging<SavedShow>> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Available Devices request
+ * <h2>Get Available Devices request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-read-playback-state</code>
@@ -21,7 +21,7 @@ public class GetUsersAvailableDevicesRequest {
     private final Request request;
 
     /**
-     * <h3>Get Available Devices request</h3>
+     * Get Available Devices request
      * @param apiClient <p>The API client</p>
      */
     public GetUsersAvailableDevicesRequest(ApiClient apiClient) {
@@ -31,7 +31,8 @@ public class GetUsersAvailableDevicesRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<Devices> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

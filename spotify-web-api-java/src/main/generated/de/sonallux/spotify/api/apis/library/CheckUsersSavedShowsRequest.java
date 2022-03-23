@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Check User's Saved Shows request
+ * <h2>Check User's Saved Shows request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-library-read</code>
@@ -21,7 +21,7 @@ public class CheckUsersSavedShowsRequest {
     private final Request request;
 
     /**
-     * <h3>Check User's Saved Shows request</h3>
+     * Check User's Saved Shows request
      * @param apiClient <p>The API client</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the shows. Maximum: 50 IDs.</p>
      */
@@ -33,7 +33,8 @@ public class CheckUsersSavedShowsRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<java.util.List<Boolean>> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

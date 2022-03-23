@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Save Shows for Current User request
+ * <h2>Save Shows for Current User request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-library-modify</code>
@@ -21,7 +21,7 @@ public class SaveShowsUserRequest {
     private final Request request;
 
     /**
-     * <h3>Save Shows for Current User request</h3>
+     * Save Shows for Current User request
      * @param apiClient <p>The API client</p>
      * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>.<br>A maximum of 50 items can be specified in one request. <em>Note: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      */
@@ -33,7 +33,8 @@ public class SaveShowsUserRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<Void> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Set Repeat Mode request
+ * <h2>Set Repeat Mode request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-modify-playback-state</code>
@@ -21,7 +21,7 @@ public class SetRepeatModeOnUsersPlaybackRequest {
     private final Request request;
 
     /**
-     * <h3>Set Repeat Mode request</h3>
+     * Set Repeat Mode request
      * @param apiClient <p>The API client</p>
      * @param state <p><strong>track</strong>, <strong>context</strong> or <strong>off</strong>.<br><strong>track</strong> will repeat the current track.<br><strong>context</strong> will repeat the current context.<br><strong>off</strong> will turn repeat off.</p>
      */
@@ -33,7 +33,8 @@ public class SetRepeatModeOnUsersPlaybackRequest {
     }
 
     /**
-     * <p>The id of the device this command is targeting. If not supplied, the user's currently active device is the target.</p>
+     * @param deviceId <p>The id of the device this command is targeting. If not supplied, the user's currently active device is the target.</p>
+     * @return this request
      */
     public SetRepeatModeOnUsersPlaybackRequest deviceId(String deviceId) {
         this.request.addQueryParameter("device_id", String.valueOf(deviceId));
@@ -41,7 +42,8 @@ public class SetRepeatModeOnUsersPlaybackRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<Void> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

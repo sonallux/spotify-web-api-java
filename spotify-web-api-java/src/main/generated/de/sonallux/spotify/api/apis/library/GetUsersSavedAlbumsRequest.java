@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Saved Albums request
+ * <h2>Get Saved Albums request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-library-read</code>
@@ -21,7 +21,7 @@ public class GetUsersSavedAlbumsRequest {
     private final Request request;
 
     /**
-     * <h3>Get Saved Albums request</h3>
+     * Get Saved Albums request
      * @param apiClient <p>The API client</p>
      */
     public GetUsersSavedAlbumsRequest(ApiClient apiClient) {
@@ -31,7 +31,8 @@ public class GetUsersSavedAlbumsRequest {
     }
 
     /**
-     * <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @param limit <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @return this request
      */
     public GetUsersSavedAlbumsRequest limit(int limit) {
         this.request.addQueryParameter("limit", String.valueOf(limit));
@@ -39,7 +40,8 @@ public class GetUsersSavedAlbumsRequest {
     }
 
     /**
-     * <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
+     * @param offset <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
+     * @return this request
      */
     public GetUsersSavedAlbumsRequest offset(int offset) {
         this.request.addQueryParameter("offset", String.valueOf(offset));
@@ -47,7 +49,8 @@ public class GetUsersSavedAlbumsRequest {
     }
 
     /**
-     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only content that is available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
+     * @param market <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only content that is available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
+     * @return this request
      */
     public GetUsersSavedAlbumsRequest market(String market) {
         this.request.addQueryParameter("market", String.valueOf(market));
@@ -55,7 +58,8 @@ public class GetUsersSavedAlbumsRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<Paging<SavedAlbum>> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Artist's Related Artists request
+ * <h2>Get Artist's Related Artists request</h2>
  *
  * <h3>Response</h3>
  * <p>A set of artists</p>
@@ -18,7 +18,7 @@ public class GetArtistsRelatedArtistsRequest {
     private final Request request;
 
     /**
-     * <h3>Get Artist's Related Artists request</h3>
+     * Get Artist's Related Artists request
      * @param apiClient <p>The API client</p>
      * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the artist.</p>
      */
@@ -30,7 +30,8 @@ public class GetArtistsRelatedArtistsRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<ManyArtists> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

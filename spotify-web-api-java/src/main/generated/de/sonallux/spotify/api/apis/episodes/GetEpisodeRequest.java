@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Episode request
+ * <h2>Get Episode request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-read-playback-position</code>
@@ -21,7 +21,7 @@ public class GetEpisodeRequest {
     private final Request request;
 
     /**
-     * <h3>Get Episode request</h3>
+     * Get Episode request
      * @param apiClient <p>The API client</p>
      * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> for the episode.</p>
      */
@@ -33,7 +33,8 @@ public class GetEpisodeRequest {
     }
 
     /**
-     * <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only content that is available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
+     * @param market <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only content that is available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
+     * @return this request
      */
     public GetEpisodeRequest market(String market) {
         this.request.addQueryParameter("market", String.valueOf(market));
@@ -41,7 +42,8 @@ public class GetEpisodeRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<Episode> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

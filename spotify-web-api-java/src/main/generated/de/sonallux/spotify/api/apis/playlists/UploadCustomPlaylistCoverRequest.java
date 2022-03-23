@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Add Custom Playlist Cover Image request
+ * <h2>Add Custom Playlist Cover Image request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>ugc-image-upload, playlist-modify-public, playlist-modify-private</code>
@@ -21,7 +21,7 @@ public class UploadCustomPlaylistCoverRequest {
     private final Request request;
 
     /**
-     * <h3>Add Custom Playlist Cover Image request</h3>
+     * Add Custom Playlist Cover Image request
      * @param apiClient <p>The API client</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @param base64Image <p>The new cover image of the playlist as a Base64 encoded JPEG image. Maximum payload size is 256KB.</p>
@@ -35,7 +35,8 @@ public class UploadCustomPlaylistCoverRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<Void> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Several Artists request
+ * <h2>Get Several Artists request</h2>
  *
  * <h3>Response</h3>
  * <p>A set of artists</p>
@@ -18,7 +18,7 @@ public class GetMultipleArtistsRequest {
     private final Request request;
 
     /**
-     * <h3>Get Several Artists request</h3>
+     * Get Several Artists request
      * @param apiClient <p>The API client</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the artists. Maximum: 50 IDs.</p>
      */
@@ -30,7 +30,8 @@ public class GetMultipleArtistsRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<ManyArtists> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

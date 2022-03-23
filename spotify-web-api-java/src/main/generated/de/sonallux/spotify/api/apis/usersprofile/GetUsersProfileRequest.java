@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get User's Profile request
+ * <h2>Get User's Profile request</h2>
  *
  * <h3>Response</h3>
  * <p>A user</p>
@@ -18,7 +18,7 @@ public class GetUsersProfileRequest {
     private final Request request;
 
     /**
-     * <h3>Get User's Profile request</h3>
+     * Get User's Profile request
      * @param apiClient <p>The API client</p>
      * @param userId <p>The user's <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify user ID</a>.</p>
      */
@@ -30,7 +30,8 @@ public class GetUsersProfileRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<PublicUser> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

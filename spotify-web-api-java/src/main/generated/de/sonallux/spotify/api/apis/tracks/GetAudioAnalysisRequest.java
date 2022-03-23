@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Track's Audio Analysis request
+ * <h2>Get Track's Audio Analysis request</h2>
  *
  * <h3>Response</h3>
  * <p>Audio analysis for one track</p>
@@ -18,7 +18,7 @@ public class GetAudioAnalysisRequest {
     private final Request request;
 
     /**
-     * <h3>Get Track's Audio Analysis request</h3>
+     * Get Track's Audio Analysis request
      * @param apiClient <p>The API client</p>
      * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a>for the track.</p>
      */
@@ -30,7 +30,8 @@ public class GetAudioAnalysisRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<AudioAnalysis> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

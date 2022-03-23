@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Start/Resume Playback request
+ * <h2>Start/Resume Playback request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-modify-playback-state</code>
@@ -21,7 +21,7 @@ public class StartUsersPlaybackRequest {
     private final Request request;
 
     /**
-     * <h3>Start/Resume Playback request</h3>
+     * Start/Resume Playback request
      * @param apiClient <p>The API client</p>
      */
     public StartUsersPlaybackRequest(ApiClient apiClient) {
@@ -31,7 +31,8 @@ public class StartUsersPlaybackRequest {
     }
 
     /**
-     * <p>The id of the device this command is targeting. If not supplied, the user's currently active device is the target.</p>
+     * @param deviceId <p>The id of the device this command is targeting. If not supplied, the user's currently active device is the target.</p>
+     * @return this request
      */
     public StartUsersPlaybackRequest deviceId(String deviceId) {
         this.request.addQueryParameter("device_id", String.valueOf(deviceId));
@@ -39,7 +40,8 @@ public class StartUsersPlaybackRequest {
     }
 
     /**
-     * <p>Spotify URI of the context to play. Valid contexts are albums, artists, playlists. Example: {&quot;context_uri&quot;: &quot;spotify:album:1Je1IMUlBXcx1Fz0WE7oPT&quot;}</p>
+     * @param contextUri <p>Spotify URI of the context to play. Valid contexts are albums, artists, playlists. Example: {&quot;context_uri&quot;: &quot;spotify:album:1Je1IMUlBXcx1Fz0WE7oPT&quot;}</p>
+     * @return this request
      */
     public StartUsersPlaybackRequest contextUri(String contextUri) {
         this.request.addBodyParameter("context_uri", contextUri);
@@ -47,7 +49,8 @@ public class StartUsersPlaybackRequest {
     }
 
     /**
-     * <p>A JSON array of the Spotify track URIs to play. For example: {&quot;uris&quot;: [&quot;spotify:track:4iV5W9uYEdYUVa79Axb7Rh&quot;, &quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot;]}</p>
+     * @param uris <p>A JSON array of the Spotify track URIs to play. For example: {&quot;uris&quot;: [&quot;spotify:track:4iV5W9uYEdYUVa79Axb7Rh&quot;, &quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot;]}</p>
+     * @return this request
      */
     public StartUsersPlaybackRequest uris(java.util.List<String> uris) {
         this.request.addBodyParameter("uris", uris);
@@ -55,7 +58,8 @@ public class StartUsersPlaybackRequest {
     }
 
     /**
-     * <p>Indicates from where in the context playback should start. Only available when &quot;context_uri&quot; corresponds to an album or playlist object, or when the uris parameter is used. &quot;position&quot; is zero based and can't be negative. Example: &quot;offset&quot;: {&quot;position&quot;: 5} &quot;uri&quot; is a string representing the uri of the item to start at. Example: &quot;offset&quot;: {&quot;uri&quot;: &quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot;}</p>
+     * @param offset <p>Indicates from where in the context playback should start. Only available when &quot;context_uri&quot; corresponds to an album or playlist object, or when the uris parameter is used. &quot;position&quot; is zero based and can't be negative. Example: &quot;offset&quot;: {&quot;position&quot;: 5} &quot;uri&quot; is a string representing the uri of the item to start at. Example: &quot;offset&quot;: {&quot;uri&quot;: &quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot;}</p>
+     * @return this request
      */
     public StartUsersPlaybackRequest offset(java.util.Map<String, Object> offset) {
         this.request.addBodyParameter("offset", offset);
@@ -63,7 +67,8 @@ public class StartUsersPlaybackRequest {
     }
 
     /**
-     * <p>Indicates from what position to start playback. Must be a positive number. Passing in a position that is greater than the length of the track will cause the player to start playing the next song.</p>
+     * @param positionMs <p>Indicates from what position to start playback. Must be a positive number. Passing in a position that is greater than the length of the track will cause the player to start playing the next song.</p>
+     * @return this request
      */
     public StartUsersPlaybackRequest positionMs(int positionMs) {
         this.request.addBodyParameter("position_ms", positionMs);
@@ -71,7 +76,8 @@ public class StartUsersPlaybackRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<Void> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

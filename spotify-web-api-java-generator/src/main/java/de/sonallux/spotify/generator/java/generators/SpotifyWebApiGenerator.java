@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class SpotifyWebApiGenerator {
@@ -34,7 +33,7 @@ public class SpotifyWebApiGenerator {
                 .distinct()
                 .sorted()
                 .map(className -> Map.of("className", className, "fieldName", CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, className)))
-                .collect(Collectors.toList());
+                .toList();
 
         context.put("apis", apis);
         return context;

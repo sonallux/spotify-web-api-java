@@ -30,7 +30,7 @@ public class JavaGenerator {
 
         EndpointSplitter.splitEndpoints(spotifyWebApi);
 
-        var apiTemplate = new ApiGenerator(generationContext, objectGenerator::getObjectNameForResponse);
+        var apiTemplate = new ApiGenerator(generationContext);
         apiTemplate.generateEndpoints(spotifyWebApi);
 
         new SpotifyWebApiGenerator(generationContext).generate();

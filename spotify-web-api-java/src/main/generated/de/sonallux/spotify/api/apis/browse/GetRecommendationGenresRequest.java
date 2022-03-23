@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Available Genre Seeds request
+ * <h2>Get Available Genre Seeds request</h2>
  *
  * <h3>Response</h3>
  * <p>A set of genres</p>
@@ -18,7 +18,7 @@ public class GetRecommendationGenresRequest {
     private final Request request;
 
     /**
-     * <h3>Get Available Genre Seeds request</h3>
+     * Get Available Genre Seeds request
      * @param apiClient <p>The API client</p>
      */
     public GetRecommendationGenresRequest(ApiClient apiClient) {
@@ -28,7 +28,8 @@ public class GetRecommendationGenresRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<ManyGenres> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

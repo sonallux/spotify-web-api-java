@@ -12,7 +12,6 @@ import de.sonallux.spotify.generator.java.util.Markdown2Html;
 import lombok.RequiredArgsConstructor;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;
@@ -21,7 +20,6 @@ import static java.util.stream.Collectors.toList;
 @RequiredArgsConstructor
 public class ApiGenerator {
     private final GenerationContext generationContext;
-    private final Function<String, String> responseTypeMapper;
 
     private JavaPackage apisJavaPackage;
 
@@ -108,7 +106,7 @@ public class ApiGenerator {
                 .map(ApiEndpoint.Parameter::asMethodParameter)
                 .collect(joining(", ")));
 
-        context.put("requiredJavaDocParameters", requiredParameterList.stream().map(ApiEndpoint.Parameter::asJavaDoc).collect(toList()));
+        context.put("requiredJavaDocParameters", requiredParameterList.stream().map(ApiEndpoint.Parameter::asJavaDoc).toList());
 
         endpoint.getOptionalQueryParameters().stream()
                 .filter(p -> "additional_types".equals(p.getName()))

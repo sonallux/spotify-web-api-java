@@ -54,14 +54,8 @@ public class ObjectModelCreator {
         if (operation.getParameters() != null) {
             operation.getParameters().stream().map(generationContext::resolveParameter).forEach(parameter -> {
                 switch (parameter.getIn()) {
-                    case "path": {
-                        endpoint.addPathParameter(convertParameter(parameter), parameter.getRequired());
-                        break;
-                    }
-                    case "query": {
-                        endpoint.addQueryParameter(convertParameter(parameter), parameter.getRequired());
-                        break;
-                    }
+                    case "path" -> endpoint.addPathParameter(convertParameter(parameter), parameter.getRequired());
+                    case "query" -> endpoint.addQueryParameter(convertParameter(parameter), parameter.getRequired());
                 }
             });
         }

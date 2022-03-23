@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Playlist Cover Image request
+ * <h2>Get Playlist Cover Image request</h2>
  *
  * <h3>Response</h3>
  * <p>A set of images</p>
@@ -18,7 +18,7 @@ public class GetPlaylistCoverRequest {
     private final Request request;
 
     /**
-     * <h3>Get Playlist Cover Image request</h3>
+     * Get Playlist Cover Image request
      * @param apiClient <p>The API client</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      */
@@ -30,7 +30,8 @@ public class GetPlaylistCoverRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<java.util.List<Image>> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

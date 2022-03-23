@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Tracks' Audio Features request
+ * <h2>Get Tracks' Audio Features request</h2>
  *
  * <h3>Response</h3>
  * <p>A set of audio features</p>
@@ -18,7 +18,7 @@ public class GetSeveralAudioFeaturesRequest {
     private final Request request;
 
     /**
-     * <h3>Get Tracks' Audio Features request</h3>
+     * Get Tracks' Audio Features request
      * @param apiClient <p>The API client</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>for the tracks. Maximum: 100 IDs.</p>
      */
@@ -30,7 +30,8 @@ public class GetSeveralAudioFeaturesRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<ManyAudioFeatures> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Remove Playlist Items request
+ * <h2>Remove Playlist Items request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>playlist-modify-public, playlist-modify-private</code>
@@ -21,7 +21,7 @@ public class RemoveTracksPlaylistRequest {
     private final Request request;
 
     /**
-     * <h3>Remove Playlist Items request</h3>
+     * Remove Playlist Items request
      * @param apiClient <p>The API client</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @param tracks <p>An array of objects containing <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify URIs</a> of the tracks or episodes to remove. For example: <code>{ &quot;tracks&quot;: [{ &quot;uri&quot;: &quot;spotify:track:4iV5W9uYEdYUVa79Axb7Rh&quot; },{ &quot;uri&quot;: &quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot; }] }</code>. A maximum of 100 objects can be sent at once.</p>
@@ -35,7 +35,8 @@ public class RemoveTracksPlaylistRequest {
     }
 
     /**
-     * <p>The playlist's snapshot ID against which you want to make the changes. The API will validate that the specified items exist and in the specified positions and make the changes, even if more recent changes have been made to the playlist.</p>
+     * @param snapshotId <p>The playlist's snapshot ID against which you want to make the changes. The API will validate that the specified items exist and in the specified positions and make the changes, even if more recent changes have been made to the playlist.</p>
+     * @return this request
      */
     public RemoveTracksPlaylistRequest snapshotId(String snapshotId) {
         this.request.addBodyParameter("snapshot_id", snapshotId);
@@ -43,7 +44,8 @@ public class RemoveTracksPlaylistRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<PlaylistSnapshotId> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

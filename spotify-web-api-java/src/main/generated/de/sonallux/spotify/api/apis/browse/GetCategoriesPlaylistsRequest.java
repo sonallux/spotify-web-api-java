@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Category's Playlists request
+ * <h2>Get Category's Playlists request</h2>
  *
  * <h3>Response</h3>
  * <p>A paged set of playlists</p>
@@ -18,7 +18,7 @@ public class GetCategoriesPlaylistsRequest {
     private final Request request;
 
     /**
-     * <h3>Get Category's Playlists request</h3>
+     * Get Category's Playlists request
      * @param apiClient <p>The API client</p>
      * @param categoryId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify category ID</a> for the category.</p>
      */
@@ -30,7 +30,8 @@ public class GetCategoriesPlaylistsRequest {
     }
 
     /**
-     * <p>A country: an <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. Provide this parameter to ensure that the category exists for a particular country.</p>
+     * @param country <p>A country: an <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. Provide this parameter to ensure that the category exists for a particular country.</p>
+     * @return this request
      */
     public GetCategoriesPlaylistsRequest country(String country) {
         this.request.addQueryParameter("country", String.valueOf(country));
@@ -38,7 +39,8 @@ public class GetCategoriesPlaylistsRequest {
     }
 
     /**
-     * <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @param limit <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @return this request
      */
     public GetCategoriesPlaylistsRequest limit(int limit) {
         this.request.addQueryParameter("limit", String.valueOf(limit));
@@ -46,7 +48,8 @@ public class GetCategoriesPlaylistsRequest {
     }
 
     /**
-     * <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
+     * @param offset <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
+     * @return this request
      */
     public GetCategoriesPlaylistsRequest offset(int offset) {
         this.request.addQueryParameter("offset", String.valueOf(offset));
@@ -54,7 +57,8 @@ public class GetCategoriesPlaylistsRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<PagedPlaylists> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

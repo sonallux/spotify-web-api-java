@@ -12,7 +12,7 @@ public class MarketsApi {
     private final ApiClient apiClient;
 
     /**
-     * <h3>Get Available Markets</h3>
+     * <h4>Get Available Markets</h4>
      * <p>Get the list of markets where Spotify is available.</p>
      * @return a {@link GetAvailableMarketsRequest} object to build and execute the request
      */

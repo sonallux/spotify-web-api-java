@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Replace Playlist Items request
+ * <h2>Replace Playlist Items request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>playlist-modify-public, playlist-modify-private</code>
@@ -21,7 +21,7 @@ public class ReplacePlaylistsTracksRequest {
     private final Request request;
 
     /**
-     * <h3>Replace Playlist Items request</h3>
+     * Replace Playlist Items request
      * @param apiClient <p>The API client</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @param uris 
@@ -35,7 +35,8 @@ public class ReplacePlaylistsTracksRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<PlaylistSnapshotId> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

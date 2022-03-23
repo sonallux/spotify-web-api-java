@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get New Releases request
+ * <h2>Get New Releases request</h2>
  *
  * <h3>Response</h3>
  * <p>A paged set of albums</p>
@@ -18,7 +18,7 @@ public class GetNewReleasesRequest {
     private final Request request;
 
     /**
-     * <h3>Get New Releases request</h3>
+     * Get New Releases request
      * @param apiClient <p>The API client</p>
      */
     public GetNewReleasesRequest(ApiClient apiClient) {
@@ -28,7 +28,8 @@ public class GetNewReleasesRequest {
     }
 
     /**
-     * <p>A country: an <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.</p>
+     * @param country <p>A country: an <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.</p>
+     * @return this request
      */
     public GetNewReleasesRequest country(String country) {
         this.request.addQueryParameter("country", String.valueOf(country));
@@ -36,7 +37,8 @@ public class GetNewReleasesRequest {
     }
 
     /**
-     * <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @param limit <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @return this request
      */
     public GetNewReleasesRequest limit(int limit) {
         this.request.addQueryParameter("limit", String.valueOf(limit));
@@ -44,7 +46,8 @@ public class GetNewReleasesRequest {
     }
 
     /**
-     * <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
+     * @param offset <p>The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.</p>
+     * @return this request
      */
     public GetNewReleasesRequest offset(int offset) {
         this.request.addQueryParameter("offset", String.valueOf(offset));
@@ -52,7 +55,8 @@ public class GetNewReleasesRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<PagedAlbums> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

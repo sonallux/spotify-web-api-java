@@ -31,7 +31,7 @@ public class JavaPackage {
         if (packageNames.length == 0) {
             return false;
         }
-        for (String packageName : packageNames) {
+        for (var packageName : packageNames) {
             if (Strings.isNullOrEmpty(packageName)) {
                 return false;
             }

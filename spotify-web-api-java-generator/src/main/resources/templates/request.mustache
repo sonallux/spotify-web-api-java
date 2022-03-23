@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * {{name}}
+ * <h2>{{name}}</h2>
 {{#scopes}}
  *
  * <h3>Required OAuth scopes</h3>
@@ -25,7 +25,7 @@ public class {{className}} {
     private final Request request;
 
     /**
-     * <h3>{{name}}</h3>
+     * {{name}}
     {{#requiredJavaDocParameters}}
      * {{.}}
     {{/requiredJavaDocParameters}}
@@ -53,7 +53,8 @@ public class {{className}} {
 
 {{#optionalPathParameters}}
     /**
-     * {{description}}
+     * @param {{javaName}} {{description}}
+     * @return this request
      */
     public {{className}} {{javaName}}({{type}} {{javaName}}) {
         this.request.addPathParameter("{{name}}", String.valueOf({{javaName}}));
@@ -63,7 +64,8 @@ public class {{className}} {
 {{/optionalPathParameters}}
 {{#optionalQueryParameters}}
     /**
-     * {{description}}
+     * @param {{javaName}} {{description}}
+     * @return this request
      */
     public {{className}} {{javaName}}({{type}} {{javaName}}) {
         this.request.addQueryParameter("{{name}}", String.valueOf({{javaName}}));
@@ -73,7 +75,8 @@ public class {{className}} {
 {{/optionalQueryParameters}}
 {{#optionalBodyParameters}}
     /**
-     * {{description}}
+     * @param {{javaName}} {{description}}
+     * @return this request
      */
     public {{className}} {{javaName}}({{type}} {{javaName}}) {
         this.request.addBodyParameter("{{name}}", {{javaName}});
@@ -82,7 +85,8 @@ public class {{className}} {
 
 {{/optionalBodyParameters}}
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<{{responseType}}> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

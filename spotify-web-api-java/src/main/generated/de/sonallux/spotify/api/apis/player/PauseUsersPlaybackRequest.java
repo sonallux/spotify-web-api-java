@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Pause Playback request
+ * <h2>Pause Playback request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-modify-playback-state</code>
@@ -21,7 +21,7 @@ public class PauseUsersPlaybackRequest {
     private final Request request;
 
     /**
-     * <h3>Pause Playback request</h3>
+     * Pause Playback request
      * @param apiClient <p>The API client</p>
      */
     public PauseUsersPlaybackRequest(ApiClient apiClient) {
@@ -31,7 +31,8 @@ public class PauseUsersPlaybackRequest {
     }
 
     /**
-     * <p>The id of the device this command is targeting. If not supplied, the user's currently active device is the target.</p>
+     * @param deviceId <p>The id of the device this command is targeting. If not supplied, the user's currently active device is the target.</p>
+     * @return this request
      */
     public PauseUsersPlaybackRequest deviceId(String deviceId) {
         this.request.addQueryParameter("device_id", String.valueOf(deviceId));
@@ -39,7 +40,8 @@ public class PauseUsersPlaybackRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<Void> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Available Markets request
+ * <h2>Get Available Markets request</h2>
  *
  * <h3>Response</h3>
  * <p>A markets object with an array of country codes</p>
@@ -18,7 +18,7 @@ public class GetAvailableMarketsRequest {
     private final Request request;
 
     /**
-     * <h3>Get Available Markets request</h3>
+     * Get Available Markets request
      * @param apiClient <p>The API client</p>
      */
     public GetAvailableMarketsRequest(ApiClient apiClient) {
@@ -28,7 +28,8 @@ public class GetAvailableMarketsRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<Markets> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

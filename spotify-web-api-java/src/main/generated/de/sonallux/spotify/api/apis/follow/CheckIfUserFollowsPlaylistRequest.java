@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Check if Users Follow Playlist request
+ * <h2>Check if Users Follow Playlist request</h2>
  *
  * <h3>Response</h3>
  * <p>Array of booleans</p>
@@ -18,7 +18,7 @@ public class CheckIfUserFollowsPlaylistRequest {
     private final Request request;
 
     /**
-     * <h3>Check if Users Follow Playlist request</h3>
+     * Check if Users Follow Playlist request
      * @param apiClient <p>The API client</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @param ids <p>A comma-separated list of <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify User IDs</a> ; the ids of the users that you want to check to see if they follow the playlist. Maximum: 5 ids.</p>
@@ -32,7 +32,8 @@ public class CheckIfUserFollowsPlaylistRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<java.util.List<Boolean>> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

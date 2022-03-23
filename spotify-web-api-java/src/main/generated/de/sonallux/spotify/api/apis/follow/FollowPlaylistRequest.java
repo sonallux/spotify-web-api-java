@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Follow Playlist request
+ * <h2>Follow Playlist request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>playlist-modify-public, playlist-modify-private</code>
@@ -21,7 +21,7 @@ public class FollowPlaylistRequest {
     private final Request request;
 
     /**
-     * <h3>Follow Playlist request</h3>
+     * Follow Playlist request
      * @param apiClient <p>The API client</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      */
@@ -33,7 +33,8 @@ public class FollowPlaylistRequest {
     }
 
     /**
-     * <p>Defaults to <code>true</code>. If <code>true</code> the playlist will be included in user's public playlists, if <code>false</code> it will remain private.</p>
+     * @param _public <p>Defaults to <code>true</code>. If <code>true</code> the playlist will be included in user's public playlists, if <code>false</code> it will remain private.</p>
+     * @return this request
      */
     public FollowPlaylistRequest _public(boolean _public) {
         this.request.addBodyParameter("public", _public);
@@ -41,7 +42,8 @@ public class FollowPlaylistRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<Void> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

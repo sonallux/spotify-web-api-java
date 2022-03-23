@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Current User's Profile request
+ * <h2>Get Current User's Profile request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-read-private, user-read-email</code>
@@ -21,7 +21,7 @@ public class GetCurrentUsersProfileRequest {
     private final Request request;
 
     /**
-     * <h3>Get Current User's Profile request</h3>
+     * Get Current User's Profile request
      * @param apiClient <p>The API client</p>
      */
     public GetCurrentUsersProfileRequest(ApiClient apiClient) {
@@ -31,7 +31,8 @@ public class GetCurrentUsersProfileRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<PrivateUser> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

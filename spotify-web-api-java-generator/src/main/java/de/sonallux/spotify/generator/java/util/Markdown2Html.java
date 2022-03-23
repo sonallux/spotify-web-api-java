@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Markdown2Html {
     private static final Parser PARSER;
@@ -43,13 +42,15 @@ public class Markdown2Html {
     public static String convert(String markdown) {
         var document = PARSER.parse(markdown);
         var html = HTML_RENDERER.render(document);
-        return html.replaceAll("<br />", "<br>");
+        return html
+                .replace("<br />", "<br>")
+                .replace("<img src", "<img alt=\"\" src");
     }
 
     public static String convertToSingleLine(String markdown) {
         return convert(markdown)
-            .replaceAll(">\n", ">")
-            .replaceAll("\n", " ")
+            .replace(">\n", ">")
+            .replace("\n", " ")
             .trim();
     }
 
@@ -57,6 +58,6 @@ public class Markdown2Html {
         var html = convert(markdown);
         return Arrays.stream(html.split("\n"))
             .map(String::trim)
-            .collect(Collectors.toList());
+            .toList();
     }
 }

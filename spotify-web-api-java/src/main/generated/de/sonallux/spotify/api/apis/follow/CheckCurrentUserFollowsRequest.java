@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Check If User Follows Artists or Users request
+ * <h2>Check If User Follows Artists or Users request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-follow-read</code>
@@ -21,7 +21,7 @@ public class CheckCurrentUserFollowsRequest {
     private final Request request;
 
     /**
-     * <h3>Check If User Follows Artists or Users request</h3>
+     * Check If User Follows Artists or Users request
      * @param apiClient <p>The API client</p>
      * @param type <p>The ID type: either <code>artist</code> or <code>user</code>.</p>
      * @param ids <p>A comma-separated list of the artist or the user <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> to check. For example: <code>ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q</code>. A maximum of 50 IDs can be sent in one request.</p>
@@ -35,7 +35,8 @@ public class CheckCurrentUserFollowsRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<java.util.List<Boolean>> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class ScopeGenerator {
@@ -37,7 +36,7 @@ public class ScopeGenerator {
                         "description", scopeEntry.getValue().trim(),
                         "last", false
                 )))
-                .collect(Collectors.toList());
+                .toList();
         scopesContext.get(scopes.size() - 1).put("last", true);
         context.put("scopes", scopesContext);
 

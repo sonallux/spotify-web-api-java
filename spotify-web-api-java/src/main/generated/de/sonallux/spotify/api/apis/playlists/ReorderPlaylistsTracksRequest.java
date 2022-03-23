@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Reorder Playlist Items request
+ * <h2>Reorder Playlist Items request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>playlist-modify-public, playlist-modify-private</code>
@@ -21,7 +21,7 @@ public class ReorderPlaylistsTracksRequest {
     private final Request request;
 
     /**
-     * <h3>Reorder Playlist Items request</h3>
+     * Reorder Playlist Items request
      * @param apiClient <p>The API client</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @param rangeStart <p>The position of the first item to be reordered.</p>
@@ -37,7 +37,8 @@ public class ReorderPlaylistsTracksRequest {
     }
 
     /**
-     * <p>The amount of items to be reordered. Defaults to 1 if not set.<br>The range of items to be reordered begins from the <em>range_start</em> position, and includes the <em>range_length</em> subsequent items.<br>Example:<br>To move the items at index 9-10 to the start of the playlist, <em>range_start</em> is set to 9, and <em>range_length</em> is set to 2.</p>
+     * @param rangeLength <p>The amount of items to be reordered. Defaults to 1 if not set.<br>The range of items to be reordered begins from the <em>range_start</em> position, and includes the <em>range_length</em> subsequent items.<br>Example:<br>To move the items at index 9-10 to the start of the playlist, <em>range_start</em> is set to 9, and <em>range_length</em> is set to 2.</p>
+     * @return this request
      */
     public ReorderPlaylistsTracksRequest rangeLength(int rangeLength) {
         this.request.addBodyParameter("range_length", rangeLength);
@@ -45,7 +46,8 @@ public class ReorderPlaylistsTracksRequest {
     }
 
     /**
-     * <p>The playlist's snapshot ID against which you want to make the changes.</p>
+     * @param snapshotId <p>The playlist's snapshot ID against which you want to make the changes.</p>
+     * @return this request
      */
     public ReorderPlaylistsTracksRequest snapshotId(String snapshotId) {
         this.request.addBodyParameter("snapshot_id", snapshotId);
@@ -53,7 +55,8 @@ public class ReorderPlaylistsTracksRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<PlaylistSnapshotId> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

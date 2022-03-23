@@ -12,7 +12,7 @@ public class PersonalizationApi {
     private final ApiClient apiClient;
 
     /**
-     * <h3>Get User's Top Artists</h3>
+     * <h4>Get User's Top Artists</h4>
      * <p>Get the current user's top artists based on calculated affinity.</p>
      * @return a {@link GetUsersTopArtistsRequest} object to build and execute the request
      */
@@ -21,7 +21,7 @@ public class PersonalizationApi {
     }
 
     /**
-     * <h3>Get User's Top Tracks</h3>
+     * <h4>Get User's Top Tracks</h4>
      * <p>Get the current user's top tracks based on calculated affinity.</p>
      * @return a {@link GetUsersTopTracksRequest} object to build and execute the request
      */

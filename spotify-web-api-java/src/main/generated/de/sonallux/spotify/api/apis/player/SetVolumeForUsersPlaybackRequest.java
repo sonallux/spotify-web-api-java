@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Set Playback Volume request
+ * <h2>Set Playback Volume request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-modify-playback-state</code>
@@ -21,7 +21,7 @@ public class SetVolumeForUsersPlaybackRequest {
     private final Request request;
 
     /**
-     * <h3>Set Playback Volume request</h3>
+     * Set Playback Volume request
      * @param apiClient <p>The API client</p>
      * @param volumePercent <p>The volume to set. Must be a value from 0 to 100 inclusive.</p>
      */
@@ -33,7 +33,8 @@ public class SetVolumeForUsersPlaybackRequest {
     }
 
     /**
-     * <p>The id of the device this command is targeting. If not supplied, the user's currently active device is the target.</p>
+     * @param deviceId <p>The id of the device this command is targeting. If not supplied, the user's currently active device is the target.</p>
+     * @return this request
      */
     public SetVolumeForUsersPlaybackRequest deviceId(String deviceId) {
         this.request.addQueryParameter("device_id", String.valueOf(deviceId));
@@ -41,7 +42,8 @@ public class SetVolumeForUsersPlaybackRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<Void> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

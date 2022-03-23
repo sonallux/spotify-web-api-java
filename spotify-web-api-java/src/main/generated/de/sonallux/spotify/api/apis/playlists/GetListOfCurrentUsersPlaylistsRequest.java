@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * Get Current User's Playlists request
+ * <h2>Get Current User's Playlists request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>playlist-read-private</code>
@@ -21,7 +21,7 @@ public class GetListOfCurrentUsersPlaylistsRequest {
     private final Request request;
 
     /**
-     * <h3>Get Current User's Playlists request</h3>
+     * Get Current User's Playlists request
      * @param apiClient <p>The API client</p>
      */
     public GetListOfCurrentUsersPlaylistsRequest(ApiClient apiClient) {
@@ -31,7 +31,8 @@ public class GetListOfCurrentUsersPlaylistsRequest {
     }
 
     /**
-     * <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @param limit <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @return this request
      */
     public GetListOfCurrentUsersPlaylistsRequest limit(int limit) {
         this.request.addQueryParameter("limit", String.valueOf(limit));
@@ -39,7 +40,8 @@ public class GetListOfCurrentUsersPlaylistsRequest {
     }
 
     /**
-     * <p>'The index of the first playlist to return. Default: 0 (the first object). Maximum offset: 100.000. Use with <code>limit</code> to get the next set of playlists.'</p>
+     * @param offset <p>'The index of the first playlist to return. Default: 0 (the first object). Maximum offset: 100.000. Use with <code>limit</code> to get the next set of playlists.'</p>
+     * @return this request
      */
     public GetListOfCurrentUsersPlaylistsRequest offset(int offset) {
         this.request.addQueryParameter("offset", String.valueOf(offset));
@@ -47,7 +49,8 @@ public class GetListOfCurrentUsersPlaylistsRequest {
     }
 
     /**
-     * Build the request into an executable call
+     * Build the request into an executable api call
+     * @return an executable api call
      */
     public ApiCall<Paging<SimplifiedPlaylist>> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);

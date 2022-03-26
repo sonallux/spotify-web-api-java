@@ -6,23 +6,21 @@
 
 A Java wrapper for Spotify's Web API.
 
-This is the 2.x.x version of the `spotify-web-api-java` library. The 1.x.x version can be found on the [1.x branch](https://github.com/sonallux/spotify-web-api-java/tree/1.x)
-
 ## Installation
-This library is available on [Maven Central](https://search.maven.org/artifact/de.sonallux.spotify/spotify-web-api-java) and requires at least Java 11.
+This library is available on [Maven Central](https://search.maven.org/artifact/de.sonallux.spotify/spotify-web-api-java) and requires at least Java 17.
 
 ### With maven
 ```xml
 <dependency>
   <groupId>de.sonallux.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>2.4.0</version>
+  <version>3.0.0</version>
 </dependency>
 ```
 
 ### With gradle
 ```groovy
-compile 'de.sonallux.spotify:spotify-web-api-java:2.4.0'
+compile 'de.sonallux.spotify:spotify-web-api-java:3.0.0'
 ```
 
 ## General usage

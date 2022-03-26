@@ -12,7 +12,7 @@ The OpenAPI definition contains fixes and improvements from my [spotify-web-api]
 Therefore, some model class names have changed and many fixes are included.
 
 - The library now also requires Java 17
-- Update to jackson `2.13.2`
+- Update to jackson `2.13.2` and jackson-databind to `2.13.2.1` to fix CVE-2020-36518
 - Update to okhttp `4.9.3`
 
 ## [2.4.0]

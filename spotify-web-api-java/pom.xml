@@ -35,7 +35,9 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
+            <!-- fixes CVE-2020-36518. Only for the affected artifact jackson-databind a release was made. Once a new
+            full jackson release is available replace the hardcoded version and use property jackson.version again -->
+            <version>2.13.2.1</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>

@@ -3,6 +3,7 @@ package de.sonallux.spotify.api.authorization;
 import okhttp3.HttpUrl;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class AuthorizationUrlBuilder {
     protected final HttpUrl.Builder builder;
@@ -28,8 +29,7 @@ public class AuthorizationUrlBuilder {
         }
         var scopeString = Arrays.stream(scopes)
             .map(Scope::getName)
-            .reduce((scope1, scope2) -> scope1 + " " + scope2)
-            .orElse("");
+            .collect(Collectors.joining(" "));
 
         builder.addQueryParameter("scope", scopeString);
         return this;

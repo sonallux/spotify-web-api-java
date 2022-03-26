@@ -37,14 +37,14 @@ class ImplicitGrantFlowTest {
 
         var urlWithStateAndScope = implicitGrantFlow.createAuthorizationUrl()
             .state("34fFs29kd10")
-            .scopes(Scope.USER_LIBRARY_READ, Scope.USER_LIBRARY_MODIFY)
+            .scopes(Scope.USER_LIBRARY_READ)
             .build();
         assertEquals("https://accounts.spotify.com/authorize?" +
             "client_id=1a2b3c4d5e6f7&" +
             "response_type=token&" +
             "redirect_uri=http%3A%2F%2Fexample.com%2Fcallback&" +
             "state=34fFs29kd10&" +
-            "scope=user-library-read%20user-library-modify", urlWithStateAndScope.toString());
+            "scope=user-library-read", urlWithStateAndScope.toString());
 
         var urlWithDialog = implicitGrantFlow.createAuthorizationUrl()
             .showDialog(true)

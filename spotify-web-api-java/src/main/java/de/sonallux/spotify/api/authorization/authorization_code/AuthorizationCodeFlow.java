@@ -1,7 +1,7 @@
 package de.sonallux.spotify.api.authorization.authorization_code;
 
-import de.sonallux.spotify.api.authorization.AuthorizationUrlBuilder;
 import de.sonallux.spotify.api.authorization.AuthorizationRedirectResponse;
+import de.sonallux.spotify.api.authorization.AuthorizationUrlBuilder;
 import de.sonallux.spotify.api.authorization.SpotifyAuthorizationException;
 import de.sonallux.spotify.api.authorization.TokenStore;
 import de.sonallux.spotify.api.util.TextUtil;

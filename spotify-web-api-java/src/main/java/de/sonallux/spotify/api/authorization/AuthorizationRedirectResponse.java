@@ -37,6 +37,7 @@ public class AuthorizationRedirectResponse<T> {
 
     /**
      * Parses the authorization response from the callback url
+     *
      * @param url the callback url
      * @return the authorization response
      * @throws IllegalArgumentException If {@code uri} is not a well-formed URI.
@@ -47,6 +48,7 @@ public class AuthorizationRedirectResponse<T> {
 
     /**
      * Parses the authorization response from the callback url
+     *
      * @param httpUrl the callback url
      * @return the authorization response
      * @throws IllegalArgumentException If {@code uri} is not a well-formed URI.
@@ -58,11 +60,9 @@ public class AuthorizationRedirectResponse<T> {
         var content = contentExtractor.apply(httpUrl);
         if (content != null) {
             return new AuthorizationRedirectResponse<>(state, content, null);
-        }
-        else if (TextUtil.hasText(error)) {
+        } else if (TextUtil.hasText(error)) {
             return new AuthorizationRedirectResponse<>(state, null, error);
-        }
-        else {
+        } else {
             return new AuthorizationRedirectResponse<>(state, null, "Invalid authorization redirect response uri");
         }
     }

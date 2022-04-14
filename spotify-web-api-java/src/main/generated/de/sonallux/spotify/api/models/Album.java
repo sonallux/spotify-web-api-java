@@ -12,7 +12,7 @@ public class Album extends AlbumBase {
     /**
      * <p>The artists of the album. Each artist object includes a link in <code>href</code> to more detailed information about the artist.</p>
      */
-    public java.util.List<Artist> artists;
+    public java.util.List<SimplifiedArtist> artists;
     /**
      * <p>The copyright statements of the album.</p>
      */

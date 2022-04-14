@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.1]
+- Fix type of artists property of Album to SimplifiedArtist
+- Bump jackson-databind from 2.13.2 to 2.13.2.2
+
 ## [3.0.0]
 The Java wrapper generator has been completely rewritten and uses now OpenAPI definition of the Spotify Web API as source.
 The OpenAPI definition contains fixes and improvements from my [spotify-web-api](https://github.com/sonallux/spotify-web-api) repository.

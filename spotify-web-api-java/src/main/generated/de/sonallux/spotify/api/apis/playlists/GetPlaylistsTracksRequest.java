@@ -52,7 +52,7 @@ public class GetPlaylistsTracksRequest {
     }
 
     /**
-     * @param limit <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @param limit <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 100.</p>
      * @return this request
      */
     public GetPlaylistsTracksRequest limit(int limit) {

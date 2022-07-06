@@ -8,7 +8,7 @@ info:
     The base URI for all Web API requests is `https://api.spotify.com/v1`.
 
     Need help? See our <a href="https://developer.spotify.com/documentation/web-api/guides/">Web API guides</a> for more information, or visit the <a href="https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer">Spotify for Developers community forum</a> to ask questions and connect with other developers.
-  version: 2022.3.23
+  version: 2022.7.6
   title: Spotify Web API with fixes and improvements from sonallux
   termsOfService: https://developer.spotify.com/terms/
   contact:
@@ -538,7 +538,7 @@ paths:
             default: 20
             example: 10
             type: integer
-            minimum: 0
+            minimum: 1
             maximum: 50
         - name: offset
           required: false
@@ -735,7 +735,18 @@ paths:
               can be excluded by prefixing them with an exclamation mark, for example:<br>`fields=items.track.album(!external_urls,images)`
             example: "items(added_by.id,track(name,href,album(name,href)))"
             type: string
-        - $ref: '#/components/parameters/QueryLimit'
+        - name: limit
+          required: false
+          in: query
+          schema:
+            title: Limit
+            description: |
+              The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 100.
+            default: 20
+            example: 10
+            type: integer
+            minimum: 1
+            maximum: 100
         - $ref: '#/components/parameters/QueryOffset'
         - $ref: '#/components/parameters/QueryAdditionalTypes'
       responses:
@@ -2063,18 +2074,7 @@ paths:
               The last artist ID retrieved from the previous request.
             example: 0I2XqVXqHScXjHhk6AYYRe
             type: string
-        - name: limit
-          required: false
-          in: query
-          schema:
-            title: Limit
-            description: |
-              The maximum number of items to return. Default: 20\. Minimum: 1\. Maximum: 50\.
-            default: 20
-            example: 10
-            type: integer
-            minimum: 0
-            maximum: 50
+        - $ref: '#/components/parameters/QueryLimit'
       responses:
         "200":
           $ref: '#/components/responses/CursorPagedArtists'
@@ -3050,17 +3050,22 @@ paths:
                 context_uri:
                   type: string
                   description: |
-                    Spotify URI of the context to play. Valid contexts are albums, artists, playlists. Example: {"context_uri": "spotify:album:1Je1IMUlBXcx1Fz0WE7oPT"}
+                    Optional. Spotify URI of the context to play.
+                    Valid contexts are albums, artists & playlists.
+                    {context_uri:"spotify:album:1Je1IMUlBXcx1Fz0WE7oPT"}
                 uris:
                   type: array
                   description: |
-                    A JSON array of the Spotify track URIs to play. For example: {"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"]}
+                    Optional. A JSON array of the Spotify track URIs to play.
+                    For example: {"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"]}
                   items:
                     type: string
                 offset:
                   type: object
                   description: |
-                    Indicates from where in the context playback should start. Only available when "context_uri" corresponds to an album or playlist object, or when the uris parameter is used. "position" is zero based and can't be negative. Example: "offset": {"position": 5} "uri" is a string representing the uri of the item to start at. Example: "offset": {"uri": "spotify:track:1301WleyT98MSxVHPZCA6M"}
+                    Optional. Indicates from where in the context playback should start. Only available when context_uri corresponds to an album or playlist object
+                    "position" is zero based and can’t be negative. Example: "offset": {"position": 5}
+                    "uri" is a string representing the uri of the item to start at. Example: "offset": {"uri": "spotify:track:1301WleyT98MSxVHPZCA6M"}
                   additionalProperties: true
                 position_ms:
                   type: integer
@@ -3385,18 +3390,7 @@ paths:
         Get tracks from the current user's recently played tracks.
         _**Note**: Currently doesn't support podcast episodes._
       parameters:
-        - name: limit
-          required: false
-          in: query
-          schema:
-            title: Limit
-            description: |
-              The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-            default: 20
-            example: 10
-            type: integer
-            minimum: 0
-            maximum: 50
+        - $ref: '#/components/parameters/QueryLimit'
         - name: after
           required: false
           in: query
@@ -6443,7 +6437,7 @@ components:
         default: 20
         example: 10
         type: integer
-        minimum: 0
+        minimum: 1
         maximum: 50
     QueryOffset:
       name: offset

@@ -70,12 +70,9 @@ public class BrowseApi {
     /**
      * <h4>Get Recommendations</h4>
      * <p>Recommendations are generated based on the available information for a given seed entity and matched against similar artists and tracks. If there is sufficient information about the provided seeds, a list of tracks will be returned together with pool size details.</p><p>For artists and tracks that are very new or obscure there might not be enough data to generate a list of tracks.</p>
-     * @param seedArtists <p>A comma separated list of <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for seed artists.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
-     * @param seedGenres <p>A comma separated list of any genres in the set of <a href="#available-genre-seeds">available genre seeds</a>.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
-     * @param seedTracks <p>A comma separated list of <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for a seed track.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
      * @return a {@link GetRecommendationsRequest} object to build and execute the request
      */
-    public GetRecommendationsRequest getRecommendations(String seedArtists, String seedGenres, String seedTracks) {
-        return new GetRecommendationsRequest(apiClient, seedArtists, seedGenres, seedTracks);
+    public GetRecommendationsRequest getRecommendations() {
+        return new GetRecommendationsRequest(apiClient);
     }
 }

@@ -20,16 +20,10 @@ public class GetRecommendationsRequest {
     /**
      * Get Recommendations request
      * @param apiClient <p>The API client</p>
-     * @param seedArtists <p>A comma separated list of <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for seed artists.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
-     * @param seedGenres <p>A comma separated list of any genres in the set of <a href="#available-genre-seeds">available genre seeds</a>.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
-     * @param seedTracks <p>A comma separated list of <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for a seed track.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
      */
-    public GetRecommendationsRequest(ApiClient apiClient, String seedArtists, String seedGenres, String seedTracks) {
+    public GetRecommendationsRequest(ApiClient apiClient) {
         this.apiClient = apiClient;
         this.request = new Request("GET", "/recommendations")
-            .addQueryParameter("seed_artists", String.valueOf(seedArtists))
-            .addQueryParameter("seed_genres", String.valueOf(seedGenres))
-            .addQueryParameter("seed_tracks", String.valueOf(seedTracks))
         ;
     }
 
@@ -48,6 +42,33 @@ public class GetRecommendationsRequest {
      */
     public GetRecommendationsRequest market(String market) {
         this.request.addQueryParameter("market", String.valueOf(market));
+        return this;
+    }
+
+    /**
+     * @param seedArtists <p>A comma separated list of <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for seed artists.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
+     * @return this request
+     */
+    public GetRecommendationsRequest seedArtists(String seedArtists) {
+        this.request.addQueryParameter("seed_artists", String.valueOf(seedArtists));
+        return this;
+    }
+
+    /**
+     * @param seedGenres <p>A comma separated list of any genres in the set of <a href="#available-genre-seeds">available genre seeds</a>.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
+     * @return this request
+     */
+    public GetRecommendationsRequest seedGenres(String seedGenres) {
+        this.request.addQueryParameter("seed_genres", String.valueOf(seedGenres));
+        return this;
+    }
+
+    /**
+     * @param seedTracks <p>A comma separated list of <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for a seed track.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
+     * @return this request
+     */
+    public GetRecommendationsRequest seedTracks(String seedTracks) {
+        this.request.addQueryParameter("seed_tracks", String.valueOf(seedTracks));
         return this;
     }
 

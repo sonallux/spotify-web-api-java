@@ -1,10 +1,8 @@
 name: Update Wrapper
 on:
-  push:
-    branches: [ 'automatic-update' ]
-  # schedule:
-  #   # runs every day at 02:23 UTC
-  #   - cron: '23 2 * * *'
+  schedule:
+    # runs every day at 02:23 UTC
+    - cron: '23 2 * * *'
   workflow_dispatch:
 
 jobs:
@@ -40,7 +38,7 @@ jobs:
       - name: Download Spotify's OpenAPI
         run: wget -O spotify-web-api-java-generator/fixed-spotify-open-api.yml ${{ steps.latest-openapi.outputs.result }}
       - name: Build generator
-        run: ./mvnw -B package -Pcli
+        run: ./mvnw -B -DskipTests package -Pcli
       - name: Generate Java wrapper
         run: ./generate-java-wrapper.sh
       - name: Create Pull Request

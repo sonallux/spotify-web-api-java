@@ -29,9 +29,8 @@ jobs:
               owner: 'sonallux',
               repo: 'spotify-web-api',
             });
-            const latestRelease = response.data;
             const assetName = 'fixed-spotify-open-api.yml';
-            const asset = latestRelease.assets.find(asset => asset.name === assetName);
+            const asset = response.data.assets.find(asset => asset.name === assetName);
             console.log(asset);
             const browserDownloadUrl = asset?.browser_download_url;
             console.log(browserDownloadUrl);
@@ -41,7 +40,7 @@ jobs:
             }
             return {release: response.data.name, browserDownloadUrl};
       - name: Check outputs
-        run: 'echo "Latest release ${{ steps.latest-openapi.outputs.release }}: ${{ steps.latest-openapi.outputs.browserDownloadUrl }}"'
+        run: 'echo "Latest release ${{ steps.latest-openapi.outputs.result.release }}: ${{ steps.latest-openapi.outputs.result.browserDownloadUrl }}"'
 #      - name: Build tools
 #        run: ./mvnw -B package -Pcli
 #      - name: Download Spotify's OpenAPI

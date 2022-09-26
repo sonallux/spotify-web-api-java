@@ -20,14 +20,15 @@ jobs:
           distribution: 'zulu'
           cache: 'maven'
       - name: Comment on PR
-        uses: actions/github-script@v3
+        uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            console.log(await github.repos.getLatestRelease({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-            }))
+            const response = await github.rest.repos.getLatestRelease({
+              owner: 'sonallux',
+              repo: 'spotify-web-api',
+            })
+            console.log(response.data)
 #      - name: Build tools
 #        run: ./mvnw -B package -Pcli
 #      - name: Download Spotify's OpenAPI

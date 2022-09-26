@@ -1,8 +1,10 @@
 name: Update Wrapper
 on:
-  schedule:
-    # runs every day at 02:23 UTC
-    - cron: '23 2 * * *'
+  push:
+    branches: [ 'automatic-update' ]
+  # schedule:
+  #   # runs every day at 02:23 UTC
+  #   - cron: '23 2 * * *'
   workflow_dispatch:
 
 jobs:

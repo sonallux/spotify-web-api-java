@@ -31,6 +31,15 @@ public class PlayerApi {
     }
 
     /**
+     * <h4>Get the User's Queue</h4>
+     * <p>Get the list of objects that make up the user's queue.</p>
+     * @return a {@link GetQueueRequest} object to build and execute the request
+     */
+    public GetQueueRequest getQueue() {
+        return new GetQueueRequest(apiClient);
+    }
+
+    /**
      * <h4>Get Recently Played Tracks</h4>
      * <p>Get tracks from the current user's recently played tracks. <em><strong>Note</strong>: Currently doesn't support podcast episodes.</em></p>
      * @return a {@link GetRecentlyPlayedRequest} object to build and execute the request

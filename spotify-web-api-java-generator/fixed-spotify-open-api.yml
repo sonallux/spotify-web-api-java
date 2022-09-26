@@ -8,7 +8,7 @@ info:
     The base URI for all Web API requests is `https://api.spotify.com/v1`.
 
     Need help? See our <a href="https://developer.spotify.com/documentation/web-api/guides/">Web API guides</a> for more information, or visit the <a href="https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer">Spotify for Developers community forum</a> to ask questions and connect with other developers.
-  version: 2022.7.12
+  version: 2022.9.4
   title: Spotify Web API with fixes and improvements from sonallux
   termsOfService: https://developer.spotify.com/terms/
   contact:
@@ -43,7 +43,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /albums:
     x-spotify-docs-display-name: several-albums
     x-spotify-docs-category: Albums
@@ -70,7 +70,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /albums/{id}/tracks:
     x-spotify-docs-display-name: album-tracks
     x-spotify-docs-category: Albums
@@ -101,7 +101,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /artists/{id}:
     x-spotify-docs-display-name: artist
     x-spotify-docs-category: Artists
@@ -127,7 +127,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /artists:
     x-spotify-docs-display-name: several-artists
     x-spotify-docs-category: Artists
@@ -161,7 +161,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /artists/{id}/albums:
     x-spotify-docs-display-name: artist-albums
     x-spotify-docs-category: Artists
@@ -192,7 +192,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /artists/{id}/top-tracks:
     x-spotify-docs-display-name: artist-top-tracks
     x-spotify-docs-category: Artists
@@ -220,7 +220,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /artists/{id}/related-artists:
     x-spotify-docs-display-name: artist-related-artists
     x-spotify-docs-category: Artists
@@ -246,7 +246,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /shows/{id}:
     x-spotify-docs-display-name: show
     x-spotify-docs-category: Shows
@@ -302,7 +302,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /shows/{id}/episodes:
     x-spotify-docs-display-name: show-episodes
     x-spotify-docs-category: Shows
@@ -443,7 +443,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /tracks:
     x-spotify-docs-display-name: several-tracks
     x-spotify-docs-category: Tracks
@@ -470,7 +470,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /search:
     x-spotify-docs-display-name: search-item
     x-spotify-docs-category: Search
@@ -496,14 +496,12 @@ paths:
               
               You can narrow down your search using field filters. The available filters are `album`, `artist`, `track`, `year`, `upc`, `tag:hipster`, `tag:new`, `isrc`, and `genre`. Each field filter only applies to certain result types.
               
-              The `artist` filter can be used while searching albums, artists or tracks.<br />
-              The `album` and `year` filters can be used while searching albums or tracks. You can filter on a single `year` or a range (e.g. 1955-1960).<br />
-              The `genre` filter can be use while searching tracks and artists.<br />
+              The `artist` and `year` filters can be used while searching albums, artists and tracks. You can filter on a single `year` or a range (e.g. 1955-1960).<br />
+              The `album` filter can be used while searching albums and tracks.<br />
+              The `genre` filter can be used while searching artists and tracks.<br />
               The `isrc` and `track` filters can be used while searching tracks.<br />
               The `upc`, `tag:new` and `tag:hipster` filters can only be used while searching albums. The `tag:new` filter will return albums released in the past two weeks and `tag:hipster` can be used to return only albums with the lowest 10% popularity.<br />
-              
-              You can also use the `NOT` operator to exclude keywords from your search.
-            example: remaster%20track:Doxy+artist:Miles%20Davis
+            example: remaster%20track:Doxy%20artist:Miles%20Davis
             type: string
         - name: type
           required: true
@@ -512,10 +510,9 @@ paths:
           schema:
             title: Item type
             description: |
-              A comma-separated list of item types to search
-              across. Search results include hits from all the specified item types. For
-              example: `q=name:abacab&type=album,track` returns both albums and tracks
-              with "abacab" included in their name.
+              A comma-separated list of item types to search across. Search results include hits
+              from all the specified item types. For example: `q=abacab&type=album,track` returns
+              both albums and tracks matching "abacab".
             example: "track,artist"
             type: array
             items:
@@ -574,7 +571,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /me:
     x-spotify-docs-display-name: current-user
     x-spotify-docs-category: Users Profile
@@ -646,7 +643,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
     put:
       tags:
         - Playlists
@@ -1575,7 +1572,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /users/{user_id}/playlists:
     x-spotify-docs-display-name: playlists
     x-spotify-docs-category: Playlists
@@ -1796,7 +1793,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /browse/categories:
     x-spotify-docs-display-name: browse-categories
     x-spotify-docs-category: Browse
@@ -1842,7 +1839,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /browse/categories/{category_id}:
     x-spotify-docs-display-name: browse-category
     x-spotify-docs-category: Browse
@@ -1894,7 +1891,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /browse/categories/{category_id}/playlists:
     x-spotify-docs-display-name: category-playlists
     x-spotify-docs-category: Browse
@@ -1940,7 +1937,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /playlists/{playlist_id}/images:
     x-spotify-docs-display-name: playlist-images
     x-spotify-docs-category: Playlists
@@ -1966,7 +1963,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
     put:
       tags:
         - Playlists
@@ -2037,7 +2034,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /me/following:
     x-spotify-docs-display-name: following
     x-spotify-docs-category: Follow
@@ -2293,7 +2290,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /audio-features:
     x-spotify-docs-display-name: audio-features-several-tracks
     x-spotify-docs-category: Tracks
@@ -2328,7 +2325,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /audio-features/{id}:
     x-spotify-docs-display-name: audio-features-track
     x-spotify-docs-category: Tracks
@@ -2363,7 +2360,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /audio-analysis/{id}:
     x-spotify-docs-display-name: audio-analysis-track
     x-spotify-docs-category: Tracks
@@ -2398,7 +2395,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /recommendations:
     x-spotify-docs-display-name: recommendations
     x-spotify-docs-category: Browse
@@ -2860,7 +2857,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /recommendations/available-genre-seeds:
     x-spotify-docs-display-name: available-genre-seeds
     x-spotify-docs-category: Browse
@@ -2884,7 +2881,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /me/player:
     x-spotify-docs-display-name: user-player
     x-spotify-docs-category: Player
@@ -3427,6 +3424,28 @@ paths:
   /me/player/queue:
     x-spotify-docs-display-name: queue
     x-spotify-docs-category: Player
+    get:
+      tags:
+        - Player
+      operationId: get-queue
+      x-spotify-docs-endpoint-name: Get the User's Queue
+      x-spotify-docs-console-url: /console/get-queue/
+      summary: |
+        Get the User's Queue
+      description: |
+        Get the list of objects that make up the user's queue.
+      responses:
+        "200":
+          $ref: '#/components/responses/Queue'
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "429":
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+        - oauth_2_0:
+            - user-read-playback-state
     post:
       tags:
         - Player
@@ -3492,7 +3511,7 @@ paths:
         "429":
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - oauth_2_0: []
+        - oauth_2_0: [ ]
   /me/top/artists:
     x-spotify-docs-display-name: current-user-top-artists
     x-spotify-docs-category: Personalization
@@ -3955,6 +3974,12 @@ components:
               - true
             items:
               type: boolean
+    Queue:
+      description: Information about the queue
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QueueObject'
     OneCurrentlyPlaying:
       description: Information about playback
       content:
@@ -4326,6 +4351,24 @@ components:
           type: string
           description: |
             The object type of the currently playing item. Can be one of `track`, `episode`, `ad` or `unknown`.
+    QueueObject:
+      type: object
+      x-spotify-docs-type: QueueObject
+      properties:
+        currently_playing:
+          oneOf:
+            - $ref: '#/components/schemas/TrackObject'
+            - $ref: '#/components/schemas/EpisodeObject'
+          x-spotify-docs-type: TrackObject | EpisodeObject
+          description: The currently playing track or episode. Can be `null`.
+        queue:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/TrackObject'
+              - $ref: '#/components/schemas/EpisodeObject'
+            x-spotify-docs-type: TrackObject | EpisodeObject
+          description: The tracks or episodes in the queue. Can be empty.
     CurrentlyPlayingContextObject:
       type: object
       x-spotify-docs-type: CurrentlyPlayingContextObject

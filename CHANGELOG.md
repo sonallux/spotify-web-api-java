@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 - Change the API of the recommendations request. All `seed*` parameters are now considered optional because not all of them are always required. It must be at least one `seed*` parameter present.
+- Add player's get queue request
+- Bump jackson to `2.13.4`
 
 ## [3.0.1]
 - Fix type of artists property of Album to SimplifiedArtist

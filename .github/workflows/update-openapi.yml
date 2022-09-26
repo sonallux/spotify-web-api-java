@@ -40,7 +40,7 @@ jobs:
             }
             return {release: response.data.name, browserDownloadUrl};
       - name: Check outputs
-        run: 'echo "Latest release ${{ steps.latest-openapi.outputs.result.release }}: ${{ steps.latest-openapi.outputs.result.browserDownloadUrl }}"'
+        run: 'echo "Latest release ${{ steps.latest-openapi.outputs.result }}: ${{ steps.latest-openapi.outputs.result.browserDownloadUrl }}"'
 #      - name: Build tools
 #        run: ./mvnw -B package -Pcli
 #      - name: Download Spotify's OpenAPI

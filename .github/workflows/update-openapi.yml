@@ -29,9 +29,14 @@ jobs:
               owner: 'sonallux',
               repo: 'spotify-web-api',
             });
+            const latestRelease = response.data;
             const assetName = 'fixed-spotify-open-api.yml';
-            const browserDownloadUrl = response.data.assets.find(asset => asset.name === assetName)?.browser_download_url;
+            const asset = latestRelease.assets.find(asset => asset.name === assetName);
+            console.log(asset);
+            const browserDownloadUrl = asset?.browser_download_url;
+            console.log(browserDownloadUrl);
             if (!browserDownloadUrl) {
+              console.log('Latest release did not contain the correct asset!');
               core.setFailed('Latest release did not contain the correct asset!');
             }
             return {release: response.data.name, browserDownloadUrl};

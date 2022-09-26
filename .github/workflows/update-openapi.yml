@@ -24,6 +24,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
+          result-encoding: string
           script: |
             const response = await github.rest.repos.getLatestRelease({
               owner: 'sonallux',
@@ -31,16 +32,16 @@ jobs:
             });
             const assetName = 'fixed-spotify-open-api.yml';
             const asset = response.data.assets.find(asset => asset.name === assetName);
-            console.log(asset);
             const browserDownloadUrl = asset?.browser_download_url;
-            console.log(browserDownloadUrl);
             if (!browserDownloadUrl) {
               console.log('Latest release did not contain the correct asset!');
               core.setFailed('Latest release did not contain the correct asset!');
             }
-            return {release: response.data.name, browserDownloadUrl};
-      - name: Check outputs
-        run: 'echo "Latest release ${{ steps.latest-openapi.outputs.result }}: ${{ steps.latest-openapi.outputs.result.browserDownloadUrl }}"'
+            return browserDownloadUrl;
+      - name: Download Spotify's OpenAPI
+        run: wget -O spotify-web-api-java-generator/fixed-spotify-open-api.yml ${{ steps.latest-openapi.outputs.result }}
+      - name: git diff
+        run: git diff
 #      - name: Build tools
 #        run: ./mvnw -B package -Pcli
 #      - name: Download Spotify's OpenAPI

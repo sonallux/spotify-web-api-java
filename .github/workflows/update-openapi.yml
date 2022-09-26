@@ -28,13 +28,12 @@ jobs:
           script: |
             const response = await github.rest.repos.getLatestRelease({
               owner: 'sonallux',
-              repo: 'spotify-web-api-java',
+              repo: 'spotify-web-api',
             });
             const assetName = 'fixed-spotify-open-api.yml';
             const asset = response.data.assets.find(asset => asset.name === assetName);
             const browserDownloadUrl = asset?.browser_download_url;
             if (!browserDownloadUrl) {
-              console.log('Latest release did not contain the correct asset!');
               core.setFailed('Latest release did not contain the correct asset!');
             }
             return browserDownloadUrl;

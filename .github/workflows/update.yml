@@ -43,7 +43,7 @@ jobs:
         run: ./generate-java-wrapper.sh
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           # Use a PAT so GitHub actions are triggered on the PR
           token: ${{ secrets.GH_REPO_TOKEN }}

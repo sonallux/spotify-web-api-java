@@ -1,9 +1,15 @@
 version: 2
 updates:
-- package-ecosystem: maven
-  directory: "/"
-  schedule:
-    interval: weekly
-  open-pull-requests-limit: 10
-  reviewers:
-  - sonallux
+  - package-ecosystem: maven
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    reviewers:
+      - sonallux
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: weekly
+    reviewers:
+      - sonallux

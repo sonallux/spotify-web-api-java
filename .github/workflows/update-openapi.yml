@@ -19,7 +19,8 @@ jobs:
           java-version: 17
           distribution: 'zulu'
           cache: 'maven'
-      - name: Comment on PR
+      - name: Get latest fixed open api definition
+        id: latest-openapi
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
@@ -27,8 +28,15 @@ jobs:
             const response = await github.rest.repos.getLatestRelease({
               owner: 'sonallux',
               repo: 'spotify-web-api',
-            })
-            console.log(response.data)
+            });
+            const assetName = 'fixed-spotify-open-api.yml';
+            const browserDownloadUrl = response.data.assets.find(asset => asset.name === assetName)?.browser_download_url;
+            if (!browserDownloadUrl) {
+              core.setFailed('Latest release did not contain the correct asset!');
+            }
+            return {release: response.data.name, browserDownloadUrl};
+      - name: Check outputs
+        run: 'echo "Latest release ${{ steps.latest-openapi.outputs.release }}: ${{ steps.latest-openapi.outputs.browserDownloadUrl }}"'
 #      - name: Build tools
 #        run: ./mvnw -B package -Pcli
 #      - name: Download Spotify's OpenAPI

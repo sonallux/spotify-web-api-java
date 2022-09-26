@@ -24,7 +24,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            console.log(github.repos.getLatestRelease({
+            console.log(await github.repos.getLatestRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,
             }))

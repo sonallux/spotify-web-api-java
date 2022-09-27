@@ -11,7 +11,9 @@ public class SpotifyWebApi  {
 
     private final AlbumsApi albumsApi;
     private final ArtistsApi artistsApi;
+    private final AudiobooksApi audiobooksApi;
     private final BrowseApi browseApi;
+    private final ChaptersApi chaptersApi;
     private final EpisodesApi episodesApi;
     private final FollowApi followApi;
     private final LibraryApi libraryApi;
@@ -27,7 +29,9 @@ public class SpotifyWebApi  {
     SpotifyWebApi(ApiClient apiClient) {
         this.albumsApi = new AlbumsApi(apiClient);
         this.artistsApi = new ArtistsApi(apiClient);
+        this.audiobooksApi = new AudiobooksApi(apiClient);
         this.browseApi = new BrowseApi(apiClient);
+        this.chaptersApi = new ChaptersApi(apiClient);
         this.episodesApi = new EpisodesApi(apiClient);
         this.followApi = new FollowApi(apiClient);
         this.libraryApi = new LibraryApi(apiClient);

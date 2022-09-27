@@ -26,7 +26,7 @@ public class Device {
      */
     public boolean isRestricted;
     /**
-     * <p>The name of the device.</p>
+     * <p>A human-readable name for the device. Some devices have a name that the user can configure (e.g. &quot;Loudest speaker&quot;) and some devices have a generic name associated with the manufacturer or device model.</p>
      */
     public String name;
     /**

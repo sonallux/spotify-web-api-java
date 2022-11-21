@@ -24,7 +24,7 @@
         <picocli.version>4.7.0</picocli.version>
         <flexmark.version>0.64.0</flexmark.version>
         <mustache.java.version>0.9.10</mustache.java.version>
-        <slf4j.version>1.7.36</slf4j.version>
+        <slf4j.version>2.0.4</slf4j.version>
         <swagger-parser.version>2.1.9</swagger-parser.version>
 
         <moditect.module.name>de.sonallux.spotify.generator.java</moditect.module.name>

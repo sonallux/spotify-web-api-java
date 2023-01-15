@@ -3,11 +3,10 @@ package de.sonallux.spotify.api.models;
 import lombok.*;
 
 /**
- * PagedPlaylists
+ * PlaylistsPagingObject
  */
 @Getter
 @Setter
 @NoArgsConstructor
-public class PagedPlaylists {
-    public Paging playlists;
+public class PlaylistsPaging extends Paging {
 }

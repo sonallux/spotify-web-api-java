@@ -13,10 +13,10 @@ import de.sonallux.spotify.api.models.*;
  * <code>playlist-read-private, playlist-read-collaborative</code>
  *
  * <h3>Response</h3>
- * <p>Pages of playlists</p>
+ * <p>A paged set of playlists</p>
  */
 public class GetListUsersPlaylistsRequest {
-    private static final TypeReference<Paging<SimplifiedPlaylist>> RESPONSE_TYPE = new TypeReference<>() {};
+    private static final TypeReference<PlaylistsPaging> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;
     private final Request request;
 
@@ -54,7 +54,7 @@ public class GetListUsersPlaylistsRequest {
      * Build the request into an executable api call
      * @return an executable api call
      */
-    public ApiCall<Paging<SimplifiedPlaylist>> build() {
+    public ApiCall<PlaylistsPaging> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);
     }
 }

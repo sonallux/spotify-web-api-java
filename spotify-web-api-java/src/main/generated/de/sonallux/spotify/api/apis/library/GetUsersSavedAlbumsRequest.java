@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <h2>Get Saved Albums request</h2>
+ * <h2>Get User's Saved Albums request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-library-read</code>
@@ -21,7 +21,7 @@ public class GetUsersSavedAlbumsRequest {
     private final Request request;
 
     /**
-     * Get Saved Albums request
+     * Get User's Saved Albums request
      * @param apiClient <p>The API client</p>
      */
     public GetUsersSavedAlbumsRequest(ApiClient apiClient) {

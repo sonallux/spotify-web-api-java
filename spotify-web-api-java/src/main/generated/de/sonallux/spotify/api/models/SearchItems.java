@@ -13,7 +13,7 @@ public class SearchItems {
     public Paging<SimplifiedArtist> artists;
     public Paging<SimplifiedAudiobook> audiobooks;
     public Paging<SimplifiedEpisode> episodes;
-    public Paging<SimplifiedPlaylist> playlists;
+    public Paging playlists;
     public Paging<SimplifiedShow> shows;
     public Paging<SimplifiedTrack> tracks;
 }

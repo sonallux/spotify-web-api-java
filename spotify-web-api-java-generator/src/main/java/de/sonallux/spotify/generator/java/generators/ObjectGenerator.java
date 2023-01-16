@@ -161,7 +161,7 @@ public class ObjectGenerator {
         }
 
         var resolvedSchema = generationContext.resolveSchema(schema);
-        if (resolvedSchema instanceof ComposedSchema composedSchema && composedSchema.getAllOf() != null && composedSchema.getAllOf().size() == 1) {
+        if (resolvedSchema instanceof ComposedSchema composedSchema && composedSchema.getAllOf() != null && composedSchema.getAllOf().size() == 1 && composedSchema.getProperties() == null) {
             var innerSchemaName = OpenApiUtils.getSchemaName(composedSchema.getAllOf().get(0).get$ref());
             var innerSchema = generationContext.resolveSchema(composedSchema.getAllOf().get(0).get$ref());
             var innerType = JavaUtils.getPrimitiveTypeOfSchema(innerSchema)

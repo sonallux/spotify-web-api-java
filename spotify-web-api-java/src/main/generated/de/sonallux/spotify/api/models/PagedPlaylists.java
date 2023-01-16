@@ -9,5 +9,5 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 public class PagedPlaylists {
-    public Paging playlists;
+    public Paging<SimplifiedPlaylist> playlists;
 }

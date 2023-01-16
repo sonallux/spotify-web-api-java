@@ -13,5 +13,5 @@ public class PagedPlaylistsAndMessage {
      * <p>A description of the playlists</p>
      */
     public String message;
-    public Paging playlists;
+    public Paging<SimplifiedPlaylist> playlists;
 }

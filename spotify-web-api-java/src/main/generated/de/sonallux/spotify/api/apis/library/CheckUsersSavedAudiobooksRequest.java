@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <h2>Check User's Saved Albums request</h2>
+ * <h2>Check User's Saved Audiobooks request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>user-library-read</code>
@@ -15,19 +15,19 @@ import de.sonallux.spotify.api.models.*;
  * <h3>Response</h3>
  * <p>Array of booleans</p>
  */
-public class CheckUsersSavedAlbumsRequest {
+public class CheckUsersSavedAudiobooksRequest {
     private static final TypeReference<java.util.List<Boolean>> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;
     private final Request request;
 
     /**
-     * Check User's Saved Albums request
+     * Check User's Saved Audiobooks request
      * @param apiClient <p>The API client</p>
-     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the albums. Maximum: 20 IDs.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M</code>. Maximum: 50 IDs.</p>
      */
-    public CheckUsersSavedAlbumsRequest(ApiClient apiClient, String ids) {
+    public CheckUsersSavedAudiobooksRequest(ApiClient apiClient, String ids) {
         this.apiClient = apiClient;
-        this.request = new Request("GET", "/me/albums/contains")
+        this.request = new Request("GET", "/me/audiobooks/contains")
             .addQueryParameter("ids", String.valueOf(ids))
         ;
     }

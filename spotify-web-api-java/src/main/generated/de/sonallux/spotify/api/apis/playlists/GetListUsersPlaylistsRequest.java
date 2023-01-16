@@ -13,7 +13,7 @@ import de.sonallux.spotify.api.models.*;
  * <code>playlist-read-private, playlist-read-collaborative</code>
  *
  * <h3>Response</h3>
- * <p>Pages of playlists</p>
+ * <p>A paged set of playlists</p>
  */
 public class GetListUsersPlaylistsRequest {
     private static final TypeReference<Paging<SimplifiedPlaylist>> RESPONSE_TYPE = new TypeReference<>() {};

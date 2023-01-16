@@ -12,13 +12,23 @@ public class LibraryApi {
     private final ApiClient apiClient;
 
     /**
-     * <h4>Check Saved Albums</h4>
+     * <h4>Check User's Saved Albums</h4>
      * <p>Check if one or more albums is already saved in the current Spotify user's 'Your Music' library.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the albums. Maximum: 20 IDs.</p>
      * @return a {@link CheckUsersSavedAlbumsRequest} object to build and execute the request
      */
     public CheckUsersSavedAlbumsRequest checkUsersSavedAlbums(String ids) {
         return new CheckUsersSavedAlbumsRequest(apiClient, ids);
+    }
+
+    /**
+     * <h4>Check User's Saved Audiobooks</h4>
+     * <p>Check if one or more audiobooks are already saved in the current Spotify user's library.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M</code>. Maximum: 50 IDs.</p>
+     * @return a {@link CheckUsersSavedAudiobooksRequest} object to build and execute the request
+     */
+    public CheckUsersSavedAudiobooksRequest checkUsersSavedAudiobooks(String ids) {
+        return new CheckUsersSavedAudiobooksRequest(apiClient, ids);
     }
 
     /**
@@ -52,12 +62,21 @@ public class LibraryApi {
     }
 
     /**
-     * <h4>Get Saved Albums</h4>
+     * <h4>Get User's Saved Albums</h4>
      * <p>Get a list of the albums saved in the current Spotify user's 'Your Music' library.</p>
      * @return a {@link GetUsersSavedAlbumsRequest} object to build and execute the request
      */
     public GetUsersSavedAlbumsRequest getUsersSavedAlbums() {
         return new GetUsersSavedAlbumsRequest(apiClient);
+    }
+
+    /**
+     * <h4>Get User's Saved Audiobooks</h4>
+     * <p>Get a list of the audiobooks saved in the current Spotify user's 'Your Music' library.</p>
+     * @return a {@link GetUsersSavedAudiobooksRequest} object to build and execute the request
+     */
+    public GetUsersSavedAudiobooksRequest getUsersSavedAudiobooks() {
+        return new GetUsersSavedAudiobooksRequest(apiClient);
     }
 
     /**
@@ -88,13 +107,23 @@ public class LibraryApi {
     }
 
     /**
-     * <h4>Remove Albums</h4>
+     * <h4>Remove Users' Saved Albums</h4>
      * <p>Remove one or more albums from the current user's 'Your Music' library.</p>
      * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>[&quot;4iV5W9uYEdYUVa79Axb7Rh&quot;, &quot;1301WleyT98MSxVHPZCA6M&quot;]</code><br>A maximum of 50 items can be specified in one request. <em><strong>Note</strong>: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link RemoveAlbumsUserRequest} object to build and execute the request
      */
     public RemoveAlbumsUserRequest removeAlbumsUser(java.util.List<String> ids) {
         return new RemoveAlbumsUserRequest(apiClient, ids);
+    }
+
+    /**
+     * <h4>Remove User's Saved Audiobooks</h4>
+     * <p>Remove one or more audiobooks from the Spotify user's library.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M</code>. Maximum: 50 IDs.</p>
+     * @return a {@link RemoveAudiobooksUserRequest} object to build and execute the request
+     */
+    public RemoveAudiobooksUserRequest removeAudiobooksUser(String ids) {
+        return new RemoveAudiobooksUserRequest(apiClient, ids);
     }
 
     /**
@@ -118,7 +147,7 @@ public class LibraryApi {
     }
 
     /**
-     * <h4>Remove Tracks for Current User</h4>
+     * <h4>Remove User's Saved Tracks</h4>
      * <p>Remove one or more tracks from the current user's 'Your Music' library.</p>
      * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>[&quot;4iV5W9uYEdYUVa79Axb7Rh&quot;, &quot;1301WleyT98MSxVHPZCA6M&quot;]</code><br>A maximum of 50 items can be specified in one request. <em><strong>Note</strong>: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link RemoveTracksUserRequest} object to build and execute the request
@@ -128,7 +157,7 @@ public class LibraryApi {
     }
 
     /**
-     * <h4>Save Albums</h4>
+     * <h4>Save Albums for Current User</h4>
      * <p>Save one or more albums to the current user's 'Your Music' library.</p>
      * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>[&quot;4iV5W9uYEdYUVa79Axb7Rh&quot;, &quot;1301WleyT98MSxVHPZCA6M&quot;]</code><br>A maximum of 50 items can be specified in one request. <em><strong>Note</strong>: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link SaveAlbumsUserRequest} object to build and execute the request
@@ -138,7 +167,17 @@ public class LibraryApi {
     }
 
     /**
-     * <h4>Save Episodes for User</h4>
+     * <h4>Save Audiobooks for Current User</h4>
+     * <p>Save one or more audiobooks to the current Spotify user's library.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M</code>. Maximum: 50 IDs.</p>
+     * @return a {@link SaveAudiobooksUserRequest} object to build and execute the request
+     */
+    public SaveAudiobooksUserRequest saveAudiobooksUser(String ids) {
+        return new SaveAudiobooksUserRequest(apiClient, ids);
+    }
+
+    /**
+     * <h4>Save Episodes for Current User</h4>
      * <p>Save one or more episodes to the current user's library.<br>This API endpoint is in <strong>beta</strong> and could change without warning. Please share any feedback that you have, or issues that you discover, in our <a href="https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer">developer community forum</a>.</p>
      * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. <br>A maximum of 50 items can be specified in one request. <em><strong>Note</strong>: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link SaveEpisodesUserRequest} object to build and execute the request

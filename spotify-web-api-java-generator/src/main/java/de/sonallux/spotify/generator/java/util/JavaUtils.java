@@ -90,9 +90,15 @@ public class JavaUtils {
         if (schema instanceof ComposedSchema composedSchema) {
             var allOf = composedSchema.getAllOf();
             if (allOf != null) {
-                //if (allOf.size() == 1) {
-                //    return getTypeOfSchema(allOf.get(0));
-                //}
+                if (allOf.size() == 1) {
+                    if (allOf.get(0).get$ref().equals("#/components/schemas/PagingObject")) {
+                        var itemsSchema = (ArraySchema) schema.getProperties().get("items");
+                        return getTypeOfSchema(itemsSchema.getItems())
+                                .map(itemsType -> "Paging<" + itemsType + ">");
+                    }
+
+                    //return getTypeOfSchema(allOf.get(0));
+                }
                 if (allOf.size() == 2) {
                     if (allOf.get(0).get$ref().equals("#/components/schemas/PagingObject")) {
                         var itemsSchema = (ArraySchema) allOf.get(1).getProperties().get("items");

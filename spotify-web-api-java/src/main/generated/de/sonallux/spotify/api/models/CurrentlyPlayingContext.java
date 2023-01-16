@@ -44,7 +44,7 @@ public class CurrentlyPlayingContext {
     /**
      * <p>If shuffle is on or off.</p>
      */
-    public String shuffleState;
+    public boolean shuffleState;
     /**
      * <p>Unix Millisecond Timestamp when data was fetched.</p>
      */

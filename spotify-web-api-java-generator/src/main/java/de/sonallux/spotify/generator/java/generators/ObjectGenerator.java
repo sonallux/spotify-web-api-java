@@ -94,6 +94,13 @@ public class ObjectGenerator {
             if (composedSchema.getAllOf() != null) {
                 var allOf = composedSchema.getAllOf();
                 if (allOf.size() == 1) {
+                    if (allOf.get(0).get$ref().equals("#/components/schemas/PagingObject")) {
+                        var itemsSchema = (ArraySchema) composedSchema.getProperties().get("items");
+                        var itemsSchemaName = OpenApiUtils.getSchemaName(itemsSchema.getItems().get$ref());
+                        var itemsObjectName = getObjectNameOrGenerate(itemsSchemaName, itemsSchema.getItems());
+                        return "Paging<" + itemsObjectName + ">";
+                    }
+
                     if (allOf.get(0).get$ref() != null) {
                         var referencedSchemaName = OpenApiUtils.getSchemaName(allOf.get(0).get$ref());
                         var referencedObjectName = getObjectNameOrGenerate(referencedSchemaName, allOf.get(0));
@@ -161,7 +168,7 @@ public class ObjectGenerator {
         }
 
         var resolvedSchema = generationContext.resolveSchema(schema);
-        if (resolvedSchema instanceof ComposedSchema composedSchema && composedSchema.getAllOf() != null && composedSchema.getAllOf().size() == 1) {
+        if (resolvedSchema instanceof ComposedSchema composedSchema && composedSchema.getAllOf() != null && composedSchema.getAllOf().size() == 1 && composedSchema.getProperties() == null) {
             var innerSchemaName = OpenApiUtils.getSchemaName(composedSchema.getAllOf().get(0).get$ref());
             var innerSchema = generationContext.resolveSchema(composedSchema.getAllOf().get(0).get$ref());
             var innerType = JavaUtils.getPrimitiveTypeOfSchema(innerSchema)

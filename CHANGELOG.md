@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Add "Get an Audiobook's Chapters" endpoint
+- Add "Get User's Saved Audiobooks" endpoint
+- Add "Save Audiobooks for Current User" endpoint
+- Add "Remove User's Saved Audiobooks" endpoint
+- Add "Check User's Saved Audiobooks" endpoint
+- Fix type of `shuffleState` in `CurrentlyPlayingContext` to `boolean`
+- Bump jackson to `2.14.1`
 
 ## [3.1.0]
 - Change the API of the recommendations request. All `seed*` parameters are now considered optional because not all of them are always required. It must be at least one `seed*` parameter present.

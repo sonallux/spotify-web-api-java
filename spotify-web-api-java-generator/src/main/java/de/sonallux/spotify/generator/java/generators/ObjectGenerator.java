@@ -94,6 +94,13 @@ public class ObjectGenerator {
             if (composedSchema.getAllOf() != null) {
                 var allOf = composedSchema.getAllOf();
                 if (allOf.size() == 1) {
+                    if (allOf.get(0).get$ref().equals("#/components/schemas/PagingObject")) {
+                        var itemsSchema = (ArraySchema) composedSchema.getProperties().get("items");
+                        var itemsSchemaName = OpenApiUtils.getSchemaName(itemsSchema.getItems().get$ref());
+                        var itemsObjectName = getObjectNameOrGenerate(itemsSchemaName, itemsSchema.getItems());
+                        return "Paging<" + itemsObjectName + ">";
+                    }
+
                     if (allOf.get(0).get$ref() != null) {
                         var referencedSchemaName = OpenApiUtils.getSchemaName(allOf.get(0).get$ref());
                         var referencedObjectName = getObjectNameOrGenerate(referencedSchemaName, allOf.get(0));

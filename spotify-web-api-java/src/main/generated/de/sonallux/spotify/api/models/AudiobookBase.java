@@ -28,6 +28,10 @@ public class AudiobookBase extends BaseObject {
      */
     public String description;
     /**
+     * <p>The edition of the audiobook.</p>
+     */
+    public String edition;
+    /**
      * <p>Whether or not the audiobook has explicit content (true = yes it does; false = no it does not OR unknown).</p>
      */
     public boolean explicit;
@@ -55,7 +59,10 @@ public class AudiobookBase extends BaseObject {
      * <p>The name of the audiobook.</p>
      */
     public String name;
-    public Narrator narrators;
+    /**
+     * <p>The narrator(s) for the audiobook.</p>
+     */
+    public java.util.List<Narrator> narrators;
     /**
      * <p>The publisher of the audiobook.</p>
      */

@@ -13,7 +13,7 @@ import de.sonallux.spotify.api.models.*;
  * <p>A paged set of playlists</p>
  */
 public class GetFeaturedPlaylistsRequest {
-    private static final TypeReference<PagedPlaylistsAndMessage> RESPONSE_TYPE = new TypeReference<>() {};
+    private static final TypeReference<PagingFeaturedPlaylist> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;
     private final Request request;
 
@@ -37,7 +37,7 @@ public class GetFeaturedPlaylistsRequest {
     }
 
     /**
-     * @param locale <p>The desired language, consisting of a lowercase <a href="https://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1 language code</a> and an uppercase <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>, joined by an underscore. For example: <code>es_MX</code>, meaning &quot;Spanish (Mexico)&quot;. Provide this parameter if you want the results returned in a particular language (where available). <br><em><strong>Note</strong>: if <code>locale</code> is not supplied, or if the specified language is not available, all strings will be returned in the Spotify default language (American English). The <code>locale</code> parameter, combined with the <code>country</code> parameter, may give odd results if not carefully matched. For example <code>country=SE&amp;locale=de_DE</code> will return a list of categories relevant to Sweden but as German language strings.</em></p>
+     * @param locale <p>The desired language, consisting of a lowercase <a href="https://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1 language code</a> and an uppercase <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>, joined by an underscore. For example: <code>es_MX</code>, meaning &quot;Spanish (Mexico)&quot;. Provide this parameter if you want the results returned in a particular language (where available). <br/><em><strong>Note</strong>: if <code>locale</code> is not supplied, or if the specified language is not available, all strings will be returned in the Spotify default language (American English). The <code>locale</code> parameter, combined with the <code>country</code> parameter, may give odd results if not carefully matched. For example <code>country=SE&amp;locale=de_DE</code> will return a list of categories relevant to Sweden but as German language strings.</em></p>
      * @return this request
      */
     public GetFeaturedPlaylistsRequest locale(String locale) {
@@ -76,7 +76,7 @@ public class GetFeaturedPlaylistsRequest {
      * Build the request into an executable api call
      * @return an executable api call
      */
-    public ApiCall<PagedPlaylistsAndMessage> build() {
+    public ApiCall<PagingFeaturedPlaylist> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);
     }
 }

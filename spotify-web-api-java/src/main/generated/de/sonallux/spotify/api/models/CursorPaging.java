@@ -10,6 +10,10 @@ import lombok.*;
 @NoArgsConstructor
 public class CursorPaging<T> {
     /**
+     * <p>The requested data.</p>
+     */
+    public java.util.List<T> items;
+    /**
      * <p>The cursors used to find the next set of items.</p>
      */
     public Cursor cursors;
@@ -17,10 +21,6 @@ public class CursorPaging<T> {
      * <p>A link to the Web API endpoint returning the full result of the request.</p>
      */
     public String href;
-    /**
-     * <p>The requested data.</p>
-     */
-    public java.util.List<T> items;
     /**
      * <p>The maximum number of items in the response (as set in the query or by default).</p>
      */

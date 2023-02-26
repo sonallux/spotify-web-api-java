@@ -13,4 +13,8 @@ public class Cursor {
      * <p>The cursor to use as key to find the next page of items.</p>
      */
     public String after;
+    /**
+     * <p>The cursor to use as key to find the previous page of items.</p>
+     */
+    public String before;
 }

@@ -88,7 +88,7 @@ public class PlayerApi {
     /**
      * <h4>Set Repeat Mode</h4>
      * <p>Set the repeat mode for the user's playback. Options are repeat-track, repeat-context, and off.</p>
-     * @param state <p><strong>track</strong>, <strong>context</strong> or <strong>off</strong>.<br><strong>track</strong> will repeat the current track.<br><strong>context</strong> will repeat the current context.<br><strong>off</strong> will turn repeat off.</p>
+     * @param state <p><strong>track</strong>, <strong>context</strong> or <strong>off</strong>.<br/><strong>track</strong> will repeat the current track.<br/><strong>context</strong> will repeat the current context.<br/><strong>off</strong> will turn repeat off.</p>
      * @return a {@link SetRepeatModeOnUsersPlaybackRequest} object to build and execute the request
      */
     public SetRepeatModeOnUsersPlaybackRequest setRepeatModeOnUsersPlayback(String state) {
@@ -135,7 +135,7 @@ public class PlayerApi {
     /**
      * <h4>Toggle Playback Shuffle</h4>
      * <p>Toggle shuffle on or off for user’s playback.</p>
-     * @param state <p><strong>true</strong> : Shuffle user's playback.<br><strong>false</strong> : Do not shuffle user's playback.</p>
+     * @param state <p><strong>true</strong> : Shuffle user's playback.<br/><strong>false</strong> : Do not shuffle user's playback.</p>
      * @return a {@link ToggleShuffleForUsersPlaybackRequest} object to build and execute the request
      */
     public ToggleShuffleForUsersPlaybackRequest toggleShuffleForUsersPlayback(boolean state) {
@@ -145,7 +145,7 @@ public class PlayerApi {
     /**
      * <h4>Transfer Playback</h4>
      * <p>Transfer playback to a new device and determine if it should start playing.</p>
-     * @param deviceIds <p>A JSON array containing the ID of the device on which playback should be started/transferred.<br>For example:<code>{device_ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;]}</code><br><em><strong>Note</strong>: Although an array is accepted, only a single device_id is currently supported. Supplying more than one will return <code>400 Bad Request</code></em></p>
+     * @param deviceIds <p>A JSON array containing the ID of the device on which playback should be started/transferred.<br/>For example:<code>{device_ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;]}</code><br/><em><strong>Note</strong>: Although an array is accepted, only a single device_id is currently supported. Supplying more than one will return <code>400 Bad Request</code></em></p>
      * @return a {@link TransferUsersPlaybackRequest} object to build and execute the request
      */
     public TransferUsersPlaybackRequest transferUsersPlayback(java.util.List<String> deviceIds) {

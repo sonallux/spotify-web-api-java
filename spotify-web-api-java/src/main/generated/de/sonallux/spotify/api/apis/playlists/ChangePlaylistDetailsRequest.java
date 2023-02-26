@@ -51,7 +51,7 @@ public class ChangePlaylistDetailsRequest {
     }
 
     /**
-     * @param collaborative <p>If <code>true</code>, the playlist will become collaborative and other users will be able to modify the playlist in their Spotify client. <br><em><strong>Note</strong>: You can only set <code>collaborative</code> to <code>true</code> on non-public playlists.</em></p>
+     * @param collaborative <p>If <code>true</code>, the playlist will become collaborative and other users will be able to modify the playlist in their Spotify client. <br/><em><strong>Note</strong>: You can only set <code>collaborative</code> to <code>true</code> on non-public playlists.</em></p>
      * @return this request
      */
     public ChangePlaylistDetailsRequest collaborative(boolean collaborative) {

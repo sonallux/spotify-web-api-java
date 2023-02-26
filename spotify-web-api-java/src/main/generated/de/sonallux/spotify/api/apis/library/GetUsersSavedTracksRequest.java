@@ -13,7 +13,7 @@ import de.sonallux.spotify.api.models.*;
  * <code>user-library-read</code>
  *
  * <h3>Response</h3>
- * <p>Pages of saved tracks</p>
+ * <p>Pages of tracks</p>
  */
 public class GetUsersSavedTracksRequest {
     private static final TypeReference<Paging<SavedTrack>> RESPONSE_TYPE = new TypeReference<>() {};
@@ -31,7 +31,7 @@ public class GetUsersSavedTracksRequest {
     }
 
     /**
-     * @param market <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only content that is available in that market will be returned.<br>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
+     * @param market <p>An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. If a country code is specified, only content that is available in that market will be returned.<br/>If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.<br/><em><strong>Note</strong>: If neither market or user country are provided, the content is considered unavailable for the client.</em><br/>Users can view the country that is associated with their account in the <a href="https://www.spotify.com/se/account/overview/">account settings</a>.</p>
      * @return this request
      */
     public GetUsersSavedTracksRequest market(String market) {

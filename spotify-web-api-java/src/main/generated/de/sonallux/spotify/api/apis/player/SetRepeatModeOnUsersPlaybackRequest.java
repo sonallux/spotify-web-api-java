@@ -23,7 +23,7 @@ public class SetRepeatModeOnUsersPlaybackRequest {
     /**
      * Set Repeat Mode request
      * @param apiClient <p>The API client</p>
-     * @param state <p><strong>track</strong>, <strong>context</strong> or <strong>off</strong>.<br><strong>track</strong> will repeat the current track.<br><strong>context</strong> will repeat the current context.<br><strong>off</strong> will turn repeat off.</p>
+     * @param state <p><strong>track</strong>, <strong>context</strong> or <strong>off</strong>.<br/><strong>track</strong> will repeat the current track.<br/><strong>context</strong> will repeat the current context.<br/><strong>off</strong> will turn repeat off.</p>
      */
     public SetRepeatModeOnUsersPlaybackRequest(ApiClient apiClient, String state) {
         this.apiClient = apiClient;

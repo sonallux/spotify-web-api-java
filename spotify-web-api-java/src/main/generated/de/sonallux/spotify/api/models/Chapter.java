@@ -9,5 +9,8 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 public class Chapter extends ChapterBase {
-    public AudiobookBase audiobook;
+    /**
+     * <p>The audiobook for which the chapter belongs.</p>
+     */
+    public SimplifiedAudiobook audiobook;
 }

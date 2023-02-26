@@ -253,11 +253,12 @@ public class ObjectGenerator {
         context.put("className", context.get("className") + "<T>");
         @SuppressWarnings("unchecked")
         var properties = (List<Map<String, Object>>)context.get("properties");
-        for (var property : properties) {
-            if ("items".equals(property.get("fieldName"))) {
-                property.put("type", "java.util.List<T>");
-            }
-        }
+        properties.add(0, Map.of(
+                "fieldName", "items",
+                "hasDescription", true,
+                "description", List.of("<p>The requested data.</p>"),
+                "type", "java.util.List<T>"
+        ));
     }
 
     private static String firstNonNull(String... strings) {

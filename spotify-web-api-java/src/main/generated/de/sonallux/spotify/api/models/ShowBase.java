@@ -59,4 +59,8 @@ public class ShowBase extends BaseObject {
      * <p>The publisher of the show.</p>
      */
     public String publisher;
+    /**
+     * <p>The total number of episodes in the show.</p>
+     */
+    public int totalEpisodes;
 }

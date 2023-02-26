@@ -13,7 +13,7 @@ import de.sonallux.spotify.api.models.*;
  * <p>A paged set of playlists</p>
  */
 public class GetCategoriesPlaylistsRequest {
-    private static final TypeReference<PagedPlaylists> RESPONSE_TYPE = new TypeReference<>() {};
+    private static final TypeReference<PagingFeaturedPlaylist> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;
     private final Request request;
 
@@ -60,7 +60,7 @@ public class GetCategoriesPlaylistsRequest {
      * Build the request into an executable api call
      * @return an executable api call
      */
-    public ApiCall<PagedPlaylists> build() {
+    public ApiCall<PagingFeaturedPlaylist> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);
     }
 }

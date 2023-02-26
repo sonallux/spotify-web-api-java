@@ -10,10 +10,10 @@ import lombok.*;
 @NoArgsConstructor
 public class SearchItems {
     public Paging<SimplifiedAlbum> albums;
-    public Paging<SimplifiedArtist> artists;
+    public Paging<Artist> artists;
     public Paging<SimplifiedAudiobook> audiobooks;
     public Paging<SimplifiedEpisode> episodes;
     public Paging<SimplifiedPlaylist> playlists;
     public Paging<SimplifiedShow> shows;
-    public Paging<SimplifiedTrack> tracks;
+    public Paging<Track> tracks;
 }

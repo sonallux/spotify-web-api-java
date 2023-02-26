@@ -18,5 +18,5 @@ public class SavedAudiobook {
     /**
      * <p>Information about the audiobook.</p>
      */
-    public Audiobook album;
+    public Audiobook audiobook;
 }

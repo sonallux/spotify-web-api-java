@@ -20,5 +20,5 @@ public class PlayHistory {
     /**
      * <p>The track the user listened to.</p>
      */
-    public SimplifiedTrack track;
+    public Track track;
 }

@@ -8,7 +8,7 @@ info:
     The base URI for all Web API requests is `https://api.spotify.com/v1`.
 
     Need help? See our <a href="https://developer.spotify.com/documentation/web-api/guides/">Web API guides</a> for more information, or visit the <a href="https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer">Spotify for Developers community forum</a> to ask questions and connect with other developers.
-  version: 2023.2.26
+  version: 2023.2.27
   title: Spotify Web API with fixes and improvements from sonallux
   termsOfService: https://developer.spotify.com/terms/
   contact:
@@ -513,7 +513,7 @@ paths:
       - $ref: '#/components/parameters/QueryOffset'
       responses:
         "200":
-          $ref: '#/components/responses/PagingSimplifiedAudiobookObject'
+          $ref: '#/components/responses/PagingSavedAudiobookObject'
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -4354,6 +4354,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/PagingArtistObject'
+    PagingSavedAudiobookObject:
+      description: Pages of saved audiobooks
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSavedAudiobookObject'
     PagingTrackObject:
       description: Pages of tracks
       content:
@@ -7115,10 +7121,20 @@ components:
             The date and time the audiobook was saved
             Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.
             If the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object.
-        album:
+        audiobook:
           allOf:
           - $ref: '#/components/schemas/AudiobookObject'
           description: Information about the audiobook.
+    PagingSavedAudiobookObject:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/SavedAudiobookObject'
   parameters:
     PathAlbumId:
       in: path

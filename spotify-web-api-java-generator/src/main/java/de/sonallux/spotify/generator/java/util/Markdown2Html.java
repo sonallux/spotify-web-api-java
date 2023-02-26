@@ -43,8 +43,7 @@ public class Markdown2Html {
         var document = PARSER.parse(markdown);
         var html = HTML_RENDERER.render(document);
         return html
-                .replace("<br />", "<br>")
-                .replace("<img src", "<img alt=\"\" src");
+                .replace("<br />", "<br>");
     }
 
     public static String convertToSingleLine(String markdown) {

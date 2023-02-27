@@ -15,7 +15,7 @@ public class PlaylistsApi {
      * <h4>Add Items to Playlist</h4>
      * <p>Add one or more items to a user's playlist.</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
-     * @param uris <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify URIs</a> to add. For example: <code>{&quot;uris&quot;: [&quot;spotify:track:4iV5W9uYEdYUVa79Axb7Rh&quot;,&quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot;, &quot;spotify:episode:512ojhOuo1ktJprKbVcKyQ&quot;]}</code><br>A maximum of 100 items can be added in one request. <em><strong>Note</strong>: if the <code>uris</code> parameter is present in the query string, any URIs listed here in the body will be ignored.</em></p>
+     * @param uris <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify URIs</a> to add. For example: <code>{&quot;uris&quot;: [&quot;spotify:track:4iV5W9uYEdYUVa79Axb7Rh&quot;,&quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot;, &quot;spotify:episode:512ojhOuo1ktJprKbVcKyQ&quot;]}</code><br/>A maximum of 100 items can be added in one request. <em><strong>Note</strong>: if the <code>uris</code> parameter is present in the query string, any URIs listed here in the body will be ignored.</em></p>
      * @return a {@link AddTracksToPlaylistRequest} object to build and execute the request
      */
     public AddTracksToPlaylistRequest addTracksToPlaylist(String playlistId, java.util.List<String> uris) {
@@ -108,7 +108,7 @@ public class PlaylistsApi {
      * <p>Reorder items in a playlist</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the playlist.</p>
      * @param rangeStart <p>The position of the first item to be reordered.</p>
-     * @param insertBefore <p>The position where the items should be inserted.<br>To reorder the items to the end of the playlist, simply set <em>insert_before</em> to the position after the last item.<br>Examples:<br>To reorder the first item to the last position in a playlist with 10 items, set <em>range_start</em> to 0, and <em>insert_before</em> to 10.<br>To reorder the last item in a playlist with 10 items to the start of the playlist, set <em>range_start</em> to 9, and <em>insert_before</em> to 0.</p>
+     * @param insertBefore <p>The position where the items should be inserted.<br/>To reorder the items to the end of the playlist, simply set <em>insert_before</em> to the position after the last item.<br/>Examples:<br/>To reorder the first item to the last position in a playlist with 10 items, set <em>range_start</em> to 0, and <em>insert_before</em> to 10.<br/>To reorder the last item in a playlist with 10 items to the start of the playlist, set <em>range_start</em> to 9, and <em>insert_before</em> to 0.</p>
      * @return a {@link ReorderPlaylistsTracksRequest} object to build and execute the request
      */
     public ReorderPlaylistsTracksRequest reorderPlaylistsTracks(String playlistId, int rangeStart, int insertBefore) {

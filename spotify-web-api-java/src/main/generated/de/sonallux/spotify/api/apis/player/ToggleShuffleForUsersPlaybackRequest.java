@@ -23,7 +23,7 @@ public class ToggleShuffleForUsersPlaybackRequest {
     /**
      * Toggle Playback Shuffle request
      * @param apiClient <p>The API client</p>
-     * @param state <p><strong>true</strong> : Shuffle user's playback.<br><strong>false</strong> : Do not shuffle user's playback.</p>
+     * @param state <p><strong>true</strong> : Shuffle user's playback.<br/><strong>false</strong> : Do not shuffle user's playback.</p>
      */
     public ToggleShuffleForUsersPlaybackRequest(ApiClient apiClient, boolean state) {
         this.apiClient = apiClient;

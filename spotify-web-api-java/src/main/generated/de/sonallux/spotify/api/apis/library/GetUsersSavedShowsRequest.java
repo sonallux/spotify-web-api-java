@@ -13,7 +13,7 @@ import de.sonallux.spotify.api.models.*;
  * <code>user-library-read</code>
  *
  * <h3>Response</h3>
- * <p>Pages of saved shows</p>
+ * <p>Pages of shows</p>
  */
 public class GetUsersSavedShowsRequest {
     private static final TypeReference<Paging<SavedShow>> RESPONSE_TYPE = new TypeReference<>() {};

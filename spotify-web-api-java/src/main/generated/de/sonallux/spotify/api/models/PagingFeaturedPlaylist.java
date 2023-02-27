@@ -3,15 +3,12 @@ package de.sonallux.spotify.api.models;
 import lombok.*;
 
 /**
- * PagedPlaylistsAndMessage
+ * PagingFeaturedPlaylistObject
  */
 @Getter
 @Setter
 @NoArgsConstructor
-public class PagedPlaylistsAndMessage {
-    /**
-     * <p>A description of the playlists</p>
-     */
+public class PagingFeaturedPlaylist {
     public String message;
     public Paging<SimplifiedPlaylist> playlists;
 }

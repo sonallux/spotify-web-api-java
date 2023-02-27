@@ -34,7 +34,7 @@ public class AudiobooksApi {
     /**
      * <h4>Get Several Audiobooks</h4>
      * <p>Get Spotify catalog information for several audiobooks identified by their Spotify IDs.<br><strong>Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.</strong></p>
-     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M</code>. Maximum: 50 IDs.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ</code>. Maximum: 50 IDs.</p>
      * @return a {@link GetMultipleAudiobooksRequest} object to build and execute the request
      */
     public GetMultipleAudiobooksRequest getMultipleAudiobooks(String ids) {

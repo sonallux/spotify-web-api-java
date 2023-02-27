@@ -13,7 +13,7 @@ import de.sonallux.spotify.api.models.*;
  * <code>user-read-recently-played</code>
  *
  * <h3>Response</h3>
- * <p>Pages of PlayHistory objects</p>
+ * <p>A paged set of tracks</p>
  */
 public class GetRecentlyPlayedRequest {
     private static final TypeReference<CursorPaging<PlayHistory>> RESPONSE_TYPE = new TypeReference<>() {};

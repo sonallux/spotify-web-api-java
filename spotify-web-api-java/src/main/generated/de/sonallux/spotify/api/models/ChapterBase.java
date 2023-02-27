@@ -16,6 +16,10 @@ public class ChapterBase extends BaseObject {
      */
     public String audioPreviewUrl;
     /**
+     * <p>A list of the countries in which the chapter can be played, identified by their <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.</p>
+     */
+    public java.util.List<String> availableMarkets;
+    /**
      * <p>The number of the chapter</p>
      */
     public int chapterNumber;
@@ -64,10 +68,9 @@ public class ChapterBase extends BaseObject {
      */
     public String releaseDatePrecision;
     /**
-     * <p>Included in the response when a content restriction is applied.
-     * See <a href="https://developer.spotify.com/documentation/web-api/reference/#object-episoderestrictionobject">Restriction Object</a> for more details.</p>
+     * <p>Included in the response when a content restriction is applied.</p>
      */
-    public EpisodeRestriction restrictions;
+    public ChapterRestriction restrictions;
     /**
      * <p>The user's most recent position in the episode. Set if the supplied access token is a user token and has the scope 'user-read-playback-position'.</p>
      */

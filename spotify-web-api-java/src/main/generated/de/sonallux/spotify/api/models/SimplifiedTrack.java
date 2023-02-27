@@ -56,8 +56,7 @@ public class SimplifiedTrack extends BaseObject {
      */
     public String previewUrl;
     /**
-     * <p>Included in the response when a content restriction is applied.
-     * See <a href="https://developer.spotify.com/documentation/web-api/reference/#object-trackrestrictionobject">Restriction Object</a> for more details.</p>
+     * <p>Included in the response when a content restriction is applied.</p>
      */
     public TrackRestriction restrictions;
     /**

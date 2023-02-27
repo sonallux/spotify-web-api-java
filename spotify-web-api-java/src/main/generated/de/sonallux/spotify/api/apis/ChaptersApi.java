@@ -24,7 +24,7 @@ public class ChaptersApi {
     /**
      * <h4>Get Several Chapters</h4>
      * <p>Get Spotify catalog information for several chapters identified by their Spotify IDs.<br><strong>Note: Chapters are only available for the US, UK, Ireland, New Zealand and Australia markets.</strong></p>
-     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M</code>. Maximum: 50 IDs.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>ids=0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU</code>. Maximum: 50 IDs.</p>
      * @return a {@link GetSeveralChaptersRequest} object to build and execute the request
      */
     public GetSeveralChaptersRequest getSeveralChapters(String ids) {

@@ -3,6 +3,7 @@ package de.sonallux.spotify.generator.java;
 import de.sonallux.spotify.generator.java.util.JavaPackage;
 import io.swagger.v3.parser.OpenAPIV3Parser;
 import io.swagger.v3.parser.core.models.ParseOptions;
+import lombok.extern.slf4j.Slf4j;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.IVersionProvider;
@@ -17,6 +18,7 @@ import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 import java.util.stream.Stream;
 
+@Slf4j
 @Command(versionProvider = CLI.ManifestVersionProvider.class)
 public class CLI implements Runnable {
 
@@ -45,7 +47,7 @@ public class CLI implements Runnable {
                 if (shouldClean) {
                     deleteDirectory(outputFolder);
                 } else {
-                    System.err.println("Warning: output folder is not empty. Existing files will be overridden.");
+                    log.warn("Warning: output folder is not empty. Existing files will be overridden.");
                 }
             }
 
@@ -58,16 +60,16 @@ public class CLI implements Runnable {
             parseOptions.setResolveCombinators(false);
             var parseResult = new OpenAPIV3Parser().readContents(openApiAsString, null, parseOptions);
             if (!parseResult.getMessages().isEmpty()) {
-                parseResult.getMessages().forEach(System.err::println);
+                parseResult.getMessages().forEach(log::error);
                 System.exit(1);
             }
 
             new JavaGenerator().generate(parseResult.getOpenAPI(), outputFolder, javaPackage);
         } catch (IOException e) {
-            System.err.println("Failed to write generated files: " + e.getMessage());
+            log.error("Failed to write generated files", e);
             System.exit(1);
         } catch (GeneratorException e) {
-            System.err.println("Failed to generate Java wrapper: " + e.getMessage());
+            log.error("Failed to generate Java wrapper", e);
             System.exit(1);
         }
     }

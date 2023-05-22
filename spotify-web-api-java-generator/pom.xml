@@ -25,7 +25,7 @@
         <flexmark.version>0.64.0</flexmark.version>
         <mustache.java.version>0.9.10</mustache.java.version>
         <slf4j.version>2.0.7</slf4j.version>
-        <swagger-parser.version>2.1.13</swagger-parser.version>
+        <swagger-parser.version>2.1.14</swagger-parser.version>
 
         <moditect.module.name>de.sonallux.spotify.generator.java</moditect.module.name>
     </properties>

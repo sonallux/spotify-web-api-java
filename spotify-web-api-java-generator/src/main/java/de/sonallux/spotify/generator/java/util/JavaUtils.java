@@ -95,8 +95,6 @@ public class JavaUtils {
                         return getTypeOfSchema(itemsSchema.getItems())
                                 .map(itemsType -> "Paging<" + itemsType + ">");
                     }
-
-                    //return getTypeOfSchema(allOf.get(0));
                 }
                 if (allOf.size() == 2) {
                     if (allOf.get(0).get$ref().equals("#/components/schemas/PagingObject")) {
@@ -123,22 +121,15 @@ public class JavaUtils {
                 }
             }
 
-            if (schema.getExtensions() != null) {
-                return Optional.ofNullable((String) schema.getExtensions().get("x-spotify-docs-type"))
-                        .map(type -> type.replace("Object", ""));
-            }
-        }
-
-        if (schema.getExtensions() != null) {
-            return Optional.ofNullable((String) schema.getExtensions().get("x-spotify-docs-type"))
-                    .map(type -> type.replace("Object", ""));
+            // Resolve type of other composed schema via reference name
+            return Optional.empty();
         }
 
         if (schema instanceof MapSchema) {
             return Optional.of("java.util.Map<String, Object>");
         }
 
-        log.warn("Can not get type for schema type: " + schema.getType());
+        // Type can not be resolved just by schema
         return Optional.empty();
     }
 

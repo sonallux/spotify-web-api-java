@@ -48,7 +48,7 @@ public class ImplicitGrantExample {
 
     private void useTheSpotifyWebApi() {
         try {
-            var usersSavedTracks = spotifyApi.getLibraryApi().getUsersSavedTracks().build().execute();
+            var usersSavedTracks = spotifyApi.getTracksApi().getUsersSavedTracks().build().execute();
             usersSavedTracks.getItems().forEach(System.out::println);
         } catch (SpotifyApiException e) {
             e.printStackTrace();

@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [4.0.0]
 - Adjust the categories of some endpoints to match with the official [Spotify Web API Reference](https://developer.spotify.com/documentation/web-api). No endpoint have been removed, they just got moved to other categories.
   - Added `CategoriesApi` and `GenresApi` category
   - Removed `BrowseApe`, `LibraryApi` and `PersonalizationApi`
@@ -19,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix return type of "Get Featured Playlists request" from `PagedPlaylistsAndMessage` to `PagingFeaturedPlaylist`
 - Fix type of `narrators` field in `AudiobookBase` from `Narrator` to `List<Narrator>`
 - Bump jackson to `2.15.2`
-- Bump okhttp to `4.10.0`
+- Bump okhttp to `4.11.0`
 
 ## [3.1.0]
 - Change the API of the recommendations request. All `seed*` parameters are now considered optional because not all of them are always required. It must be at least one `seed*` parameter present.

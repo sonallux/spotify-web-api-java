@@ -23,7 +23,7 @@ public class CreatePlaylistRequest {
     /**
      * Create Playlist request
      * @param apiClient <p>The API client</p>
-     * @param userId <p>The user's <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify user ID</a>.</p>
+     * @param userId <p>The user's <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify user ID</a>.</p>
      * @param name <p>The name for the new playlist, for example <code>&quot;Your Coolest Playlist&quot;</code>. This name does not need to be unique; a user may have several playlists with the same name.</p>
      */
     public CreatePlaylistRequest(ApiClient apiClient, String userId, String name) {
@@ -35,7 +35,7 @@ public class CreatePlaylistRequest {
     }
 
     /**
-     * @param _public <p>Defaults to <code>true</code>. If <code>true</code> the playlist will be public, if <code>false</code> it will be private. To be able to create private playlists, the user must have granted the <code>playlist-modify-private</code> <a href="/documentation/general/guides/authorization-guide/#list-of-scopes">scope</a></p>
+     * @param _public <p>Defaults to <code>true</code>. If <code>true</code> the playlist will be public, if <code>false</code> it will be private. To be able to create private playlists, the user must have granted the <code>playlist-modify-private</code> <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes/#list-of-scopes">scope</a></p>
      * @return this request
      */
     public CreatePlaylistRequest _public(boolean _public) {
@@ -44,7 +44,7 @@ public class CreatePlaylistRequest {
     }
 
     /**
-     * @param collaborative <p>Defaults to <code>false</code>. If <code>true</code> the playlist will be collaborative. <em><strong>Note</strong>: to create a collaborative playlist you must also set <code>public</code> to <code>false</code>. To create collaborative playlists you must have granted <code>playlist-modify-private</code> and <code>playlist-modify-public</code> <a href="/documentation/general/guides/authorization-guide/#list-of-scopes">scopes</a>.</em></p>
+     * @param collaborative <p>Defaults to <code>false</code>. If <code>true</code> the playlist will be collaborative. <em><strong>Note</strong>: to create a collaborative playlist you must also set <code>public</code> to <code>false</code>. To create collaborative playlists you must have granted <code>playlist-modify-private</code> and <code>playlist-modify-public</code> <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes/#list-of-scopes">scopes</a>.</em></p>
      * @return this request
      */
     public CreatePlaylistRequest collaborative(boolean collaborative) {

@@ -28,7 +28,7 @@ public class Playlist extends BaseObject {
      */
     public Followers followers;
     /**
-     * <p>Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See <a href="/documentation/general/guides/working-with-playlists/">Working with Playlists</a>. <em><strong>Note</strong>: If returned, the source URL for the image (<code>url</code>) is temporary and will expire in less than a day.</em></p>
+     * <p>Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">Working with Playlists</a>. <em><strong>Note</strong>: If returned, the source URL for the image (<code>url</code>) is temporary and will expire in less than a day.</em></p>
      */
     public java.util.List<Image> images;
     /**
@@ -40,7 +40,7 @@ public class Playlist extends BaseObject {
      */
     public PlaylistOwner owner;
     /**
-     * <p>The playlist's public/private status: <code>true</code> the playlist is public, <code>false</code> the playlist is private, <code>null</code> the playlist status is not relevant. For more about public/private status, see <a href="/documentation/general/guides/working-with-playlists/">Working with Playlists</a></p>
+     * <p>The playlist's public/private status: <code>true</code> the playlist is public, <code>false</code> the playlist is private, <code>null</code> the playlist status is not relevant. For more about public/private status, see <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">Working with Playlists</a></p>
      */
     @lombok.experimental.Accessors(prefix = "_")
     public boolean _public;

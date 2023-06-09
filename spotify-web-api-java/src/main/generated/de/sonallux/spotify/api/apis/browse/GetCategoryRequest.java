@@ -20,7 +20,7 @@ public class GetCategoryRequest {
     /**
      * Get Single Browse Category request
      * @param apiClient <p>The API client</p>
-     * @param categoryId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify category ID</a> for the category.</p>
+     * @param categoryId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify category ID</a> for the category.</p>
      */
     public GetCategoryRequest(ApiClient apiClient, String categoryId) {
         this.apiClient = apiClient;

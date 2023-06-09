@@ -23,7 +23,7 @@ public class GetMultipleEpisodesRequest {
     /**
      * Get Several Episodes request
      * @param apiClient <p>The API client</p>
-     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the episodes. Maximum: 50 IDs.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for the episodes. Maximum: 50 IDs.</p>
      */
     public GetMultipleEpisodesRequest(ApiClient apiClient, String ids) {
         this.apiClient = apiClient;

@@ -23,7 +23,7 @@ public class BrowseApi {
     /**
      * <h4>Get Category's Playlists</h4>
      * <p>Get a list of Spotify playlists tagged with a particular category.</p>
-     * @param categoryId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify category ID</a> for the category.</p>
+     * @param categoryId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify category ID</a> for the category.</p>
      * @return a {@link GetCategoriesPlaylistsRequest} object to build and execute the request
      */
     public GetCategoriesPlaylistsRequest getCategoriesPlaylists(String categoryId) {
@@ -33,7 +33,7 @@ public class BrowseApi {
     /**
      * <h4>Get Single Browse Category</h4>
      * <p>Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).</p>
-     * @param categoryId <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify category ID</a> for the category.</p>
+     * @param categoryId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify category ID</a> for the category.</p>
      * @return a {@link GetCategoryRequest} object to build and execute the request
      */
     public GetCategoryRequest getCategory(String categoryId) {
@@ -60,7 +60,7 @@ public class BrowseApi {
 
     /**
      * <h4>Get Available Genre Seeds</h4>
-     * <p>Retrieve a list of available genres seed parameter values for <a href="https://developer.spotify.com/documentation/web-api/reference/#/operations/get-recommendations">recommendations</a>.</p>
+     * <p>Retrieve a list of available genres seed parameter values for <a href="https://developer.spotify.com/documentation/web-api/reference/get-recommendations">recommendations</a>.</p>
      * @return a {@link GetRecommendationGenresRequest} object to build and execute the request
      */
     public GetRecommendationGenresRequest getRecommendationGenres() {

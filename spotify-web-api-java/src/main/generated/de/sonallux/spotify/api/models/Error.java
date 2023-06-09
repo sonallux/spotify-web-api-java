@@ -14,7 +14,7 @@ public class Error {
      */
     public String message;
     /**
-     * <p>The HTTP status code (also returned in the response header; see <a href="https://developer.spotify.com/documentation/web-api/#response-status-codes">Response Status Codes</a> for more information).</p>
+     * <p>The HTTP status code (also returned in the response header; see <a href="https://developer.spotify.com/documentation/web-api/concepts/api-calls#response-status-codes">Response Status Codes</a> for more information).</p>
      */
     public int status;
 }

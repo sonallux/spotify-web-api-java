@@ -23,7 +23,7 @@ public class GetListUsersPlaylistsRequest {
     /**
      * Get User's Playlists request
      * @param apiClient <p>The API client</p>
-     * @param userId <p>The user's <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify user ID</a>.</p>
+     * @param userId <p>The user's <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify user ID</a>.</p>
      */
     public GetListUsersPlaylistsRequest(ApiClient apiClient, String userId) {
         this.apiClient = apiClient;

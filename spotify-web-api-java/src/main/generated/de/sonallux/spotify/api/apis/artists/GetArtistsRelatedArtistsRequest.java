@@ -20,7 +20,7 @@ public class GetArtistsRelatedArtistsRequest {
     /**
      * Get Artist's Related Artists request
      * @param apiClient <p>The API client</p>
-     * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> of the artist.</p>
+     * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the artist.</p>
      */
     public GetArtistsRelatedArtistsRequest(ApiClient apiClient, String id) {
         this.apiClient = apiClient;

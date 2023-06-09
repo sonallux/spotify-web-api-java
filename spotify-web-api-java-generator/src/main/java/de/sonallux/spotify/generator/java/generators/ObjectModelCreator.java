@@ -73,7 +73,8 @@ public class ObjectModelCreator {
                     endpoint.addBodyParameter(parameter, isRequired);
                 });
             } else if (requestBody.getContent().containsKey("image/jpeg")) {
-                var parameter = new ApiEndpoint.RawBodyParameter("base64Image", "String", requestBody.getDescription(), "image/jpeg");
+                var content = requestBody.getContent().get("image/jpeg");
+                var parameter = new ApiEndpoint.RawBodyParameter("base64Image", "String", content.getSchema().getDescription(), "image/jpeg");
                 endpoint.addBodyParameter(parameter, requestBody.getRequired());
             }
         }

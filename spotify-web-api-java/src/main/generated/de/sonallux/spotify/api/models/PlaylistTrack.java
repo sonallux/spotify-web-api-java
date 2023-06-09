@@ -18,7 +18,7 @@ public class PlaylistTrack {
      */
     public PlaylistUser addedBy;
     /**
-     * <p>Whether this track or episode is a <a href="https://developer.spotify.com/web-api/local-files-spotify-playlists/">local file</a> or not.</p>
+     * <p>Whether this track or episode is a <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists/#local-files">local file</a> or not.</p>
      */
     public boolean isLocal;
     /**

@@ -20,7 +20,7 @@ public class GetSeveralChaptersRequest {
     /**
      * Get Several Chapters request
      * @param apiClient <p>The API client</p>
-     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>. For example: <code>ids=0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU</code>. Maximum: 50 IDs.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. For example: <code>ids=0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU</code>. Maximum: 50 IDs.</p>
      */
     public GetSeveralChaptersRequest(ApiClient apiClient, String ids) {
         this.apiClient = apiClient;

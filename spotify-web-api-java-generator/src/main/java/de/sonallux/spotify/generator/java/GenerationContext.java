@@ -72,6 +72,9 @@ public class GenerationContext {
         if (responses.containsKey("204")) {
             return responses.get("204");
         }
+        if (responses.containsKey("202")) {
+            return responses.get("202");
+        }
         return responses.getDefault();
     }
 

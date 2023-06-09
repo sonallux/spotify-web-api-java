@@ -40,11 +40,11 @@ public class SimplifiedTrack extends BaseObject {
      */
     public boolean isLocal;
     /**
-     * <p>Part of the response when <a href="/documentation/general/guides/track-relinking-guide/">Track Relinking</a> is applied. If <code>true</code>, the track is playable in the given market. Otherwise <code>false</code>.</p>
+     * <p>Part of the response when <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking/">Track Relinking</a> is applied. If <code>true</code>, the track is playable in the given market. Otherwise <code>false</code>.</p>
      */
     public boolean isPlayable;
     /**
-     * <p>Part of the response when <a href="/documentation/general/guides/track-relinking-guide/">Track Relinking</a> is applied and is only part of the response if the track linking, in fact, exists. The requested track has been replaced with a different track. The track in the <code>linked_from</code> object contains information about the originally requested track.</p>
+     * <p>Part of the response when <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking/">Track Relinking</a> is applied and is only part of the response if the track linking, in fact, exists. The requested track has been replaced with a different track. The track in the <code>linked_from</code> object contains information about the originally requested track.</p>
      */
     public LinkedTrack linkedFrom;
     /**

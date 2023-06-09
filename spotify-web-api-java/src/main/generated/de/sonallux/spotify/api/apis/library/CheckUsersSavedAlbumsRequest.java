@@ -23,7 +23,7 @@ public class CheckUsersSavedAlbumsRequest {
     /**
      * Check User's Saved Albums request
      * @param apiClient <p>The API client</p>
-     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a> for the albums. Maximum: 20 IDs.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for the albums. Maximum: 20 IDs.</p>
      */
     public CheckUsersSavedAlbumsRequest(ApiClient apiClient, String ids) {
         this.apiClient = apiClient;

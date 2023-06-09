@@ -33,7 +33,7 @@ public class ArtistsApi {
 
     /**
      * <h4>Get Artist's Related Artists</h4>
-     * <p>Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community's <a href="https://news.spotify.com/se/2010/02/03/related-artists/">listening history</a>.</p>
+     * <p>Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community's listening history.</p>
      * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the artist.</p>
      * @return a {@link GetArtistsRelatedArtistsRequest} object to build and execute the request
      */

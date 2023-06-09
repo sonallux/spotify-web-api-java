@@ -44,6 +44,25 @@ public class PlaylistsApi {
     }
 
     /**
+     * <h4>Get Category's Playlists</h4>
+     * <p>Get a list of Spotify playlists tagged with a particular category.</p>
+     * @param categoryId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify category ID</a> for the category.</p>
+     * @return a {@link GetCategoriesPlaylistsRequest} object to build and execute the request
+     */
+    public GetCategoriesPlaylistsRequest getCategoriesPlaylists(String categoryId) {
+        return new GetCategoriesPlaylistsRequest(apiClient, categoryId);
+    }
+
+    /**
+     * <h4>Get Featured Playlists</h4>
+     * <p>Get a list of Spotify featured playlists (shown, for example, on a Spotify player's 'Browse' tab).</p>
+     * @return a {@link GetFeaturedPlaylistsRequest} object to build and execute the request
+     */
+    public GetFeaturedPlaylistsRequest getFeaturedPlaylists() {
+        return new GetFeaturedPlaylistsRequest(apiClient);
+    }
+
+    /**
      * <h4>Get Current User's Playlists</h4>
      * <p>Get a list of the playlists owned or followed by the current Spotify user.</p>
      * @return a {@link GetListOfCurrentUsersPlaylistsRequest} object to build and execute the request

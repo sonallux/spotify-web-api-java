@@ -12,37 +12,33 @@ public class SpotifyWebApi  {
     private final AlbumsApi albumsApi;
     private final ArtistsApi artistsApi;
     private final AudiobooksApi audiobooksApi;
-    private final BrowseApi browseApi;
+    private final CategoriesApi categoriesApi;
     private final ChaptersApi chaptersApi;
     private final EpisodesApi episodesApi;
-    private final FollowApi followApi;
-    private final LibraryApi libraryApi;
+    private final GenresApi genresApi;
     private final MarketsApi marketsApi;
-    private final PersonalizationApi personalizationApi;
     private final PlayerApi playerApi;
     private final PlaylistsApi playlistsApi;
     private final SearchApi searchApi;
     private final ShowsApi showsApi;
     private final TracksApi tracksApi;
-    private final UsersProfileApi usersProfileApi;
+    private final UsersApi usersApi;
 
     SpotifyWebApi(ApiClient apiClient) {
         this.albumsApi = new AlbumsApi(apiClient);
         this.artistsApi = new ArtistsApi(apiClient);
         this.audiobooksApi = new AudiobooksApi(apiClient);
-        this.browseApi = new BrowseApi(apiClient);
+        this.categoriesApi = new CategoriesApi(apiClient);
         this.chaptersApi = new ChaptersApi(apiClient);
         this.episodesApi = new EpisodesApi(apiClient);
-        this.followApi = new FollowApi(apiClient);
-        this.libraryApi = new LibraryApi(apiClient);
+        this.genresApi = new GenresApi(apiClient);
         this.marketsApi = new MarketsApi(apiClient);
-        this.personalizationApi = new PersonalizationApi(apiClient);
         this.playerApi = new PlayerApi(apiClient);
         this.playlistsApi = new PlaylistsApi(apiClient);
         this.searchApi = new SearchApi(apiClient);
         this.showsApi = new ShowsApi(apiClient);
         this.tracksApi = new TracksApi(apiClient);
-        this.usersProfileApi = new UsersProfileApi(apiClient);
+        this.usersApi = new UsersApi(apiClient);
     }
 
     public static SpotifyWebApiBuilder builder() {

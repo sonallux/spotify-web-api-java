@@ -3,7 +3,6 @@ package de.sonallux.spotify.generator.java.util;
 import com.google.common.base.CaseFormat;
 import de.sonallux.spotify.generator.java.generators.BaseObjectGenerator;
 import io.swagger.v3.oas.models.Operation;
-import io.swagger.v3.oas.models.PathItem;
 import io.swagger.v3.oas.models.media.ArraySchema;
 import io.swagger.v3.oas.models.media.ComposedSchema;
 import io.swagger.v3.oas.models.media.MapSchema;
@@ -143,12 +142,8 @@ public class JavaUtils {
         return Optional.empty();
     }
 
-    public static String getCategoryName(PathItem pathItem) {
-        return (String)pathItem.getExtensions().get("x-spotify-docs-category");
-    }
-
-    public static String getCategoryClassName(PathItem pathItem) {
-        return getCategoryClassName(getCategoryName(pathItem));
+    public static String getCategoryName(Operation operation) {
+        return operation.getTags().get(0);
     }
 
     public static String getCategoryClassName(String categoryName) {

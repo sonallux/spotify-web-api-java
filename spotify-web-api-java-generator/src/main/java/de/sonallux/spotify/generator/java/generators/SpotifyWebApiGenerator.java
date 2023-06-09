@@ -29,6 +29,8 @@ public class SpotifyWebApiGenerator {
         context.put("endpointUrl", openAPI.getServers().get(0).getUrl());
 
         var apis = openAPI.getPaths().values().stream()
+                .flatMap(pathItem -> pathItem.readOperationsMap().values().stream())
+                .map(JavaUtils::getCategoryName)
                 .map(JavaUtils::getCategoryClassName)
                 .distinct()
                 .sorted()

@@ -32,10 +32,11 @@ public class ObjectModelCreator {
     }
 
     private void visitPathItem(String path, PathItem pathItem) {
-        var categoryName = JavaUtils.getCategoryName(pathItem);
-        var category = spotifyWebApi.getCategory(categoryName);
-
-        pathItem.readOperationsMap().forEach((httpMethod, operation) -> visitOperation(category, httpMethod, path, operation));
+        pathItem.readOperationsMap().forEach((httpMethod, operation) -> {
+            var categoryName = JavaUtils.getCategoryName(operation);
+            var category = spotifyWebApi.getCategory(categoryName);
+            visitOperation(category, httpMethod, path, operation);
+        });
     }
 
     private void visitOperation(ApiCategory category, PathItem.HttpMethod method, String path, Operation operation) {

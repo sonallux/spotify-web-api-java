@@ -33,15 +33,15 @@ System.out.println(artist.getName());
 ```
 
 ## Authorization
-Spotify's web API supports different [authorization flows](https://developer.spotify.com/documentation/general/guides/authorization-guide). All flows require that your application is registered on the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard). You can find more details on how to register your app [here](https://developer.spotify.com/documentation/general/guides/app-settings/#register-your-app). After successful registration you can use one of the following authorization flows with the `spotify-web-api-java`:
+Spotify's web API supports different [authorization flows](https://developer.spotify.com/documentation/web-api/concepts/authorization). All flows require that your application is registered on the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard). You can find more details on how to register your app [here](https://developer.spotify.com/documentation/web-api/concepts/apps). After successful registration you can use one of the following authorization flows with the `spotify-web-api-java`:
 
-### [Authorization code flow](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow)
+### [Authorization code flow](https://developer.spotify.com/documentation/web-api/tutorials/code-flow)
 Code example: [AuthorizationCodeExample.java](spotify-web-api-java/src/test/java/examples/AuthorizationCodeExample.java)
-### [Authorization code flow with proof key for code exchange (PKCE)](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow-with-proof-key-for-code-exchange-pkce)
+### [Authorization code flow with proof key for code exchange (PKCE)](https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow)
 Code example: [AuthorizationCodePKCEExample.java](spotify-web-api-java/src/test/java/examples/AuthorizationCodePKCEExample.java)
-### [Implicit grant](https://developer.spotify.com/documentation/general/guides/authorization-guide/#implicit-grant-flow)
+### [Implicit grant](https://developer.spotify.com/documentation/web-api/tutorials/implicit-flow)
 Code example: [ImplicitGrantExample.java](spotify-web-api-java/src/test/java/examples/ImplicitGrantExample.java)
-### [Client credentials flow](https://developer.spotify.com/documentation/general/guides/authorization-guide/#client-credentials-flow)
+### [Client credentials flow](https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow)
 Code example: [ClientCredentialsExample.java](spotify-web-api-java/src/test/java/examples/ClientCredentialsExample.java)
 
 ## How to release a new version

@@ -13,10 +13,10 @@ public class BaseObjectGenerator extends ObjectGenerator {
     public static final ApiObject BASE_API_OBJECT = ApiObject.builder()
             .name(BASE_OBJECT_NAME)
             .build()
-            .addProperty(new ApiObject.Property("id",   "String", "The [Spotify ID](https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids) for the object."))
+            .addProperty(new ApiObject.Property("id",   "String", "The [Spotify ID](https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids) for the object."))
             .addProperty(new ApiObject.Property("type", "String", "The object type."))
             .addProperty(new ApiObject.Property("href", "String", "A link to the Web API endpoint providing full details of the object."))
-            .addProperty(new ApiObject.Property("uri",  "String", "The [Spotify URI](https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids) for the object."));
+            .addProperty(new ApiObject.Property("uri",  "String", "The [Spotify URI](https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids) for the object."));
     private static final List<String> BASE_OBJECT_PROPERTY_NAMES = List.of("id", "type", "href", "uri");
 
     public BaseObjectGenerator(GenerationContext generationContext) {

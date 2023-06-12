@@ -11,8 +11,7 @@ import java.util.Base64;
 
 /**
  * Implements the
- * <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow">
- * Authorization Code Flow</a>
+ * <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow">Authorization Code Flow</a>
  */
 public class AuthorizationCodeFlow extends AbstractAuthorizationCodeFlow {
     private final String clientSecret;

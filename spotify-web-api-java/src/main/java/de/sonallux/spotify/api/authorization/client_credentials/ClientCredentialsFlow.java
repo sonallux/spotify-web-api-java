@@ -12,7 +12,7 @@ import java.util.Base64;
 
 /**
  * Implements the
- * <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#client-credentials-flow">
+ * <a href="https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow">
  * Client Credentials Flow</a>
  */
 public class ClientCredentialsFlow extends TokenStoreApiAuthorizationProvider {

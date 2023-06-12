@@ -23,7 +23,7 @@ public abstract class BaseObject {
      */
     public String href;
     /**
-     * <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID</a> for the object.</p>
+     * <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> for the object.</p>
      */
     public String id;
     /**
@@ -31,7 +31,7 @@ public abstract class BaseObject {
      */
     public String type;
     /**
-     * <p>The <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify URI</a> for the object.</p>
+     * <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a> for the object.</p>
      */
     public String uri;
 }

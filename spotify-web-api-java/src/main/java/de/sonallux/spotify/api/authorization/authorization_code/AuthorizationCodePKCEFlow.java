@@ -9,7 +9,7 @@ import okhttp3.HttpUrl;
 
 /**
  * Implements the
- * <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow-with-proof-key-for-code-exchange-pkce">
+ * <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow">
  * Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
  */
 public class AuthorizationCodePKCEFlow extends AbstractAuthorizationCodeFlow {

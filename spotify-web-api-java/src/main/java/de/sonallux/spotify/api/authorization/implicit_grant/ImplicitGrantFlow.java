@@ -6,8 +6,7 @@ import okhttp3.HttpUrl;
 
 /**
  * Implements the
- * <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#implicit-grant-flow">
- * Implicit Grant Flow</a>
+ * <a href="https://developer.spotify.com/documentation/web-api/tutorials/implicit-flow">Implicit Grant Flow</a>
  */
 public class ImplicitGrantFlow extends TokenStoreApiAuthorizationProvider {
     private final String clientId;

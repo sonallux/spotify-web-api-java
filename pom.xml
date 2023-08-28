@@ -65,7 +65,7 @@
 
         <!-- Test Dependencies -->
         <junit.version>5.10.0</junit.version>
-        <mockito-junit-jupiter.version>5.4.0</mockito-junit-jupiter.version>
+        <mockito-junit-jupiter.version>5.5.0</mockito-junit-jupiter.version>
 
         <moditect.sourceGroup>${project.groupId}</moditect.sourceGroup>
         <moditect.sourceArtifact>${project.artifactId}</moditect.sourceArtifact>

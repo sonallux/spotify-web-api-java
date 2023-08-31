@@ -30,6 +30,10 @@ public class Device {
      */
     public String name;
     /**
+     * <p>If this device can be used to set the volume.</p>
+     */
+    public boolean supportsVolume;
+    /**
      * <p>Device type, such as &quot;computer&quot;, &quot;smartphone&quot; or &quot;speaker&quot;.</p>
      */
     public String type;

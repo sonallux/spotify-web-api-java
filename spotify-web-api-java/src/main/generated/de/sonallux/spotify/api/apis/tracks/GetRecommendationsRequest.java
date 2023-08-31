@@ -46,7 +46,7 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * @param seedArtists <p>A comma separated list of <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for seed artists.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
+     * @param seedArtists <p>A comma separated list of <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for seed artists.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.<br/> <em><strong>Note</strong>: only required if <code>seed_genres</code> and <code>seed_tracks</code> are not set</em>.</p>
      * @return this request
      */
     public GetRecommendationsRequest seedArtists(String seedArtists) {
@@ -55,7 +55,7 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * @param seedGenres <p>A comma separated list of any genres in the set of <a href="#available-genre-seeds">available genre seeds</a>.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
+     * @param seedGenres <p>A comma separated list of any genres in the set of <a href="https://developer.spotify.com/documentation/web-api/reference/get-recommendation-genres">available genre seeds</a>. Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.<br/> <em><strong>Note</strong>: only required if <code>seed_artists</code> and <code>seed_tracks</code> are not set</em>.</p>
      * @return this request
      */
     public GetRecommendationsRequest seedGenres(String seedGenres) {
@@ -64,7 +64,7 @@ public class GetRecommendationsRequest {
     }
 
     /**
-     * @param seedTracks <p>A comma separated list of <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for a seed track.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.</p>
+     * @param seedTracks <p>A comma separated list of <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for a seed track.  Up to 5 seed values may be provided in any combination of <code>seed_artists</code>, <code>seed_tracks</code> and <code>seed_genres</code>.<br/> <em><strong>Note</strong>: only required if <code>seed_artists</code> and <code>seed_genres</code> are not set</em>.</p>
      * @return this request
      */
     public GetRecommendationsRequest seedTracks(String seedTracks) {

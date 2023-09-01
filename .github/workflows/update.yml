@@ -47,12 +47,12 @@ jobs:
         with:
           # Use a PAT so GitHub actions are triggered on the PR
           token: ${{ secrets.GH_REPO_TOKEN }}
-          commit-message: 'Update to fixed-spotify-open-api.yml'
+          commit-message: 'Automated update of fixed-spotify-open-api.yml'
           branch: 'openapi-update'
           delete-branch: true
           base: main
           author: 'sonallux <13821543+sonallux@users.noreply.github.com>'
-          title: 'Update to fixed-spotify-open-api.yml'
+          title: 'Automated update of `fixed-spotify-open-api.yml`'
           body: |
             Automated update of `fixed-spotify-open-api.yml`
 

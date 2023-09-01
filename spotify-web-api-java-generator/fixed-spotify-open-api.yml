@@ -8,7 +8,7 @@ info:
     The base URI for all Web API requests is `https://api.spotify.com/v1`.
 
     Need help? See our <a href="https://developer.spotify.com/documentation/web-api/guides/">Web API guides</a> for more information, or visit the <a href="https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer">Spotify for Developers community forum</a> to ask questions and connect with other developers.
-  version: 2023.6.7
+  version: 2023.8.30
   title: Spotify Web API with fixes and improvements from sonallux
   termsOfService: https://developer.spotify.com/terms/
   contact:
@@ -160,7 +160,7 @@ paths:
       - $ref: '#/components/parameters/QueryOffset'
       responses:
         "200":
-          $ref: '#/components/responses/PagingSimplifiedAlbumObject'
+          $ref: '#/components/responses/PagingArtistDiscographyAlbumObject'
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -2444,7 +2444,7 @@ paths:
         schema:
           title: Spotify Artist ID Seeds
           description: |
-            A comma separated list of [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for seed artists.  Up to 5 seed values may be provided in any combination of `seed_artists`, `seed_tracks` and `seed_genres`.
+            A comma separated list of [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for seed artists.  Up to 5 seed values may be provided in any combination of `seed_artists`, `seed_tracks` and `seed_genres`.<br/> _**Note**: only required if `seed_genres` and `seed_tracks` are not set_.
           example: 4NHQUGzhtTLFvgF5SZesLK
           type: string
       - name: seed_genres
@@ -2453,7 +2453,7 @@ paths:
         schema:
           title: Genres Seeds
           description: |
-            A comma separated list of any genres in the set of [available genre seeds](#available-genre-seeds).  Up to 5 seed values may be provided in any combination of `seed_artists`, `seed_tracks` and `seed_genres`.
+            A comma separated list of any genres in the set of [available genre seeds](/documentation/web-api/reference/get-recommendation-genres). Up to 5 seed values may be provided in any combination of `seed_artists`, `seed_tracks` and `seed_genres`.<br/> _**Note**: only required if `seed_artists` and `seed_tracks` are not set_.
           example: "classical,country"
           type: string
       - name: seed_tracks
@@ -2462,7 +2462,7 @@ paths:
         schema:
           title: Spotify Track ID Seeds
           description: |
-            A comma separated list of [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for a seed track.  Up to 5 seed values may be provided in any combination of `seed_artists`, `seed_tracks` and `seed_genres`.
+            A comma separated list of [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for a seed track.  Up to 5 seed values may be provided in any combination of `seed_artists`, `seed_tracks` and `seed_genres`.<br/> _**Note**: only required if `seed_artists` and `seed_genres` are not set_.
           example: 0c6xIDDpzE81m2q797ordA
           type: string
       - name: min_acousticness
@@ -3932,12 +3932,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/PagingPlaylistTrackObject'
-    PagingSimplifiedAlbumObject:
+    PagingArtistDiscographyAlbumObject:
       description: Pages of albums
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PagingSimplifiedAlbumObject'
+            $ref: '#/components/schemas/PagingArtistDiscographyAlbumObject'
     PagingSavedAlbumObject:
       description: Pages of albums
       content:
@@ -5160,6 +5160,7 @@ components:
           description: The name of the track.
         preview_url:
           type: string
+          nullable: true
           description: |
             A URL to a 30 second preview (MP3 format) of the track.
         track_number:
@@ -5223,6 +5224,9 @@ components:
           maximum: 100
           nullable: true
           description: The current volume in percent.
+        supports_volume:
+          type: boolean
+          description: If this device can be used to set the volume.
     CursorObject:
       type: object
       x-spotify-docs-type: CursorObject
@@ -5341,6 +5345,17 @@ components:
           type: string
         playlists:
           $ref: '#/components/schemas/PagingPlaylistObject'
+    PagingArtistDiscographyAlbumObject:
+      type: object
+      x-spotify-docs-type: PagingArtistDiscographyAlbumObject
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/ArtistDiscographyAlbumObject'
     PagingSimplifiedAlbumObject:
       type: object
       x-spotify-docs-type: PagingAlbumObject
@@ -5959,6 +5974,7 @@ components:
             The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.<br/>The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.<br/>Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. _**Note**: the popularity value may lag actual popularity by a few days: the value is not updated in real time._
         preview_url:
           type: string
+          nullable: true
           description: |
             A link to a 30 second preview (MP3 format) of the track. Can be `null`
         track_number:
@@ -6022,6 +6038,7 @@ components:
       properties:
         audio_preview_url:
           type: string
+          nullable: true
           example: https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17
           description: |
             A URL to a 30 second preview (MP3 format) of the episode. `null` if not available.
@@ -6494,6 +6511,20 @@ components:
         required:
         - artists
         properties:
+          artists:
+            type: array
+            items:
+              $ref: '#/components/schemas/SimplifiedArtistObject'
+            description: |
+              The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist.
+    ArtistDiscographyAlbumObject:
+      x-spotify-docs-type: ArtistDiscographyAlbumObject
+      allOf:
+      - $ref: '#/components/schemas/SimplifiedAlbumObject'
+      - type: object
+        required:
+        - album_group
+        properties:
           album_group:
             type: string
             enum:
@@ -6503,13 +6534,7 @@ components:
             - appears_on
             example: compilation
             description: |
-              The field is present when getting an artist's albums. Compare to album_type this field represents relationship between the artist and the album.
-          artists:
-            type: array
-            items:
-              $ref: '#/components/schemas/SimplifiedArtistObject'
-            description: |
-              The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist.
+              This field describes the relationship between the artist and the album.
     ChapterObject:
       x-spotify-docs-type: ChapterObject
       type: object
@@ -6553,6 +6578,7 @@ components:
       properties:
         audio_preview_url:
           type: string
+          nullable: true
           example: https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17
           description: |
             A URL to a 30 second preview (MP3 format) of the episode. `null` if not available.
@@ -6665,6 +6691,14 @@ components:
             Included in the response when a content restriction is applied.
     AlbumObject:
       x-spotify-docs-type: AlbumObject
+      required:
+      - artists
+      - tracks
+      - copyrights
+      - external_ids
+      - genres
+      - label
+      - popularity
       allOf:
       - $ref: '#/components/schemas/AlbumBase'
       - type: object
@@ -6680,14 +6714,12 @@ components:
             - $ref: '#/components/schemas/PagingSimplifiedTrackObject'
             description: |
               The tracks of the album.
-          popularity:
-            type: integer
-            description: "The popularity of the album, with 100 being the most popular.\
-              \ The popularity is calculated from the popularity of the album's individual\
-              \ tracks."
-          label:
-            type: string
-            description: The label for the album.
+          copyrights:
+            type: array
+            items:
+              $ref: '#/components/schemas/CopyrightObject'
+            description: |
+              The copyright statements of the album.
           external_ids:
             allOf:
             - $ref: '#/components/schemas/ExternalIdObject'
@@ -6695,15 +6727,21 @@ components:
               Known external IDs for the album.
           genres:
             type: array
-            description: "A list of the genres used to classify the album. (If not\
-              \ yet classified, the array is empty.)"
             items:
               type: string
-          copyrights:
-            type: array
-            items:
-              $ref: '#/components/schemas/CopyrightObject'
-            description: The copyright statements of the album.
+            example:
+            - Egg punk
+            - Noise rock
+            description: |
+              A list of the genres the album is associated with. If not yet classified, the array is empty.
+          label:
+            type: string
+            description: |
+              The label associated with the album.
+          popularity:
+            type: integer
+            description: |
+              The popularity of the album. The value will be between 0 and 100, with 100 being the most popular.
     ContextObject:
       type: object
       x-spotify-docs-type: ContextObject

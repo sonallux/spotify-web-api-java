@@ -22,15 +22,15 @@ public class Album extends AlbumBase {
      */
     public ExternalId externalIds;
     /**
-     * <p>A list of the genres used to classify the album. (If not yet classified, the array is empty.)</p>
+     * <p>A list of the genres the album is associated with. If not yet classified, the array is empty.</p>
      */
     public java.util.List<String> genres;
     /**
-     * <p>The label for the album.</p>
+     * <p>The label associated with the album.</p>
      */
     public String label;
     /**
-     * <p>The popularity of the album, with 100 being the most popular. The popularity is calculated from the popularity of the album's individual tracks.</p>
+     * <p>The popularity of the album. The value will be between 0 and 100, with 100 being the most popular.</p>
      */
     public int popularity;
     /**

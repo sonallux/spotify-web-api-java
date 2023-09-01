@@ -13,7 +13,7 @@ import de.sonallux.spotify.api.models.*;
  * <p>Pages of albums</p>
  */
 public class GetArtistsAlbumsRequest {
-    private static final TypeReference<Paging<SimplifiedAlbum>> RESPONSE_TYPE = new TypeReference<>() {};
+    private static final TypeReference<Paging<ArtistDiscographyAlbum>> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;
     private final Request request;
 
@@ -69,7 +69,7 @@ public class GetArtistsAlbumsRequest {
      * Build the request into an executable api call
      * @return an executable api call
      */
-    public ApiCall<Paging<SimplifiedAlbum>> build() {
+    public ApiCall<Paging<ArtistDiscographyAlbum>> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);
     }
 }

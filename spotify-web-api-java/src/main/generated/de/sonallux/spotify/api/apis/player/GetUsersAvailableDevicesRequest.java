@@ -16,7 +16,7 @@ import de.sonallux.spotify.api.models.*;
  * <p>A set of devices</p>
  */
 public class GetUsersAvailableDevicesRequest {
-    private static final TypeReference<Devices> RESPONSE_TYPE = new TypeReference<>() {};
+    private static final TypeReference<ManyDevices> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;
     private final Request request;
 
@@ -34,7 +34,7 @@ public class GetUsersAvailableDevicesRequest {
      * Build the request into an executable api call
      * @return an executable api call
      */
-    public ApiCall<Devices> build() {
+    public ApiCall<ManyDevices> build() {
         return apiClient.createApiCall(request, RESPONSE_TYPE);
     }
 }

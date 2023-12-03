@@ -10,6 +10,10 @@ import lombok.*;
 @NoArgsConstructor
 public class CurrentlyPlaying {
     /**
+     * <p>Allows to update the user interface based on which playback actions are available within the current context.</p>
+     */
+    public Disallows actions;
+    /**
      * <p>A Context Object. Can be <code>null</code>.</p>
      */
     public Context context;

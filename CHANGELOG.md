@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.1.0]
+- Introduce `ArtistDiscographyAlbum` as response for get Artist's Albums request
+- Rename model `Devices` into `ManyDevices`
+- Remove unused `PlayerError` and `TuneableTrack` models
+- Bump jackson to `2.16.0`
+- Bump okhttp to `4.12.0`
+
 ## [4.0.1]
 - Update links to Spotify documentation
 

@@ -8,7 +8,7 @@ info:
     The base URI for all Web API requests is `https://api.spotify.com/v1`.
 
     Need help? See our <a href="https://developer.spotify.com/documentation/web-api/guides/">Web API guides</a> for more information, or visit the <a href="https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer">Spotify for Developers community forum</a> to ask questions and connect with other developers.
-  version: 2023.8.30
+  version: 2023.12.2
   title: Spotify Web API with fixes and improvements from sonallux
   termsOfService: https://developer.spotify.com/terms/
   contact:
@@ -16,6 +16,22 @@ info:
     url: https://github.com/sonallux/spotify-web-api
 servers:
 - url: https://api.spotify.com/v1
+tags:
+- name: Albums
+- name: Artists
+- name: Audiobooks
+- name: Categories
+- name: Chapters
+- name: Episodes
+- name: Library
+- name: Genres
+- name: Markets
+- name: Player
+- name: Playlists
+- name: Search
+- name: Shows
+- name: Tracks
+- name: Users
 paths:
   /albums/{id}:
     get:
@@ -363,8 +379,7 @@ paths:
       summary: |
         Get an Audiobook
       description: |
-        Get Spotify catalog information for a single audiobook.<br />
-        **Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        Get Spotify catalog information for a single audiobook. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
       parameters:
       - $ref: '#/components/parameters/PathAudiobookId'
       - $ref: '#/components/parameters/QueryMarket'
@@ -391,8 +406,7 @@ paths:
       summary: |
         Get Several Audiobooks
       description: |
-        Get Spotify catalog information for several audiobooks identified by their Spotify IDs.<br />
-        **Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        Get Spotify catalog information for several audiobooks identified by their Spotify IDs. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
       parameters:
       - $ref: '#/components/parameters/QueryAudiobookIds'
       - $ref: '#/components/parameters/QueryMarket'
@@ -416,8 +430,7 @@ paths:
       summary: |
         Get Audiobook Chapters
       description: |
-        Get Spotify catalog information about an audiobook's chapters.<br />
-        **Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        Get Spotify catalog information about an audiobook's chapters. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
       parameters:
       - $ref: '#/components/parameters/PathAudiobookId'
       - $ref: '#/components/parameters/QueryMarket'
@@ -537,8 +550,7 @@ paths:
       summary: |
         Get a Chapter
       description: |
-        Get Spotify catalog information for a single chapter.<br />
-        **Note: Chapters are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        Get Spotify catalog information for a single audiobook chapter. Chapters are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
       parameters:
       - $ref: '#/components/parameters/PathChapterId'
       - $ref: '#/components/parameters/QueryMarket'
@@ -561,8 +573,7 @@ paths:
       summary: |
         Get Several Chapters
       description: |
-        Get Spotify catalog information for several chapters identified by their Spotify IDs.<br />
-        **Note: Chapters are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        Get Spotify catalog information for several audiobook chapters identified by their Spotify IDs. Chapters are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
       parameters:
       - $ref: '#/components/parameters/QueryChapterIds'
       - $ref: '#/components/parameters/QueryMarket'
@@ -642,8 +653,7 @@ paths:
         Search for Item
       description: |
         Get Spotify catalog information about albums, artists, playlists, tracks, shows, episodes or audiobooks
-        that match a keyword string.<br />
-        **Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        that match a keyword string. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
       parameters:
       - name: q
         required: true
@@ -1703,6 +1713,7 @@ paths:
       description: |
         Create a playlist for a Spotify user. (The playlist will be empty until
         you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
+        Each user is generally limited to a maximum of 11000 playlists.
       parameters:
       - $ref: '#/components/parameters/PathUserId'
       requestBody:
@@ -2924,7 +2935,7 @@ paths:
       summary: |
         Transfer Playback
       description: |
-        Transfer playback to a new device and determine if it should start playing.
+        Transfer playback to a new device and optionally begin playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
       requestBody:
         content:
           application/json:
@@ -2967,7 +2978,7 @@ paths:
       summary: |
         Get Available Devices
       description: |
-        Get information about a user’s available devices.
+        Get information about a user’s available Spotify Connect devices. Some device models are not supported and will not be listed in the API response.
       responses:
         "200":
           $ref: '#/components/responses/ManyDevices'
@@ -3012,7 +3023,7 @@ paths:
       summary: |
         Start/Resume Playback
       description: |
-        Start a new context or resume current playback on the user's active device.
+        Start a new context or resume current playback on the user's active device. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
       parameters:
       - name: device_id
         required: false
@@ -3079,7 +3090,7 @@ paths:
       summary: |
         Pause Playback
       description: |
-        Pause playback on the user's account.
+        Pause playback on the user's account. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
       parameters:
       - name: device_id
         required: false
@@ -3110,7 +3121,7 @@ paths:
       summary: |
         Skip To Next
       description: |
-        Skips to next track in the user’s queue.
+        Skips to next track in the user’s queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
       parameters:
       - name: device_id
         required: false
@@ -3141,7 +3152,7 @@ paths:
       summary: |
         Skip To Previous
       description: |
-        Skips to previous track in the user’s queue.
+        Skips to previous track in the user’s queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
       parameters:
       - name: device_id
         required: false
@@ -3173,7 +3184,7 @@ paths:
       summary: |
         Seek To Position
       description: |
-        Seeks to the given position in the user’s currently playing track.
+        Seeks to the given position in the user’s currently playing track. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
       parameters:
       - name: position_ms
         required: true
@@ -3216,8 +3227,7 @@ paths:
       summary: |
         Set Repeat Mode
       description: |
-        Set the repeat mode for the user's playback. Options are repeat-track,
-        repeat-context, and off.
+        Set the repeat mode for the user's playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
       parameters:
       - name: state
         required: true
@@ -3261,7 +3271,7 @@ paths:
       summary: |
         Set Playback Volume
       description: |
-        Set the volume for the user’s current playback device.
+        Set the volume for the user’s current playback device. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
       parameters:
       - name: volume_percent
         required: true
@@ -3301,7 +3311,7 @@ paths:
       summary: |
         Toggle Playback Shuffle
       description: |
-        Toggle shuffle on or off for user’s playback.
+        Toggle shuffle on or off for user’s playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
       parameters:
       - name: state
         required: true
@@ -3400,6 +3410,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
       security:
       - oauth_2_0:
+        - user-read-currently-playing
         - user-read-playback-state
     post:
       tags:
@@ -3408,7 +3419,7 @@ paths:
       summary: |
         Add Item to Playback Queue
       description: |
-        Add an item to the end of the user's current playback queue.
+        Add an item to the end of the user's current playback queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
       parameters:
       - name: uri
         required: true
@@ -3688,7 +3699,14 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DevicesObject'
+            type: object
+            required:
+            - devices
+            properties:
+              devices:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeviceObject'
     PagedAlbums:
       description: A paged set of albums
       content:
@@ -3944,18 +3962,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/PagingSavedAlbumObject'
-    PagingSimplifiedArtistObject:
-      description: Pages of artists
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PagingSimplifiedArtistObject'
-    PagingSimplifiedShowObject:
-      description: Pages of shows
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PagingSimplifiedShowObject'
     PagingSavedShowObject:
       description: Pages of shows
       content:
@@ -4297,36 +4303,6 @@ components:
           description: Information about the track or episode.
           discriminator:
             propertyName: type
-    CurrentlyPlayingObject:
-      type: object
-      x-spotify-docs-type: CurrentlyPlayingObject
-      properties:
-        context:
-          allOf:
-          - $ref: '#/components/schemas/ContextObject'
-          description: A Context Object. Can be `null`.
-        timestamp:
-          type: integer
-          description: Unix Millisecond Timestamp when data was fetched
-        progress_ms:
-          type: integer
-          description: Progress into the currently playing track or episode. Can be
-            `null`.
-        is_playing:
-          type: boolean
-          description: "If something is currently playing, return `true`."
-        item:
-          oneOf:
-          - $ref: '#/components/schemas/TrackObject'
-          - $ref: '#/components/schemas/EpisodeObject'
-          discriminator:
-            propertyName: type
-          x-spotify-docs-type: TrackObject | EpisodeObject
-          description: The currently playing track or episode. Can be `null`.
-        currently_playing_type:
-          type: string
-          description: |
-            The object type of the currently playing item. Can be one of `track`, `episode`, `ad` or `unknown`.
     QueueObject:
       type: object
       x-spotify-docs-type: QueueObject
@@ -4446,61 +4422,6 @@ components:
           type: string
           description: |
             A short description of the cause of the error.
-    PlayerErrorObject:
-      type: object
-      x-spotify-docs-type: PlayerErrorObject
-      properties:
-        status:
-          type: integer
-          description: |
-            The HTTP status code. Either `404 NOT FOUND` or `403 FORBIDDEN`.  Also returned in the response header.
-        message:
-          type: string
-          description: |
-            A short description of the cause of the error.
-        reason:
-          allOf:
-          - $ref: '#/components/schemas/PlayerErrorReasons'
-    PlayerErrorReasons:
-      type: string
-      enum:
-      - NO_PREV_TRACK
-      - NO_NEXT_TRACK
-      - NO_SPECIFIC_TRACK
-      - ALREADY_PAUSED
-      - NOT_PAUSED
-      - NOT_PLAYING_LOCALLY
-      - NOT_PLAYING_TRACK
-      - NOT_PLAYING_CONTEXT
-      - ENDLESS_CONTEXT
-      - CONTEXT_DISALLOW
-      - ALREADY_PLAYING
-      - RATE_LIMITED
-      - REMOTE_CONTROL_DISALLOW
-      - DEVICE_NOT_CONTROLLABLE
-      - VOLUME_CONTROL_DISALLOW
-      - NO_ACTIVE_DEVICE
-      - PREMIUM_REQUIRED
-      - UNKNOWN
-      description: |
-        * `NO_PREV_TRACK` - The command requires a previous track, but there is none in the context.
-        * `NO_NEXT_TRACK` - The command requires a next track, but there is none in the context.
-        * `NO_SPECIFIC_TRACK` - The requested track does not exist.
-        * `ALREADY_PAUSED` - The command requires playback to not be paused.
-        * `NOT_PAUSED` - The command requires playback to be paused.
-        * `NOT_PLAYING_LOCALLY` - The command requires playback on the local device.
-        * `NOT_PLAYING_TRACK` - The command requires that a track is currently playing.
-        * `NOT_PLAYING_CONTEXT` - The command requires that a context is currently playing.
-        * `ENDLESS_CONTEXT` - The shuffle command cannot be applied on an endless context.
-        * `CONTEXT_DISALLOW` - The command could not be performed on the context.
-        * `ALREADY_PLAYING` - The track should not be restarted if the same track and context is already playing, and there is a resume point.
-        * `RATE_LIMITED` - The user is rate limited due to too frequent track play, also known as cat-on-the-keyboard spamming.
-        * `REMOTE_CONTROL_DISALLOW` - The context cannot be remote-controlled.
-        * `DEVICE_NOT_CONTROLLABLE` - Not possible to remote control the device.
-        * `VOLUME_CONTROL_DISALLOW` - Not possible to remote control the device's volume.
-        * `NO_ACTIVE_DEVICE` - Requires an active device and the user has none.
-        * `PREMIUM_REQUIRED` - The request is prohibited for non-premium users.
-        * `UNKNOWN` - Certain actions are restricted because of unknown reasons.
     PrivateUserObject:
       type: object
       x-spotify-docs-type: PrivateUserObject
@@ -5179,15 +5100,6 @@ components:
           type: boolean
           description: |
             Whether or not the track is from a local file.
-    DevicesObject:
-      type: object
-      x-spotify-docs-type: DevicesObject
-      properties:
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceObject'
-          description: A list of 0..n Device objects
     DeviceObject:
       type: object
       x-spotify-docs-type: DeviceObject
@@ -5195,7 +5107,9 @@ components:
         id:
           type: string
           nullable: true
-          description: The device ID.
+          description: "The device ID. This ID is unique and persistent to some extent.\
+            \ However, this is not guaranteed and any cached `device_id` should periodically\
+            \ be cleared out and refetched as necessary."
         is_active:
           type: boolean
           description: If this device is the currently active device.
@@ -5477,17 +5391,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/SimplifiedAudiobookObject'
-    PagingSimplifiedArtistObject:
-      type: object
-      x-spotify-docs-type: PagingArtistObject
-      allOf:
-      - $ref: '#/components/schemas/PagingObject'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/SimplifiedArtistObject'
     PagingArtistObject:
       type: object
       x-spotify-docs-type: PagingArtistObject
@@ -5620,72 +5523,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/SimplifiedShowObject'
           description: Information about the show.
-    TuneableTrackObject:
-      type: object
-      x-spotify-docs-type: TuneableTrackObject
-      properties:
-        acousticness:
-          type: number
-          format: float
-          x-spotify-docs-type: Float
-          description: |
-            A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.
-        danceability:
-          type: number
-          format: float
-          x-spotify-docs-type: Float
-          description: |
-            Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.
-        duration_ms:
-          type: integer
-          description: |
-            The duration of the track in milliseconds.
-        energy:
-          type: number
-          format: float
-          x-spotify-docs-type: Float
-          description: |
-            Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.
-        instrumentalness:
-          type: number
-          format: float
-          x-spotify-docs-type: Float
-          description: |
-            Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.
-        key:
-          $ref: '#/components/schemas/Key'
-        liveness:
-          type: number
-          format: float
-          x-spotify-docs-type: Float
-          description: |
-            Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.
-        loudness:
-          $ref: '#/components/schemas/Loudness'
-        mode:
-          $ref: '#/components/schemas/Mode'
-        popularity:
-          type: number
-          format: float
-          x-spotify-docs-type: Float
-          description: |
-            The popularity of the track. The value will be between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are. _**Note**: When applying track relinking via the `market` parameter, it is expected to find relinked tracks with popularities that do not match `min_*`, `max_*`and `target_*` popularities. These relinked tracks are accurate replacements for unplayable tracks with the expected popularity scores. Original, non-relinked tracks are available via the `linked_from` attribute of the [relinked track response](/documentation/web-api/concepts/track-relinking)._
-        speechiness:
-          type: number
-          format: float
-          x-spotify-docs-type: Float
-          description: |
-            Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.
-        tempo:
-          $ref: '#/components/schemas/Tempo'
-        time_signature:
-          $ref: '#/components/schemas/TimeSignature'
-        valence:
-          type: number
-          format: float
-          x-spotify-docs-type: Float
-          description: |
-            A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
     PlaylistObject:
       type: object
       x-spotify-docs-type: PlaylistObject
@@ -6865,6 +6702,41 @@ components:
           type: boolean
           description: |
             When `true`, indicates that the explicit content setting is locked and can't be changed by the user.
+    CurrentlyPlayingObject:
+      type: object
+      x-spotify-docs-type: CurrentlyPlayingObject
+      properties:
+        context:
+          allOf:
+          - $ref: '#/components/schemas/ContextObject'
+          description: A Context Object. Can be `null`.
+        timestamp:
+          type: integer
+          description: Unix Millisecond Timestamp when data was fetched
+        progress_ms:
+          type: integer
+          description: Progress into the currently playing track or episode. Can be
+            `null`.
+        is_playing:
+          type: boolean
+          description: "If something is currently playing, return `true`."
+        item:
+          oneOf:
+          - $ref: '#/components/schemas/TrackObject'
+          - $ref: '#/components/schemas/EpisodeObject'
+          discriminator:
+            propertyName: type
+          x-spotify-docs-type: TrackObject | EpisodeObject
+          description: The currently playing track or episode. Can be `null`.
+        currently_playing_type:
+          type: string
+          description: |
+            The object type of the currently playing item. Can be one of `track`, `episode`, `ad` or `unknown`.
+        actions:
+          allOf:
+          - $ref: '#/components/schemas/DisallowsObject'
+          description: |
+            Allows to update the user interface based on which playback actions are available within the current context.
     SavedAudiobookObject:
       type: object
       x-spotify-docs-type: SavedAudiobookObject

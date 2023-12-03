@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Device {
     /**
-     * <p>The device ID.</p>
+     * <p>The device ID. This ID is unique and persistent to some extent. However, this is not guaranteed and any cached <code>device_id</code> should periodically be cleared out and refetched as necessary.</p>
      */
     public String id;
     /**

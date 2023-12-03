@@ -13,7 +13,7 @@ public class PlayerApi {
 
     /**
      * <h4>Add Item to Playback Queue</h4>
-     * <p>Add an item to the end of the user's current playback queue.</p>
+     * <p>Add an item to the end of the user's current playback queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.</p>
      * @param uri <p>The uri of the item to add to the queue. Must be a track or an episode uri.</p>
      * @return a {@link AddToQueueRequest} object to build and execute the request
      */
@@ -50,7 +50,7 @@ public class PlayerApi {
 
     /**
      * <h4>Get Available Devices</h4>
-     * <p>Get information about a user’s available devices.</p>
+     * <p>Get information about a user’s available Spotify Connect devices. Some device models are not supported and will not be listed in the API response.</p>
      * @return a {@link GetUsersAvailableDevicesRequest} object to build and execute the request
      */
     public GetUsersAvailableDevicesRequest getUsersAvailableDevices() {
@@ -68,7 +68,7 @@ public class PlayerApi {
 
     /**
      * <h4>Pause Playback</h4>
-     * <p>Pause playback on the user's account.</p>
+     * <p>Pause playback on the user's account. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.</p>
      * @return a {@link PauseUsersPlaybackRequest} object to build and execute the request
      */
     public PauseUsersPlaybackRequest pauseUsersPlayback() {
@@ -77,7 +77,7 @@ public class PlayerApi {
 
     /**
      * <h4>Seek To Position</h4>
-     * <p>Seeks to the given position in the user’s currently playing track.</p>
+     * <p>Seeks to the given position in the user’s currently playing track. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.</p>
      * @param positionMs <p>The position in milliseconds to seek to. Must be a positive number. Passing in a position that is greater than the length of the track will cause the player to start playing the next song.</p>
      * @return a {@link SeekToPositionInCurrentlyPlayingTrackRequest} object to build and execute the request
      */
@@ -87,7 +87,7 @@ public class PlayerApi {
 
     /**
      * <h4>Set Repeat Mode</h4>
-     * <p>Set the repeat mode for the user's playback. Options are repeat-track, repeat-context, and off.</p>
+     * <p>Set the repeat mode for the user's playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.</p>
      * @param state <p><strong>track</strong>, <strong>context</strong> or <strong>off</strong>.<br/><strong>track</strong> will repeat the current track.<br/><strong>context</strong> will repeat the current context.<br/><strong>off</strong> will turn repeat off.</p>
      * @return a {@link SetRepeatModeOnUsersPlaybackRequest} object to build and execute the request
      */
@@ -97,7 +97,7 @@ public class PlayerApi {
 
     /**
      * <h4>Set Playback Volume</h4>
-     * <p>Set the volume for the user’s current playback device.</p>
+     * <p>Set the volume for the user’s current playback device. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.</p>
      * @param volumePercent <p>The volume to set. Must be a value from 0 to 100 inclusive.</p>
      * @return a {@link SetVolumeForUsersPlaybackRequest} object to build and execute the request
      */
@@ -107,7 +107,7 @@ public class PlayerApi {
 
     /**
      * <h4>Skip To Next</h4>
-     * <p>Skips to next track in the user’s queue.</p>
+     * <p>Skips to next track in the user’s queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.</p>
      * @return a {@link SkipUsersPlaybackToNextTrackRequest} object to build and execute the request
      */
     public SkipUsersPlaybackToNextTrackRequest skipUsersPlaybackToNextTrack() {
@@ -116,7 +116,7 @@ public class PlayerApi {
 
     /**
      * <h4>Skip To Previous</h4>
-     * <p>Skips to previous track in the user’s queue.</p>
+     * <p>Skips to previous track in the user’s queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.</p>
      * @return a {@link SkipUsersPlaybackToPreviousTrackRequest} object to build and execute the request
      */
     public SkipUsersPlaybackToPreviousTrackRequest skipUsersPlaybackToPreviousTrack() {
@@ -125,7 +125,7 @@ public class PlayerApi {
 
     /**
      * <h4>Start/Resume Playback</h4>
-     * <p>Start a new context or resume current playback on the user's active device.</p>
+     * <p>Start a new context or resume current playback on the user's active device. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.</p>
      * @return a {@link StartUsersPlaybackRequest} object to build and execute the request
      */
     public StartUsersPlaybackRequest startUsersPlayback() {
@@ -134,7 +134,7 @@ public class PlayerApi {
 
     /**
      * <h4>Toggle Playback Shuffle</h4>
-     * <p>Toggle shuffle on or off for user’s playback.</p>
+     * <p>Toggle shuffle on or off for user’s playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.</p>
      * @param state <p><strong>true</strong> : Shuffle user's playback.<br/><strong>false</strong> : Do not shuffle user's playback.</p>
      * @return a {@link ToggleShuffleForUsersPlaybackRequest} object to build and execute the request
      */
@@ -144,7 +144,7 @@ public class PlayerApi {
 
     /**
      * <h4>Transfer Playback</h4>
-     * <p>Transfer playback to a new device and determine if it should start playing.</p>
+     * <p>Transfer playback to a new device and optionally begin playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.</p>
      * @param deviceIds <p>A JSON array containing the ID of the device on which playback should be started/transferred.<br/>For example:<code>{device_ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;]}</code><br/><em><strong>Note</strong>: Although an array is accepted, only a single device_id is currently supported. Supplying more than one will return <code>400 Bad Request</code></em></p>
      * @return a {@link TransferUsersPlaybackRequest} object to build and execute the request
      */

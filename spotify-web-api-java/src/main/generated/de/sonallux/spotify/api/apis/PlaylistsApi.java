@@ -34,7 +34,7 @@ public class PlaylistsApi {
 
     /**
      * <h4>Create Playlist</h4>
-     * <p>Create a playlist for a Spotify user. (The playlist will be empty until you <a href="https://developer.spotify.com/documentation/web-api/reference/add-tracks-to-playlist">add tracks</a>.)</p>
+     * <p>Create a playlist for a Spotify user. (The playlist will be empty until you <a href="https://developer.spotify.com/documentation/web-api/reference/add-tracks-to-playlist">add tracks</a>.) Each user is generally limited to a maximum of 11000 playlists.</p>
      * @param userId <p>The user's <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify user ID</a>.</p>
      * @param name <p>The name for the new playlist, for example <code>&quot;Your Coolest Playlist&quot;</code>. This name does not need to be unique; a user may have several playlists with the same name.</p>
      * @return a {@link CreatePlaylistRequest} object to build and execute the request

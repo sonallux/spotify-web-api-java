@@ -10,7 +10,7 @@ import de.sonallux.spotify.api.models.*;
  * <h2>Get the User's Queue request</h2>
  *
  * <h3>Required OAuth scopes</h3>
- * <code>user-read-playback-state</code>
+ * <code>user-read-currently-playing, user-read-playback-state</code>
  *
  * <h3>Response</h3>
  * <p>Information about the queue</p>

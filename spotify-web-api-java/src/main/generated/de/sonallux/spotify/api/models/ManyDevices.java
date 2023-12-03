@@ -3,14 +3,11 @@ package de.sonallux.spotify.api.models;
 import lombok.*;
 
 /**
- * DevicesObject
+ * ManyDevices
  */
 @Getter
 @Setter
 @NoArgsConstructor
-public class Devices {
-    /**
-     * <p>A list of 0..n Device objects</p>
-     */
+public class ManyDevices {
     public java.util.List<Device> devices;
 }

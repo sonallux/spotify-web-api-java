@@ -13,7 +13,7 @@ public class ChaptersApi {
 
     /**
      * <h4>Get a Chapter</h4>
-     * <p>Get Spotify catalog information for a single chapter.<br><strong>Note: Chapters are only available for the US, UK, Ireland, New Zealand and Australia markets.</strong></p>
+     * <p>Get Spotify catalog information for a single audiobook chapter. Chapters are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.</p>
      * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a>for the chapter.</p>
      * @return a {@link GetChapterRequest} object to build and execute the request
      */
@@ -23,7 +23,7 @@ public class ChaptersApi {
 
     /**
      * <h4>Get Several Chapters</h4>
-     * <p>Get Spotify catalog information for several chapters identified by their Spotify IDs.<br><strong>Note: Chapters are only available for the US, UK, Ireland, New Zealand and Australia markets.</strong></p>
+     * <p>Get Spotify catalog information for several audiobook chapters identified by their Spotify IDs. Chapters are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. For example: <code>ids=0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU</code>. Maximum: 50 IDs.</p>
      * @return a {@link GetSeveralChaptersRequest} object to build and execute the request
      */

@@ -43,7 +43,7 @@ jobs:
         run: ./generate-java-wrapper.sh
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         with:
           # Use a PAT so GitHub actions are triggered on the PR
           token: ${{ secrets.GH_REPO_TOKEN }}
@@ -51,7 +51,6 @@ jobs:
           branch: 'openapi-update'
           delete-branch: true
           base: main
-          author: 'sonallux <13821543+sonallux@users.noreply.github.com>'
           title: 'Automated update of `fixed-spotify-open-api.yml`'
           body: |
             Automated update of `fixed-spotify-open-api.yml`

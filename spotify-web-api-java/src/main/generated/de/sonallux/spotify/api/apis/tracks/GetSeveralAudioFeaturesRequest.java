@@ -7,7 +7,7 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <h2>Get Tracks' Audio Features request</h2>
+ * <h2>Get Several Tracks' Audio Features request</h2>
  *
  * <h3>Response</h3>
  * <p>A set of audio features</p>
@@ -18,7 +18,7 @@ public class GetSeveralAudioFeaturesRequest {
     private final Request request;
 
     /**
-     * Get Tracks' Audio Features request
+     * Get Several Tracks' Audio Features request
      * @param apiClient <p>The API client</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>for the tracks. Maximum: 100 IDs.</p>
      */

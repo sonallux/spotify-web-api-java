@@ -30,15 +30,6 @@ public class GetCategoriesPlaylistsRequest {
     }
 
     /**
-     * @param country <p>A country: an <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>. Provide this parameter to ensure that the category exists for a particular country.</p>
-     * @return this request
-     */
-    public GetCategoriesPlaylistsRequest country(String country) {
-        this.request.addQueryParameter("country", String.valueOf(country));
-        return this;
-    }
-
-    /**
      * @param limit <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
      * @return this request
      */

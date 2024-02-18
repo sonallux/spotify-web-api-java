@@ -8,7 +8,7 @@ info:
     The base URI for all Web API requests is `https://api.spotify.com/v1`.
 
     Need help? See our <a href="https://developer.spotify.com/documentation/web-api/guides/">Web API guides</a> for more information, or visit the <a href="https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer">Spotify for Developers community forum</a> to ask questions and connect with other developers.
-  version: 2023.12.2
+  version: 2024.2.11
   title: Spotify Web API with fixes and improvements from sonallux
   termsOfService: https://developer.spotify.com/terms/
   contact:
@@ -1830,33 +1830,14 @@ paths:
       description: |
         Get a list of Spotify featured playlists (shown, for example, on a Spotify player's 'Browse' tab).
       parameters:
-      - name: country
-        required: false
-        in: query
-        schema:
-          title: Country
-          description: |
-            A country: an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.
-          example: SE
-          type: string
       - name: locale
         required: false
         in: query
         schema:
           title: Locale
           description: |
-            The desired language, consisting of a lowercase [ISO 639-1 language code](http://en.wikipedia.org/wiki/ISO_639-1) and an uppercase [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), joined by an underscore. For example: `es_MX`, meaning "Spanish (Mexico)". Provide this parameter if you want the results returned in a particular language (where available). <br/>
-            _**Note**: if `locale` is not supplied, or if the specified language is not available, all strings will be returned in the Spotify default language (American English). The `locale` parameter, combined with the `country` parameter, may give odd results if not carefully matched. For example `country=SE&locale=de_DE` will return a list of categories relevant to Sweden but as German language strings._
+            The desired language, consisting of an [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code and an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), joined by an underscore. For example: `es_MX`, meaning &quot;Spanish (Mexico)&quot;. Provide this parameter if you want the category strings returned in a particular language.<br/> _**Note**: if `locale` is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English)._
           example: sv_SE
-          type: string
-      - name: timestamp
-        required: false
-        in: query
-        schema:
-          title: Timestamp
-          description: |
-            A timestamp in [ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601): `yyyy-MM-ddTHH:mm:ss`. Use this parameter to specify the user's local time to get results tailored for that specific date and time in the day. If not provided, the response defaults to the current UTC time. Example: "2014-10-23T09:00:00" for a user whose local time is 9AM. If there were no featured playlists (or there is no data) at the specified time, the response will revert to the current UTC time.
-          example: 2014-10-23T09:00:00
           type: string
       - $ref: '#/components/parameters/QueryLimit'
       - $ref: '#/components/parameters/QueryOffset'
@@ -1881,23 +1862,13 @@ paths:
       description: |
         Get a list of categories used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
       parameters:
-      - name: country
-        required: false
-        in: query
-        schema:
-          title: Country
-          description: |
-            A country: an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Provide this parameter if you want to narrow the list of returned categories to those relevant to a particular country. If omitted, the returned items will be globally relevant.
-          example: SE
-          type: string
       - name: locale
         required: false
         in: query
         schema:
           title: Locale
           description: |
-            The desired language, consisting of an [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code and an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), joined by an underscore. For example: `es_MX`, meaning "Spanish (Mexico)". Provide this parameter if you want the category metadata returned in a particular language. <br/>
-            _**Note**: if `locale` is not supplied, or if the specified language is not available, all strings will be returned in the Spotify default language (American English). The `locale` parameter, combined with the `country` parameter, may give odd results if not carefully matched. For example `country=SE&locale=de_DE` will return a list of categories relevant to Sweden but as German language strings._
+            The desired language, consisting of an [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code and an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), joined by an underscore. For example: `es_MX`, meaning &quot;Spanish (Mexico)&quot;. Provide this parameter if you want the category strings returned in a particular language.<br/> _**Note**: if `locale` is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English)._
           example: sv_SE
           type: string
       - $ref: '#/components/parameters/QueryLimit'
@@ -1931,15 +1902,6 @@ paths:
           description: |
             The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) for the category.
           example: dinner
-          type: string
-      - name: country
-        required: false
-        in: query
-        schema:
-          title: Country
-          description: |
-            A country: an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Provide this parameter to ensure that the category exists for a particular country.
-          example: SE
           type: string
       - name: locale
         required: false
@@ -1980,15 +1942,6 @@ paths:
           description: |
             The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) for the category.
           example: dinner
-          type: string
-      - name: country
-        required: false
-        in: query
-        schema:
-          title: Country
-          description: |
-            A country: an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Provide this parameter to ensure that the category exists for a particular country.
-          example: SE
           type: string
       - $ref: '#/components/parameters/QueryLimit'
       - $ref: '#/components/parameters/QueryOffset'
@@ -2069,15 +2022,6 @@ paths:
       description: |
         Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).
       parameters:
-      - name: country
-        required: false
-        in: query
-        schema:
-          title: Country
-          description: |
-            A country: an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.
-          example: SE
-          type: string
       - $ref: '#/components/parameters/QueryLimit'
       - $ref: '#/components/parameters/QueryOffset'
       responses:
@@ -2337,7 +2281,7 @@ paths:
       - Tracks
       operationId: get-several-audio-features
       summary: |
-        Get Tracks' Audio Features
+        Get Several Tracks' Audio Features
       description: |
         Get audio features for multiple tracks based on their Spotify IDs.
       parameters:
@@ -3669,7 +3613,9 @@ components:
                 items:
                   $ref: '#/components/schemas/AlbumObject'
     ManyAudiobooks:
-      description: A set of audiobooks
+      description: A set of audiobooks. If one of the requested audiobooks is unavailable
+        then you'll find a `null` item in the `audiobooks` array where the audiobook
+        object would otherwise be.
       content:
         application/json:
           schema:
@@ -3740,6 +3686,7 @@ components:
             - categories
             properties:
               categories:
+                type: object
                 allOf:
                 - $ref: '#/components/schemas/PagingObject'
                 - type: object
@@ -5257,6 +5204,9 @@ components:
       properties:
         message:
           type: string
+          description: |
+            The localized message of a playlist.
+          example: Popular Playlists
         playlists:
           $ref: '#/components/schemas/PagingPlaylistObject'
     PagingArtistDiscographyAlbumObject:
@@ -6418,7 +6368,7 @@ components:
           nullable: true
           example: https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17
           description: |
-            A URL to a 30 second preview (MP3 format) of the episode. `null` if not available.
+            A URL to a 30 second preview (MP3 format) of the chapter. `null` if not available.
         available_markets:
           type: array
           items:
@@ -6433,49 +6383,49 @@ components:
         description:
           type: string
           example: |
-            A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.
+            We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.
           description: |
-            A description of the episode. HTML tags are stripped away from this field, use `html_description` field in case HTML tags are needed.
+            A description of the chapter. HTML tags are stripped away from this field, use `html_description` field in case HTML tags are needed.
         html_description:
           type: string
           example: |
-            <p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>
+            <p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>
           description: |
-            A description of the episode. This field may contain HTML tags.
+            A description of the chapter. This field may contain HTML tags.
         duration_ms:
           type: integer
           example: 1686230
           description: |
-            The episode length in milliseconds.
+            The chapter length in milliseconds.
         explicit:
           type: boolean
           description: |
-            Whether or not the episode has explicit content (true = yes it does; false = no it does not OR unknown).
+            Whether or not the chapter has explicit content (true = yes it does; false = no it does not OR unknown).
         external_urls:
           allOf:
           - $ref: '#/components/schemas/ExternalUrlObject'
           description: |
-            External URLs for this episode.
+            External URLs for this chapter.
         href:
           type: string
           example: https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ
           description: |
-            A link to the Web API endpoint providing full details of the episode.
+            A link to the Web API endpoint providing full details of the chapter.
         id:
           type: string
           example: 5Xt5DXGzch68nYYamXrNxZ
           description: |
-            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the episode.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the chapter.
         images:
           type: array
           items:
             $ref: '#/components/schemas/ImageObject'
           description: |
-            The cover art for the episode in various sizes, widest first.
+            The cover art for the chapter in various sizes, widest first.
         is_playable:
           type: boolean
           description: |
-            True if the episode is playable in the given market. Otherwise false.
+            True if the chapter is playable in the given market. Otherwise false.
         languages:
           type: array
           items:
@@ -6484,18 +6434,18 @@ components:
           - fr
           - en
           description: |
-            A list of the languages used in the episode, identified by their [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639) code.
+            A list of the languages used in the chapter, identified by their [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639) code.
         name:
           type: string
           example: |
             Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators
           description: |
-            The name of the episode.
+            The name of the chapter.
         release_date:
           type: string
           example: 1981-12-15
           description: |
-            The date the episode was first released, for example `"1981-12-15"`. Depending on the precision, it might be shown as `"1981"` or `"1981-12"`.
+            The date the chapter was first released, for example `"1981-12-15"`. Depending on the precision, it might be shown as `"1981"` or `"1981-12"`.
         release_date_precision:
           type: string
           example: day
@@ -6509,7 +6459,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/ResumePointObject'
           description: |
-            The user's most recent position in the episode. Set if the supplied access token is a user token and has the scope 'user-read-playback-position'.
+            The user's most recent position in the chapter. Set if the supplied access token is a user token and has the scope 'user-read-playback-position'.
         type:
           type: string
           enum:
@@ -6520,7 +6470,7 @@ components:
           type: string
           example: spotify:episode:0zLhl3WsOCQHbe1BPTiHgr
           description: |
-            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the chapter.
         restrictions:
           allOf:
           - $ref: '#/components/schemas/ChapterRestrictionObject'

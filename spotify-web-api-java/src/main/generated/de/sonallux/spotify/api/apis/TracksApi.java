@@ -51,7 +51,7 @@ public class TracksApi {
     }
 
     /**
-     * <h4>Get Tracks' Audio Features</h4>
+     * <h4>Get Several Tracks' Audio Features</h4>
      * <p>Get audio features for multiple tracks based on their Spotify IDs.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>for the tracks. Maximum: 100 IDs.</p>
      * @return a {@link GetSeveralAudioFeaturesRequest} object to build and execute the request

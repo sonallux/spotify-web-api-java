@@ -10,7 +10,7 @@ import de.sonallux.spotify.api.models.*;
  * <h2>Get Several Audiobooks request</h2>
  *
  * <h3>Response</h3>
- * <p>A set of audiobooks</p>
+ * <p>A set of audiobooks. If one of the requested audiobooks is unavailable then you'll find a <code>null</code> item in the <code>audiobooks</code> array where the audiobook object would otherwise be.</p>
  */
 public class GetMultipleAudiobooksRequest {
     private static final TypeReference<ManyAudiobooks> RESPONSE_TYPE = new TypeReference<>() {};

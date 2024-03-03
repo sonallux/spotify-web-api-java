@@ -54,7 +54,7 @@ public class ArtistsApi {
     /**
      * <h4>Get Several Artists</h4>
      * <p>Get Spotify catalog information for several artists based on their Spotify IDs.</p>
-     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for the artists. Maximum: 50 IDs.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for the artists. Maximum: 100 IDs.</p>
      * @return a {@link GetMultipleArtistsRequest} object to build and execute the request
      */
     public GetMultipleArtistsRequest getMultipleArtists(String ids) {

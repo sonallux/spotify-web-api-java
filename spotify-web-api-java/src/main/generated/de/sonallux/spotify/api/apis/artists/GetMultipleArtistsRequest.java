@@ -20,7 +20,7 @@ public class GetMultipleArtistsRequest {
     /**
      * Get Several Artists request
      * @param apiClient <p>The API client</p>
-     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for the artists. Maximum: 50 IDs.</p>
+     * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for the artists. Maximum: 100 IDs.</p>
      */
     public GetMultipleArtistsRequest(ApiClient apiClient, String ids) {
         this.apiClient = apiClient;

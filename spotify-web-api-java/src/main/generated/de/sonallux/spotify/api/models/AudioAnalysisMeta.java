@@ -36,5 +36,5 @@ public class AudioAnalysisMeta {
     /**
      * <p>The Unix timestamp (in seconds) at which this track was analyzed.</p>
      */
-    public int timestamp;
+    public long timestamp;
 }

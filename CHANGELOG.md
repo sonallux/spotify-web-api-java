@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [4.2.0]
 - Remove no longer supported `country` query parameter
 - Fix generation for 64bit integers [#262](https://github.com/sonallux/spotify-web-api-java/pull/262)
+- Bump jackson to `2.16.1`
 
 ## [4.1.0]
 - Introduce `ArtistDiscographyAlbum` as response for get Artist's Albums request

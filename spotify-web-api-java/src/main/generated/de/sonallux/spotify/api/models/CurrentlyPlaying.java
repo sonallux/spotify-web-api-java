@@ -36,5 +36,5 @@ public class CurrentlyPlaying {
     /**
      * <p>Unix Millisecond Timestamp when data was fetched</p>
      */
-    public int timestamp;
+    public long timestamp;
 }

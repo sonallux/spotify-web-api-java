@@ -54,8 +54,16 @@ public class JavaUtils {
         if ("boolean".equals(schema.getType())) {
             return Optional.of("boolean");
         } else if ("integer".equals(schema.getType())) {
+            if ("int64".equals(schema.getFormat())) {
+                return Optional.of("long");
+            }
+            // if no format is present, use 32bit integer, for compatability reasons
             return Optional.of("int");
         } else if ("number".equals(schema.getType())) {
+            if ("double".equals(schema.getFormat())) {
+                return Optional.of("double");
+            }
+            // if no format is present, use single precision floating point number, for compatability reasons
             return Optional.of("float");
         } else {
             return getTypeOfSchema(schema);
@@ -73,12 +81,20 @@ public class JavaUtils {
             return Optional.of("String");
         }
         if ("integer".equals(schema.getType())) {
+            if ("int64".equals(schema.getFormat())) {
+                return Optional.of("Long");
+            }
+            // if no format is present, use 32bit integer, for compatability reasons
             return Optional.of("Integer");
         }
         if ("boolean".equals(schema.getType())) {
             return Optional.of("Boolean");
         }
         if ("number".equals(schema.getType())) {
+            if ("double".equals(schema.getFormat())) {
+                return Optional.of("Double");
+            }
+            // if no format is present, use single precision floating point number, for compatability reasons
             return Optional.of("Float");
         }
         if (schema instanceof ArraySchema arraySchema) {

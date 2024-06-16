@@ -23,7 +23,7 @@
         <guava.version>33.0.0-jre</guava.version>
         <picocli.version>4.7.6</picocli.version>
         <flexmark.version>0.64.8</flexmark.version>
-        <mustache.java.version>0.9.11</mustache.java.version>
+        <mustache.java.version>0.9.13</mustache.java.version>
         <slf4j.version>2.0.13</slf4j.version>
         <swagger-parser.version>2.1.22</swagger-parser.version>
 

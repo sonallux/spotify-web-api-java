@@ -33,7 +33,7 @@ public class FollowPlaylistRequest {
     }
 
     /**
-     * @param _public <p>Defaults to <code>true</code>. If <code>true</code> the playlist will be included in user's public playlists, if <code>false</code> it will remain private.</p>
+     * @param _public <p>Defaults to <code>true</code>. If <code>true</code> the playlist will be included in user's public playlists (added to profile), if <code>false</code> it will remain private. For more about public/private status, see <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">Working with Playlists</a></p>
      * @return this request
      */
     public FollowPlaylistRequest _public(boolean _public) {

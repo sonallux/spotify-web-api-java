@@ -46,7 +46,7 @@ public class CurrentlyPlayingContext {
      */
     public boolean shuffleState;
     /**
-     * <p>Unix Millisecond Timestamp when data was fetched.</p>
+     * <p>Unix Millisecond Timestamp when playback state was last changed (play, pause, skip, scrub, new song, etc.).</p>
      */
     public long timestamp;
 }

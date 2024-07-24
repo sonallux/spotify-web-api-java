@@ -7,10 +7,10 @@ import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 
 /**
- * <h2>Check if Users Follow Playlist request</h2>
+ * <h2>Check if Current User Follows Playlist request</h2>
  *
  * <h3>Response</h3>
- * <p>Array of booleans</p>
+ * <p>Array of boolean, containing a single boolean</p>
  */
 public class CheckIfUserFollowsPlaylistRequest {
     private static final TypeReference<java.util.List<Boolean>> RESPONSE_TYPE = new TypeReference<>() {};
@@ -18,17 +18,24 @@ public class CheckIfUserFollowsPlaylistRequest {
     private final Request request;
 
     /**
-     * Check if Users Follow Playlist request
+     * Check if Current User Follows Playlist request
      * @param apiClient <p>The API client</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the playlist.</p>
-     * @param ids <p>A comma-separated list of <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify User IDs</a> ; the ids of the users that you want to check to see if they follow the playlist. Maximum: 5 ids.</p>
      */
-    public CheckIfUserFollowsPlaylistRequest(ApiClient apiClient, String playlistId, String ids) {
+    public CheckIfUserFollowsPlaylistRequest(ApiClient apiClient, String playlistId) {
         this.apiClient = apiClient;
         this.request = new Request("GET", "/playlists/{playlist_id}/followers/contains")
             .addPathParameter("playlist_id", String.valueOf(playlistId))
-            .addQueryParameter("ids", String.valueOf(ids))
         ;
+    }
+
+    /**
+     * @param ids <p><strong>Deprecated</strong> A single item list containing current user's <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify Username</a>. Maximum: 1 id.</p>
+     * @return this request
+     */
+    public CheckIfUserFollowsPlaylistRequest ids(String ids) {
+        this.request.addQueryParameter("ids", String.valueOf(ids));
+        return this;
     }
 
     /**

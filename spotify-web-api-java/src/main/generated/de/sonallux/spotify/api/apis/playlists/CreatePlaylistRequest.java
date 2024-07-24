@@ -35,7 +35,7 @@ public class CreatePlaylistRequest {
     }
 
     /**
-     * @param _public <p>Defaults to <code>true</code>. If <code>true</code> the playlist will be public, if <code>false</code> it will be private. To be able to create private playlists, the user must have granted the <code>playlist-modify-private</code> <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes/#list-of-scopes">scope</a></p>
+     * @param _public <p>Defaults to <code>true</code>. The playlist's public/private status (if it should be added to the user's profile or not): <code>true</code> the playlist will be public, <code>false</code> the playlist will be private. To be able to create private playlists, the user must have granted the <code>playlist-modify-private</code> <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes/#list-of-scopes">scope</a>. For more about public/private status, see <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">Working with Playlists</a></p>
      * @return this request
      */
     public CreatePlaylistRequest _public(boolean _public) {

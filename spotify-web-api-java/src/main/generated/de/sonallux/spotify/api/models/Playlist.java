@@ -40,7 +40,7 @@ public class Playlist extends BaseObject {
      */
     public PlaylistOwner owner;
     /**
-     * <p>The playlist's public/private status: <code>true</code> the playlist is public, <code>false</code> the playlist is private, <code>null</code> the playlist status is not relevant. For more about public/private status, see <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">Working with Playlists</a></p>
+     * <p>The playlist's public/private status (if it is added to the user's profile): <code>true</code> the playlist is public, <code>false</code> the playlist is private, <code>null</code> the playlist status is not relevant. For more about public/private status, see <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">Working with Playlists</a></p>
      */
     @lombok.experimental.Accessors(prefix = "_")
     public boolean _public;

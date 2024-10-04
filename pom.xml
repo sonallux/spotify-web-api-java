@@ -64,8 +64,8 @@
         <lombok.version>1.18.32</lombok.version>
 
         <!-- Test Dependencies -->
-        <junit.version>5.10.3</junit.version>
-        <mockito-junit-jupiter.version>5.12.0</mockito-junit-jupiter.version>
+        <junit.version>5.11.1</junit.version>
+        <mockito-junit-jupiter.version>5.14.1</mockito-junit-jupiter.version>
 
         <moditect.sourceGroup>${project.groupId}</moditect.sourceGroup>
         <moditect.sourceArtifact>${project.artifactId}</moditect.sourceArtifact>

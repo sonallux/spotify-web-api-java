@@ -31,7 +31,7 @@ public class GetUsersTopArtistsRequest {
     }
 
     /**
-     * @param timeRange <p>Over what time frame the affinities are computed. Valid values: <code>long_term</code> (calculated from several years of data and including all new data as it becomes available), <code>medium_term</code> (approximately last 6 months), <code>short_term</code> (approximately last 4 weeks). Default: <code>medium_term</code></p>
+     * @param timeRange <p>Over what time frame the affinities are computed. Valid values: <code>long_term</code> (calculated from ~1 year of data and including all new data as it becomes available), <code>medium_term</code> (approximately last 6 months), <code>short_term</code> (approximately last 4 weeks). Default: <code>medium_term</code></p>
      * @return this request
      */
     public GetUsersTopArtistsRequest timeRange(String timeRange) {

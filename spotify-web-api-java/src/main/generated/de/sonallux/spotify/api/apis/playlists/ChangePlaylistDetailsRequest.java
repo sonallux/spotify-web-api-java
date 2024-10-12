@@ -42,7 +42,7 @@ public class ChangePlaylistDetailsRequest {
     }
 
     /**
-     * @param _public <p>If <code>true</code> the playlist will be public, if <code>false</code> it will be private.</p>
+     * @param _public <p>The playlist's public/private status (if it should be added to the user's profile or not): <code>true</code> the playlist will be public, <code>false</code> the playlist will be private, <code>null</code> the playlist status is not relevant. For more about public/private status, see <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">Working with Playlists</a></p>
      * @return this request
      */
     public ChangePlaylistDetailsRequest _public(boolean _public) {

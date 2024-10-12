@@ -23,14 +23,13 @@ public class UsersApi {
     }
 
     /**
-     * <h4>Check if Users Follow Playlist</h4>
-     * <p>Check to see if one or more Spotify users are following a specified playlist.</p>
+     * <h4>Check if Current User Follows Playlist</h4>
+     * <p>Check to see if the current user is following a specified playlist.</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the playlist.</p>
-     * @param ids <p>A comma-separated list of <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify User IDs</a> ; the ids of the users that you want to check to see if they follow the playlist. Maximum: 5 ids.</p>
      * @return a {@link CheckIfUserFollowsPlaylistRequest} object to build and execute the request
      */
-    public CheckIfUserFollowsPlaylistRequest checkIfUserFollowsPlaylist(String playlistId, String ids) {
-        return new CheckIfUserFollowsPlaylistRequest(apiClient, playlistId, ids);
+    public CheckIfUserFollowsPlaylistRequest checkIfUserFollowsPlaylist(String playlistId) {
+        return new CheckIfUserFollowsPlaylistRequest(apiClient, playlistId);
     }
 
     /**

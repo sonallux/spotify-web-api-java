@@ -18,7 +18,7 @@ public class Track extends BaseObject {
     /**
      * <p>The artists who performed the track. Each artist object includes a link in <code>href</code> to more detailed information about the artist.</p>
      */
-    public java.util.List<Artist> artists;
+    public java.util.List<SimplifiedArtist> artists;
     /**
      * <p>A list of the countries in which the track can be played, identified by their <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.</p>
      */

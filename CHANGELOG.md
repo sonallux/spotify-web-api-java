@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [4.3.0]
 - `UsersApi#checkIfUserFollowsPlaylist` remove `ids` argument as only the current use can be checked
 - Adjust type of `artists` property in `Track` object from `Artist` to `SimplifiedArtist`
 - Bump jackson to `2.18.1`

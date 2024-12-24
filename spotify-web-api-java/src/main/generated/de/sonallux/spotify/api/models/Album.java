@@ -22,7 +22,7 @@ public class Album extends AlbumBase {
      */
     public ExternalId externalIds;
     /**
-     * <p>A list of the genres the album is associated with. If not yet classified, the array is empty.</p>
+     * <p><strong>Deprecated</strong> The array is always empty.</p>
      */
     public java.util.List<String> genres;
     /**

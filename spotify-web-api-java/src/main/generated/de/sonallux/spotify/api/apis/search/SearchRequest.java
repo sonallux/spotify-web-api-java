@@ -27,7 +27,7 @@ public class SearchRequest {
         this.apiClient = apiClient;
         this.request = new Request("GET", "/search")
             .addQueryParameter("q", String.valueOf(q))
-            .addQueryParameter("type", String.valueOf(type))
+            .addQueryParameter("type", String.join(",", type))
         ;
     }
 

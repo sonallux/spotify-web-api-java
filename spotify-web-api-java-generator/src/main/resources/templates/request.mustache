@@ -40,7 +40,7 @@ public class {{className}} {
             .addPathParameter("{{name}}", String.valueOf({{javaName}}))
 {{/requiredPathParameters}}
 {{#requiredQueryParameters}}
-            .addQueryParameter("{{name}}", String.valueOf({{javaName}}))
+            .addQueryParameter("{{name}}", {{#commaSeparatedListType}}String.join(",", {{javaName}}){{/commaSeparatedListType}}{{^commaSeparatedListType}}String.valueOf({{javaName}}){{/commaSeparatedListType}})
 {{/requiredQueryParameters}}
 {{#requiredBodyParameters}}
             .addBodyParameter("{{name}}", {{javaName}})

@@ -70,6 +70,7 @@ public class ApiEndpoint {
         private final String name;
         private final String javaName;
         private String type;
+        private boolean commaSeparatedListType;
         private String description;
         private String defaultValue;
 
@@ -77,6 +78,7 @@ public class ApiEndpoint {
             this.name = name;
             this.javaName = JavaUtils.escapeFieldName(name);
             this.type = type;
+            this.commaSeparatedListType = "java.util.List<String>".equals(type);
             this.description = Markdown2Html.convertToSingleLine(description);
             this.defaultValue = null;
         }

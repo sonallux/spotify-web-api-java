@@ -11,6 +11,7 @@ import de.sonallux.spotify.api.models.*;
  *
  * <h3>Response</h3>
  * <p>A set of artists</p>
+ * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
  */
 public class GetArtistsRelatedArtistsRequest {
     private static final TypeReference<ManyArtists> RESPONSE_TYPE = new TypeReference<>() {};

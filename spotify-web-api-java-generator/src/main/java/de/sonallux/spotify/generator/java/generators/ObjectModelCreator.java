@@ -48,8 +48,9 @@ public class ObjectModelCreator {
         var responseType = getResponseType(response);
         var responseDescription = generationContext.resolveResponse(response).getDescription();
         var scopes = JavaUtils.getScopes(operation);
+        var deprecated = operation.getDeprecated() != null && operation.getDeprecated();
 
-        var endpoint = new ApiEndpoint(endpointId, name, description, path, httpMethod, responseType, responseDescription, scopes);
+        var endpoint = new ApiEndpoint(endpointId, name, description, path, httpMethod, responseType, responseDescription, scopes, deprecated);
         category.addEndpoint(endpoint);
 
         if (operation.getParameters() != null) {

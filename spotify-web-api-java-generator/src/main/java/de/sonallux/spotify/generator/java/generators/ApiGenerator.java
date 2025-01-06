@@ -52,6 +52,7 @@ public class ApiGenerator {
         var methodName = CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_CAMEL, endpoint.getEndpointId());
         context.put("methodName", methodName);
         context.put("name", endpoint.getName());
+        context.put("deprecated", endpoint.isDeprecated());
         context.put("description", Markdown2Html.convertToSingleLine(endpoint.getDescription()));
         context.put("requestBuilder", JavaUtils.getEndpointRequestBuilderName(endpoint.getEndpointId()));
 
@@ -77,6 +78,7 @@ public class ApiGenerator {
         var context = new HashMap<String, Object>();
         context.put("package", javaPackage.getName());
         context.put("name", endpoint.getName() + " request");
+        context.put("deprecated", endpoint.isDeprecated());
         context.put("className", className);
         context.put("httpMethod", endpoint.getHttpMethod());
         context.put("path", endpoint.getPath());

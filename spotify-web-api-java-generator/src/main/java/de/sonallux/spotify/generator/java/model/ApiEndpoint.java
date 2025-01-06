@@ -18,6 +18,7 @@ public class ApiEndpoint {
     private final String responseType;
     private final String responseDescription;
     private final List<String> scopes;
+    private final boolean deprecated;
     private final List<Parameter> requiredPathParameters;
     private final List<Parameter> requiredQueryParameters;
     private final List<Parameter> requiredBodyParameters;
@@ -26,7 +27,7 @@ public class ApiEndpoint {
     private final List<Parameter> optionalBodyParameters;
     private RawBodyParameter rawBodyParameter = null;
 
-    public ApiEndpoint(String endpointId, String name, String description, String path, String httpMethod, String responseType, String responseDescription, List<String> scopes) {
+    public ApiEndpoint(String endpointId, String name, String description, String path, String httpMethod, String responseType, String responseDescription, List<String> scopes, boolean deprecated) {
         this.endpointId = endpointId;
         this.name = name;
         this.description = description;
@@ -35,6 +36,7 @@ public class ApiEndpoint {
         this.responseType = responseType;
         this.responseDescription = responseDescription;
         this.scopes = scopes;
+        this.deprecated = deprecated;
         this.requiredPathParameters = new ArrayList<>();
         this.requiredQueryParameters = new ArrayList<>();
         this.requiredBodyParameters = new ArrayList<>();

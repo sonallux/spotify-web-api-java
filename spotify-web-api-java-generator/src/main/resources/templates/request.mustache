@@ -18,6 +18,9 @@ import de.sonallux.spotify.api.models.*;
 {{#responseDescription}}
  * {{.}}
 {{/responseDescription}}
+{{#deprecated}}
+ * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+{{/deprecated}}
  */
 public class {{className}} {
     private static final TypeReference<{{responseType}}> RESPONSE_TYPE = new TypeReference<>() {};

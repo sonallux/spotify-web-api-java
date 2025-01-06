@@ -19,6 +19,9 @@ public class {{className}} {
      * {{.}}
     {{/javaDocParameters}}
      * @return a {@link {{requestBuilder}}} object to build and execute the request
+    {{#deprecated}}
+     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+    {{/deprecated}}
      */
     public {{requestBuilder}} {{methodName}}({{requiredParameters}}) {
         return new {{requestBuilder}}({{arguments}});

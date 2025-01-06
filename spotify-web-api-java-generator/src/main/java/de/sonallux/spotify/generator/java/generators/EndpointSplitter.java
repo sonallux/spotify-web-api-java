@@ -16,14 +16,15 @@ public class EndpointSplitter {
         }
 
         var reorderEndpoint = new ApiEndpoint(
-                "reorder-playlists-tracks",
-                "Reorder Playlist Items",
-                "Reorder items in a playlist",
-                endpoint.getPath(),
-                endpoint.getHttpMethod(),
-                endpoint.getResponseType(),
-                endpoint.getResponseDescription(),
-                endpoint.getScopes()
+            "reorder-playlists-tracks",
+            "Reorder Playlist Items",
+            "Reorder items in a playlist",
+            endpoint.getPath(),
+            endpoint.getHttpMethod(),
+            endpoint.getResponseType(),
+            endpoint.getResponseDescription(),
+            endpoint.getScopes(),
+            false
         );
         reorderEndpoint.addPathParameter(endpoint.getRequiredPathParameters().get(0), true);
         endpoint.getOptionalBodyParameters().stream()
@@ -31,14 +32,15 @@ public class EndpointSplitter {
                 .forEach(param -> reorderEndpoint.addBodyParameter(param, List.of("range_start", "insert_before").contains(param.getName())));
 
         var replaceEndpoint = new ApiEndpoint(
-                "replace-playlists-tracks",
-                "Replace Playlist Items",
-                "Replacing items in a playlist will overwrite its existing items. This operation can be used for replacing or clearing items in a playlist.",
-                endpoint.getPath(),
-                endpoint.getHttpMethod(),
-                endpoint.getResponseType(),
-                endpoint.getResponseDescription(),
-                endpoint.getScopes()
+            "replace-playlists-tracks",
+            "Replace Playlist Items",
+            "Replacing items in a playlist will overwrite its existing items. This operation can be used for replacing or clearing items in a playlist.",
+            endpoint.getPath(),
+            endpoint.getHttpMethod(),
+            endpoint.getResponseType(),
+            endpoint.getResponseDescription(),
+            endpoint.getScopes(),
+            false
         );
         replaceEndpoint.addPathParameter(endpoint.getRequiredPathParameters().get(0), true);
         endpoint.getOptionalQueryParameters().stream()

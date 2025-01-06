@@ -36,6 +36,7 @@ public class ArtistsApi {
      * <p>Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community's listening history.</p>
      * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the artist.</p>
      * @return a {@link GetArtistsRelatedArtistsRequest} object to build and execute the request
+     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
      */
     public GetArtistsRelatedArtistsRequest getArtistsRelatedArtists(String id) {
         return new GetArtistsRelatedArtistsRequest(apiClient, id);

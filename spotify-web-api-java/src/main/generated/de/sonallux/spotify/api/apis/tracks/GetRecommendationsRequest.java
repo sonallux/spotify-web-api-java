@@ -11,6 +11,7 @@ import de.sonallux.spotify.api.models.*;
  *
  * <h3>Response</h3>
  * <p>A set of recommendations</p>
+ * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
  */
 public class GetRecommendationsRequest {
     private static final TypeReference<Recommendations> RESPONSE_TYPE = new TypeReference<>() {};

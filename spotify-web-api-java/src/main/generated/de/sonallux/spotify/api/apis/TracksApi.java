@@ -26,6 +26,7 @@ public class TracksApi {
      * <p>Get a low-level audio analysis for a track in the Spotify catalog. The audio analysis describes the track’s structure and musical content, including rhythm, pitch, and timbre.</p>
      * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a>for the track.</p>
      * @return a {@link GetAudioAnalysisRequest} object to build and execute the request
+     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
      */
     public GetAudioAnalysisRequest getAudioAnalysis(String id) {
         return new GetAudioAnalysisRequest(apiClient, id);
@@ -36,6 +37,7 @@ public class TracksApi {
      * <p>Get audio feature information for a single track identified by its unique Spotify ID.</p>
      * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> for the track.</p>
      * @return a {@link GetAudioFeaturesRequest} object to build and execute the request
+     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
      */
     public GetAudioFeaturesRequest getAudioFeatures(String id) {
         return new GetAudioFeaturesRequest(apiClient, id);
@@ -45,6 +47,7 @@ public class TracksApi {
      * <h4>Get Recommendations</h4>
      * <p>Recommendations are generated based on the available information for a given seed entity and matched against similar artists and tracks. If there is sufficient information about the provided seeds, a list of tracks will be returned together with pool size details.</p><p>For artists and tracks that are very new or obscure there might not be enough data to generate a list of tracks.</p>
      * @return a {@link GetRecommendationsRequest} object to build and execute the request
+     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
      */
     public GetRecommendationsRequest getRecommendations() {
         return new GetRecommendationsRequest(apiClient);
@@ -55,6 +58,7 @@ public class TracksApi {
      * <p>Get audio features for multiple tracks based on their Spotify IDs.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>for the tracks. Maximum: 100 IDs.</p>
      * @return a {@link GetSeveralAudioFeaturesRequest} object to build and execute the request
+     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
      */
     public GetSeveralAudioFeaturesRequest getSeveralAudioFeatures(String ids) {
         return new GetSeveralAudioFeaturesRequest(apiClient, ids);

@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.3.1]
+- Add deprecation notice to some endpoints (see [this blog post from Spotify](https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api))
+- Fix search type will be transferred incorrectly #326
+- Bump jackson to `2.18.2`
+
 ## [4.3.0]
 - `UsersApi#checkIfUserFollowsPlaylist` remove `ids` argument as only the current use can be checked
 - Adjust type of `artists` property in `Track` object from `Artist` to `SimplifiedArtist`

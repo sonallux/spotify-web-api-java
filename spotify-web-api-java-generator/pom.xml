@@ -20,7 +20,7 @@
     <url>https://github.com/sonallux/spotify-web-api-java</url>
 
     <properties>
-        <guava.version>33.4.0-jre</guava.version>
+        <guava.version>33.4.6-jre</guava.version>
         <picocli.version>4.7.6</picocli.version>
         <flexmark.version>0.64.8</flexmark.version>
         <mustache.java.version>0.9.14</mustache.java.version>

@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.3.2]
+- Remove `followers` property from `PlaylistUser` object
+- Bump jackson to `2.18.3`
+
 ## [4.3.1]
 - Add deprecation notice to some endpoints (see [this blog post from Spotify](https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api))
 - Fix search type will be transferred incorrectly #326

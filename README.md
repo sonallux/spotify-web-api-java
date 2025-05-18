@@ -14,13 +14,13 @@ This library is available on [Maven Central](https://central.sonatype.com/artifa
 <dependency>
   <groupId>de.sonallux.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>4.3.1</version>
+  <version>4.3.2</version>
 </dependency>
 ```
 
 ### With gradle
 ```groovy
-compile 'de.sonallux.spotify:spotify-web-api-java:4.3.1'
+compile 'de.sonallux.spotify:spotify-web-api-java:4.3.2'
 ```
 
 ## General usage

@@ -179,11 +179,10 @@
                         <version>${central-publishing-maven-plugin.version}</version>
                         <extensions>true</extensions>
                         <configuration>
+                            <!-- See https://central.sonatype.org/publish/publish-portal-maven -->
                             <publishingServerId>central</publishingServerId>
-                            <!--
                             <autoPublish>true</autoPublish>
                             <waitUntil>published</waitUntil>
-                            -->
                         </configuration>
                     </plugin>
                 </plugins>

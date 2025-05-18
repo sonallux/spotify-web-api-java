@@ -15,8 +15,4 @@ public class PlaylistUser extends BaseObject {
      * <p>Known public external URLs for this user.</p>
      */
     public ExternalUrl externalUrls;
-    /**
-     * <p>Information about the followers of this user.</p>
-     */
-    public Followers followers;
 }

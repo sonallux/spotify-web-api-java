@@ -19,7 +19,7 @@ jobs:
           cache: 'maven'
       - name: Get latest fixed open api definition
         id: latest-openapi
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           result-encoding: string
@@ -60,7 +60,7 @@ jobs:
         run: 'echo "Pull Request ${{ steps.cpr.outputs.pull-request-operation }}: ${{ steps.cpr.outputs.pull-request-url }}"'
       - name: Comment on PR
         if: steps.cpr.outputs.pull-request-operation == 'created'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |

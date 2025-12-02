@@ -25,7 +25,6 @@ module de.sonallux.spotify.api {
     exports de.sonallux.spotify.api.authorization;
     exports de.sonallux.spotify.api.authorization.authorization_code;
     exports de.sonallux.spotify.api.authorization.client_credentials;
-    exports de.sonallux.spotify.api.authorization.implicit_grant;
     exports de.sonallux.spotify.api.http;
     exports de.sonallux.spotify.api.models;
     exports de.sonallux.spotify.api.util;

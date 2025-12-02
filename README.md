@@ -39,8 +39,6 @@ Spotify's web API supports different [authorization flows](https://developer.spo
 Code example: [AuthorizationCodeExample.java](spotify-web-api-java/src/test/java/examples/AuthorizationCodeExample.java)
 ### [Authorization code flow with proof key for code exchange (PKCE)](https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow)
 Code example: [AuthorizationCodePKCEExample.java](spotify-web-api-java/src/test/java/examples/AuthorizationCodePKCEExample.java)
-### [Implicit grant](https://developer.spotify.com/documentation/web-api/tutorials/implicit-flow)
-Code example: [ImplicitGrantExample.java](spotify-web-api-java/src/test/java/examples/ImplicitGrantExample.java)
 ### [Client credentials flow](https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow)
 Code example: [ClientCredentialsExample.java](spotify-web-api-java/src/test/java/examples/ClientCredentialsExample.java)
 

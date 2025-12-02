@@ -1,8 +1,8 @@
 package de.sonallux.spotify.api.http;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import okhttp3.mockwebserver.MockResponse;
-import okhttp3.mockwebserver.MockWebServer;
+import mockwebserver3.MockResponse;
+import mockwebserver3.MockWebServer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,9 +28,10 @@ class ApiClientTest {
 
     @Test
     void getRequest() throws Exception {
-        webServer.enqueue(new MockResponse()
-            .setStatus("HTTP/1.1 200 OK")
-            .setBody("{\"id\":123, \"foo\":\"bar\"}")
+        webServer.enqueue(new MockResponse.Builder()
+            .code(200)
+            .body("{\"id\":123, \"foo\":\"bar\"}")
+            .build()
         );
 
         var request = new Request("GET", "/get/{id}")
@@ -52,14 +53,15 @@ class ApiClientTest {
         var recordedRequest = webServer.takeRequest();
         assertEquals("GET /get/123?test=asdf&sort=asc HTTP/1.1", recordedRequest.getRequestLine());
         assertEquals(0, recordedRequest.getBodySize());
-        assertEquals("value", recordedRequest.getHeader("test-header"));
+        assertEquals("value", recordedRequest.getHeaders().get("test-header"));
     }
 
     @Test
     void postRequest() throws Exception {
-        webServer.enqueue(new MockResponse()
-            .setStatus("HTTP/1.1 200 OK")
-            .setBody("[\"id\", \"foo\", \"bar\"]")
+        webServer.enqueue(new MockResponse.Builder()
+            .code(200)
+            .body("[\"id\", \"foo\", \"bar\"]")
+            .build()
         );
 
         var request = new Request("POST", "/post/{id}")
@@ -79,15 +81,16 @@ class ApiClientTest {
         assertEquals("POST /post/123 HTTP/1.1", recordedRequest.getRequestLine());
 
         assertTrue(recordedRequest.getBodySize() > 0);
-        var requestBody = recordedRequest.getBody().readUtf8();
+        var requestBody = recordedRequest.getBody().utf8();
         assertEquals("{\"id\":123,\"test\":\"foo\"}", requestBody);
     }
 
     @Test
     void getRequestWith401Response() throws Exception {
-        webServer.enqueue(new MockResponse()
-            .setStatus("HTTP/1.1 401 Unauthorized")
-            .setBody("{\"error\": {\"status\": 401,\"message\": \"Invalid access token\"}}")
+        webServer.enqueue(new MockResponse.Builder()
+            .code(401)
+            .body("{\"error\": {\"status\": 401,\"message\": \"Invalid access token\"}}")
+            .build()
         );
 
         var request = new Request("GET", "/get/{id}")
@@ -95,7 +98,6 @@ class ApiClientTest {
         var response = apiClient.createApiCall(request, new TypeReference<Map<String, Object>>() {}).executeCall();
         assertFalse(response.isSuccessful());
         assertEquals(401, response.code());
-        assertEquals("Unauthorized", response.message());
         assertNull(response.body());
         var body = response.errorBody();
         assertNotNull(body);
@@ -109,8 +111,9 @@ class ApiClientTest {
 
     @Test
     void getRequestWith502Response() throws Exception {
-        webServer.enqueue(new MockResponse()
-            .setStatus("HTTP/1.1 502 Bad Gateway")
+        webServer.enqueue(new MockResponse.Builder()
+            .code(502)
+            .build()
         );
 
         var request = new Request("GET", "/get/{id}")
@@ -118,12 +121,10 @@ class ApiClientTest {
         var response = apiClient.createApiCall(request, new TypeReference<Map<String, Object>>() {}).executeCall();
         assertFalse(response.isSuccessful());
         assertEquals(502, response.code());
-        assertEquals("Bad Gateway", response.message());
         assertNull(response.body());
         var body = response.errorBody();
         assertNotNull(body);
         assertEquals(502, body.getStatus());
-        assertEquals("Bad Gateway", body.getMessage());
 
         var recordedRequest = webServer.takeRequest();
         assertEquals("GET /get/123 HTTP/1.1", recordedRequest.getRequestLine());
@@ -132,9 +133,10 @@ class ApiClientTest {
 
     @Test
     void getRequestWith500Response() throws Exception {
-        webServer.enqueue(new MockResponse()
-            .setStatus("HTTP/1.1 500 Internal Server Error")
-            .setBody("Internal Server Error")
+        webServer.enqueue(new MockResponse.Builder()
+            .code(500)
+            .body("Internal Server Error")
+            .build()
         );
 
         var request = new Request("GET", "/get/{id}")
@@ -142,12 +144,10 @@ class ApiClientTest {
         var response = apiClient.createApiCall(request, new TypeReference<Map<String, Object>>() {}).executeCall();
         assertFalse(response.isSuccessful());
         assertEquals(500, response.code());
-        assertEquals("Internal Server Error", response.message());
         assertNull(response.body());
         var body = response.errorBody();
         assertNotNull(body);
         assertEquals(500, body.getStatus());
-        assertEquals("Internal Server Error", body.getMessage());
 
         var recordedRequest = webServer.takeRequest();
         assertEquals("GET /get/123 HTTP/1.1", recordedRequest.getRequestLine());

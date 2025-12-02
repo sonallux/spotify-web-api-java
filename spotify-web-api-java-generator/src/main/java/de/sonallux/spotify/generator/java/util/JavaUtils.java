@@ -97,52 +97,57 @@ public class JavaUtils {
             // if no format is present, use single precision floating point number, for compatability reasons
             return Optional.of("Float");
         }
-        if (schema instanceof ArraySchema arraySchema) {
-            return getTypeOfSchema(arraySchema.getItems())
+        switch (schema) {
+            case ArraySchema arraySchema -> {
+                return getTypeOfSchema(arraySchema.getItems())
                     .map(itemsType -> "java.util.List<" + itemsType + ">")
                     .or(() -> Optional.of("java.util.List<java.util.Map<String, Object>>"));
-        }
-        if (schema instanceof ComposedSchema composedSchema) {
-            var allOf = composedSchema.getAllOf();
-            if (allOf != null) {
-                if (allOf.size() == 1) {
-                    if (allOf.get(0).get$ref().equals("#/components/schemas/PagingObject")) {
-                        var itemsSchema = (ArraySchema) schema.getProperties().get("items");
-                        return getTypeOfSchema(itemsSchema.getItems())
-                                .map(itemsType -> "Paging<" + itemsType + ">");
-                    }
-                }
-                if (allOf.size() == 2) {
-                    if (allOf.get(0).get$ref().equals("#/components/schemas/PagingObject")) {
-                        var itemsSchema = (ArraySchema) allOf.get(1).getProperties().get("items");
-                        return getTypeOfSchema(itemsSchema.getItems())
-                                .map(itemsType -> "Paging<" + itemsType + ">");
-                    }
-                    if (allOf.get(0).get$ref().equals("#/components/schemas/CursorPagingObject")) {
-                        var itemsSchema = (ArraySchema) allOf.get(1).getProperties().get("items");
-                        return getTypeOfSchema(itemsSchema.getItems())
-                                .map(itemsType -> "CursorPaging<" + itemsType + ">");
-                    }
-                }
             }
+            case ComposedSchema composedSchema -> {
+                var allOf = composedSchema.getAllOf();
+                if (allOf != null) {
+                    if (allOf.size() == 1) {
+                        if (allOf.getFirst().get$ref().equals("#/components/schemas/PagingObject")) {
+                            var itemsSchema = (ArraySchema) schema.getProperties().get("items");
+                            return getTypeOfSchema(itemsSchema.getItems())
+                                .map(itemsType -> "Paging<" + itemsType + ">");
+                        }
+                    }
+                    if (allOf.size() == 2) {
+                        if (allOf.get(0).get$ref().equals("#/components/schemas/PagingObject")) {
+                            var itemsSchema = (ArraySchema) allOf.get(1).getProperties().get("items");
+                            return getTypeOfSchema(itemsSchema.getItems())
+                                .map(itemsType -> "Paging<" + itemsType + ">");
+                        }
+                        if (allOf.get(0).get$ref().equals("#/components/schemas/CursorPagingObject")) {
+                            var itemsSchema = (ArraySchema) allOf.get(1).getProperties().get("items");
+                            return getTypeOfSchema(itemsSchema.getItems())
+                                .map(itemsType -> "CursorPaging<" + itemsType + ">");
+                        }
+                    }
+                }
 
-            var oneOf = composedSchema.getOneOf();
-            if (oneOf != null) {
-                var allBaseObjects = oneOf.stream().map(JavaUtils::getTypeOfSchema)
+                var oneOf = composedSchema.getOneOf();
+                if (oneOf != null) {
+                    var allBaseObjects = oneOf.stream().map(JavaUtils::getTypeOfSchema)
                         .filter(Optional::isPresent)
                         .map(Optional::get)
                         .allMatch(BaseObjectGenerator.BASE_OBJECT_NAMES::contains);
-                if (allBaseObjects) {
-                    return Optional.of("BaseObject");
+                    if (allBaseObjects) {
+                        return Optional.of("BaseObject");
+                    }
                 }
+
+                // Resolve type of other composed schema via reference name
+                return Optional.empty();
+
+                // Resolve type of other composed schema via reference name
             }
-
-            // Resolve type of other composed schema via reference name
-            return Optional.empty();
-        }
-
-        if (schema instanceof MapSchema) {
-            return Optional.of("java.util.Map<String, Object>");
+            case MapSchema mapSchema -> {
+                return Optional.of("java.util.Map<String, Object>");
+            }
+            default -> {
+            }
         }
 
         // Type can not be resolved just by schema

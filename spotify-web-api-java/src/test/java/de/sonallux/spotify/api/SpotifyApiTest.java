@@ -32,7 +32,7 @@ class SpotifyApiTest {
     }
 
     @AfterEach
-    void teardown() throws IOException{
+    void teardown() {
         webServer.close();
     }
 
@@ -110,30 +110,31 @@ class SpotifyApiTest {
 
     private final MockResponse mockResponseArtist = new MockResponse.Builder()
         .code(200)
-        .body("{\n" +
-            "  \"external_urls\" : {\n" +
-            "    \"spotify\" : \"https://open.spotify.com/artist/0OdUWJ0sBjDrqHygGUXeCF\"\n" +
-            "  },\n" +
-            "  \"followers\" : {\n" +
-            "    \"href\" : null,\n" +
-            "    \"total\" : 306565\n" +
-            "  },\n" +
-            "  \"genres\" : [ \"indie folk\", \"indie pop\" ],\n" +
-            "  \"href\" : \"https://api.spotify.com/v1/artists/0OdUWJ0sBjDrqHygGUXeCF\",\n" +
-            "  \"id\" : \"0OdUWJ0sBjDrqHygGUXeCF\",\n" +
-            "  \"images\" : [ {\n" +
-            "    \"height\" : 816,\n" +
-            "    \"url\" : \"https://i.scdn.co/image/eb266625dab075341e8c4378a177a27370f91903\",\n" +
-            "    \"width\" : 1000\n" +
-            "  }, {\n" +
-            "    \"height\" : 52,\n" +
-            "    \"url\" : \"https://i.scdn.co/image/4f25297750dfa4051195c36809a9049f6b841a23\",\n" +
-            "    \"width\" : 64\n" +
-            "  } ],\n" +
-            "  \"name\" : \"Band of Horses\",\n" +
-            "  \"popularity\" : 59,\n" +
-            "  \"type\" : \"artist\",\n" +
-            "  \"uri\" : \"spotify:artist:0OdUWJ0sBjDrqHygGUXeCF\"\n" +
-            "}")
+        .body("""
+            {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/0OdUWJ0sBjDrqHygGUXeCF"
+              },
+              "followers" : {
+                "href" : null,
+                "total" : 306565
+              },
+              "genres" : [ "indie folk", "indie pop" ],
+              "href" : "https://api.spotify.com/v1/artists/0OdUWJ0sBjDrqHygGUXeCF",
+              "id" : "0OdUWJ0sBjDrqHygGUXeCF",
+              "images" : [ {
+                "height" : 816,
+                "url" : "https://i.scdn.co/image/eb266625dab075341e8c4378a177a27370f91903",
+                "width" : 1000
+              }, {
+                "height" : 52,
+                "url" : "https://i.scdn.co/image/4f25297750dfa4051195c36809a9049f6b841a23",
+                "width" : 64
+              } ],
+              "name" : "Band of Horses",
+              "popularity" : 59,
+              "type" : "artist",
+              "uri" : "spotify:artist:0OdUWJ0sBjDrqHygGUXeCF"
+            }""")
         .build();
 }

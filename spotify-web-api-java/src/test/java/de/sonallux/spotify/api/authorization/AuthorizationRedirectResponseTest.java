@@ -11,7 +11,7 @@ public class AuthorizationRedirectResponseTest {
 
     private final Function<HttpUrl, String> contentExtractor = httpUrl -> {
         var code = httpUrl.queryParameter("code");
-            if (code != null && code.length() > 0) {
+            if (code != null && !code.isEmpty()) {
                 return code;
         }
         return null;

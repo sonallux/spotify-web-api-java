@@ -35,7 +35,7 @@ class AuthorizationCodeFlowTest {
     }
 
     @AfterEach
-    void teardown() throws IOException{
+    void teardown() {
         webServer.close();
     }
 
@@ -186,12 +186,13 @@ class AuthorizationCodeFlowTest {
 
     private final MockResponse mockResponseAuthTokens = new MockResponse.Builder()
         .code(200)
-        .body("{\n" +
-            "   \"access_token\": \"NgA6ZcYIixn8bU\",\n" +
-            "   \"token_type\": \"Bearer\",\n" +
-            "   \"scope\": \"user-read-private user-read-email\",\n" +
-            "   \"expires_in\": 3600\n" +
-            "}")
+        .body("""
+            {
+               "access_token": "NgA6ZcYIixn8bU",
+               "token_type": "Bearer",
+               "scope": "user-read-private user-read-email",
+               "expires_in": 3600
+            }""")
         .build();
 
     private final MockResponse mockResponseBadRequestAuthTokens = new MockResponse.Builder()

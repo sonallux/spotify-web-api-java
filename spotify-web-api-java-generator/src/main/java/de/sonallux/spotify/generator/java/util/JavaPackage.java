@@ -23,8 +23,7 @@ public class JavaPackage {
     public static JavaPackage fromPackage(String packageName) {
         Preconditions.checkArgument(packageName != null);
         var packageNames = packageName.split("\\.");
-        Preconditions.checkArgument(isValidJavaPackageName(packageNames), "Invalid java package");
-        return new JavaPackage(packageNames);
+        return fromNames(packageNames);
     }
 
     private static boolean isValidJavaPackageName(String[] packageNames) {

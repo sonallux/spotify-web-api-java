@@ -94,25 +94,24 @@ public class ObjectGenerator {
             if (composedSchema.getAllOf() != null) {
                 var allOf = composedSchema.getAllOf();
                 if (allOf.size() == 1) {
-                    if (allOf.get(0).get$ref().equals("#/components/schemas/PagingObject")) {
+                    var ref = allOf.getFirst().get$ref();
+                    if (ref.equals("#/components/schemas/PagingObject")) {
                         var itemsSchema = (ArraySchema) composedSchema.getProperties().get("items");
                         var itemsSchemaName = OpenApiUtils.getSchemaName(itemsSchema.getItems().get$ref());
                         var itemsObjectName = getObjectNameOrGenerate(itemsSchemaName, itemsSchema.getItems());
                         return "Paging<" + itemsObjectName + ">";
                     }
 
-                    if (allOf.get(0).get$ref() != null) {
-                        var referencedSchemaName = OpenApiUtils.getSchemaName(allOf.get(0).get$ref());
-                        var referencedObjectName = getObjectNameOrGenerate(referencedSchemaName, allOf.get(0));
-                        var apiObject = ApiObject.builder()
-                                .name(objectName)
-                                .openApiName(openApiName)
-                                .superClassName(referencedObjectName)
-                                .description(composedSchema.getDescription())
-                                .build();
-                        this.schemaObjects.put(objectName, apiObject);
-                        return objectName;
-                    }
+                    var referencedSchemaName = OpenApiUtils.getSchemaName(ref);
+                    var referencedObjectName = getObjectNameOrGenerate(referencedSchemaName, allOf.getFirst());
+                    var apiObject = ApiObject.builder()
+                            .name(objectName)
+                            .openApiName(openApiName)
+                            .superClassName(referencedObjectName)
+                            .description(composedSchema.getDescription())
+                            .build();
+                    this.schemaObjects.put(objectName, apiObject);
+                    return objectName;
                 }
                 if (allOf.size() == 2) {
                     if (allOf.get(0).get$ref().equals("#/components/schemas/PagingObject")) {
@@ -128,7 +127,7 @@ public class ObjectGenerator {
                         return "CursorPaging<" + itemsObjectName + ">";
                     }
 
-                    if (allOf.get(0).get$ref() != null && allOf.get(1) instanceof ObjectSchema objectSchema) {
+                    if (allOf.get(1) instanceof ObjectSchema objectSchema) {
                         var referencedSchemaName = OpenApiUtils.getSchemaName(allOf.get(0).get$ref());
                         var referencedObjectName = getObjectNameOrGenerate(referencedSchemaName, allOf.get(0));
 
@@ -169,8 +168,8 @@ public class ObjectGenerator {
 
         var resolvedSchema = generationContext.resolveSchema(schema);
         if (resolvedSchema instanceof ComposedSchema composedSchema && composedSchema.getAllOf() != null && composedSchema.getAllOf().size() == 1 && composedSchema.getProperties() == null) {
-            var innerSchemaName = OpenApiUtils.getSchemaName(composedSchema.getAllOf().get(0).get$ref());
-            var innerSchema = generationContext.resolveSchema(composedSchema.getAllOf().get(0).get$ref());
+            var innerSchemaName = OpenApiUtils.getSchemaName(composedSchema.getAllOf().getFirst().get$ref());
+            var innerSchema = generationContext.resolveSchema(composedSchema.getAllOf().getFirst().get$ref());
             var innerType = JavaUtils.getPrimitiveTypeOfSchema(innerSchema)
                     .orElse(innerSchemaName.replace("Object", ""));
 
@@ -253,7 +252,7 @@ public class ObjectGenerator {
         context.put("className", context.get("className") + "<T>");
         @SuppressWarnings("unchecked")
         var properties = (List<Map<String, Object>>)context.get("properties");
-        properties.add(0, Map.of(
+        properties.addFirst(Map.of(
                 "fieldName", "items",
                 "hasDescription", true,
                 "description", List.of("<p>The requested data.</p>"),

@@ -26,7 +26,7 @@ public class EndpointSplitter {
             endpoint.getScopes(),
             false
         );
-        reorderEndpoint.addPathParameter(endpoint.getRequiredPathParameters().get(0), true);
+        reorderEndpoint.addPathParameter(endpoint.getRequiredPathParameters().getFirst(), true);
         endpoint.getOptionalBodyParameters().stream()
                 .filter(param -> List.of("range_start", "insert_before", "range_length", "snapshot_id").contains(param.getName()))
                 .forEach(param -> reorderEndpoint.addBodyParameter(param, List.of("range_start", "insert_before").contains(param.getName())));
@@ -42,7 +42,7 @@ public class EndpointSplitter {
             endpoint.getScopes(),
             false
         );
-        replaceEndpoint.addPathParameter(endpoint.getRequiredPathParameters().get(0), true);
+        replaceEndpoint.addPathParameter(endpoint.getRequiredPathParameters().getFirst(), true);
         endpoint.getOptionalQueryParameters().stream()
                 .filter(param -> "uris".equals(param.getName()))
                 .forEach(param -> replaceEndpoint.addQueryParameter(param, false));

@@ -88,12 +88,12 @@ public class Request {
             return rawBody.get();
         }
 
-        if (getBodyParameters().size() > 0 && getFormParameters().size() > 0) {
+        if (!getBodyParameters().isEmpty() && !getFormParameters().isEmpty()) {
             throw new IllegalArgumentException("Can not use body parameters and form fields in one request");
-        } else if (getBodyParameters().size() > 0) {
+        } else if (!getBodyParameters().isEmpty()) {
             byte[] bytes = objectMapper.writeValueAsBytes(getBodyParameters());
             return RequestBody.create(bytes, JSON_MEDIA_TYPE);
-        } else if (getFormParameters().size() > 0) {
+        } else if (!getFormParameters().isEmpty()) {
             var formBuilder = new FormBody.Builder();
             getFormParameters().forEach(formBuilder::add);
             return formBuilder.build();

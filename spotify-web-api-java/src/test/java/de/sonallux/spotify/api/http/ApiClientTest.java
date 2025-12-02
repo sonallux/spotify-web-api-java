@@ -3,6 +3,7 @@ package de.sonallux.spotify.api.http;
 import com.fasterxml.jackson.core.type.TypeReference;
 import mockwebserver3.MockResponse;
 import mockwebserver3.MockWebServer;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +25,11 @@ class ApiClientTest {
         apiClient = ApiClient.builder()
             .baseUrl(baseUrl)
             .build();
+    }
+
+    @AfterEach
+    void teardown() {
+        webServer.close();
     }
 
     @Test

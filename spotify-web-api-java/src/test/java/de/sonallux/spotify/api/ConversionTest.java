@@ -2,8 +2,8 @@ package de.sonallux.spotify.api;
 
 import de.sonallux.spotify.api.models.Episode;
 import de.sonallux.spotify.api.models.Track;
-import okhttp3.mockwebserver.MockResponse;
-import okhttp3.mockwebserver.MockWebServer;
+import mockwebserver3.MockWebServer;
+import mockwebserver3.MockResponse;
 import okio.Buffer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,7 +29,7 @@ class ConversionTest {
 
     @AfterEach
     void teardown() throws IOException{
-        webServer.shutdown();
+        webServer.close();
     }
 
     @Test
@@ -44,13 +44,13 @@ class ConversionTest {
         var firstTrack = playlist.getTracks().getItems().get(0);
         assertNotNull(firstTrack);
         assertEquals(Instant.parse("2021-03-07T23:01:00Z"), firstTrack.getAddedAt());
-        assertTrue(firstTrack.getTrack() instanceof Track);
+        assertInstanceOf(Track.class, firstTrack.getTrack());
         assertEquals(6, ((Track) firstTrack.getTrack()).getTrackNumber());
     }
 
     @Test
     void testRequestWithReservedKeyWord() throws Exception {
-        webServer.enqueue(new MockResponse().setStatus("HTTP/1.1 200 OK"));
+        webServer.enqueue(mockResponse(200).build());
 
         var response = api.getPlaylistsApi().changePlaylistDetails("foo")
             .name("Test")
@@ -61,26 +61,26 @@ class ConversionTest {
         assertTrue(response.isSuccessful());
 
         var request = webServer.takeRequest();
-        assertEquals("application/json; charset=UTF-8", request.getHeader("Content-Type"));
-        var actualBody = request.getBody().readUtf8();
+        assertEquals("application/json; charset=UTF-8", request.getHeaders().get("Content-Type"));
+        var actualBody = request.getBody().utf8();
         assertEquals("{\"name\":\"Test\",\"collaborative\":false,\"description\":\"Test description\",\"public\":true}", actualBody);
     }
 
     @Test
     void testRequestWithEmptyBodyObject() throws Exception {
-        webServer.enqueue(new MockResponse().setStatus("HTTP/1.1 200 OK"));
+        webServer.enqueue(mockResponse(200).build());
 
         var response = api.getPlaylistsApi().changePlaylistDetails("foo").build().executeCall();
         assertTrue(response.isSuccessful());
 
         var request = webServer.takeRequest();
-        var actualBody = request.getBody().readUtf8();
+        var actualBody = request.getBody().utf8();
         assertEquals("", actualBody);
     }
 
     @Test
     void testRequestWithSnakeCaseToCamelCase() throws Exception {
-        webServer.enqueue(new MockResponse().setStatus("HTTP/1.1 200 OK").setBody("{\"snapshot_id\":\"12ab34cd\"}"));
+        webServer.enqueue(mockResponse(200).body("{\"snapshot_id\":\"12ab34cd\"}").build());
 
         var newSnapshotId = api.getPlaylistsApi().removeTracksPlaylist("foo", List.of())
             .snapshotId("ab12cd34")
@@ -88,8 +88,8 @@ class ConversionTest {
         assertEquals("12ab34cd", newSnapshotId.getSnapshotId());
 
         var request = webServer.takeRequest();
-        assertEquals("application/json; charset=UTF-8", request.getHeader("Content-Type"));
-        var actualBody = request.getBody().readUtf8();
+        assertEquals("application/json; charset=UTF-8", request.getHeaders().get("Content-Type"));
+        var actualBody = request.getBody().utf8();
         assertEquals("{\"tracks\":[],\"snapshot_id\":\"ab12cd34\"}", actualBody);
     }
 
@@ -101,16 +101,17 @@ class ConversionTest {
         var track = response.getItems().get(0).getTrack();
         assertNotNull(track);
         assertEquals("track", track.getType());
-        assertTrue(track instanceof Track);
+        assertInstanceOf(Track.class, track);
 
         var episode = response.getItems().get(1).getTrack();
         assertNotNull(episode);
         assertEquals("episode", episode.getType());
-        assertTrue(episode instanceof Episode);
+        assertInstanceOf(Episode.class, episode);
         assertNotNull(((Episode) episode).getShow());
 
         var request = webServer.takeRequest();
-        assertEquals("/playlists/foo/tracks?additional_types=track%2Cepisode", request.getPath());
+        assertEquals("/playlists/foo/tracks", request.getUrl().encodedPath());
+        assertEquals("additional_types=track%2Cepisode", request.getUrl().encodedQuery());
     }
 
     @Test
@@ -123,21 +124,22 @@ class ConversionTest {
         var track = response.getItems().get(0).getTrack();
         assertNotNull(track);
         assertEquals("track", track.getType());
-        assertTrue(track instanceof Track);
+        assertInstanceOf(Track.class, track);
 
         var episode = response.getItems().get(1).getTrack();
         assertNotNull(episode);
         assertEquals("episode", episode.getType());
-        assertTrue(episode instanceof Episode);
+        assertInstanceOf(Episode.class, episode);
         assertNull(((Episode) episode).getShow());//show is not set, because episode is returned with track format
 
         var request = webServer.takeRequest();
-        assertEquals("/playlists/foo/tracks?additional_types=track", request.getPath());
+        assertEquals("/playlists/foo/tracks", request.getUrl().encodedPath());
+        assertEquals("additional_types=track", request.getUrl().encodedQuery());
     }
 
     @Test
     void testEmptyResponseBodyWithNonVoidType() throws Exception {
-        webServer.enqueue(new MockResponse().setStatus("HTTP/1.1 204 NO CONTENT"));
+        webServer.enqueue(mockResponse(204).build());
 
         var response = api.getPlayerApi().getRecentlyPlayed().build().executeCall();
         assertTrue(response.isSuccessful());
@@ -147,9 +149,13 @@ class ConversionTest {
     private MockResponse loadMockResponse(String fileName) throws Exception {
         var stream = ConversionTest.class.getResourceAsStream("/responses/" + fileName);
         var buffer = new Buffer().readFrom(stream);
-        return new MockResponse()
-            .setStatus("HTTP/1.1 200 OK")
+        return mockResponse(200)
             .addHeader("Content-Type", "application/json; charset=utf-8")
-            .setBody(buffer);
+            .body(buffer)
+            .build();
+    }
+
+    private MockResponse.Builder mockResponse(int status) {
+        return new MockResponse.Builder().code(status);
     }
 }

@@ -1,9 +1,9 @@
 package de.sonallux.spotify.api.authorization.authorization_code;
 
 import de.sonallux.spotify.api.authorization.*;
-import okhttp3.mockwebserver.MockResponse;
-import okhttp3.mockwebserver.MockWebServer;
-import okhttp3.mockwebserver.RecordedRequest;
+import mockwebserver3.MockResponse;
+import mockwebserver3.MockWebServer;
+import mockwebserver3.RecordedRequest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,7 +36,7 @@ class AuthorizationCodePKCEFlowTest {
 
     @AfterEach
     void teardown() throws IOException{
-        webServer.shutdown();
+        webServer.close();
     }
 
     @Test
@@ -162,9 +162,9 @@ class AuthorizationCodePKCEFlowTest {
 
     private void assertAuthTokensRequest(RecordedRequest request, String body) {
         assertEquals("POST", request.getMethod());
-        assertEquals("/api/token", request.getPath());
-        assertEquals("application/x-www-form-urlencoded", request.getHeader("Content-Type"));
-        assertEquals(body, request.getBody().readUtf8());
+        assertEquals("/api/token", request.getUrl().encodedPath());
+        assertEquals("application/x-www-form-urlencoded", request.getHeaders().get("Content-Type"));
+        assertEquals(body, request.getBody().utf8());
     }
 
     private void assertStoreAuthTokensFromResponse() {
@@ -178,16 +178,18 @@ class AuthorizationCodePKCEFlowTest {
         }));
     }
 
-    private final MockResponse mockResponseAuthTokens = new MockResponse()
-        .setStatus("HTTP/1.1 200 OK")
-        .setBody("{\n" +
+    private final MockResponse mockResponseAuthTokens = new MockResponse.Builder()
+        .code(200)
+        .body("{\n" +
             "   \"access_token\": \"NgA6ZcYIixn8bU\",\n" +
             "   \"token_type\": \"Bearer\",\n" +
             "   \"scope\": \"user-read-private user-read-email\",\n" +
             "   \"expires_in\": 3600\n" +
-            "}");
+            "}")
+        .build();
 
-    private final MockResponse mockResponseBadRequestAuthTokens = new MockResponse()
-        .setStatus("HTTP/1.1 400 Bad Request")
-        .setBody("{\"error\":\"invalid_client\",\"error_description\":\"Invalid client\"}");
+    private final MockResponse mockResponseBadRequestAuthTokens = new MockResponse.Builder()
+        .code(400)
+        .body("{\"error\":\"invalid_client\",\"error_description\":\"Invalid client\"}")
+        .build();
 }

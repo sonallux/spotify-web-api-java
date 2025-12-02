@@ -1,8 +1,8 @@
 package de.sonallux.spotify.api;
 
 import de.sonallux.spotify.api.authorization.ApiAuthorizationProvider;
-import okhttp3.mockwebserver.MockResponse;
-import okhttp3.mockwebserver.MockWebServer;
+import mockwebserver3.MockResponse;
+import mockwebserver3.MockWebServer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,7 +33,7 @@ class SpotifyApiTest {
 
     @AfterEach
     void teardown() throws IOException{
-        webServer.shutdown();
+        webServer.close();
     }
 
     @Test
@@ -46,10 +46,10 @@ class SpotifyApiTest {
         assertEquals("0OdUWJ0sBjDrqHygGUXeCF", artist.getId());
         assertEquals("https://open.spotify.com/artist/0OdUWJ0sBjDrqHygGUXeCF", artist.getExternalUrls().getSpotify());
 
-        assertEquals(webServer.getRequestCount(), 1);
+        assertEquals(1, webServer.getRequestCount());
         var request = webServer.takeRequest();
-        assertEquals(request.getRequestLine(), "GET /artists/foo HTTP/1.1");
-        assertNull(request.getHeader("Authorization"));
+        assertEquals("GET /artists/foo HTTP/1.1", request.getRequestLine());
+        assertNull(request.getHeaders().get("Authorization"));
     }
 
     @Test
@@ -62,10 +62,10 @@ class SpotifyApiTest {
         assertEquals("0OdUWJ0sBjDrqHygGUXeCF", artist.getId());
         assertEquals("https://open.spotify.com/artist/0OdUWJ0sBjDrqHygGUXeCF", artist.getExternalUrls().getSpotify());
 
-        assertEquals(webServer.getRequestCount(), 1);
+        assertEquals(1, webServer.getRequestCount());
         var request = webServer.takeRequest();
-        assertEquals(request.getRequestLine(), "GET /artists/foo HTTP/1.1");
-        assertEquals(request.getHeader("Authorization"), "Bearer some-access-token");
+        assertEquals("GET /artists/foo HTTP/1.1", request.getRequestLine());
+        assertEquals("Bearer some-access-token", request.getHeaders().get("Authorization"));
     }
 
     @Test
@@ -81,11 +81,11 @@ class SpotifyApiTest {
 
         verify(apiAuthorizationProvider, times(1)).refreshAccessToken();
 
-        assertEquals(webServer.getRequestCount(), 2);
+        assertEquals(2, webServer.getRequestCount());
         var request1 = webServer.takeRequest();
-        assertEquals(request1.getRequestLine(), "GET /artists/foo HTTP/1.1");
+        assertEquals("GET /artists/foo HTTP/1.1", request1.getRequestLine());
         var request2 = webServer.takeRequest();
-        assertEquals(request2.getRequestLine(), "GET /artists/foo HTTP/1.1");
+        assertEquals("GET /artists/foo HTTP/1.1", request2.getRequestLine());
     }
 
     @Test
@@ -98,18 +98,19 @@ class SpotifyApiTest {
 
         verify(apiAuthorizationProvider, times(1)).refreshAccessToken();
 
-        assertEquals(webServer.getRequestCount(), 1);
+        assertEquals(1, webServer.getRequestCount());
         var request1 = webServer.takeRequest();
-        assertEquals(request1.getRequestLine(), "GET /artists/foo HTTP/1.1");
+        assertEquals("GET /artists/foo HTTP/1.1", request1.getRequestLine());
     }
 
-    private final MockResponse mockResponseUnauthorizedInvalidToken = new MockResponse()
-        .setStatus("HTTP/1.1 401 Unauthorized")
-        .setBody("{\"error\": {\"status\": 401,\"message\": \"Invalid access token\"}}");
+    private final MockResponse mockResponseUnauthorizedInvalidToken = new MockResponse.Builder()
+        .code(401)
+        .body("{\"error\": {\"status\": 401,\"message\": \"Invalid access token\"}}")
+        .build();
 
-    private final MockResponse mockResponseArtist = new MockResponse()
-        .setStatus("HTTP/1.1 200 OK")
-        .setBody("{\n" +
+    private final MockResponse mockResponseArtist = new MockResponse.Builder()
+        .code(200)
+        .body("{\n" +
             "  \"external_urls\" : {\n" +
             "    \"spotify\" : \"https://open.spotify.com/artist/0OdUWJ0sBjDrqHygGUXeCF\"\n" +
             "  },\n" +
@@ -133,5 +134,6 @@ class SpotifyApiTest {
             "  \"popularity\" : 59,\n" +
             "  \"type\" : \"artist\",\n" +
             "  \"uri\" : \"spotify:artist:0OdUWJ0sBjDrqHygGUXeCF\"\n" +
-            "}");
+            "}")
+        .build();
 }

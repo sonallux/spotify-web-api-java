@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 - Update to okhttp `5.3.2`
+- Requiring Java 21
 
 ## [4.3.2]
 - Remove `followers` property from `PlaylistUser` object

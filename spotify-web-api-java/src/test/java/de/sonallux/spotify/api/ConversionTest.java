@@ -28,7 +28,7 @@ class ConversionTest {
     }
 
     @AfterEach
-    void teardown() throws IOException{
+    void teardown() {
         webServer.close();
     }
 

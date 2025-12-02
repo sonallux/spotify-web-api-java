@@ -26,7 +26,7 @@ public class SpotifyWebApiGenerator {
     private Map<String, Object> createContext(OpenAPI openAPI, JavaPackage javaPackage) {
         var context = new HashMap<String, Object>();
         context.put("package", javaPackage.getName());
-        context.put("endpointUrl", openAPI.getServers().get(0).getUrl());
+        context.put("endpointUrl", openAPI.getServers().getFirst().getUrl());
 
         var apis = openAPI.getPaths().values().stream()
                 .flatMap(pathItem -> pathItem.readOperationsMap().values().stream())

@@ -96,7 +96,7 @@ public class SpotifyUri {
     }
 
     public static SpotifyUri parseUri(String string) throws SpotifyUriException {
-        if (string == null || string.length() == 0) {
+        if (string == null || string.isEmpty()) {
             throw new SpotifyUriException("Can not parse empty spotifyUri");
         }
 

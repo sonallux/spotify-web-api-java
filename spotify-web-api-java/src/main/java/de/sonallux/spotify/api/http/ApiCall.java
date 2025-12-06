@@ -78,7 +78,7 @@ public class ApiCall<T> {
         return parseResponse(call.execute());
     }
 
-    public T execute() throws SpotifyApiException {
+    public @Nullable T execute() throws SpotifyApiException {
         Response<T> response;
         try {
             response = executeCall();

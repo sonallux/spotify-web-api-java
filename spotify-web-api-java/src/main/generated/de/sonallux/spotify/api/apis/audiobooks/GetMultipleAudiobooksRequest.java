@@ -5,6 +5,7 @@ import de.sonallux.spotify.api.http.ApiCall;
 import de.sonallux.spotify.api.http.ApiClient;
 import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * <h2>Get Several Audiobooks request</h2>
@@ -12,6 +13,7 @@ import de.sonallux.spotify.api.models.*;
  * <h3>Response</h3>
  * <p>A set of audiobooks. If one of the requested audiobooks is unavailable then you'll find a <code>null</code> item in the <code>audiobooks</code> array where the audiobook object would otherwise be.</p>
  */
+@NullMarked
 public class GetMultipleAudiobooksRequest {
     private static final TypeReference<ManyAudiobooks> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;

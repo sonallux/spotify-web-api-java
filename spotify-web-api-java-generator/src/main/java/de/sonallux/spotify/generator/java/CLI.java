@@ -32,7 +32,7 @@ public class CLI implements Runnable {
     boolean shouldClean = false;
 
     @Option(names = {"-p", "--package"}, required = true, description = "The Java package name")
-    String packageName = null;
+    String packageName;
 
     @Option(names = { "-h", "--help" }, usageHelp = true, description = "Print usage help")
     boolean helpRequested = false;

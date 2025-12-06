@@ -5,6 +5,7 @@ import de.sonallux.spotify.api.http.ApiCall;
 import de.sonallux.spotify.api.http.ApiClient;
 import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * <h2>Get Current User's Playlists request</h2>
@@ -15,6 +16,7 @@ import de.sonallux.spotify.api.models.*;
  * <h3>Response</h3>
  * <p>A paged set of playlists</p>
  */
+@NullMarked
 public class GetListOfCurrentUsersPlaylistsRequest {
     private static final TypeReference<Paging<SimplifiedPlaylist>> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;

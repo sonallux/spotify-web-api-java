@@ -6,7 +6,6 @@ import de.sonallux.spotify.generator.java.util.JavaPackage;
 import io.swagger.v3.oas.models.OpenAPI;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.IOException;
 import java.nio.file.Path;
 
 @Slf4j
@@ -17,7 +16,7 @@ public class JavaGenerator {
         this.mustacheFactory = new NoEscapingMustacheFactory();
     }
 
-    public void generate(OpenAPI openAPI, Path outputDirectory, JavaPackage javaPackage) throws IOException, GeneratorException {
+    public void generate(OpenAPI openAPI, Path outputDirectory, JavaPackage javaPackage) throws GeneratorException {
         var generationContext = new GenerationContext(this.mustacheFactory, openAPI, javaPackage, outputDirectory);
 
         new BaseObjectGenerator(generationContext).generateBaseObject();
@@ -30,8 +29,7 @@ public class JavaGenerator {
 
         EndpointSplitter.splitEndpoints(spotifyWebApi);
 
-        var apiTemplate = new ApiGenerator(generationContext);
-        apiTemplate.generateEndpoints(spotifyWebApi);
+        ApiGenerator.generateEndpoints(generationContext, spotifyWebApi);
 
         new SpotifyWebApiGenerator(generationContext).generate();
 

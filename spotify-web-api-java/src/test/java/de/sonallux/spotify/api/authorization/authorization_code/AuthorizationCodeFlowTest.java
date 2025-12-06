@@ -179,7 +179,7 @@ class AuthorizationCodeFlowTest {
             assertEquals("Bearer", authTokens.getTokenType());
             assertEquals("user-read-private user-read-email", authTokens.getScope());
             assertEquals(3600, authTokens.getExpiresIn());
-            assertNull(authTokens.getRefreshToken());
+            assertEquals("RgA6ZcjIi6L8bq", authTokens.getRefreshToken());
             return true;
         }));
     }
@@ -191,7 +191,8 @@ class AuthorizationCodeFlowTest {
                "access_token": "NgA6ZcYIixn8bU",
                "token_type": "Bearer",
                "scope": "user-read-private user-read-email",
-               "expires_in": 3600
+               "expires_in": 3600,
+               "refresh_token": "RgA6ZcjIi6L8bq"
             }""")
         .build();
 

@@ -9,6 +9,7 @@ import de.sonallux.spotify.generator.java.model.SpotifyWebApi;
 import de.sonallux.spotify.generator.java.util.JavaPackage;
 import de.sonallux.spotify.generator.java.util.JavaUtils;
 import de.sonallux.spotify.generator.java.util.Markdown2Html;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 
 import java.util.*;
@@ -17,16 +18,17 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class ApiGenerator {
     private final GenerationContext generationContext;
 
-    private JavaPackage apisJavaPackage;
+    private final JavaPackage apisJavaPackage;
 
-    public void generateEndpoints(SpotifyWebApi spotifyWebApi) {
-        apisJavaPackage = generationContext.childPackage("apis");
+    public static void generateEndpoints(GenerationContext generationContext, SpotifyWebApi spotifyWebApi) {
+        final var apisJavaPackage = generationContext.childPackage("apis");
+        final var apiGenerator = new ApiGenerator(generationContext, apisJavaPackage);
 
-        spotifyWebApi.getCategories().forEach(this::generateApiClasses);
+        spotifyWebApi.getCategories().forEach(apiGenerator::generateApiClasses);
     }
 
     private void generateApiClasses(ApiCategory category) {

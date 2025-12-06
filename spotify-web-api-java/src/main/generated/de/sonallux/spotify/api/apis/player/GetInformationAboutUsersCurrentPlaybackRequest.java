@@ -5,6 +5,7 @@ import de.sonallux.spotify.api.http.ApiCall;
 import de.sonallux.spotify.api.http.ApiClient;
 import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * <h2>Get Playback State request</h2>
@@ -15,6 +16,7 @@ import de.sonallux.spotify.api.models.*;
  * <h3>Response</h3>
  * <p>Information about playback</p>
  */
+@NullMarked
 public class GetInformationAboutUsersCurrentPlaybackRequest {
     private static final TypeReference<CurrentlyPlayingContext> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;

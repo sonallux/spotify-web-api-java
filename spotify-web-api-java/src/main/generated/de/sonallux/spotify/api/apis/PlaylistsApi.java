@@ -3,10 +3,12 @@ package de.sonallux.spotify.api.apis;
 import de.sonallux.spotify.api.http.ApiClient;
 import de.sonallux.spotify.api.apis.playlists.*;
 import lombok.RequiredArgsConstructor;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * Playlists
  */
+@NullMarked
 @RequiredArgsConstructor
 public class PlaylistsApi {
     private final ApiClient apiClient;

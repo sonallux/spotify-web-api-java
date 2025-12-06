@@ -8,6 +8,7 @@ import io.swagger.v3.oas.models.media.ComposedSchema;
 import io.swagger.v3.oas.models.media.MapSchema;
 import io.swagger.v3.oas.models.media.Schema;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -140,22 +141,18 @@ public class JavaUtils {
 
                 // Resolve type of other composed schema via reference name
                 return Optional.empty();
-
-                // Resolve type of other composed schema via reference name
             }
-            case MapSchema mapSchema -> {
+            case MapSchema ignored -> {
                 return Optional.of("java.util.Map<String, Object>");
             }
             default -> {
+                return Optional.empty();
             }
         }
-
-        // Type can not be resolved just by schema
-        return Optional.empty();
     }
 
     public static String getCategoryName(Operation operation) {
-        return operation.getTags().get(0);
+        return operation.getTags().getFirst();
     }
 
     public static String getCategoryClassName(String categoryName) {
@@ -175,6 +172,6 @@ public class JavaUtils {
         if (security.isEmpty()) {
             return List.of();
         }
-        return security.get(0).getOrDefault("oauth_2_0", List.of());
+        return security.getFirst().getOrDefault("oauth_2_0", List.of());
     }
 }

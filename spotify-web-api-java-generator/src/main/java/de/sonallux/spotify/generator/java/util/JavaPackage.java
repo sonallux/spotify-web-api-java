@@ -3,6 +3,7 @@ package de.sonallux.spotify.generator.java.util;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import lombok.EqualsAndHashCode;
+import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -15,18 +16,18 @@ public class JavaPackage {
         this.packageNames = packageNames;
     }
 
-    public static JavaPackage fromNames(String... packageNames) {
+    public static JavaPackage fromNames(@Nullable String... packageNames) {
         Preconditions.checkArgument(isValidJavaPackageName(packageNames), "Invalid java package");
         return new JavaPackage(packageNames);
     }
 
-    public static JavaPackage fromPackage(String packageName) {
+    public static JavaPackage fromPackage(@Nullable String packageName) {
         Preconditions.checkArgument(packageName != null);
         var packageNames = packageName.split("\\.");
         return fromNames(packageNames);
     }
 
-    private static boolean isValidJavaPackageName(String[] packageNames) {
+    private static boolean isValidJavaPackageName(@Nullable String[] packageNames) {
         if (packageNames.length == 0) {
             return false;
         }

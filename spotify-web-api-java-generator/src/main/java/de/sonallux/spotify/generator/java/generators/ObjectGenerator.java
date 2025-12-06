@@ -10,6 +10,7 @@ import io.swagger.v3.oas.models.media.ArraySchema;
 import io.swagger.v3.oas.models.media.ComposedSchema;
 import io.swagger.v3.oas.models.media.ObjectSchema;
 import io.swagger.v3.oas.models.media.Schema;
+import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -41,6 +42,7 @@ public class ObjectGenerator {
         this.schemaNameToObjectName = new ConcurrentHashMap<>();
     }
 
+    @Nullable
     public String getObjectNameForResponse(String responseName) {
         return responseNameToObjectName.get(responseName);
     }
@@ -71,7 +73,7 @@ public class ObjectGenerator {
      * @param schema the OpenAPI schema
      * @return an object name to use for this schema
      */
-    private String generateApiObject(String openApiName, Schema schema) {
+    private String generateApiObject(String openApiName, Schema<?> schema) {
         if (schema.get$ref() != null) {
             var schemaName = OpenApiUtils.getSchemaName(schema.get$ref());
             return getObjectNameOrGenerate(schemaName, generationContext.resolveSchema(schema.get$ref()));
@@ -79,70 +81,72 @@ public class ObjectGenerator {
 
         var objectName = getObjectNameFromSchemaName(openApiName);
 
-        if (schema instanceof ObjectSchema objectSchema) {
-            var apiObject = generateApiObject(objectSchema, objectName);
-            apiObject.setOpenApiName(openApiName);
-            return objectName;
-        }
-        if (schema instanceof ArraySchema arraySchema) {
-            var itemsSchema = arraySchema.getItems();
-            var itemsType = JavaUtils.getTypeOfSchema(itemsSchema).orElse("Object");
+        switch (schema) {
+            case ObjectSchema objectSchema -> {
+                var apiObject = generateApiObject(objectSchema, objectName);
+                apiObject.setOpenApiName(openApiName);
+                return objectName;
+            }
+            case ArraySchema arraySchema -> {
+                var itemsSchema = arraySchema.getItems();
+                var itemsType = JavaUtils.getTypeOfSchema(itemsSchema).orElse("Object");
+                return  "java.util.List<" + itemsType + ">";
+            }
+            case ComposedSchema composedSchema -> {
+                if (composedSchema.getAllOf() != null) {
+                    var allOf = composedSchema.getAllOf();
+                    if (allOf.size() == 1) {
+                        var ref = allOf.getFirst().get$ref();
+                        if (ref.equals("#/components/schemas/PagingObject")) {
+                            var itemsSchema = (ArraySchema) composedSchema.getProperties().get("items");
+                            var itemsSchemaName = OpenApiUtils.getSchemaName(itemsSchema.getItems().get$ref());
+                            var itemsObjectName = getObjectNameOrGenerate(itemsSchemaName, itemsSchema.getItems());
+                            return  "Paging<" + itemsObjectName + ">";
+                        }
 
-            return "java.util.List<" + itemsType + ">";
-        }
-        if (schema instanceof ComposedSchema composedSchema) {
-            if (composedSchema.getAllOf() != null) {
-                var allOf = composedSchema.getAllOf();
-                if (allOf.size() == 1) {
-                    var ref = allOf.getFirst().get$ref();
-                    if (ref.equals("#/components/schemas/PagingObject")) {
-                        var itemsSchema = (ArraySchema) composedSchema.getProperties().get("items");
-                        var itemsSchemaName = OpenApiUtils.getSchemaName(itemsSchema.getItems().get$ref());
-                        var itemsObjectName = getObjectNameOrGenerate(itemsSchemaName, itemsSchema.getItems());
-                        return "Paging<" + itemsObjectName + ">";
-                    }
-
-                    var referencedSchemaName = OpenApiUtils.getSchemaName(ref);
-                    var referencedObjectName = getObjectNameOrGenerate(referencedSchemaName, allOf.getFirst());
-                    var apiObject = ApiObject.builder()
+                        var referencedSchemaName = OpenApiUtils.getSchemaName(ref);
+                        var referencedObjectName = getObjectNameOrGenerate(referencedSchemaName, allOf.getFirst());
+                        var apiObject = ApiObject.builder()
                             .name(objectName)
                             .openApiName(openApiName)
                             .superClassName(referencedObjectName)
                             .description(composedSchema.getDescription())
                             .build();
-                    this.schemaObjects.put(objectName, apiObject);
-                    return objectName;
-                }
-                if (allOf.size() == 2) {
-                    if (allOf.get(0).get$ref().equals("#/components/schemas/PagingObject")) {
-                        var itemsSchema = (ArraySchema) allOf.get(1).getProperties().get("items");
-                        var itemsSchemaName = OpenApiUtils.getSchemaName(itemsSchema.getItems().get$ref());
-                        var itemsObjectName = getObjectNameOrGenerate(itemsSchemaName, itemsSchema.getItems());
-                        return "Paging<" + itemsObjectName + ">";
-                    }
-                    if (allOf.get(0).get$ref().equals("#/components/schemas/CursorPagingObject")) {
-                        var itemsSchema = (ArraySchema) allOf.get(1).getProperties().get("items");
-                        var itemsSchemaName = OpenApiUtils.getSchemaName(itemsSchema.getItems().get$ref());
-                        var itemsObjectName = getObjectNameOrGenerate(itemsSchemaName, itemsSchema.getItems());
-                        return "CursorPaging<" + itemsObjectName + ">";
-                    }
-
-                    if (allOf.get(1) instanceof ObjectSchema objectSchema) {
-                        var referencedSchemaName = OpenApiUtils.getSchemaName(allOf.get(0).get$ref());
-                        var referencedObjectName = getObjectNameOrGenerate(referencedSchemaName, allOf.get(0));
-
-                        var apiObject = generateApiObject(objectSchema, objectName);
-                        apiObject.setDescription(composedSchema.getDescription());
-                        apiObject.setOpenApiName(openApiName);
-                        apiObject.setSuperClassName(referencedObjectName);
+                        this.schemaObjects.put(objectName, apiObject);
                         return objectName;
                     }
+                    if (allOf.size() == 2) {
+                        if (allOf.get(0).get$ref().equals("#/components/schemas/PagingObject")) {
+                            var itemsSchema = (ArraySchema) allOf.get(1).getProperties().get("items");
+                            var itemsSchemaName = OpenApiUtils.getSchemaName(itemsSchema.getItems().get$ref());
+                            var itemsObjectName = getObjectNameOrGenerate(itemsSchemaName, itemsSchema.getItems());
+                            return  "Paging<" + itemsObjectName + ">";
+                        }
+                        if (allOf.get(0).get$ref().equals("#/components/schemas/CursorPagingObject")) {
+                            var itemsSchema = (ArraySchema) allOf.get(1).getProperties().get("items");
+                            var itemsSchemaName = OpenApiUtils.getSchemaName(itemsSchema.getItems().get$ref());
+                            var itemsObjectName = getObjectNameOrGenerate(itemsSchemaName, itemsSchema.getItems());
+                            return  "CursorPaging<" + itemsObjectName + ">";
+                        }
+
+                        if (allOf.get(1) instanceof ObjectSchema objectSchema) {
+                            var referencedSchemaName = OpenApiUtils.getSchemaName(allOf.getFirst().get$ref());
+                            var referencedObjectName = getObjectNameOrGenerate(referencedSchemaName, allOf.getFirst());
+
+                            var apiObject = generateApiObject(objectSchema, objectName);
+                            apiObject.setDescription(composedSchema.getDescription());
+                            apiObject.setOpenApiName(openApiName);
+                            apiObject.setSuperClassName(referencedObjectName);
+                            return objectName;
+                        }
+                    }
                 }
+                return objectName;
+            }
+            default -> {
+                return objectName;
             }
         }
-
-
-        return objectName;
     }
 
     private ApiObject generateApiObject(ObjectSchema objectSchema, String objectName) {
@@ -180,7 +184,7 @@ public class ObjectGenerator {
         return new ApiObject.Property(name, type, resolvedSchema.getDescription());
     }
 
-    private String getObjectNameOrGenerate(String openApiName, Schema schema) {
+    private String getObjectNameOrGenerate(String openApiName, Schema<?> schema) {
         if (schemaNameToObjectName.containsKey(openApiName)) {
             return schemaNameToObjectName.get(openApiName);
         }
@@ -260,7 +264,7 @@ public class ObjectGenerator {
         ));
     }
 
-    private static String firstNonNull(String... strings) {
+    private static @Nullable String firstNonNull(@Nullable String... strings) {
         for (var s : strings) {
             if (s != null) {
                 return s;

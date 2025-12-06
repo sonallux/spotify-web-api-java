@@ -5,6 +5,7 @@ import de.sonallux.spotify.api.http.ApiCall;
 import de.sonallux.spotify.api.http.ApiClient;
 import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * <h2>Check If User Follows Artists or Users request</h2>
@@ -15,6 +16,7 @@ import de.sonallux.spotify.api.models.*;
  * <h3>Response</h3>
  * <p>Array of booleans</p>
  */
+@NullMarked
 public class CheckCurrentUserFollowsRequest {
     private static final TypeReference<java.util.List<Boolean>> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;

@@ -12,7 +12,7 @@ import okio.Buffer;
 import okio.BufferedSource;
 import okio.ForwardingSource;
 import okio.Okio;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.Nullable;
 
 import java.io.IOException;
 
@@ -25,8 +25,8 @@ public class ApiCall<T> {
     private final TypeReference<T> responseType;
 
     private volatile boolean canceled;
-    private Call rawCall;
-    private Throwable creationFailure; // RuntimeException | IOException
+    private @Nullable Call rawCall;
+    private @Nullable Throwable creationFailure; // RuntimeException | IOException
     private boolean executed;
 
     /**
@@ -124,15 +124,13 @@ public class ApiCall<T> {
         }
     }
 
-    private Error getErrorBody(ResponseBody rawResponse) {
+    private @Nullable Error getErrorBody(ResponseBody rawResponse) {
         if (rawResponse.contentLength() == 0) {
             return null;
         }
         try {
             var errorResponse = parseResponseBody(rawResponse, ERROR_RESPONSE_TYPE);
-            if (errorResponse != null) {
-                return errorResponse.getError();
-            }
+            return errorResponse.getError();
         }
         catch (IOException ignore) {}
         return null;
@@ -169,7 +167,7 @@ public class ApiCall<T> {
     static final class ExceptionCatchingResponseBody extends ResponseBody {
         private final ResponseBody delegate;
         private final BufferedSource delegateSource;
-        private IOException thrownException;
+        private @Nullable IOException thrownException;
 
         ExceptionCatchingResponseBody(ResponseBody delegate) {
             this.delegate = delegate;
@@ -177,7 +175,7 @@ public class ApiCall<T> {
                 Okio.buffer(
                     new ForwardingSource(delegate.source()) {
                         @Override
-                        public long read(@NotNull Buffer sink, long byteCount) throws IOException {
+                        public long read(Buffer sink, long byteCount) throws IOException {
                             try {
                                 return super.read(sink, byteCount);
                             } catch (IOException e) {
@@ -189,6 +187,7 @@ public class ApiCall<T> {
         }
 
         @Override
+        @Nullable
         public MediaType contentType() {
             return delegate.contentType();
         }
@@ -198,7 +197,6 @@ public class ApiCall<T> {
             return delegate.contentLength();
         }
 
-        @NotNull
         @Override
         public BufferedSource source() {
             return delegateSource;

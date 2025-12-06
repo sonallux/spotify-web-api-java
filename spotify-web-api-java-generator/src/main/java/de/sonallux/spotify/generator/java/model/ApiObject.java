@@ -3,7 +3,7 @@ package de.sonallux.spotify.generator.java.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -17,11 +17,10 @@ public class ApiObject {
     /**
      * Name of the schema object from OpenAPI. Is null if this object is extracted from a complex OpenAPI schema
      */
-    private String openApiName;
-    @NonNull
+    private @Nullable String openApiName;
     private String name;
-    private String description;
-    private String superClassName;
+    private @Nullable String description;
+    private @Nullable String superClassName;
     @Builder.Default
     private Map<String, Property> properties = new HashMap<>();
 
@@ -39,10 +38,9 @@ public class ApiObject {
     @Data
     @AllArgsConstructor
     public static class Property {
-        @NonNull
         private String name;
-        @NonNull
         private String type;
+        @Nullable
         private String description;
     }
 }

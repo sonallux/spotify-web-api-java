@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import okhttp3.Call;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Objects;
 
@@ -28,10 +29,10 @@ public class ApiClient {
     }
 
     public static final class Builder {
-        private HttpUrl baseUrl;
-        private Call.Factory callFactory;
-        private ObjectMapper objectMapper;
-        private ApiCall.Factory apiCallFactory;
+        private @Nullable HttpUrl baseUrl;
+        private Call.@Nullable Factory callFactory;
+        private @Nullable ObjectMapper objectMapper;
+        private ApiCall.@Nullable Factory apiCallFactory;
 
         public Builder(){}
 

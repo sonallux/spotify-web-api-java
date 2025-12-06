@@ -2,6 +2,7 @@ package de.sonallux.spotify.api.authorization;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.jspecify.annotations.Nullable;
 
 /**
  * A simple {@link TokenStore} that stores the auth tokens in memory
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class InMemoryTokenStore implements TokenStore {
-    private AuthTokens authTokens;
+    private @Nullable AuthTokens authTokens = null;
 
     @Override
     public void storeTokens(AuthTokens authTokens) {

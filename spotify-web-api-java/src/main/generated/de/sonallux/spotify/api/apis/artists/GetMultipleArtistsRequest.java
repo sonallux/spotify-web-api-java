@@ -5,6 +5,7 @@ import de.sonallux.spotify.api.http.ApiCall;
 import de.sonallux.spotify.api.http.ApiClient;
 import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * <h2>Get Several Artists request</h2>
@@ -12,6 +13,7 @@ import de.sonallux.spotify.api.models.*;
  * <h3>Response</h3>
  * <p>A set of artists</p>
  */
+@NullMarked
 public class GetMultipleArtistsRequest {
     private static final TypeReference<ManyArtists> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;

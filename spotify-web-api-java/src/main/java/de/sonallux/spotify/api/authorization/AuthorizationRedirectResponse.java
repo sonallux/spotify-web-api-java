@@ -5,15 +5,16 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import okhttp3.HttpUrl;
+import org.jspecify.annotations.Nullable;
 
 import java.util.function.Function;
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class AuthorizationRedirectResponse<T> {
-    private final String state;
-    private final T body;
-    private final String error;
+public class AuthorizationRedirectResponse<T extends @Nullable Object> {
+    private final @Nullable String state;
+    private final @Nullable T body;
+    private final @Nullable String error;
 
     public boolean isSuccess() {
         return body != null;
@@ -42,7 +43,7 @@ public class AuthorizationRedirectResponse<T> {
      * @return the authorization response
      * @throws IllegalArgumentException If {@code uri} is not a well-formed URI.
      */
-    public static <T> AuthorizationRedirectResponse<T> parse(String url, Function<HttpUrl, T> contentExtractor) {
+    public static <T> AuthorizationRedirectResponse<T> parse(String url, Function<HttpUrl, @Nullable T> contentExtractor) {
         return parse(HttpUrl.get(url), contentExtractor);
     }
 
@@ -53,7 +54,7 @@ public class AuthorizationRedirectResponse<T> {
      * @return the authorization response
      * @throws IllegalArgumentException If {@code uri} is not a well-formed URI.
      */
-    public static <T> AuthorizationRedirectResponse<T> parse(HttpUrl httpUrl, Function<HttpUrl, T> contentExtractor) {
+    public static <T extends @Nullable Object> AuthorizationRedirectResponse<T> parse(HttpUrl httpUrl, Function<HttpUrl, @Nullable T> contentExtractor) {
         var state = httpUrl.queryParameter("state");
         var error = httpUrl.queryParameter("error");
 

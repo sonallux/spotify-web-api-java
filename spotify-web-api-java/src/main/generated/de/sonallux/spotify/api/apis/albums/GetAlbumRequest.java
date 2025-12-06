@@ -5,6 +5,7 @@ import de.sonallux.spotify.api.http.ApiCall;
 import de.sonallux.spotify.api.http.ApiClient;
 import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * <h2>Get Album request</h2>
@@ -12,6 +13,7 @@ import de.sonallux.spotify.api.models.*;
  * <h3>Response</h3>
  * <p>An album</p>
  */
+@NullMarked
 public class GetAlbumRequest {
     private static final TypeReference<Album> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;

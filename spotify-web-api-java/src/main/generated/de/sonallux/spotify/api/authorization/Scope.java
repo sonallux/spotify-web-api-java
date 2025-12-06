@@ -1,8 +1,11 @@
 package de.sonallux.spotify.api.authorization;
 
+import org.jspecify.annotations.NullMarked;
+
 /**
  * <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Authorization Scopes</a>
  */
+@NullMarked
 public enum Scope {
     /**
      * Communicate with the Spotify app on your device.

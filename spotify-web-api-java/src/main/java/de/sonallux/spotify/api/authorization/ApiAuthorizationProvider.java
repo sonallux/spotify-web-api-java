@@ -1,5 +1,7 @@
 package de.sonallux.spotify.api.authorization;
 
+import org.jspecify.annotations.Nullable;
+
 public interface ApiAuthorizationProvider {
     /**
      * Get the value for the <code>Authorization</code> header that should be added to a request. This method
@@ -7,7 +9,7 @@ public interface ApiAuthorizationProvider {
      * If no <code>Authorization</code> header should be added to the request <code>null</code> can be returned.
      * @return the value of the <code>Authorization</code> header or <code>null</code>
      */
-    String getAuthorizationHeaderValue();
+    @Nullable String getAuthorizationHeaderValue();
 
     /**
      * Callback to initiate a token refresh after a 401 Unauthorized response from the Spotify Web API.

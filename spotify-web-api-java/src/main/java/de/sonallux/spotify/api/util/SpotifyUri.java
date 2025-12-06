@@ -2,6 +2,7 @@ package de.sonallux.spotify.api.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.jspecify.annotations.Nullable;
 
 @Getter
 @AllArgsConstructor
@@ -95,7 +96,7 @@ public class SpotifyUri {
         return toSpotifyUri();
     }
 
-    public static SpotifyUri parseUri(String string) throws SpotifyUriException {
+    public static SpotifyUri parseUri(@Nullable String string) throws SpotifyUriException {
         if (string == null || string.isEmpty()) {
             throw new SpotifyUriException("Can not parse empty spotifyUri");
         }

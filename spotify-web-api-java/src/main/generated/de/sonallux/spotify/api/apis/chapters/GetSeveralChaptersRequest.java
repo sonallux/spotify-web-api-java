@@ -5,6 +5,7 @@ import de.sonallux.spotify.api.http.ApiCall;
 import de.sonallux.spotify.api.http.ApiClient;
 import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * <h2>Get Several Chapters request</h2>
@@ -12,6 +13,7 @@ import de.sonallux.spotify.api.models.*;
  * <h3>Response</h3>
  * <p>A set of chapters</p>
  */
+@NullMarked
 public class GetSeveralChaptersRequest {
     private static final TypeReference<ManyChapters> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;

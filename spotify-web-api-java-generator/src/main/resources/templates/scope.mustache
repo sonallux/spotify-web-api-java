@@ -1,8 +1,11 @@
 package {{package}};
 
+import org.jspecify.annotations.NullMarked;
+
 /**
  * <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Authorization Scopes</a>
  */
+@NullMarked
 public enum {{className}} {
 {{#scopes}}
     /**

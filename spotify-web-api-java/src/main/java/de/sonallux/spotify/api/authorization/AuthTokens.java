@@ -2,6 +2,7 @@ package de.sonallux.spotify.api.authorization;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.jspecify.annotations.Nullable;
 
 @Getter
 @Setter
@@ -15,11 +16,11 @@ public class AuthTokens {
     @JsonProperty("token_type")
     public String tokenType;
 
-    public String scope;
+    public @Nullable String scope;
 
     @JsonProperty("expires_in")
     public int expiresIn;
 
     @JsonProperty("refresh_token")
-    public String refreshToken;
+    public @Nullable String refreshToken;
 }

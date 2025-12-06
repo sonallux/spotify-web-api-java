@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.jspecify.annotations.Nullable;
 
 /**
  * A simple {@link ApiAuthorizationProvider} that can only hold an access token.
@@ -21,7 +22,7 @@ public class SimpleApiAuthorizationProvider implements ApiAuthorizationProvider 
     private String accessToken;
 
     @Override
-    public String getAuthorizationHeaderValue() {
+    public @Nullable String getAuthorizationHeaderValue() {
         if (!TextUtil.hasText(accessToken)) {
             return null;
         }

@@ -3,20 +3,21 @@ package de.sonallux.spotify.generator.java.util;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
 
 public class Markdown2HtmlTest {
 
-    static List<String[]> markdown2HtmlTestCases() {
+    static List<Arguments> markdown2HtmlTestCases() {
         return List.of(
-                new String[]{"[Test](/foo/bar)", "<p><a href=\"/foo/bar\">Test</a></p>"},
-                new String[]{"`playlist_id`", "<p><code>playlist_id</code></p>"},
-                new String[]{"This is `playlist_id`, `uri`", "<p>This is <code>playlist_id</code>, <code>uri</code></p>"},
-                new String[]{"**Bold** is bolder", "<p><strong>Bold</strong> is bolder</p>"},
-                new String[]{"- foo\n- bar", "<ul><li>foo</li><li>bar</li></ul>"},
-                new String[]{"Foo\n\nTest", "<p>Foo</p><p>Test</p>"}
+                Arguments.of("[Test](/foo/bar)", "<p><a href=\"/foo/bar\">Test</a></p>"),
+                Arguments.of("`playlist_id`", "<p><code>playlist_id</code></p>"),
+                Arguments.of("This is `playlist_id`, `uri`", "<p>This is <code>playlist_id</code>, <code>uri</code></p>"),
+                Arguments.of("**Bold** is bolder", "<p><strong>Bold</strong> is bolder</p>"),
+                Arguments.of("- foo\n- bar", "<ul><li>foo</li><li>bar</li></ul>"),
+                Arguments.of("Foo\n\nTest", "<p>Foo</p><p>Test</p>")
         );
     }
 

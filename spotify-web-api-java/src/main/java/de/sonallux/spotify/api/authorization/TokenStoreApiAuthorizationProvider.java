@@ -2,6 +2,7 @@ package de.sonallux.spotify.api.authorization;
 
 import de.sonallux.spotify.api.util.TextUtil;
 import lombok.AllArgsConstructor;
+import org.jspecify.annotations.Nullable;
 
 /**
  * An {@link ApiAuthorizationProvider} that uses a provided {@link TokenStore} to provide authorization
@@ -11,7 +12,7 @@ public class TokenStoreApiAuthorizationProvider implements ApiAuthorizationProvi
     protected final TokenStore tokenStore;
 
     @Override
-    public String getAuthorizationHeaderValue() {
+    public @Nullable String getAuthorizationHeaderValue() {
         var tokens = tokenStore.loadTokens();
         if (tokens == null || !TextUtil.hasText(tokens.getAccessToken()) || !TextUtil.hasText(tokens.getTokenType())) {
             return null;

@@ -4,6 +4,7 @@ import de.sonallux.spotify.generator.java.util.JavaUtils;
 import de.sonallux.spotify.generator.java.util.Markdown2Html;
 import lombok.Getter;
 import lombok.Setter;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class ApiEndpoint {
     private final List<Parameter> optionalPathParameters;
     private final List<Parameter> optionalQueryParameters;
     private final List<Parameter> optionalBodyParameters;
-    private RawBodyParameter rawBodyParameter = null;
+    private @Nullable RawBodyParameter rawBodyParameter = null;
 
     public ApiEndpoint(String endpointId, String name, String description, String path, String httpMethod, String responseType, String responseDescription, List<String> scopes, boolean deprecated) {
         this.endpointId = endpointId;
@@ -72,7 +73,7 @@ public class ApiEndpoint {
         private String type;
         private boolean commaSeparatedListType;
         private String description;
-        private String defaultValue;
+        private @Nullable String defaultValue;
 
         public Parameter(String name, String type, String description) {
             this.name = name;

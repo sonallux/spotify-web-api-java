@@ -41,7 +41,7 @@ class ConversionTest {
         assertEquals("MTYxNTI3MzcxMSwwMDAwMDAwMDcxOTM3NDM1NDIxMmIzODI4NGQzMDI0OGRiZGQ4M2Q4", playlist.getSnapshotId());
         assertFalse(playlist.isPublic());
         assertEquals("Spotify", playlist.getOwner().getDisplayName());
-        var firstTrack = playlist.getTracks().getItems().get(0);
+        var firstTrack = playlist.getTracks().getItems().getFirst();
         assertNotNull(firstTrack);
         assertEquals(Instant.parse("2021-03-07T23:01:00Z"), firstTrack.getAddedAt());
         assertInstanceOf(Track.class, firstTrack.getTrack());
@@ -98,7 +98,7 @@ class ConversionTest {
         webServer.enqueue(loadMockResponse("get-playlists-tracks-union.json"));
 
         var response = api.getPlaylistsApi().getPlaylistsTracks("foo").build().execute();
-        var track = response.getItems().get(0).getTrack();
+        var track = response.getItems().getFirst().getTrack();
         assertNotNull(track);
         assertEquals("track", track.getType());
         assertInstanceOf(Track.class, track);
@@ -121,7 +121,7 @@ class ConversionTest {
         var response = api.getPlaylistsApi().getPlaylistsTracks("foo")
             .additionalTypes("track")
             .build().execute();
-        var track = response.getItems().get(0).getTrack();
+        var track = response.getItems().getFirst().getTrack();
         assertNotNull(track);
         assertEquals("track", track.getType());
         assertInstanceOf(Track.class, track);

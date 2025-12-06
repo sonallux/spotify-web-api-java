@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import okhttp3.*;
 import okhttp3.internal.http.HttpMethod;
+import org.jspecify.annotations.Nullable;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -83,7 +84,7 @@ public class Request {
             .headers(Headers.of(getHeaderParameters()));
     }
 
-    private RequestBody createRequestBody(ObjectMapper objectMapper) throws IOException {
+    private @Nullable RequestBody createRequestBody(ObjectMapper objectMapper) throws IOException {
         if (rawBody.isPresent()) {
             return rawBody.get();
         }

@@ -13,15 +13,16 @@ import io.swagger.v3.oas.models.PathItem;
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import org.jspecify.annotations.Nullable;
 
 import java.util.function.Function;
 
 @RequiredArgsConstructor
 public class ObjectModelCreator {
     private final GenerationContext generationContext;
-    private final Function<String, String> responseTypeMapper;
+    private final Function<String, @Nullable String> responseTypeMapper;
 
-    private SpotifyWebApi spotifyWebApi;
+    private SpotifyWebApi spotifyWebApi = new SpotifyWebApi();
 
     public SpotifyWebApi createSpotifyWebApiModel(OpenAPI openAPI) {
         spotifyWebApi = new SpotifyWebApi();

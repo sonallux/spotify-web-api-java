@@ -3,11 +3,12 @@ package de.sonallux.spotify.api.http;
 import de.sonallux.spotify.api.models.Error;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import org.jspecify.annotations.Nullable;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-public class Response<T> {
+public class Response<T extends @Nullable Object> {
 
-    public static <T> Response<T> success(T body, okhttp3.Response rawResponse) {
+    public static <X extends @Nullable Object> Response<X> success(@Nullable X body, okhttp3.Response rawResponse) {
         return new Response<>(rawResponse, body, null);
     }
 
@@ -16,8 +17,8 @@ public class Response<T> {
     }
 
     private final okhttp3.Response rawResponse;
-    private final T body;
-    private final Error error;
+    private final @Nullable T body;
+    private final @Nullable Error error;
 
     /**
      * Returns the underlying OkHttp response object
@@ -52,14 +53,14 @@ public class Response<T> {
      * the response has no body.
      * For non successful response this is always null. Use {{@link #errorBody()}} to get the associated error.
      */
-    public T body() {
+    public @Nullable T body() {
         return body;
     }
 
     /**
      * Returns an error representation for non successful responses. This is null if the response is successful.
      */
-    public Error errorBody() {
+    public @Nullable Error errorBody() {
         return error;
     }
 }

@@ -7,7 +7,6 @@ import com.vladsch.flexmark.html.renderer.LinkResolverBasicContext;
 import com.vladsch.flexmark.html.renderer.LinkStatus;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.util.data.MutableDataSet;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +22,7 @@ public class Markdown2Html {
         var rendererOptions = new MutableDataSet();
         HTML_RENDERER = HtmlRenderer.builder(rendererOptions).linkResolverFactory(new IndependentLinkResolverFactory() {
             @Override
-            public @NotNull LinkResolver apply(@NotNull LinkResolverBasicContext ctx) {
+            public LinkResolver apply(LinkResolverBasicContext ctx) {
                 return SPOTIFY_LINK_RESOLVER;
             }
         }).build();

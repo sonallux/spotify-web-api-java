@@ -13,15 +13,16 @@ import lombok.NoArgsConstructor;
 import okhttp3.Call;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Objects;
 
 @NoArgsConstructor
 public class SpotifyWebApiBuilder {
-    private HttpUrl baseUrl;
-    private Call.Factory callFactory;
-    private ObjectMapper objectMapper;
-    private ApiAuthorizationProvider authorizationProvider;
+    private @Nullable HttpUrl baseUrl;
+    private Call.@Nullable Factory callFactory;
+    private @Nullable ObjectMapper objectMapper;
+    private @Nullable ApiAuthorizationProvider authorizationProvider;
 
     public SpotifyWebApiBuilder baseUrl(String baseUrl) {
         Objects.requireNonNull(baseUrl, "baseUrl == null");

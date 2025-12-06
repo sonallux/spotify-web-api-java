@@ -5,6 +5,7 @@ import de.sonallux.spotify.api.http.ApiCall;
 import de.sonallux.spotify.api.http.ApiClient;
 import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * <h2>Save Albums for Current User request</h2>
@@ -15,6 +16,7 @@ import de.sonallux.spotify.api.models.*;
  * <h3>Response</h3>
  * <p>The album is saved</p>
  */
+@NullMarked
 public class SaveAlbumsUserRequest {
     private static final TypeReference<Void> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;

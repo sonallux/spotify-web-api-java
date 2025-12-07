@@ -6,7 +6,7 @@
 
     <groupId>de.sonallux.spotify</groupId>
     <artifactId>spotify-web-api-java-parent</artifactId>
-    <version>4.3.2</version>
+    <version>5.0.0</version>
     <packaging>pom</packaging>
 
     <name>spotify-web-api-java-parent</name>

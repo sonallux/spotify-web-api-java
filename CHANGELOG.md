@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [5.0.0]
 - Update to okhttp `5.3.2`
 - Requiring Java 21
 - Remove implicit grant flow (see [blog post from Spotify](https://developer.spotify.com/blog/2025-10-14-reminder-oauth-migration-27-nov-2025))

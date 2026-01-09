@@ -65,8 +65,8 @@
         <jspecify.version>1.0.0</jspecify.version>
 
         <!-- Test Dependencies -->
-        <junit.version>5.13.4</junit.version>
-        <mockito-junit-jupiter.version>5.19.0</mockito-junit-jupiter.version>
+        <junit.version>6.0.2</junit.version>
+        <mockito-junit-jupiter.version>5.21.0</mockito-junit-jupiter.version>
 
         <moditect.sourceGroup>${project.groupId}</moditect.sourceGroup>
         <moditect.sourceArtifact>${project.artifactId}</moditect.sourceArtifact>

@@ -21,7 +21,7 @@
 
     <properties>
         <okhttp.version>5.3.2</okhttp.version>
-        <jackson.version>2.20.1</jackson.version>
+        <jackson.version>2.21.1</jackson.version>
 
         <moditect.module.name>de.sonallux.spotify.api</moditect.module.name>
     </properties>

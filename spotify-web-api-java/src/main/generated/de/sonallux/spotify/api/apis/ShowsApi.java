@@ -15,9 +15,10 @@ public class ShowsApi {
 
     /**
      * <h4>Check User's Saved Shows</h4>
-     * <p>Check if one or more shows is already saved in the current Spotify user's library.</p>
+     * <p>Check if one or more shows is already saved in the current Spotify user's library.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/check-library-contains">Check User's Saved Items</a> instead.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for the shows. Maximum: 50 IDs.</p>
      * @return a {@link CheckUsersSavedShowsRequest} object to build and execute the request
+     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
      */
     public CheckUsersSavedShowsRequest checkUsersSavedShows(String ids) {
         return new CheckUsersSavedShowsRequest(apiClient, ids);
@@ -28,6 +29,7 @@ public class ShowsApi {
      * <p>Get Spotify catalog information for several shows based on their Spotify IDs.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for the shows. Maximum: 50 IDs.</p>
      * @return a {@link GetMultipleShowsRequest} object to build and execute the request
+     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
      */
     public GetMultipleShowsRequest getMultipleShows(String ids) {
         return new GetMultipleShowsRequest(apiClient, ids);
@@ -64,9 +66,10 @@ public class ShowsApi {
 
     /**
      * <h4>Remove User's Saved Shows</h4>
-     * <p>Delete one or more shows from current Spotify user's library.</p>
+     * <p>Delete one or more shows from current Spotify user's library.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/remove-library-items">Remove Items from Library</a> instead.</p>
      * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>.<br>A maximum of 50 items can be specified in one request. <em>Note: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link RemoveShowsUserRequest} object to build and execute the request
+     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
      */
     public RemoveShowsUserRequest removeShowsUser(java.util.List<String> ids) {
         return new RemoveShowsUserRequest(apiClient, ids);
@@ -74,9 +77,10 @@ public class ShowsApi {
 
     /**
      * <h4>Save Shows for Current User</h4>
-     * <p>Save one or more shows to current Spotify user's library.</p>
+     * <p>Save one or more shows to current Spotify user's library.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/save-library-items">Save Items to Library</a> instead.</p>
      * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify IDs</a>.<br>A maximum of 50 items can be specified in one request. <em>Note: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link SaveShowsUserRequest} object to build and execute the request
+     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
      */
     public SaveShowsUserRequest saveShowsUser(java.util.List<String> ids) {
         return new SaveShowsUserRequest(apiClient, ids);

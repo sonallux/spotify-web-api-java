@@ -57,6 +57,8 @@ public class EndpointSplitter {
 
     private static boolean isValidReorderOrReplaceEndpoint(ApiEndpoint endpoint) {
         var expectedDescription = """
+                **Deprecated:** Use [Update Playlist Items](/documentation/web-api/reference/reorder-or-replace-playlists-items) instead.
+                
                 Either reorder or replace items in a playlist depending on the request's parameters.
                 To reorder items, include `range_start`, `insert_before`, `range_length` and `snapshot_id` in the request's body.
                 To replace items, include `uris` as either a query parameter or in the request's body.
@@ -65,7 +67,7 @@ public class EndpointSplitter {
                 **Note**: Replace and reorder are mutually exclusive operations which share the same endpoint, but have different parameters.
                 These operations can't be applied together in a single request.
                 """;
-        return "Update Playlist Items".equals(endpoint.getName()) &&
+        return "Update Playlist Items [DEPRECATED]".equals(endpoint.getName()) &&
                 expectedDescription.equals(endpoint.getDescription()) &&
                 "/playlists/{playlist_id}/tracks".equals(endpoint.getPath()) &&
                 "PUT".equals(endpoint.getHttpMethod()) &&

@@ -8,42 +8,34 @@ import de.sonallux.spotify.api.models.*;
 import org.jspecify.annotations.NullMarked;
 
 /**
- * <h2>Add Items to Playlist [DEPRECATED] request</h2>
+ * <h2>Add Items to Playlist request</h2>
  *
  * <h3>Required OAuth scopes</h3>
  * <code>playlist-modify-public, playlist-modify-private</code>
  *
  * <h3>Response</h3>
  * <p>A snapshot ID for the playlist</p>
- * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
  */
 @NullMarked
-public class AddTracksToPlaylistRequest {
+public class AddItemsToPlaylistRequest {
     private static final TypeReference<PlaylistSnapshotId> RESPONSE_TYPE = new TypeReference<>() {};
     private final ApiClient apiClient;
     private final Request request;
 
     /**
-     * Add Items to Playlist [DEPRECATED] request
+     * Add Items to Playlist request
      * @param apiClient <p>The API client</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the playlist.</p>
      * @param uris <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs</a> to add. For example: <code>{&quot;uris&quot;: [&quot;spotify:track:4iV5W9uYEdYUVa79Axb7Rh&quot;,&quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot;, &quot;spotify:episode:512ojhOuo1ktJprKbVcKyQ&quot;]}</code><br/>A maximum of 100 items can be added in one request. <em><strong>Note</strong>: if the <code>uris</code> parameter is present in the query string, any URIs listed here in the body will be ignored.</em></p>
+     * @param position <p>The position to insert the items, a zero-based index. For example, to insert the items in the first position: <code>position=0</code> ; to insert the items in the third position: <code>position=2</code>. If omitted, the items will be appended to the playlist. Items are added in the order they appear in the uris array. For example: <code>{&quot;uris&quot;: [&quot;spotify:track:4iV5W9uYEdYUVa79Axb7Rh&quot;,&quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot;], &quot;position&quot;: 3}</code></p>
      */
-    public AddTracksToPlaylistRequest(ApiClient apiClient, String playlistId, java.util.List<String> uris) {
+    public AddItemsToPlaylistRequest(ApiClient apiClient, String playlistId, java.util.List<String> uris, int position) {
         this.apiClient = apiClient;
-        this.request = new Request("POST", "/playlists/{playlist_id}/tracks")
+        this.request = new Request("POST", "/playlists/{playlist_id}/items")
             .addPathParameter("playlist_id", String.valueOf(playlistId))
             .addBodyParameter("uris", uris)
+            .addBodyParameter("position", position)
         ;
-    }
-
-    /**
-     * @param position <p>The position to insert the items, a zero-based index. For example, to insert the items in the first position: <code>position=0</code> ; to insert the items in the third position: <code>position=2</code>. If omitted, the items will be appended to the playlist. Items are added in the order they appear in the uris array. For example: <code>{&quot;uris&quot;: [&quot;spotify:track:4iV5W9uYEdYUVa79Axb7Rh&quot;,&quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot;], &quot;position&quot;: 3}</code></p>
-     * @return this request
-     */
-    public AddTracksToPlaylistRequest position(int position) {
-        this.request.addBodyParameter("position", position);
-        return this;
     }
 
     /**

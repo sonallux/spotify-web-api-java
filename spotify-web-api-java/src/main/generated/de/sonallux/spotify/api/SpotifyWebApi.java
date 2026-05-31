@@ -18,6 +18,7 @@ public class SpotifyWebApi  {
     private final ChaptersApi chaptersApi;
     private final EpisodesApi episodesApi;
     private final GenresApi genresApi;
+    private final LibraryApi libraryApi;
     private final MarketsApi marketsApi;
     private final PlayerApi playerApi;
     private final PlaylistsApi playlistsApi;
@@ -34,6 +35,7 @@ public class SpotifyWebApi  {
         this.chaptersApi = new ChaptersApi(apiClient);
         this.episodesApi = new EpisodesApi(apiClient);
         this.genresApi = new GenresApi(apiClient);
+        this.libraryApi = new LibraryApi(apiClient);
         this.marketsApi = new MarketsApi(apiClient);
         this.playerApi = new PlayerApi(apiClient);
         this.playlistsApi = new PlaylistsApi(apiClient);

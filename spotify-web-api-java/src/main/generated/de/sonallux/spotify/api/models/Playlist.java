@@ -32,6 +32,10 @@ public class Playlist extends BaseObject {
      */
     public java.util.List<Image> images;
     /**
+     * <p>The items of the playlist. <em><strong>Note</strong>: This field is only available for playlists owned by the current user or playlists the user is a collaborator of.</em></p>
+     */
+    public Paging<PlaylistTrack> items;
+    /**
      * <p>The name of the playlist.</p>
      */
     public String name;
@@ -49,7 +53,7 @@ public class Playlist extends BaseObject {
      */
     public String snapshotId;
     /**
-     * <p>The tracks of the playlist.</p>
+     * <p><strong>Deprecated:</strong> Use <code>items</code> instead. The tracks of the playlist.</p>
      */
     public Paging<PlaylistTrack> tracks;
 }

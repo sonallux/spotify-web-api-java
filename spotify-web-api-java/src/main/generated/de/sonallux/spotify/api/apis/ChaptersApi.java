@@ -28,6 +28,7 @@ public class ChaptersApi {
      * <p>Get Spotify catalog information for several audiobook chapters identified by their Spotify IDs. Chapters are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. For example: <code>ids=0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU</code>. Maximum: 50 IDs.</p>
      * @return a {@link GetSeveralChaptersRequest} object to build and execute the request
+     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
      */
     public GetSeveralChaptersRequest getSeveralChapters(String ids) {
         return new GetSeveralChaptersRequest(apiClient, ids);

@@ -28,6 +28,10 @@ public class SimplifiedPlaylist extends BaseObject {
      */
     public java.util.List<Image> images;
     /**
+     * <p>A collection containing a link ( <code>href</code> ) to the Web API endpoint where full details of the playlist's items can be retrieved, along with the <code>total</code> number of items in the playlist. Note, a track object may be <code>null</code>. This can happen if a track is no longer available.</p>
+     */
+    public PlaylistTracksRef items;
+    /**
      * <p>The name of the playlist.</p>
      */
     public String name;
@@ -45,7 +49,7 @@ public class SimplifiedPlaylist extends BaseObject {
      */
     public String snapshotId;
     /**
-     * <p>A collection containing a link ( <code>href</code> ) to the Web API endpoint where full details of the playlist's tracks can be retrieved, along with the <code>total</code> number of tracks in the playlist. Note, a track object may be <code>null</code>. This can happen if a track is no longer available.</p>
+     * <p><strong>Deprecated:</strong> Use <code>items</code> instead. A collection containing a link ( <code>href</code> ) to the Web API endpoint where full details of the playlist's tracks can be retrieved, along with the <code>total</code> number of tracks in the playlist. Note, a track object may be <code>null</code>. This can happen if a track is no longer available.</p>
      */
     public PlaylistTracksRef tracks;
 }

@@ -15,7 +15,7 @@ public class PlayerApi {
 
     /**
      * <h4>Add Item to Playback Queue</h4>
-     * <p>Add an item to the end of the user's current playback queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.</p>
+     * <p>Add an item to be played next in the user's current playback queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.</p>
      * @param uri <p>The uri of the item to add to the queue. Must be a track or an episode uri.</p>
      * @return a {@link AddToQueueRequest} object to build and execute the request
      */

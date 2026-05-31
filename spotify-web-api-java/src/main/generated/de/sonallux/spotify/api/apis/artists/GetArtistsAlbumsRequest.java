@@ -50,7 +50,7 @@ public class GetArtistsAlbumsRequest {
     }
 
     /**
-     * @param limit <p>The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p>
+     * @param limit <p>The maximum number of items to return. Default: 5. Minimum: 1. Maximum: 10.</p>
      * @return this request
      */
     public GetArtistsAlbumsRequest limit(int limit) {

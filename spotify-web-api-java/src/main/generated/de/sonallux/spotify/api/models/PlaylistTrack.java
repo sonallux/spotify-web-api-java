@@ -24,5 +24,9 @@ public class PlaylistTrack {
     /**
      * <p>Information about the track or episode.</p>
      */
+    public BaseObject item;
+    /**
+     * <p><strong>Deprecated:</strong> Use <code>item</code> instead. Information about the track or episode.</p>
+     */
     public BaseObject track;
 }

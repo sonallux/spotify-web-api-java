@@ -17,6 +17,7 @@ public class CategoriesApi {
      * <h4>Get Several Browse Categories</h4>
      * <p>Get a list of categories used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).</p>
      * @return a {@link GetCategoriesRequest} object to build and execute the request
+     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
      */
     public GetCategoriesRequest getCategories() {
         return new GetCategoriesRequest(apiClient);
@@ -27,6 +28,7 @@ public class CategoriesApi {
      * <p>Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).</p>
      * @param categoryId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify category ID</a> for the category.</p>
      * @return a {@link GetCategoryRequest} object to build and execute the request
+     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
      */
     public GetCategoryRequest getCategory(String categoryId) {
         return new GetCategoryRequest(apiClient, categoryId);

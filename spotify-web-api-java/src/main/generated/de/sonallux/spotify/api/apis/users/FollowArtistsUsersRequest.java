@@ -15,6 +15,7 @@ import org.jspecify.annotations.NullMarked;
  *
  * <h3>Response</h3>
  * <p>Artist or user followed</p>
+ * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
  */
 @NullMarked
 public class FollowArtistsUsersRequest {

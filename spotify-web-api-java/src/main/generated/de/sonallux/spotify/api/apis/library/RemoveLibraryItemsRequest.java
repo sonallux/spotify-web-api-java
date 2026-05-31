@@ -1,0 +1,44 @@
+package de.sonallux.spotify.api.apis.library;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import de.sonallux.spotify.api.http.ApiCall;
+import de.sonallux.spotify.api.http.ApiClient;
+import de.sonallux.spotify.api.http.Request;
+import de.sonallux.spotify.api.models.*;
+import org.jspecify.annotations.NullMarked;
+
+/**
+ * <h2>Remove Items from Library request</h2>
+ *
+ * <h3>Required OAuth scopes</h3>
+ * <code>user-library-modify, user-follow-modify, playlist-modify-public</code>
+ *
+ * <h3>Response</h3>
+ * <p>Items removed from library</p>
+ */
+@NullMarked
+public class RemoveLibraryItemsRequest {
+    private static final TypeReference<Void> RESPONSE_TYPE = new TypeReference<>() {};
+    private final ApiClient apiClient;
+    private final Request request;
+
+    /**
+     * Remove Items from Library request
+     * @param apiClient <p>The API client</p>
+     * @param uris <p>A comma-separated list of <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs</a>. Maximum: 40 URIs.</p><p>Supported URI types:</p><ul><li><code>spotify:track:{id}</code></li><li><code>spotify:album:{id}</code></li><li><code>spotify:episode:{id}</code></li><li><code>spotify:show:{id}</code></li><li><code>spotify:audiobook:{id}</code></li><li><code>spotify:user:{id}</code></li><li><code>spotify:playlist:{id}</code></li></ul>
+     */
+    public RemoveLibraryItemsRequest(ApiClient apiClient, String uris) {
+        this.apiClient = apiClient;
+        this.request = new Request("DELETE", "/me/library")
+            .addQueryParameter("uris", String.valueOf(uris))
+        ;
+    }
+
+    /**
+     * Build the request into an executable api call
+     * @return an executable api call
+     */
+    public ApiCall<Void> build() {
+        return apiClient.createApiCall(request, RESPONSE_TYPE);
+    }
+}

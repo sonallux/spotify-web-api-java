@@ -21,33 +21,23 @@ public class ApiObject {
     private Map<String, Property> properties = new HashMap<>();
 
     public ApiObject addProperty(Property property) {
-        this.properties.put(property.getName(), property);
+        this.properties.put(property.name(), property);
         return this;
     }
 
     public List<Property> getPropertyList() {
         return properties.values().stream()
-                .sorted(Comparator.comparing(Property::getName))
+                .sorted(Comparator.comparing(Property::name))
                 .collect(Collectors.toList());
     }
 
-    @Data
-    public static class Property {
-        private String name;
-        private String type;
-        @Nullable
-        private String description;
-        private boolean deprecated;
-
+    public record Property(String name, String type, @Nullable String description, boolean deprecated) {
         public Property(String name, String type, @Nullable String description) {
             this(name, type, description, false);
         }
 
         public Property(String name, String type, @Nullable String description, @Nullable Boolean deprecated) {
-            this.name = name;
-            this.type = type;
-            this.description = description;
-            this.deprecated = Objects.requireNonNullElse(deprecated, false);
+            this(name, type, description, Objects.requireNonNullElse(deprecated, false).booleanValue());
         }
     }
 }

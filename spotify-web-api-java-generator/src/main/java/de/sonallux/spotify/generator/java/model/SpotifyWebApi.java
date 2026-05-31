@@ -10,12 +10,12 @@ public class SpotifyWebApi {
     }
 
     public void addCategory(ApiCategory category) {
-        categories.put(category.getName(), category);
+        categories.put(category.name(), category);
     }
 
     public List<ApiCategory> getCategories() {
         var list = new ArrayList<>(categories.values());
-        list.sort(Comparator.comparing(ApiCategory::getName));
+        list.sort(Comparator.comparing(ApiCategory::name));
         return list;
     }
 }

@@ -70,10 +70,11 @@ public class ApiEndpoint {
     public static class Parameter {
         private final String name;
         private final String javaName;
-        private String type;
-        private boolean commaSeparatedListType;
-        private String description;
-        private @Nullable String defaultValue;
+        private final String type;
+        private final boolean commaSeparatedListType;
+        private final String description;
+        @Nullable
+        private String defaultValue;
 
         public Parameter(String name, String type, String description) {
             this.name = name;
@@ -94,9 +95,8 @@ public class ApiEndpoint {
     }
 
     @Getter
-    @Setter
     public static class RawBodyParameter extends Parameter {
-        private String contentType;
+        private final String contentType;
 
         public RawBodyParameter(String name, String type, String description, String contentType) {
             super(name, type, description);

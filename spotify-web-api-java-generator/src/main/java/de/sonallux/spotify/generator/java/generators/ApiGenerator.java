@@ -32,13 +32,13 @@ public class ApiGenerator {
     }
 
     private void generateApiClasses(ApiCategory category) {
-        var className = JavaUtils.getCategoryClassName(category.getName());
-        var requestsJavaPackage = apisJavaPackage.child(JavaUtils.getCategoryPackageName(category.getName()));
+        var className = JavaUtils.getCategoryClassName(category.name());
+        var requestsJavaPackage = apisJavaPackage.child(JavaUtils.getCategoryPackageName(category.name()));
 
         var context = new HashMap<String, Object>();
         context.put("package", apisJavaPackage.getName());
         context.put("requestsPackage", requestsJavaPackage.getName());
-        context.put("name", category.getName());
+        context.put("name", category.name());
         context.put("className", className);
         context.put("endpoints", category.getEndpoints().stream().map(endpoint -> buildEndpointContext(endpoint, requestsJavaPackage)).toList());
 

@@ -230,7 +230,7 @@ public class ObjectGenerator {
 
     private Map<String, Object> buildPropertyContext(ApiObject.Property property) {
         var context = new HashMap<String, Object>();
-        var propertyName = property.getName();
+        var propertyName = property.name();
         if (JavaUtils.RESERVED_WORDS.contains(propertyName)) {
             context.put("isReservedKeywordProperty", true);
             context.put("fieldName", "_" + propertyName);
@@ -242,16 +242,16 @@ public class ObjectGenerator {
             context.put("fieldName", LOWER_UNDERSCORE.converterTo(LOWER_CAMEL).convert(propertyName));
         }
 
-        if (property.getDescription() != null) {
+        if (property.description() != null) {
             context.put("hasDescription", true);
-            context.put("description", Markdown2Html.convertToLines(property.getDescription()));
+            context.put("description", Markdown2Html.convertToLines(property.description()));
         }
-        if (property.isDeprecated()) {
+        if (property.deprecated()) {
             context.put("hasDescription", true);
             context.put("deprecated", true);
         }
 
-        context.put("type", property.getType());
+        context.put("type", property.type());
 
         return context;
     }

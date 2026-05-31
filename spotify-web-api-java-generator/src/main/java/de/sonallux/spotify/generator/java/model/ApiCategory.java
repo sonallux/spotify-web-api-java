@@ -1,20 +1,10 @@
 package de.sonallux.spotify.generator.java.model;
 
-import lombok.Getter;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public final class ApiCategory {
-    @Getter
-    private final String name;
-    private final List<ApiEndpoint> endpoints;
-
-    public ApiCategory(String name, List<ApiEndpoint> endpoints) {
-        this.name = name;
-        this.endpoints = endpoints;
-    }
+public record ApiCategory(String name, List<ApiEndpoint> endpoints) {
 
     public ApiCategory(String name) {
         this(name, new ArrayList<>());

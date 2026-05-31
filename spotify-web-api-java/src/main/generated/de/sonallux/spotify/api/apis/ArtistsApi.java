@@ -38,8 +38,9 @@ public class ArtistsApi {
      * <p>Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community's listening history.</p>
      * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the artist.</p>
      * @return a {@link GetArtistsRelatedArtistsRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public GetArtistsRelatedArtistsRequest getArtistsRelatedArtists(String id) {
         return new GetArtistsRelatedArtistsRequest(apiClient, id);
     }
@@ -49,8 +50,9 @@ public class ArtistsApi {
      * <p>Get Spotify catalog information about an artist's top tracks by country.</p>
      * @param id <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the artist.</p>
      * @return a {@link GetArtistsTopTracksRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public GetArtistsTopTracksRequest getArtistsTopTracks(String id) {
         return new GetArtistsTopTracksRequest(apiClient, id);
     }
@@ -60,8 +62,9 @@ public class ArtistsApi {
      * <p>Get Spotify catalog information for several artists based on their Spotify IDs.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for the artists. Maximum: 50 IDs.</p>
      * @return a {@link GetMultipleArtistsRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public GetMultipleArtistsRequest getMultipleArtists(String ids) {
         return new GetMultipleArtistsRequest(apiClient, ids);
     }

@@ -18,8 +18,9 @@ public class AudiobooksApi {
      * <p>Check if one or more audiobooks are already saved in the current Spotify user's library.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/check-library-contains">Check User's Saved Items</a> instead.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. For example: <code>ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ</code>. Maximum: 50 IDs.</p>
      * @return a {@link CheckUsersSavedAudiobooksRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public CheckUsersSavedAudiobooksRequest checkUsersSavedAudiobooks(String ids) {
         return new CheckUsersSavedAudiobooksRequest(apiClient, ids);
     }
@@ -49,8 +50,9 @@ public class AudiobooksApi {
      * <p>Get Spotify catalog information for several audiobooks identified by their Spotify IDs. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. For example: <code>ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ</code>. Maximum: 50 IDs.</p>
      * @return a {@link GetMultipleAudiobooksRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public GetMultipleAudiobooksRequest getMultipleAudiobooks(String ids) {
         return new GetMultipleAudiobooksRequest(apiClient, ids);
     }
@@ -69,8 +71,9 @@ public class AudiobooksApi {
      * <p>Remove one or more audiobooks from the Spotify user's library.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/remove-library-items">Remove Items from Library</a> instead.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. For example: <code>ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ</code>. Maximum: 50 IDs.</p>
      * @return a {@link RemoveAudiobooksUserRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public RemoveAudiobooksUserRequest removeAudiobooksUser(String ids) {
         return new RemoveAudiobooksUserRequest(apiClient, ids);
     }
@@ -80,8 +83,9 @@ public class AudiobooksApi {
      * <p>Save one or more audiobooks to the current Spotify user's library.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/save-library-items">Save Items to Library</a> instead.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. For example: <code>ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ</code>. Maximum: 50 IDs.</p>
      * @return a {@link SaveAudiobooksUserRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public SaveAudiobooksUserRequest saveAudiobooksUser(String ids) {
         return new SaveAudiobooksUserRequest(apiClient, ids);
     }

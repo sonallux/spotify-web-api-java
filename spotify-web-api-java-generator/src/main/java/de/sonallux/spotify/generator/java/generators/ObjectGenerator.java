@@ -177,11 +177,11 @@ public class ObjectGenerator {
             var innerType = JavaUtils.getPrimitiveTypeOfSchema(innerSchema)
                     .orElse(innerSchemaName.replace("Object", ""));
 
-            return new ApiObject.Property(name, innerType, firstNonNull(resolvedSchema.getDescription(), innerSchema.getDescription()));
+            return new ApiObject.Property(name, innerType, firstNonNull(resolvedSchema.getDescription(), innerSchema.getDescription()), resolvedSchema.getDeprecated());
         }
 
         var type = JavaUtils.getPrimitiveTypeOfSchema(resolvedSchema).or(() -> JavaUtils.getPrimitiveTypeOfSchema(schema)).orElse("Object");
-        return new ApiObject.Property(name, type, resolvedSchema.getDescription());
+        return new ApiObject.Property(name, type, resolvedSchema.getDescription(), resolvedSchema.getDeprecated());
     }
 
     private String getObjectNameOrGenerate(String openApiName, Schema<?> schema) {
@@ -245,6 +245,10 @@ public class ObjectGenerator {
         if (property.getDescription() != null) {
             context.put("hasDescription", true);
             context.put("description", Markdown2Html.convertToLines(property.getDescription()));
+        }
+        if (property.isDeprecated()) {
+            context.put("hasDescription", true);
+            context.put("deprecated", true);
         }
 
         context.put("type", property.getType());

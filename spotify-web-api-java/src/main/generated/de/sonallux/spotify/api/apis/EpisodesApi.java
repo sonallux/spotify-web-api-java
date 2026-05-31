@@ -18,8 +18,9 @@ public class EpisodesApi {
      * <p>Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/check-library-contains">Check User's Saved Items</a> instead.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for the episodes. Maximum: 50 IDs.</p>
      * @return a {@link CheckUsersSavedEpisodesRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public CheckUsersSavedEpisodesRequest checkUsersSavedEpisodes(String ids) {
         return new CheckUsersSavedEpisodesRequest(apiClient, ids);
     }
@@ -39,8 +40,9 @@ public class EpisodesApi {
      * <p>Get Spotify catalog information for several episodes based on their Spotify IDs.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for the episodes. Maximum: 50 IDs.</p>
      * @return a {@link GetMultipleEpisodesRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public GetMultipleEpisodesRequest getMultipleEpisodes(String ids) {
         return new GetMultipleEpisodesRequest(apiClient, ids);
     }
@@ -59,8 +61,9 @@ public class EpisodesApi {
      * <p>Remove one or more episodes from the current user's library.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/remove-library-items">Remove Items from Library</a> instead.</p>
      * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. <br/>A maximum of 50 items can be specified in one request. <em><strong>Note</strong>: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link RemoveEpisodesUserRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public RemoveEpisodesUserRequest removeEpisodesUser(java.util.List<String> ids) {
         return new RemoveEpisodesUserRequest(apiClient, ids);
     }
@@ -70,8 +73,9 @@ public class EpisodesApi {
      * <p>Save one or more episodes to the current user's library.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/save-library-items">Save Items to Library</a> instead.</p>
      * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. <br/>A maximum of 50 items can be specified in one request. <em><strong>Note</strong>: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link SaveEpisodesUserRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public SaveEpisodesUserRequest saveEpisodesUser(java.util.List<String> ids) {
         return new SaveEpisodesUserRequest(apiClient, ids);
     }

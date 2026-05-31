@@ -12,8 +12,9 @@ import org.jspecify.annotations.NullMarked;
  *
  * <h3>Response</h3>
  * <p>A set of audiobooks. If one of the requested audiobooks is unavailable then you'll find a <code>null</code> item in the <code>audiobooks</code> array where the audiobook object would otherwise be.</p>
- * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+ * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
  */
+@Deprecated
 @NullMarked
 public class GetMultipleAudiobooksRequest {
     private static final TypeReference<ManyAudiobooks> RESPONSE_TYPE = new TypeReference<>() {};

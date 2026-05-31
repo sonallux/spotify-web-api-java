@@ -15,8 +15,9 @@ import org.jspecify.annotations.NullMarked;
  *
  * <h3>Response</h3>
  * <p>Pages of tracks</p>
- * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+ * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
  */
+@Deprecated
 @NullMarked
 public class GetPlaylistsTracksRequest {
     private static final TypeReference<Paging<PlaylistTrack>> RESPONSE_TYPE = new TypeReference<>() {};

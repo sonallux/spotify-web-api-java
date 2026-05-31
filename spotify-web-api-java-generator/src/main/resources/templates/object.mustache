@@ -21,8 +21,14 @@ public class {{className}}{{#superClass}} extends {{superClass}}{{/superClass}} 
     {{#description}}
      * {{.}}
     {{/description}}
+    {{#deprecated}}
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
+    {{/deprecated}}
      */
     {{/hasDescription}}
+    {{#deprecated}}
+    @Deprecated
+    {{/deprecated}}
     {{#nonNull}}
     @NonNull
     {{/nonNull}}

@@ -54,6 +54,8 @@ public class Playlist extends BaseObject {
     public String snapshotId;
     /**
      * <p><strong>Deprecated:</strong> Use <code>items</code> instead. The tracks of the playlist.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public Paging<PlaylistTrack> tracks;
 }

@@ -12,8 +12,9 @@ import org.jspecify.annotations.NullMarked;
  *
  * <h3>Response</h3>
  * <p>A set of tracks</p>
- * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+ * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
  */
+@Deprecated
 @NullMarked
 public class GetArtistsTopTracksRequest {
     private static final TypeReference<ManyTracks> RESPONSE_TYPE = new TypeReference<>() {};

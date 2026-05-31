@@ -50,6 +50,8 @@ public class SimplifiedPlaylist extends BaseObject {
     public String snapshotId;
     /**
      * <p><strong>Deprecated:</strong> Use <code>items</code> instead. A collection containing a link ( <code>href</code> ) to the Web API endpoint where full details of the playlist's tracks can be retrieved, along with the <code>total</code> number of tracks in the playlist. Note, a track object may be <code>null</code>. This can happen if a track is no longer available.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public PlaylistTracksRef tracks;
 }

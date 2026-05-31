@@ -13,7 +13,9 @@ import lombok.*;
 public class EpisodeBase extends BaseObject {
     /**
      * <p>A URL to a 30 second preview (MP3 format) of the episode. <code>null</code> if not available.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public String audioPreviewUrl;
     /**
      * <p>A description of the episode. HTML tags are stripped away from this field, use <code>html_description</code> field in case HTML tags are needed.</p>
@@ -49,7 +51,9 @@ public class EpisodeBase extends BaseObject {
     public boolean isPlayable;
     /**
      * <p>The language used in the episode, identified by a <a href="https://en.wikipedia.org/wiki/ISO_639">ISO 639</a> code. This field is deprecated and might be removed in the future. Please use the <code>languages</code> field instead.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public String language;
     /**
      * <p>A list of the languages used in the episode, identified by their <a href="https://en.wikipedia.org/wiki/ISO_639">ISO 639-1</a> code.</p>

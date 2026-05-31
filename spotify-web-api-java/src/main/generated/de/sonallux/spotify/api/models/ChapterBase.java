@@ -13,11 +13,15 @@ import lombok.*;
 public class ChapterBase extends BaseObject {
     /**
      * <p>A URL to a 30 second preview (MP3 format) of the chapter. <code>null</code> if not available.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public String audioPreviewUrl;
     /**
      * <p>A list of the countries in which the chapter can be played, identified by their <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public java.util.List<String> availableMarkets;
     /**
      * <p>The number of the chapter</p>

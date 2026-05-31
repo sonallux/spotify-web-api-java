@@ -1,14 +1,10 @@
 package de.sonallux.spotify.generator.java.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.jspecify.annotations.Nullable;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Data
@@ -36,11 +32,22 @@ public class ApiObject {
     }
 
     @Data
-    @AllArgsConstructor
     public static class Property {
         private String name;
         private String type;
         @Nullable
         private String description;
+        private boolean deprecated;
+
+        public Property(String name, String type, @Nullable String description) {
+            this(name, type, description, false);
+        }
+
+        public Property(String name, String type, @Nullable String description, @Nullable Boolean deprecated) {
+            this.name = name;
+            this.type = type;
+            this.description = description;
+            this.deprecated = Objects.requireNonNullElse(deprecated, false);
+        }
     }
 }

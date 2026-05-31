@@ -31,8 +31,9 @@ public class PlaylistsApi {
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the playlist.</p>
      * @param uris <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs</a> to add. For example: <code>{&quot;uris&quot;: [&quot;spotify:track:4iV5W9uYEdYUVa79Axb7Rh&quot;,&quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot;, &quot;spotify:episode:512ojhOuo1ktJprKbVcKyQ&quot;]}</code><br/>A maximum of 100 items can be added in one request. <em><strong>Note</strong>: if the <code>uris</code> parameter is present in the query string, any URIs listed here in the body will be ignored.</em></p>
      * @return a {@link AddTracksToPlaylistRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public AddTracksToPlaylistRequest addTracksToPlaylist(String playlistId, java.util.List<String> uris) {
         return new AddTracksToPlaylistRequest(apiClient, playlistId, uris);
     }
@@ -63,8 +64,9 @@ public class PlaylistsApi {
      * @param userId <p>The user's <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify user ID</a>.</p>
      * @param name <p>The name for the new playlist, for example <code>&quot;Your Coolest Playlist&quot;</code>. This name does not need to be unique; a user may have several playlists with the same name.</p>
      * @return a {@link CreatePlaylistForUserRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public CreatePlaylistForUserRequest createPlaylistForUser(String userId, String name) {
         return new CreatePlaylistForUserRequest(apiClient, userId, name);
     }
@@ -74,8 +76,9 @@ public class PlaylistsApi {
      * <p>Get a list of Spotify playlists tagged with a particular category.</p>
      * @param categoryId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify category ID</a> for the category.</p>
      * @return a {@link GetCategoriesPlaylistsRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public GetCategoriesPlaylistsRequest getCategoriesPlaylists(String categoryId) {
         return new GetCategoriesPlaylistsRequest(apiClient, categoryId);
     }
@@ -84,8 +87,9 @@ public class PlaylistsApi {
      * <h4>Get Featured Playlists</h4>
      * <p>Get a list of Spotify featured playlists (shown, for example, on a Spotify player's 'Browse' tab).</p>
      * @return a {@link GetFeaturedPlaylistsRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public GetFeaturedPlaylistsRequest getFeaturedPlaylists() {
         return new GetFeaturedPlaylistsRequest(apiClient);
     }
@@ -104,8 +108,9 @@ public class PlaylistsApi {
      * <p>Get a list of the playlists owned or followed by a Spotify user.</p>
      * @param userId <p>The user's <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify user ID</a>.</p>
      * @return a {@link GetListUsersPlaylistsRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public GetListUsersPlaylistsRequest getListUsersPlaylists(String userId) {
         return new GetListUsersPlaylistsRequest(apiClient, userId);
     }
@@ -145,8 +150,9 @@ public class PlaylistsApi {
      * <p><strong>Deprecated:</strong> Use <a href="https://developer.spotify.com/documentation/web-api/reference/get-playlists-items">Get Playlist Items</a> instead.</p><p>Get full details of the items of a playlist owned by a Spotify user.</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the playlist.</p>
      * @return a {@link GetPlaylistsTracksRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public GetPlaylistsTracksRequest getPlaylistsTracks(String playlistId) {
         return new GetPlaylistsTracksRequest(apiClient, playlistId);
     }
@@ -168,8 +174,9 @@ public class PlaylistsApi {
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the playlist.</p>
      * @param tracks <p>An array of objects containing <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs</a> of the tracks or episodes to remove. For example: <code>{ &quot;tracks&quot;: [{ &quot;uri&quot;: &quot;spotify:track:4iV5W9uYEdYUVa79Axb7Rh&quot; },{ &quot;uri&quot;: &quot;spotify:track:1301WleyT98MSxVHPZCA6M&quot; }] }</code>. A maximum of 100 objects can be sent at once.</p>
      * @return a {@link RemoveTracksPlaylistRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public RemoveTracksPlaylistRequest removeTracksPlaylist(String playlistId, java.util.List<java.util.Map<String, Object>> tracks) {
         return new RemoveTracksPlaylistRequest(apiClient, playlistId, tracks);
     }

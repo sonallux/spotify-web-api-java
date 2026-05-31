@@ -18,8 +18,9 @@ public class AlbumsApi {
      * <p>Check if one or more albums is already saved in the current Spotify user's 'Your Music' library.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/check-library-contains">Check User's Saved Items</a> instead.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for the albums. Maximum: 20 IDs.</p>
      * @return a {@link CheckUsersSavedAlbumsRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public CheckUsersSavedAlbumsRequest checkUsersSavedAlbums(String ids) {
         return new CheckUsersSavedAlbumsRequest(apiClient, ids);
     }
@@ -49,8 +50,9 @@ public class AlbumsApi {
      * <p>Get Spotify catalog information for multiple albums identified by their Spotify IDs.</p>
      * @param ids <p>A comma-separated list of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for the albums. Maximum: 20 IDs.</p>
      * @return a {@link GetMultipleAlbumsRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public GetMultipleAlbumsRequest getMultipleAlbums(String ids) {
         return new GetMultipleAlbumsRequest(apiClient, ids);
     }
@@ -59,8 +61,9 @@ public class AlbumsApi {
      * <h4>Get New Releases</h4>
      * <p>Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).</p>
      * @return a {@link GetNewReleasesRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public GetNewReleasesRequest getNewReleases() {
         return new GetNewReleasesRequest(apiClient);
     }
@@ -79,8 +82,9 @@ public class AlbumsApi {
      * <p>Remove one or more albums from the current user's 'Your Music' library.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/remove-library-items">Remove Items from Library</a> instead.</p>
      * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. For example: <code>[&quot;4iV5W9uYEdYUVa79Axb7Rh&quot;, &quot;1301WleyT98MSxVHPZCA6M&quot;]</code><br/>A maximum of 50 items can be specified in one request. <em><strong>Note</strong>: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link RemoveAlbumsUserRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public RemoveAlbumsUserRequest removeAlbumsUser(java.util.List<String> ids) {
         return new RemoveAlbumsUserRequest(apiClient, ids);
     }
@@ -90,8 +94,9 @@ public class AlbumsApi {
      * <p>Save one or more albums to the current user's 'Your Music' library.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/save-library-items">Save Items to Library</a> instead.</p>
      * @param ids <p>A JSON array of the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. For example: <code>[&quot;4iV5W9uYEdYUVa79Axb7Rh&quot;, &quot;1301WleyT98MSxVHPZCA6M&quot;]</code><br/>A maximum of 50 items can be specified in one request. <em><strong>Note</strong>: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link SaveAlbumsUserRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public SaveAlbumsUserRequest saveAlbumsUser(java.util.List<String> ids) {
         return new SaveAlbumsUserRequest(apiClient, ids);
     }

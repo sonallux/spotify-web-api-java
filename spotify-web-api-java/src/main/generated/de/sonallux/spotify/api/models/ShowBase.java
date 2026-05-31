@@ -13,7 +13,9 @@ import lombok.*;
 public class ShowBase extends BaseObject {
     /**
      * <p>A list of the countries in which the show can be played, identified by their <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public java.util.List<String> availableMarkets;
     /**
      * <p>The copyright statements of the show.</p>
@@ -57,7 +59,9 @@ public class ShowBase extends BaseObject {
     public String name;
     /**
      * <p>The publisher of the show.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public String publisher;
     /**
      * <p>The total number of episodes in the show.</p>

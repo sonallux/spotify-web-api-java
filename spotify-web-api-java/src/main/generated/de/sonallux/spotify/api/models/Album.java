@@ -23,15 +23,21 @@ public class Album extends AlbumBase {
     public ExternalId externalIds;
     /**
      * <p><strong>Deprecated</strong> The array is always empty.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public java.util.List<String> genres;
     /**
      * <p>The label associated with the album.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public String label;
     /**
      * <p>The popularity of the album. The value will be between 0 and 100, with 100 being the most popular.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public int popularity;
     /**
      * <p>The tracks of the album.</p>

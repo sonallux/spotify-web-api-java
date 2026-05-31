@@ -21,7 +21,9 @@ public class PublicUser extends BaseObject {
     public ExternalUrl externalUrls;
     /**
      * <p>Information about the followers of this user.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public Followers followers;
     /**
      * <p>The user's profile image.</p>

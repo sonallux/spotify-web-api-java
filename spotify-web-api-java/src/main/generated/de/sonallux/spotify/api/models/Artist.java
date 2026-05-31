@@ -17,11 +17,15 @@ public class Artist extends BaseObject {
     public ExternalUrl externalUrls;
     /**
      * <p>Information about the followers of the artist.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public Followers followers;
     /**
      * <p>A list of the genres the artist is associated with. If not yet classified, the array is empty.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public java.util.List<String> genres;
     /**
      * <p>Images of the artist in various sizes, widest first.</p>
@@ -33,6 +37,8 @@ public class Artist extends BaseObject {
     public String name;
     /**
      * <p>The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. The artist's popularity is calculated from the popularity of all the artist's tracks.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public int popularity;
 }

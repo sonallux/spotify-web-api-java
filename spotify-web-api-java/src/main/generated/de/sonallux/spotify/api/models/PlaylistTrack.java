@@ -27,6 +27,8 @@ public class PlaylistTrack {
     public BaseObject item;
     /**
      * <p><strong>Deprecated:</strong> Use <code>item</code> instead. Information about the track or episode.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public BaseObject track;
 }

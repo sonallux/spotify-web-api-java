@@ -17,7 +17,9 @@ public class SimplifiedTrack extends BaseObject {
     public java.util.List<SimplifiedArtist> artists;
     /**
      * <p>A list of the countries in which the track can be played, identified by their <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public java.util.List<String> availableMarkets;
     /**
      * <p>The disc number (usually <code>1</code> unless the album consists of more than one disc).</p>
@@ -45,7 +47,9 @@ public class SimplifiedTrack extends BaseObject {
     public boolean isPlayable;
     /**
      * <p>Part of the response when <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking/">Track Relinking</a> is applied and is only part of the response if the track linking, in fact, exists. The requested track has been replaced with a different track. The track in the <code>linked_from</code> object contains information about the originally requested track.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public LinkedTrack linkedFrom;
     /**
      * <p>The name of the track.</p>
@@ -53,7 +57,9 @@ public class SimplifiedTrack extends BaseObject {
     public String name;
     /**
      * <p>A URL to a 30 second preview (MP3 format) of the track.</p>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public String previewUrl;
     /**
      * <p>Included in the response when a content restriction is applied.</p>

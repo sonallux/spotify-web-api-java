@@ -12,8 +12,9 @@ import org.jspecify.annotations.NullMarked;
  *
  * <h3>Response</h3>
  * <p>A user</p>
- * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+ * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
  */
+@Deprecated
 @NullMarked
 public class GetUsersProfileRequest {
     private static final TypeReference<PublicUser> RESPONSE_TYPE = new TypeReference<>() {};

@@ -19,8 +19,9 @@ public class UsersApi {
      * @param type <p>The ID type: either <code>artist</code> or <code>user</code>.</p>
      * @param ids <p>A comma-separated list of the artist or the user <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> to check. For example: <code>ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q</code>. A maximum of 50 IDs can be sent in one request.</p>
      * @return a {@link CheckCurrentUserFollowsRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public CheckCurrentUserFollowsRequest checkCurrentUserFollows(String type, String ids) {
         return new CheckCurrentUserFollowsRequest(apiClient, type, ids);
     }
@@ -30,8 +31,9 @@ public class UsersApi {
      * <p>Check to see if the current user is following a specified playlist.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/check-library-contains">Check User's Saved Items</a> instead.</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the playlist.</p>
      * @return a {@link CheckIfUserFollowsPlaylistRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public CheckIfUserFollowsPlaylistRequest checkIfUserFollowsPlaylist(String playlistId) {
         return new CheckIfUserFollowsPlaylistRequest(apiClient, playlistId);
     }
@@ -42,8 +44,9 @@ public class UsersApi {
      * @param type <p>The ID type.</p>
      * @param ids <p>A JSON array of the artist or user <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. For example: <code>{ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;, &quot;08td7MxkoHQkXnWAYD8d6Q&quot;]}</code>. A maximum of 50 IDs can be sent in one request. <em><strong>Note</strong>: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link FollowArtistsUsersRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public FollowArtistsUsersRequest followArtistsUsers(String type, java.util.List<String> ids) {
         return new FollowArtistsUsersRequest(apiClient, type, ids);
     }
@@ -53,8 +56,9 @@ public class UsersApi {
      * <p>Add the current user as a follower of a playlist.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/save-library-items">Save Items to Library</a> instead.</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the playlist.</p>
      * @return a {@link FollowPlaylistRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public FollowPlaylistRequest followPlaylist(String playlistId) {
         return new FollowPlaylistRequest(apiClient, playlistId);
     }
@@ -83,8 +87,9 @@ public class UsersApi {
      * <p>Get public profile information about a Spotify user.</p>
      * @param userId <p>The user's <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify user ID</a>.</p>
      * @return a {@link GetUsersProfileRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public GetUsersProfileRequest getUsersProfile(String userId) {
         return new GetUsersProfileRequest(apiClient, userId);
     }
@@ -113,8 +118,9 @@ public class UsersApi {
      * @param type <p>The ID type: either <code>artist</code> or <code>user</code>.</p>
      * @param ids <p>A JSON array of the artist or user <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. For example: <code>{ids:[&quot;74ASZWbe4lXaubB36ztrGX&quot;, &quot;08td7MxkoHQkXnWAYD8d6Q&quot;]}</code>. A maximum of 50 IDs can be sent in one request. <em><strong>Note</strong>: if the <code>ids</code> parameter is present in the query string, any IDs listed here in the body will be ignored.</em></p>
      * @return a {@link UnfollowArtistsUsersRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public UnfollowArtistsUsersRequest unfollowArtistsUsers(String type, java.util.List<String> ids) {
         return new UnfollowArtistsUsersRequest(apiClient, type, ids);
     }
@@ -124,8 +130,9 @@ public class UsersApi {
      * <p>Remove the current user as a follower of a playlist.</p><p><strong>Note:</strong> This endpoint is deprecated. Use <a href="https://developer.spotify.com/documentation/web-api/reference/remove-library-items">Remove Items from Library</a> instead.</p>
      * @param playlistId <p>The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the playlist.</p>
      * @return a {@link UnfollowPlaylistRequest} object to build and execute the request
-     * @deprecated see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">this blog post from Spotify</a>
+     * @deprecated see <a href="https://developer.spotify.com/community">the latest blog posts from Spotify</a>
      */
+    @Deprecated
     public UnfollowPlaylistRequest unfollowPlaylist(String playlistId) {
         return new UnfollowPlaylistRequest(apiClient, playlistId);
     }

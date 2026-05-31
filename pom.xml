@@ -61,7 +61,7 @@
         <moditect-maven-plugin.version>1.3.0.Final</moditect-maven-plugin.version>
 
         <!-- Dependencies -->
-        <lombok.version>1.18.42</lombok.version>
+        <lombok.version>1.18.46</lombok.version>
         <jspecify.version>1.0.0</jspecify.version>
 
         <!-- Test Dependencies -->

@@ -21,6 +21,7 @@ jobs:
           server-id: central
           server-username: CENTRAL_USERNAME # env variable for username in deploy
           server-password: CENTRAL_PASSWORD # env variable for password in deploy
+          # GPG key for sonallux@gmx.de is used. ID=
           gpg-private-key: ${{ secrets.OSSRH_GPG_PRIVATE_KEY }} # Value of the GPG private key to import
           gpg-passphrase: CENTRAL_GPG_PASSPHRASE # env variable for GPG private key passphrase
       - name: Deploy to Maven Central
@@ -28,4 +29,4 @@ jobs:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
           CENTRAL_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_PASSPHRASE }}
-        run: mvn -B deploy -Pdeploy
+        run: mvn -B -ntp deploy -Pdeploy

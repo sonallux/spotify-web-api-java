@@ -8,7 +8,7 @@ import org.jspecify.annotations.NullMarked;
 
 @Getter
 @NullMarked
-public class SpotifyWebApi  {
+public class SpotifyWebApi {
     public static final HttpUrl SPOTIFY_WEB_API_ENDPOINT = HttpUrl.get("https://api.spotify.com/v1");
 
     private final AlbumsApi albumsApi;

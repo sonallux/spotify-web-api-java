@@ -1,6 +1,5 @@
 package de.sonallux.spotify.api.http;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import de.sonallux.spotify.api.SpotifyApiException;
 import de.sonallux.spotify.api.models.Error;
 import lombok.AccessLevel;
@@ -13,6 +12,8 @@ import okio.BufferedSource;
 import okio.ForwardingSource;
 import okio.Okio;
 import org.jspecify.annotations.Nullable;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.type.TypeReference;
 
 import java.io.IOException;
 
@@ -118,7 +119,7 @@ public class ApiCall<T> {
         }
     }
 
-    private <RT> RT parseResponseBody(ResponseBody responseBody, TypeReference<RT> responseType) throws IOException {
+    private <RT> RT parseResponseBody(ResponseBody responseBody, TypeReference<RT> responseType) throws JacksonException {
         try (responseBody) {
             return apiClient.getObjectMapper().readValue(responseBody.byteStream(), responseType);
         }
@@ -132,7 +133,7 @@ public class ApiCall<T> {
             var errorResponse = parseResponseBody(rawResponse, ERROR_RESPONSE_TYPE);
             return errorResponse.getError();
         }
-        catch (IOException ignore) {}
+        catch (JacksonException ignore) {}
         return null;
     }
 

@@ -1,8 +1,8 @@
 package de.sonallux.spotify.api.http;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import de.sonallux.spotify.api.authorization.ApiAuthorizationProvider;
 import lombok.AllArgsConstructor;
+import tools.jackson.core.type.TypeReference;
 
 import java.io.IOException;
 

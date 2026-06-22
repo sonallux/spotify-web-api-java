@@ -1,12 +1,12 @@
 package de.sonallux.spotify.api.authorization.client_credentials;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import de.sonallux.spotify.api.authorization.AuthTokens;
 import de.sonallux.spotify.api.http.ApiCall;
 import de.sonallux.spotify.api.http.ApiClient;
 import de.sonallux.spotify.api.http.Request;
 import lombok.RequiredArgsConstructor;
 import okhttp3.HttpUrl;
+import tools.jackson.core.type.TypeReference;
 
 @RequiredArgsConstructor
 class AuthorizationTokenApi {

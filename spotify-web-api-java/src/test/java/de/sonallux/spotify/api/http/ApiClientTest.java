@@ -1,11 +1,11 @@
 package de.sonallux.spotify.api.http;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import mockwebserver3.MockResponse;
 import mockwebserver3.MockWebServer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tools.jackson.core.type.TypeReference;
 
 import java.io.IOException;
 import java.util.List;

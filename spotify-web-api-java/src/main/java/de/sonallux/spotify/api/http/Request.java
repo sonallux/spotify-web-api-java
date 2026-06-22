@@ -1,11 +1,11 @@
 package de.sonallux.spotify.api.http;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import okhttp3.*;
 import okhttp3.internal.http.HttpMethod;
 import org.jspecify.annotations.Nullable;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.HashMap;

@@ -1,11 +1,11 @@
 package de.sonallux.spotify.api.apis.audiobooks;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import de.sonallux.spotify.api.http.ApiCall;
 import de.sonallux.spotify.api.http.ApiClient;
 import de.sonallux.spotify.api.http.Request;
 import de.sonallux.spotify.api.models.*;
 import org.jspecify.annotations.NullMarked;
+import tools.jackson.core.type.TypeReference;
 
 /**
  * <h2>Save Audiobooks for Current User request</h2>

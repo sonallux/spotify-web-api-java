@@ -1,10 +1,6 @@
 package de.sonallux.spotify.api;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import de.sonallux.spotify.api.authorization.ApiAuthorizationProvider;
 import de.sonallux.spotify.api.http.ApiClient;
 import de.sonallux.spotify.api.http.AuthorizationAddingInterceptor;
@@ -14,6 +10,10 @@ import okhttp3.Call;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import org.jspecify.annotations.Nullable;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.PropertyNamingStrategies;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.util.Objects;
 
@@ -85,10 +85,12 @@ public class SpotifyWebApiBuilder {
     }
 
     private ObjectMapper createDefaultObjectMapper() {
-        return new ObjectMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-            .setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL)
-            .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
-            .registerModule(new JavaTimeModule());
+        return JsonMapper.builder()
+            .disable(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES)
+            .changeDefaultPropertyInclusion(incl -> incl
+                .withValueInclusion(JsonInclude.Include.NON_NULL)
+                .withContentInclusion(JsonInclude.Include.NON_NULL))
+            .propertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
+            .build();
     }
 }

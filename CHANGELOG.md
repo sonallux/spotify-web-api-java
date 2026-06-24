@@ -5,7 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [5.2.0]
 - Bump jackson to `3.1.4`
+- Bump okhttp to `5.4.0`
 
 ## [5.1.0]
 - Mark more endpoints and fields as deprecated as [announced by Spotify](https://developer.spotify.com/community)

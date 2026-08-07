@@ -62,7 +62,7 @@
 
         <!-- Dependencies -->
         <lombok.version>1.18.46</lombok.version>
-        <jspecify.version>1.0.0</jspecify.version>
+        <jspecify.version>1.0.1</jspecify.version>
 
         <!-- Test Dependencies -->
         <junit.version>6.1.0</junit.version>
